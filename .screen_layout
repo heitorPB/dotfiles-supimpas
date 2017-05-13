@@ -1,0 +1,10 @@
+split -v
+screen -t s0
+
+focus
+screen -t s1
+
+split -h
+focus
+screen -t s2
+focus

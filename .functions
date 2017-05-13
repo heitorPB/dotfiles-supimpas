@@ -70,7 +70,7 @@ man()
 			man "$@"
 }
 
-weather()
+function weather()
 {
 	if [[ -n $@ ]]; then
 		place=$@
@@ -80,7 +80,14 @@ weather()
 	curl -s -A curl "wttr.in/$place" | head -n 38
 }
 
-moon()
+function moon()
 {
 	curl -s -A curl "wttr.in/Moon" | head -n 23
+}
+
+# display a selected image in feh while allowing to browse all other images in
+# the directory as well
+function feh-browser()
+{
+	feh --start-at ./$@
 }

@@ -24,5 +24,6 @@ export HISTCONTROL='ignoreboth';
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
 
-# Don’t clear the screen after quitting a manual page.
-export MANPAGER='less -X';
+# Allow less's default behavior to use termcap. This allows mouse scrolling.
+# Change to 'less -X' to capture output in terminal and disable mouse scrolling.
+export MANPAGER='less';

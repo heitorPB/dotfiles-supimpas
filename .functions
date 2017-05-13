@@ -1,0 +1,140 @@
+#!/usr/bin/env bash
+
+# Create a new directory and enter it
+function mkd()
+{
+	mkdir -p "$@" && cd "$_";
+}
+
+# Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
+function targz()
+{
+	local tmpFile="${@%/}.tar";
+	tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;
+
+	size=$(
+		stat -f"%z" "${tmpFile}" 2> /dev/null; # OS X `stat`
+		stat -c"%s" "${tmpFile}" 2> /dev/null;  # GNU `stat`
+	);
+
+	local cmd="";
+	if (( size < 52428800 )) && hash zopfli 2> /dev/null; then
+		# the .tar file is smaller than 50 MB and Zopfli is available; use it
+		cmd="zopfli";
+	else
+		if hash pigz 2> /dev/null; then
+			cmd="pigz";
+		else
+			cmd="gzip";
+		fi;
+	fi;
+
+	echo "Compressing .tar ($((size / 1000)) kB) using \`${cmd}\`…";
+	"${cmd}" -v "${tmpFile}" || return 1;
+	[ -f "${tmpFile}" ] && rm "${tmpFile}";
+
+	zippedSize=$(
+		stat -f"%z" "${tmpFile}.gz" 2> /dev/null; # OS X `stat`
+		stat -c"%s" "${tmpFile}.gz" 2> /dev/null; # GNU `stat`
+	);
+
+	echo "${tmpFile}.gz ($((zippedSize / 1000)) kB) created successfully.";
+}
+
+# Determine size of a file or total size of a directory
+function fs()
+{
+	if du -b /dev/null > /dev/null 2>&1; then
+		local arg=-sbh;
+	else
+		local arg=-sh;
+	fi
+	if [[ -n "$@" ]]; then
+		du $arg -- "$@";
+	else
+		du $arg .[^.]* ./*;
+	fi;
+}
+
+# colored man pages
+man()
+{
+	env \
+		LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+		LESS_TERMCAP_md=$(printf "\e[1;31m") \
+		LESS_TERMCAP_me=$(printf "\e[0m") \
+		LESS_TERMCAP_se=$(printf "\e[0m") \
+		LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+		LESS_TERMCAP_ue=$(printf "\e[0m") \
+		LESS_TERMCAP_us=$(printf "\e[1;32m") \
+			man "$@"
+}
+
+weather()
+{
+	if [[ -n $@ ]]; then
+		place=$@
+	else
+		place="São Carlos"
+	fi
+	curl -s -A curl "wttr.in/$place" | head -n 38
+}
+
+moon()
+{
+	curl -s -A curl "wttr.in/Moon" | head -n 23
+}
+
+battery_status()
+{
+	# this file is in unix systems. You may need to change for your laptop
+	# check that dir for BAT0 also.
+	BATTERY=/sys/class/power_supply/BAT1
+
+	if [ -d "$BATTERY" ]
+	then
+		REM_CAP=`cat $BATTERY/energy_now`
+		FULL_CAP=`cat $BATTERY/energy_full`
+		BATSTATE=`cat $BATTERY/status` 
+
+		CHARGE=`echo $(( $REM_CAP * 100 / $FULL_CAP ))`
+
+		NON='\033[00m'
+		BLD='\033[01m'
+		RED='\033[01;31m'
+		GRN='\033[01;32m'
+		YEL='\033[01;33m'
+
+		COLOUR="$RED"
+
+		case "${BATSTATE}" in
+			'Charged')
+			BATSTT="$BLD=$NON"
+			;;
+			'Charging')
+			BATSTT="$BLD+$NON"
+			;;
+			'Discharging')
+			BATSTT="$BLD-$NON"
+			;;
+		esac
+
+		# prevent a charge of more than 100% displaying
+		if [ "$CHARGE" -gt "99" ]
+		then
+			CHARGE=100
+		fi
+
+		if [ "$CHARGE" -gt "15" ]
+		then
+			COLOUR="$YEL"
+		fi
+
+		if [ "$CHARGE" -gt "30" ]
+		then
+			COLOUR="$GRN"
+		fi
+
+		echo -e "${COLOUR}${CHARGE}%${NON}${BATSTT}"
+	fi;
+}

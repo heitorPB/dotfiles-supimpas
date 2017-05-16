@@ -1,9 +1,21 @@
 ! Simple tabs
-URxvt.perl-ext-common: ...,tabbed,...
+URxvt.perl-ext-common: ...,tabbed,resize-font,...
 URxvt.tabbed.tabbar-fg: 2
 URxvt.tabbed.tabbar-bg: 0
 URxvt.tabbed.tab-fg: 3
 URxvt.tabbed.tab-bg: 0
+
+! Change fontsize on the fly
+! needs aur/urxvt-resize-font-git
+!URxvt.perl-ext-common:  ...,resize-font,...
+! and add some key bindings, for example like this, Control+arrows Up and Down:
+URxvt.resize-font.smaller: C-Down
+URxvt.resize-font.bigger: C-Up
+! It needs to set the fontsize
+urxvt.font: xft:Inconsolata:size=11
+!For the Ctrl+Shift bindings to work, a default binding needs to be disabled (see discussion here):
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 
 ! Compile xft: Attempt to find a visual with the given bit depth; option -depth.
 ! URxvt*depth: bitdepth

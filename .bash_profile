@@ -31,7 +31,7 @@ done;
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion;
 
 # Enable tab completion for `g` by marking it as an alias for `git`
-[ -f /usr/share/bash_completion/completions/git ] && complete -o default -o nospace -F _git g;
+#[ -f /usr/share/bash_completion/completions/git ] && complete -o default -o nospace -F _git g;
 complete -o default -o nospace -F _git g;
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards

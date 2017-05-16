@@ -1,6 +1,6 @@
 #!/bin/bash
 
-setxkbmap br &
+setxkbmap fi,br &
 
 # to reduce mouse sensitivity
 #xset m 1/2 1 &
@@ -18,6 +18,5 @@ nm-applet &
 # power management for laptop:
 mate-power-manager &
 
-#exec awesome
 while [ 1 ]; do xsetroot -name "$(date)"; sleep 30; done &
-exec ~/projects/dwm/dwm
+exec ~/projects/dwm-6.1/dwm

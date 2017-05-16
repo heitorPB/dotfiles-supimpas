@@ -15,9 +15,5 @@ export LIBVA_DRIVER_NAME=vdpau
 
 nm-applet &
 
-# power management for laptop:
-mate-power-manager &
-
-#exec awesome
 while [ 1 ]; do xsetroot -name "$(date)"; sleep 30; done &
 exec ~/projects/dwm/dwm

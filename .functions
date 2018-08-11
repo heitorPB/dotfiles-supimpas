@@ -75,7 +75,7 @@ function weather()
 	if [[ -n $@ ]]; then
 		place=$@
 	else
-		place="São Carlos"
+		place="Geneve"
 	fi
 	curl -s -A curl "wttr.in/$place" | head -n 38
 }

@@ -3,14 +3,6 @@
 # Make vim the default editor.
 export EDITOR='vim';
 
-# Make Opera default browser when there is display,
-# otherwise use a CLI browser
-if [ -n "$DISPLAY" ]; then
-	export BROWSER=firefox
-else
-	export BROWSER=links
-fi
-
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8';
 

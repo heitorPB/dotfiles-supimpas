@@ -39,4 +39,4 @@ complete -o default -o nospace -F _git g;
 [ -e "${HOME}/.ssh/known_hosts" ] && complete -o "default" -o "nospace" -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | cut -f 1 -d ':' | cut -f 1 -d ']' | cut -d '[' -f2`;)" scp sftp ssh;
 
 # Add `killall` tab completion for common apps
-complete -o "nospace" -W "firefox rambox root spotify" killall;
+complete -o "nospace" -W "root" killall;

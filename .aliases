@@ -10,10 +10,6 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Dropbox"
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
 alias g="git"
 alias h="history"
 alias j="jobs"
@@ -47,9 +43,6 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# Enable aliases to be sudo’ed
-alias sudo='sudo '
-
 # Get week number
 alias week='date +%V'
 
@@ -58,8 +51,3 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date
 
 # Canonical hex dump; some systems have this symlinked
 command -v hd > /dev/null || alias hd="hexdump -C"
-
-# feh - image viewer: always displays filename (tinted), verbose, full screen
-alias feh='feh -d --draw-tinted -V -F'
-# With EXIF information
-alias feh-exif='feh --draw-exif'

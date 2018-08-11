@@ -6,7 +6,7 @@ export EDITOR='vim';
 # Make Opera default browser when there is display,
 # otherwise use a CLI browser
 if [ -n "$DISPLAY" ]; then
-	export BROWSER=opera
+	export BROWSER=firefox
 else
 	export BROWSER=links
 fi

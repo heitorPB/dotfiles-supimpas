@@ -69,15 +69,15 @@ Up: $uptime  ${alignr}Load: $loadavg
 Battery: ${battery BAT1}: $alignr${battery_time BAT1}
 ${battery_bar BAT1}
 
-CPU: (${cpu cpu1}% ${cpu cpu2}% ${cpu cpu3}% ${cpu cpu4}%) ${cpu cpu0}% ${alignr}${exec acpi -t | cut -b16-19}ºC 
+CPU: (${cpu cpu1}% ${cpu cpu2}% ${cpu cpu3}% ${cpu cpu4}%) ${cpu cpu0}% ${alignr}${exec acpi -t | cut -b16-19}ºC
 GPU: ${exec nvidia-smi -q | grep Gpu | cut -b39-41} ${alignr}${exec nvidia-smi -q | grep "GPU Current Temp" | cut -b39-40}ºC ${alignr}
 
 RAM ${alignr}$mem / $memmax ($memperc%)
 
 /: $alignr ${fs_used /} / ${fs_size /} ($alignr${fs_free_perc /}%)
 /home: $alignr ${fs_used /home/} / ${fs_size /home} ($alignr${fs_free_perc /home}%)
-${if_mounted /mnt/win}win: $alignr ${fs_used /mnt/win} / ${fs_size /mnt/win} ($alignr${fs_free_perc /mnt/wimnt/win}%) ${endif}
-${if_mounted /mnt/disk}/mnt/disk: $alignr ${fs_used /mnt/disk} / ${fs_size /mnt/disk} ($alignr${fs_free_perc /mnt/disk}%) 
+80G: $alignr ${fs_used /home/h/80G} / ${fs_size /home/h/80G} ($alignr${fs_free_perc /home/h/80G}%)
+${if_mounted /mnt/disk}/mnt/disk: $alignr ${fs_used /mnt/disk} / ${fs_size /mnt/disk} ($alignr${fs_free_perc /mnt/disk}%)
 ${fs_bar 4 /mnt/disk} ${endif}
 
 Down ${downspeed enp9s0} k/s ${alignr}Up ${upspeed enp9s0} k/s
@@ -89,6 +89,8 @@ Down ${downspeed wlp8s0} k/s ${alignr}Up ${upspeed wlp8s0} k/s
 ${downspeedgraph wlp8s0 10,107} ${alignr}${upspeedgraph wlp8s0 10,107}
 
 Total ${totaldown wlp8s0} ${alignr}Total ${totalup wlp8s0 }
+
+${exec task limit:3}
 
 add: cpu freq, weather, mpd, wifi, lan, see acpitemp
 ]]

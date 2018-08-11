@@ -1,6 +1,6 @@
 #!/bin/bash
 
-setxkbmap br &
+setxkbmap fi,br &
 
 # to reduce mouse sensitivity
 #xset m 1/2 1 &
@@ -15,5 +15,8 @@ export LIBVA_DRIVER_NAME=vdpau
 
 nm-applet &
 
+# power management for laptop:
+mate-power-manager &
+
 while [ 1 ]; do xsetroot -name "$(date "+%a %b %H:%M:%S %Z %F")"; sleep 30; done &
-exec ~/projects/dwm/dwm
+exec ~/projects/dwm-6.1/dwm

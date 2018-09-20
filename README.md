@@ -1,9 +1,10 @@
 # dotfiles-supimpas
-My supimpa dotfiles
+
+My supimpa dotfiles :)
 
 Branches:
 
-- `laptop` for my laptop
+- `master` for my laptop
 - `lxplus` for lxplus
 
 Checkout the branch you need and run the bootstrap script:

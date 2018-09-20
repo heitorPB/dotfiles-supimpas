@@ -15,10 +15,13 @@
 	p = !"git pull; git submodule foreach git pull origin master"
 
 	# Clone a repository including all submodules
-	c = clone --recursive
+	cl = clone --depth 1 --recursive --shallow-submodules
 
-	# Commit all changes
-	co = commit -av
+	# Commit and sign staged changes
+	c = commit -S -v
+
+	# Commit and sign all changes
+	ca = commit -S -a -v
 
 	# Switch to a branch, creating it if necessary
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
@@ -36,6 +39,7 @@
 
 	# Interactive rebase with the given number of latest commits
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
+	# add also git rebase -i master
 
 	# Remove the old tag with this name and tag the latest commit with it.
 	retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
@@ -105,7 +109,7 @@
 
 [commit]
 	# https://help.github.com/articles/signing-commits-using-gpg/
-	# gpgsign = true
+	gpgsign = true
 
 [diff]
 	# Detect copies as well as renames

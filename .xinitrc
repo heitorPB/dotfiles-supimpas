@@ -18,5 +18,8 @@ nm-applet &
 # power management for laptop:
 mate-power-manager &
 
+# to make dunst work
+systemctl --user import-environment DISPLAY
+
 while [ 1 ]; do xsetroot -name "$(date "+%a %b %H:%M:%S %Z %F")"; sleep 30; done &
 exec ~/projects/dwm-6.1/dwm

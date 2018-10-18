@@ -145,3 +145,26 @@ battery_status()
 		echo -e "${COLOUR}${CHARGE}%${NON}${BATSTT}"
 	fi;
 }
+
+# shrink all images in dir1 and put them in dir2 using tips from
+# https://developers.google.com/speed/docs/insights/OptimizeImages
+shrink_photos()
+{
+	if [ ! $2 ]
+	then
+		outdir="tb"
+	else
+		outdir=$2
+	fi
+
+	if [ ! -d $outdir ]
+	then
+		mkdir $outdir
+	fi
+	
+	for photo in $1/*.JPG
+	do
+		echo "Working on" $photo "->" ${outdir}/${photo##*/}
+		convert $photo -sampling-factor 4:2:0 -strip -resize 888x666 -quality 85 -interlace JPEG -colorspace sRGB $outdir/${photo##*/}
+	done
+}

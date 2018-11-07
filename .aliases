@@ -63,3 +63,7 @@ command -v hd > /dev/null || alias hd="hexdump -C"
 alias feh='feh -d --draw-tinted -V -F'
 # With EXIF information
 alias feh-exif='feh --draw-exif'
+
+# maim - screenshots
+# select a window and screenshot it without the mouse. Give a filename after
+alias screenshot_window='maim -st 9999999 -u'

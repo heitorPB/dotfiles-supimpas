@@ -161,10 +161,45 @@ shrink_photos()
 	then
 		mkdir $outdir
 	fi
-	
+
 	for photo in $1/*.JPG
 	do
 		echo "Working on" $photo "->" ${outdir}/${photo##*/}
 		convert $photo -sampling-factor 4:2:0 -strip -resize 888x666 -quality 85 -interlace JPEG -colorspace sRGB $outdir/${photo##*/}
 	done
+}
+
+
+# Send message to Matrix using https://t2bot.io/webhooks
+# two usage types:
+# $ alert-matrix MESSAGE
+# $ some command; alert-matrix # when command finishes, send it to matrix
+alert-matrix()
+{
+	format="plain"
+	if [ $1 ]
+	then
+		message=$@
+	else
+		message=$(history | tail -n 1 | sed -e 's/^\s*[0-9]\+\s*//;s/[;&|]\s*alert-matrix *$//')
+		message="<code>"${message//\"/\'}"</code>"
+		format="html"
+	fi
+
+	json='
+	{
+	      "text": "message",
+	      "format": "FORMAT",
+	      "displayName": "Sender",
+	      "avatarUrl": "https://heitorpb.github.io/assets/favicon.png"
+	}'
+
+	json=${json/message/$message}
+	json=${json/FORMAT/$format}
+	json=${json/Sender/$HOSTNAME}
+
+	curl --header "Content-Type: application/json" \
+	     --request POST \
+	     --data "$json" \
+	     $MATRIX_WEBHOOK_URL
 }

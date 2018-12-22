@@ -146,10 +146,18 @@ battery_status()
 	fi;
 }
 
-# shrink all images in dir1 and put them in dir2 using tips from
+# shrink all images using tips from
 # https://developers.google.com/speed/docs/insights/OptimizeImages
+# usage: shrink_photos FILE OUTDIR or shrink_photos DIR OUTDIR
 shrink_photos()
 {
+	if [ -f $1 ]
+	then
+		images=$1
+	else
+		images=`find $1 -maxdepth 1 -iname '*.j[pe]*g'`
+	fi
+
 	if [ ! $2 ]
 	then
 		outdir="tb"
@@ -162,10 +170,10 @@ shrink_photos()
 		mkdir $outdir
 	fi
 
-	for photo in $1/*.JPG
+	for photo in $images
 	do
 		echo "Working on" $photo "->" ${outdir}/${photo##*/}
-		convert $photo -sampling-factor 4:2:0 -strip -resize 888x666 -quality 85 -interlace JPEG -colorspace sRGB $outdir/${photo##*/}
+		convert $photo -sampling-factor 4:2:0 -strip -resize 888x666 -quality 85 -interlace JPEG -colorspace sRGB $outdir/${photo##*/} || echo -e "ERROR in $photo \n"
 	done
 }
 

@@ -59,10 +59,10 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date
 # Canonical hex dump; some systems have this symlinked
 command -v hd > /dev/null || alias hd="hexdump -C"
 
-# feh - image viewer: always displays filename (tinted), verbose, full screen
-alias feh='feh -d --draw-tinted -V -F'
+# feh - image viewer: always displays filename, tinted to improve readability, verbose, full screen
+alias feh='feh --auto-rotate --draw-filename --draw-tinted -V -F'
 # With EXIF information
-alias feh-exif='feh --draw-exif'
+alias feh-exif='feh --auto-rotate --draw-exif --draw-tinted -V -F'
 
 # maim - screenshots
 # select a window and screenshot it without the mouse. Give a filename after

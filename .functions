@@ -57,61 +57,6 @@ function feh-browser()
 	feh --start-at ./$@
 }
 
-battery_status()
-{
-	# this file is in unix systems. You may need to change for your laptop
-	# check that dir for BAT0 also.
-	BATTERY=/sys/class/power_supply/BAT0
-
-	if [ -d "$BATTERY" ]
-	then
-		# sometimes these files are energy_foo
-		REM_CAP=`cat $BATTERY/charge_now`
-		FULL_CAP=`cat $BATTERY/charge_full`
-		BATSTATE=`cat $BATTERY/status`
-
-		CHARGE=`echo $(( $REM_CAP * 100 / $FULL_CAP ))`
-
-		NON='\033[00m'
-		BLD='\033[01m'
-		RED='\033[01;31m'
-		GRN='\033[01;32m'
-		YEL='\033[01;33m'
-
-		COLOUR="$RED"
-
-		case "${BATSTATE}" in
-			'Charged')
-			BATSTT="$BLD=$NON"
-			;;
-			'Charging')
-			BATSTT="$BLD+$NON"
-			;;
-			'Discharging')
-			BATSTT="$BLD-$NON"
-			;;
-		esac
-
-		# prevent a charge of more than 100% displaying
-		if [ "$CHARGE" -gt "99" ]
-		then
-			CHARGE=100
-		fi
-
-		if [ "$CHARGE" -gt "15" ]
-		then
-			COLOUR="$YEL"
-		fi
-
-		if [ "$CHARGE" -gt "30" ]
-		then
-			COLOUR="$GRN"
-		fi
-
-		echo -e "${COLOUR}${CHARGE}%${NON}${BATSTT}"
-	fi;
-}
-
 # shrink all images using tips from
 # https://developers.google.com/speed/docs/insights/OptimizeImages
 # usage: shrink_photos FILE OUTDIR or shrink_photos DIR OUTDIR

@@ -5,7 +5,7 @@ My supimpa dotfiles :)
 Branches:
 
 - `master` for my laptop
-- `lxplus` for lxplus
+- `desktop` for my desktop
 
 Checkout the branch you need and run the bootstrap script:
 

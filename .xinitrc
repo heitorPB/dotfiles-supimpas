@@ -23,7 +23,7 @@ mate-power-manager &
 systemctl --user import-environment DISPLAY
 
 # redshift systray thing for nice color temperature black magic
-redshift-gtk -l $(grep "^current_geo" .exports | sed -E "s|^current_geo=\"||;s|\"||") &
+redshift-gtk -l $CURRENT_GEO &
 
 while [ 1 ]; do xsetroot -name "$(date "+%a %b %H:%M:%S %Z %F")"; sleep 30; done &
 exec ~/projects/dwm-6.1/dwm

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-setxkbmap fi,br &
+setxkbmap br &
 
 # to reduce mouse sensitivity
 #xset m 1/2 1 &
@@ -10,14 +10,6 @@ conky -c ~/.config/conky/conkyrc &
 xrdb -merge ~/.config/Xresources
 
 eval $(ssh-agent)
-
-export LIBVA_DRIVER_NAME=vdpau
-
-# network manager systray thing
-nm-applet &
-
-# power management for laptop:
-mate-power-manager &
 
 # to make dunst work
 systemctl --user import-environment DISPLAY

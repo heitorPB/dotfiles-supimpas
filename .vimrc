@@ -1,7 +1,26 @@
+" I use Vundle (https://github.com/VundleVim/Vundle.vim)
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" https://github.com/JuliaEditorSupport/julia-vim
+Plugin 'JuliaEditorSupport/julia-vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
 " Use the Solarized Dark theme
 set background=dark
 "colorscheme solarized
-colorscheme delek
+colorscheme solarized
 let g:solarized_termtrans=1
 
 " Make Vim more useful
@@ -46,7 +65,7 @@ set secure
 " Enable line numbers
 set number
 " Enable syntax highlighting
-syntax on
+syntax enable
 " Make tabs as wide as 8 spaces
 set tabstop=8
 " Show “invisible” characters
@@ -119,7 +138,7 @@ set smartindent
 "    Start insert mode.
 "    Press F2 (toggles the 'paste' option on).
 "    Use your terminal to paste text from the clipboard.
-"    Press F2 (toggles the 'paste' option off). 
+"    Press F2 (toggles the 'paste' option off).
 set pastetoggle=<F2>
 
 " Open new split panes to right and bottom, which feels more natural

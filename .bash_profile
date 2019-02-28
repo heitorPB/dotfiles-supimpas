@@ -37,4 +37,4 @@ done;
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
 # Add `killall` tab completion for common apps
-complete -o "nospace" -W "firefox rambox root spotify" killall;
+complete -o "nospace" -W "firefox spotify" killall;

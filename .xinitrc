@@ -7,7 +7,7 @@ setxkbmap fi,br &
 
 conky -c ~/.config/conky/conkyrc &
  
-xrdb -merge ~/.config/Xresources &
+xrdb -merge ~/.config/Xresources
 
 eval $(ssh-agent)
 

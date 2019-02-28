@@ -2,7 +2,7 @@
 
 cd "$(dirname "${BASH_SOURCE}")"
 
-#git pull
+git pull
 
 function doIt() {
 	rsync --exclude ".git/" --exclude "bootstrap.sh" \

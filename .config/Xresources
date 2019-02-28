@@ -1,18 +1,83 @@
+! From https://github.com/solarized/xresources
+! Dark variant
+
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+*background:            S_base03
+*foreground:            S_base0
+*fadeColor:             S_base03
+*cursorColor:           S_base1
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+!! black dark/light
+*color0:                S_base02
+*color8:                S_base03
+
+!! red dark/light
+*color1:                S_red
+*color9:                S_orange
+
+!! green dark/light
+*color2:                S_green
+*color10:               S_base01
+
+!! yellow dark/light
+*color3:                S_yellow
+*color11:               S_base00
+
+!! blue dark/light
+*color4:                S_blue
+*color12:               S_base0
+
+!! magenta dark/light
+*color5:                S_magenta
+*color13:               S_violet
+
+!! cyan dark/light
+*color6:                S_cyan
+*color14:               S_base1
+
+!! white dark/light
+*color7:                S_base2
+*color15:               S_base3
+
+
+
+
 ! Change fontsize on the fly
 ! needs aur/urxvt-resize-font-git
 !URxvt.perl-ext-common:  ...,resize-font,...
 ! and add some key bindings, for example like this, Control+arrows Up and Down:
-URxvt.resize-font.smaller: C-Down
-URxvt.resize-font.bigger: C-Up
+!URxvt.resize-font.smaller: C-Down
+!URxvt.resize-font.bigger: C-Up
 ! It needs to set the fontsize
-urxvt.font: xft:Inconsolata:size=11
+!URxvt*font: xft:DejaVu Serif:pixelsize=13
+URxvt*font: xft:DejaVu Serif:size=11
+URxvt*letterSpace: -2
 !For the Ctrl+Shift bindings to work, a default binding needs to be disabled (see discussion here):
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
 ! Compile xft: Attempt to find a visual with the given bit depth; option -depth.
 ! URxvt*depth: bitdepth
-URxvt*.depth: 32 
+!URxvt*.depth: 32 
 
 ! Compile xft: Turn on/off double-buffering for xft (default enabled).  On some card/driver combination enabling it slightly decreases
 ! URxvt*buffered: boolean
@@ -25,10 +90,10 @@ URxvt*.depth: 32
 
 ! Use the specified colour as the windows background colour [default White]; option -bg.
 ! URxvt*background: colour
-URxvt*.background: Black
+! URxvt*.background: Black
 
 ! Use the specified colour as the windows foreground colour [default Black]; option -fg.
-URxvt*foreground: gray90
+! URxvt*foreground: gray90
 
 ! Use the specified colour for the colour value n, where 0-7 corresponds to low-intensity (normal) colours and 8-15 corresponds to high-
 ! URxvt*colorn: colour
@@ -126,7 +191,7 @@ URxvt*foreground: gray90
 ! URxvt*print-pipe: string
 
 ! Set scrollbar style to rxvt, plain, next or xterm. plain is the authors favourite.
- URxvt*scrollstyle: plain
+URxvt*scrollstyle: plain
 
 ! Set the scrollbar width in pixels.
 ! URxvt*thickness: number
@@ -144,13 +209,13 @@ URxvt*foreground: gray90
 ! URxvt*scrollBar_align: mode
 
 ! True: scroll to bottom when tty receives output; option -si.  False: do not scroll to bottom when tty receives output; option +si.
-! URxvt*scrollTtyOutput: boolean
+URxvt*scrollTtyOutput: false
 
 ! True: scroll with scrollback buffer when tty receives new lines (i.e.  try to show the same lines) and scrollTtyOutput is False; option -sw.
-! URxvt*scrollWithBuffer: boolean
+URxvt*scrollWithBuffer: true
 
 ! True: scroll to bottom when a non-special key is pressed. Special keys are those which are intercepted by rxvt-unicode for special handling
-! URxvt*scrollTtyKeypress: boolean
+URxvt*scrollTtyKeypress: true
 
 ! Save number lines in the scrollback buffer [default 64]. This resource is limited on most machines to 65535; option -sl.
 ! URxvt*saveLines: number
@@ -289,20 +354,3 @@ URxvt*foreground: gray90
 
 ! Turn on/off ISO 14755 5.2 mode (default enabled).
 ! URxvt*iso14755_52: boolean
-
-URxvt*color0: black
-URxvt*color1: red3
-URxvt*color2: green3
-URxvt*color3: yellow3
-URxvt*color4: blue2
-URxvt*color5: magenta3
-URxvt*color6: cyan3
-URxvt*color7: gray90
-URxvt*color8: grey50
-URxvt*color9: red
-URxvt*color10: green
-URxvt*color11: yellow
-URxvt*color12: blue
-URxvt*color13: magenta
-URxvt*color14: cyan
-URxvt*color15: white

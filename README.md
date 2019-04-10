@@ -4,8 +4,9 @@ My supimpa dotfiles :)
 
 ## Branches
 
-- `master` for my laptop
 - `desktop` for my desktop
+- `master` for my laptop
+- `raspberrypi` for my Raspberry Pi
 
 ## Installation
 

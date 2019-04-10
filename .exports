@@ -3,14 +3,6 @@
 # Make vim the default editor.
 export EDITOR='vim';
 
-# Make Opera default browser when there is display,
-# otherwise use a CLI browser
-if [ -n "$DISPLAY" ]; then
-	export BROWSER=firefox
-else
-	export BROWSER=links
-fi
-
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8';
 
@@ -27,10 +19,6 @@ export LC_ALL='en_US.UTF-8';
 # Allow less's default behavior to use termcap. This allows mouse scrolling.
 # Change to 'less -X' to capture output in terminal and disable mouse scrolling.
 export MANPAGER='less';
-
-# Ruby GEMS stuff
-PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
-export GEM_HOME=$HOME/.gem
 
 # geolocation shit
 export CURRENT_CITY="São Carlos, Brazil"

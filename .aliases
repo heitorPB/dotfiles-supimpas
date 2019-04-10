@@ -10,9 +10,7 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
 alias g="git"
 alias h="history"
@@ -58,18 +56,6 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date
 
 # Canonical hex dump; some systems have this symlinked
 command -v hd > /dev/null || alias hd="hexdump -C"
-
-# feh - image viewer: always displays filename, tinted to improve readability, verbose, full screen
-alias feh='feh --auto-rotate --draw-filename --draw-tinted -V -F'
-# With EXIF information
-alias feh-exif='feh --auto-rotate --draw-exif --draw-tinted -V -F'
-
-# maim - screenshots
-# select a window and screenshot it without the mouse. Give a filename after
-alias screenshot_window='maim -st 9999999 -u'
-
-# alert :) usage like: `sleep 1; alert`
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # extract .tar.gz
 alias targzx='tar xfvz'

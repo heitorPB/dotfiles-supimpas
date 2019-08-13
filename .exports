@@ -32,6 +32,9 @@ export MANPAGER='less';
 PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 export GEM_HOME=$HOME/.gem
 
+# add pip ~/.local/bin to path
+PATH="$PATH:$HOME/.local/bin"
+
 # geolocation shit
 export CURRENT_CITY="São Carlos, Brazil"
 export CURRENT_GEO="-22.0183737:-47.8911570"

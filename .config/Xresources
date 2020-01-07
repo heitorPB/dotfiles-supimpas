@@ -76,14 +76,14 @@ URxvt.iso14755_52: false
 
 ! Compile xft: Attempt to find a visual with the given bit depth; option -depth.
 ! URxvt*depth: bitdepth
-!URxvt*.depth: 32 
+!URxvt*.depth: 32
 
 ! Compile xft: Turn on/off double-buffering for xft (default enabled).  On some card/driver combination enabling it slightly decreases
 ! URxvt*buffered: boolean
 
 ! Create the window with the specified X window geometry [default 80x24]; option -geometry.
 ! URxvt*geometry: geom
- 
+
 ! URxvt*.transparent: true
 ! URxvt*.shading: 10
 
@@ -97,7 +97,7 @@ URxvt.iso14755_52: false
 ! Use the specified colour for the colour value n, where 0-7 corresponds to low-intensity (normal) colours and 8-15 corresponds to high-
 ! URxvt*colorn: colour
 
-! 
+!
 ! URxvt*colorBD: colour
 
 ! Use the specified colour to display bold or italic characters when the foreground colour is the default. If font styles are not available
@@ -153,7 +153,7 @@ URxvt.iso14755_52: false
 
 ! URxvt*boldFont: fontlist
 
-! 
+!
 ! URxvt*italicFont: fontlist
 
 ! The font list to use for displaying bold, italic or bold italic characters, respectively.
@@ -273,7 +273,7 @@ URxvt*scrollTtyKeypress: true
 ! The characters used as delimiters for double-click word selection (whitespace delimiting is added automatically if resource is given).
 ! URxvt*cutchars: string
 
-! 
+!
 ! URxvt*{|}
 
 ! OverTheSpot, OffTheSpot, Root; option -pt.
@@ -326,7 +326,7 @@ URxvt*scrollTtyKeypress: true
 ! Colon-separated list of additional directories that hold extension scripts. When looking for perl extensions, urxvt will first look in these
 ! URxvt*perl-lib: path
 
-! If you do not use the Perl extension features, you can improve the security and speed by disabling Perl extensions completely. 
+! If you do not use the Perl extension features, you can improve the security and speed by disabling Perl extensions completely.
 !URxvt.perl-ext:
 !URxvt.perl-ext-common:
 

@@ -26,4 +26,6 @@ systemctl --user import-environment DISPLAY
 redshift-gtk -l $CURRENT_GEO &
 
 while [ 1 ]; do xsetroot -name "$(date "+%a %b %H:%M:%S %Z %F")"; sleep 30; done &
-exec ~/projects/dwm-6.1/dwm
+while true; do
+	~/projects/dwm/dwm
+done

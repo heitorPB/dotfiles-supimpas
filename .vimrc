@@ -105,9 +105,12 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+	" yml as taml
+	autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml foldmethod=indent
 
 	" some line wraps :)
 	autocmd FileType markdown set textwidth=79
+	autocmd FileType yaml set ts=2 sts=2 sw=2 expandtab
 endif
 " number of lines to keep in history
 set history=50

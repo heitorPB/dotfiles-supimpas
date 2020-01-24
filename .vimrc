@@ -114,6 +114,8 @@ if has("autocmd")
 endif
 " number of lines to keep in history
 set history=50
+" disable auto folding
+set nofoldenable
 " Automatic indentation
 set autoindent
 " Make it smart

@@ -20,7 +20,7 @@ alias j="jobs"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
-	colorflag="--color"
+	colorflag="--color=auto"
 else # OS X `ls`
 	colorflag="-G"
 fi
@@ -43,9 +43,9 @@ alias ls1="ls -1"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias grep='grep ${colorflag}'
+alias fgrep='fgrep ${colorflag}'
+alias egrep='egrep ${colorflag}'
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '

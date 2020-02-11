@@ -6,6 +6,9 @@ for filee in ~/.{path,functions,bash_prompt,exports,aliases,extra}; do
 done;
 unset filee;
 
+# nice solarized dircolors
+eval `dircolors ~/.config/dircolors.ansi-dark`
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
 

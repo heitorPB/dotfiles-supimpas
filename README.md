@@ -43,3 +43,8 @@ Some packages that my dotfiles need or create alias or configure:
 
 Vim should be installed with the attribute `+clipboard`. On ArchLinux it is the
 `gvim` package.
+
+## Themes/Fonts
+
+Use Adapta-Nokto theme and noto-fonts. Can be configured with
+mate-appearance-settings.

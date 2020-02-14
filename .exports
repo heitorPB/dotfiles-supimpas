@@ -40,3 +40,5 @@ export CURRENT_CITY="São Carlos, Brazil"
 export CURRENT_GEO="-22.0183737:-47.8911570"
 #export CURRENT_CITY="Geneve, Switzerland"
 #export CURRENT_GEO="46.2339717:6.0557211"
+
+export QT_STYLE_OVERRIDE=kvantum

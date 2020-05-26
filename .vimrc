@@ -9,6 +9,8 @@ set nocompatible
 set clipboard=unnamed
 " Enhance command-line completion
 set wildmenu
+" List all file matches in command mode without completing to the first match
+set wildmode=list
 " Allow cursor keys in insert mode
 set esckeys
 " Allow backspace in insert mode

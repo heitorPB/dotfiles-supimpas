@@ -47,4 +47,4 @@ Vim should be installed with the attribute `+clipboard`. On ArchLinux it is the
 ## Themes/Fonts
 
 Use Adapta-Nokto theme and noto-fonts. Can be configured with
-mate-appearance-settings.
+mate-appearance-settings and or lxappearance.

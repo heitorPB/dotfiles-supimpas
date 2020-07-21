@@ -133,6 +133,10 @@
 	# Use `hexdump` to diff binary files
 	textconv = hexdump -v -C
 
+[fetch]
+	# prune old branches while fetching remote
+	prune = true
+
 [help]
 	# Automatically correct and execute mistyped commands
 	autocorrect = 1
@@ -142,6 +146,10 @@
 	log = true
 	tool = vimdiff
 	conflictStyle = diff3
+
+[pull]
+	# fast-forward when pulling remote
+	ff = only
 
 [push]
 	# Use the Git 1.x.x default to avoid errors on machines with old Git

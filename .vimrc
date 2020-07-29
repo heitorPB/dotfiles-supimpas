@@ -107,7 +107,7 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
-	" yml as taml
+	" yml as yaml
 	autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml foldmethod=indent
 
 	" some line wraps :)

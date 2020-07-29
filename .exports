@@ -5,23 +5,24 @@ export EDITOR=vim
 export VISUAL=$EDITOR
 export SUDO_EDITOR=$EDITOR
 export BROWSER=firefox
+export TERM=alacritty
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
-export PYTHONIOENCODING='UTF-8'
+export PYTHONIOENCODING='UTF-8';
 
 # Increase Bash history size. Allow 32³ entries; the default is 500.
-export HISTSIZE='32768'
-export HISTFILESIZE="${HISTSIZE}"
+export HISTSIZE='32768';
+export HISTFILESIZE="${HISTSIZE}";
 # Omit duplicates and commands that begin with a space from history.
-export HISTCONTROL='ignoreboth'
+export HISTCONTROL='ignoreboth';
 
 # Prefer US English and use UTF-8.
-export LANG='en_US.UTF-8'
-export LC_ALL='en_US.UTF-8'
+export LANG='en_US.UTF-8';
+export LC_ALL='en_US.UTF-8';
 
 # Allow less's default behavior to use termcap. This allows mouse scrolling.
 # Change to 'less -X' to capture output in terminal and disable mouse scrolling.
-export MANPAGER='less'
+export MANPAGER='less';
 
 # Ruby GEMS stuff
 PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"

@@ -1,13 +1,10 @@
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for filee in ~/.{path,functions,bash_prompt,exports,aliases,extra}; do
+for filee in ~/.{path,functions,exports,bash_prompt,aliases,extra}; do
 	[ -r "$filee" ] && [ -f "$filee" ] && source "$filee";
 done;
 unset filee;
-
-# nice solarized dircolors
-eval `dircolors ~/.config/dircolors.ansi-dark`
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;

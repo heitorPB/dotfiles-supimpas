@@ -64,6 +64,9 @@ set incsearch
 set laststatus=2
 " Enable mouse in all modes
 set mouse=a
+" Make mouse work in alacritty see:
+" https://wiki.archlinux.org/index.php/Alacritty#Mouse_not_working_properly_in_Vim
+set ttymouse=sgr
 " Disable error bells
 set noerrorbells
 " Don’t reset cursor to start of line when moving around.

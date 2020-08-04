@@ -5,7 +5,6 @@ export EDITOR=vim
 export VISUAL=$EDITOR
 export SUDO_EDITOR=$EDITOR
 export BROWSER=firefox
-export TERM=alacritty
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8';

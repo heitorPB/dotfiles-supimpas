@@ -35,6 +35,9 @@
 	# Amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD
 
+	# change date of last commit to now
+	now = commit --amend --reuse-message=HEAD --date=now
+
 	# Credit an author on the latest commit
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
 

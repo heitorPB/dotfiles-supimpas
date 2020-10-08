@@ -70,7 +70,7 @@ Battery: ${battery BAT1}: $alignr${battery_time BAT1}
 ${battery_bar BAT1}
 
 CPU: (${cpu cpu1}% ${cpu cpu2}% ${cpu cpu3}% ${cpu cpu4}%) ${cpu cpu0}% ${alignr}${exec acpi -t | cut -b16-19}ºC
-GPU: ${exec nvidia-smi -q | grep Gpu | cut -b39-41} ${alignr}${exec nvidia-smi -q | grep "GPU Current Temp" | cut -b39-40}ºC ${alignr}
+GPU: ${exec nvidia-smi -q | grep Gpu | cut -b 44-47} ${alignr}${exec nvidia-smi -q | grep "GPU Current Temp" | cut -b45-46}ºC${alignr}
 
 RAM ${alignr}$mem / $memmax ($memperc%)
 

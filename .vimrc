@@ -106,16 +106,14 @@ if has("autocmd")
 	filetype on
 	filetype plugin on
 	filetype indent on
-	" Treat .json files as .js
-	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-	" Treat .md files as Markdown
-	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
-	" yml as yaml
-	autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml foldmethod=indent
+	" define csv filetype
+	autocmd BufNewFile,BufRead *csv set filetype=csv
 
 	" some line wraps :)
 	autocmd FileType markdown set textwidth=79
-	autocmd FileType yaml set ts=2 sts=2 sw=2 expandtab
+	autocmd FileType yaml set ts=2 sts=2 sw=2 expandtab foldmethod=indent
+	" disable line wdraps for csv
+	autocmd FileType csv set textwidth=0
 endif
 " number of lines to keep in history
 set history=50

@@ -5,14 +5,10 @@ let g:solarized_termtrans=1
 
 " Make Vim more useful
 set nocompatible
-" Use the OS clipboard by default (on versions compiled with `+clipboard`)
-set clipboard=unnamed
 " Enhance command-line completion
 set wildmenu
 " List all file matches in command mode without completing to the first match
-set wildmode=list
-" Allow cursor keys in insert mode
-set esckeys
+set wildmode=longest:full
 " Allow backspace in insert mode
 set backspace=indent,eol,start
 " Optimize for fast terminal connections
@@ -28,16 +24,11 @@ let mapleader=","
 " Don’t add empty newlines at the end of files
 set binary
 set noeol
-" Centralize backups, swapfiles and undo history
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
-if exists("&undodir")
-	set undodir=~/.vim/undo
-endif
-
-" Don’t create backups when editing files in certain directories
-set backupskip=/tmp/*,/etc/*
-
+" remove backups, swapfiles, undofiles
+"set noswapfile
+set nobackup
+set nowritebackup
+set noundofile
 " Respect modeline in files
 set modeline
 set modelines=5
@@ -91,8 +82,6 @@ function! StripWhitespace()
 	call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
-" Save a file as root (,W)
-noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 " text formatting
 set formatoptions+=t " Auto-wrap text using textwidth

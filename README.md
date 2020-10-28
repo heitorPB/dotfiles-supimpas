@@ -30,6 +30,7 @@ Some packages that my dotfiles need or create alias or configure:
 - OpenSSH's ssh-agent
 - tmux
 - vim
+- nvim
 - X11
 - [xsel](http://www.vergenet.net/~conrad/software/xsel/)
 
@@ -39,10 +40,12 @@ Some packages that my dotfiles need or create alias or configure:
 - network-manager-applet
 
 
-## Vim
+## Vim/nvim
 
 Vim should be installed with the attribute `+clipboard`. On ArchLinux it is the
 `gvim` package.
+
+I'm experiencing with neovim. Vim might be removed in the future.
 
 ## Themes/Fonts
 

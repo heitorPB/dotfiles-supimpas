@@ -101,7 +101,7 @@
 	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
 	precomposeunicode = false
 
-	editor = vim
+	editor = nvim
 
 [color]
 	# Use colors in Git commands that are capable of colored output when
@@ -147,7 +147,7 @@
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
-	tool = vimdiff
+	tool = nvimdiff
 	conflictStyle = diff3
 
 [pull]

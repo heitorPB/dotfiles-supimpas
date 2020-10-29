@@ -14,6 +14,7 @@ set scrolloff=3  " Start scrolling 3 lines before the horizontal window border
 set nofoldenable " disable auto folding
 set autoindent   " Automatic indentation
 set smartindent  " Make it smart
+set autochdir    " Change current working dir to the file's dir
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow

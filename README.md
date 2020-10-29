@@ -25,6 +25,7 @@ Some packages that my dotfiles need or create alias or configure:
 - [dwm](https://dwm.suckless.org/) compiled in ~/projects/dwm/
 - [feh](https://feh.finalrewind.org)
 - git
+- gnupg and pinentry
 - [maim](https://github.com/naelstrof/maim)
 - [Redshift](http://jonls.dk/redshift/)
 - OpenSSH's ssh-agent

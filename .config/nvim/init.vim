@@ -1,3 +1,4 @@
+"colorscheme rebecca-dark
 colorscheme solarized
 
 let mapleader=","
@@ -5,7 +6,6 @@ let mapleader=","
 set number       " always shows line numbers
 set colorcolumn=80
 set clipboard+=unnamedplus
-set nowrap
 set ignorecase   " Ignore case of searches
 set smartcase    " no ignorecase if Uppercase char present
 set mouse=a      " enable mouse in all modes

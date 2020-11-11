@@ -16,6 +16,10 @@ set autoindent   " Automatic indentation
 set smartindent  " Make it smart
 set autochdir    " Change current working dir to the file's dir
 
+" show trailing spaces and tabs
+set listchars=tab:▸\ ,trail:·,nbsp:_
+set list
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright

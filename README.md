@@ -22,16 +22,18 @@ Some packages that my dotfiles need or create alias or configure:
 
 - [bash-completion](https://github.com/scop/bash-completion)
 - [conky](https://github.com/brndnmtthws/conky)
-- [dwm](https://dwm.suckless.org/) compiled in ~/projects/dwm/
+- [dwm](https://dwm.suckless.org/) compiled in `~/projects/dwm/`
 - [feh](https://feh.finalrewind.org)
 - git
 - gnupg and pinentry
 - [maim](https://github.com/naelstrof/maim)
-- [Redshift](http://jonls.dk/redshift/)
+- nvim
 - OpenSSH's ssh-agent
+- [Redshift](http://jonls.dk/redshift/)
+- [slstatus](https://tools.suckless.org/slstatus/) compiled in
+  `~/projects/slstatus`
 - tmux
 - vim
-- nvim
 - X11
 - [xsel](http://www.vergenet.net/~conrad/software/xsel/)
 
@@ -47,6 +49,7 @@ Vim should be installed with the attribute `+clipboard`. On ArchLinux it is the
 `gvim` package.
 
 I'm experiencing with neovim. Vim might be removed in the future.
+
 
 ## Themes/Fonts
 

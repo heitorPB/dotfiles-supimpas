@@ -23,7 +23,9 @@ systemctl --user import-environment DISPLAY
 # redshift systray thing for nice color temperature black magic
 redshift-gtk -l $CURRENT_GEO &
 
-while [ 1 ]; do xsetroot -name "$(date "+%a %b %H:%M:%S %Z %F")"; sleep 30; done &
+# slstatus
+~/projects/slstatus/slstatus &
+
 while true; do
 	~/projects/dwm/dwm
 done

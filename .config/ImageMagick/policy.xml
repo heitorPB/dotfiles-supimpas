@@ -1,1 +1,2 @@
 <policy domain="coder" rights="all" pattern="PDF" />
+<policy domain="delegate" rights="all" pattern="gs" />

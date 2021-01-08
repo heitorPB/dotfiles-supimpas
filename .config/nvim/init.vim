@@ -52,3 +52,8 @@ function! StripWhitespace()
 	call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
+
+" vimwiki magic
+let g:vimwiki_list = [{'path': '~/vimwiki'}]
+" no temporary wikis
+let g:vimwiki_global_ext = 0

@@ -54,6 +54,22 @@ endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
 
 " vimwiki magic
-let g:vimwiki_list = [{'path': '~/vimwiki'}]
+let garden_wiki = {}
+let garden_wiki.path = '~/vimwiki'
+let garden_wiki.syntax = 'markdown'
+let garden_wiki.ext = 'md'
+let garden_wiki.auto_tags = 1
+let g:vimwiki_list = [garden_wiki]
 " no temporary wikis
 let g:vimwiki_global_ext = 0
+
+" add keywords to default zettel YAML tags
+let front_matter = {}
+let front_matter.front_matter = {}
+let front_matter.front_matter.keywords = []
+let front_matter.front_matter.draft = "false"
+let g:zettel_options = [front_matter]
+" change default new filename to date-title.md
+let g:zettel_format = "%Y-%m-%d-%title"
+" use [[bla|title]] for internal links
+let g:zettel_link_format = "[[%link|%title]]"

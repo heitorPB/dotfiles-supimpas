@@ -64,5 +64,5 @@ Then restart neovim and run `:helptags ALL`.
 
 ## Themes/Fonts
 
-Use Adapta-Nokto theme and noto-fonts. Can be configured with
-mate-appearance-settings and or lxappearance.
+Use `adwaita-qt` (from AUR) theme and `noto-fonts`. Can be configured with
+`mate-appearance-settings` and/or `lxappearance`.

@@ -70,3 +70,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # extract .tar.gz
 alias targzx='tar xfvz'
+
+# run chrome-stable in a sandbox
+alias kobe-chrome="firejail --private=~/.sandboxes/chrome-kobe/ /usr/bin/google-chrome-stable"

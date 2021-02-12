@@ -23,10 +23,6 @@ export LC_ALL='en_US.UTF-8';
 # Change to 'less -X' to capture output in terminal and disable mouse scrolling.
 export MANPAGER='less';
 
-# Ruby GEMS stuff
-PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
-export GEM_HOME=$HOME/.gem
-
 # add pip ~/.local/bin to path
 PATH="$PATH:$HOME/.local/bin"
 

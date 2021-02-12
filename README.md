@@ -5,6 +5,7 @@ My supimpa dotfiles :)
 ## Branches
 
 - `desktop` for my desktop
+- `headless` for my server
 - `master` for my laptop
 - `raspberrypi` for my Raspberry Pi
 

@@ -34,3 +34,7 @@ export CURRENT_GEO="-22.0183737:-47.8911570"
 
 # Qt theme
 export QT_STYLE_OVERRIDE=adwaita-dark
+
+# fix for GPG
+# https://github.com/keybase/keybase-issues/issues/2798
+export GPG_TTY=$(tty)

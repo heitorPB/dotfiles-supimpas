@@ -61,12 +61,13 @@ battery_status()
 {
 	# this file is in unix systems. You may need to change for your laptop
 	# check that dir for BAT0 also.
-	BATTERY=/sys/class/power_supply/BAT1
+	BATTERY=/sys/class/power_supply/BAT0
 
 	if [ -d "$BATTERY" ]
 	then
-		REM_CAP=`cat $BATTERY/energy_now`
-		FULL_CAP=`cat $BATTERY/energy_full`
+		# sometimes these files are energy_foo
+		REM_CAP=`cat $BATTERY/charge_now`
+		FULL_CAP=`cat $BATTERY/charge_full`
 		BATSTATE=`cat $BATTERY/status`
 
 		CHARGE=`echo $(( $REM_CAP * 100 / $FULL_CAP ))`

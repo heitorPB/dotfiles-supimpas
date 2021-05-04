@@ -66,11 +66,11 @@ ${alignc}$nodename - $sysname $kernel on $machine
 ${hr 1 }
 Up: $uptime  ${alignr}Load: $loadavg
 
-Battery: ${battery BAT1}: $alignr${battery_time BAT1}
-${battery_bar BAT1}
+Battery: ${battery BAT0}: $alignr${battery_time BAT0}
+${battery_bar BAT0}
 
-CPU: (${cpu cpu1}% ${cpu cpu2}% ${cpu cpu3}% ${cpu cpu4}%) ${cpu cpu0}% ${alignr}${exec acpi -t | cut -b16-19}ºC
-GPU: ${exec nvidia-smi -q | grep Gpu | cut -b 44-47} ${alignr}${exec nvidia-smi -q | grep "GPU Current Temp" | cut -b45-46}ºC${alignr}
+CPU: ${cpu cpu0}% ${alignr}${exec sensors coretemp-isa-0000 | head -n 3 | tail -n 1 | cut -d" " -f5}
+GPU: ${exec nvidia-smi -q | grep Gpu | cut -b 44-48} ${alignr}${exec nvidia-smi -q | grep "GPU Current Temp" | cut -b45-46}ºC${alignr}
 
 RAM ${alignr}$mem / $memmax ($memperc%)
 
@@ -80,17 +80,17 @@ RAM ${alignr}$mem / $memmax ($memperc%)
 ${if_mounted /mnt/disk}/mnt/disk: $alignr ${fs_used /mnt/disk} / ${fs_size /mnt/disk} ($alignr${fs_free_perc /mnt/disk}%)
 ${fs_bar 4 /mnt/disk} ${endif}
 
-Down ${downspeed enp9s0} k/s ${alignr}Up ${upspeed enp9s0} k/s
-${downspeedgraph enp9s0 10,107} ${alignr}${upspeedgraph enp9s0 10,107}
+Down ${downspeed enp59s0} k/s ${alignr}Up ${upspeed enp59s0} k/s
+${downspeedgraph enp59s0 10,107} ${alignr}${upspeedgraph enp59s0 10,107}
 
-Total ${totaldown enp9s0} ${alignr}Total ${totalup enp9s0}
+Total ${totaldown enp59s0} ${alignr}Total ${totalup enp59s0}
 
-Down ${downspeed wlp8s0} k/s ${alignr}Up ${upspeed wlp8s0} k/s
-${downspeedgraph wlp8s0 10,107} ${alignr}${upspeedgraph wlp8s0 10,107}
+Down ${downspeed wlp0s20f3} k/s ${alignr}Up ${upspeed wlp0s20f3} k/s
+${downspeedgraph wlp0s20f3 10,107} ${alignr}${upspeedgraph wlp0s20f3 10,107}
 
-Total ${totaldown wlp8s0} ${alignr}Total ${totalup wlp8s0 }
+Total ${totaldown wlp0s20f3} ${alignr}Total ${totalup wlp0s20f3 }
 
 ${exec task limit:3}
 
-add: cpu freq, weather, mpd, wifi, lan, see acpitemp
+add: cpu freq, weather, see acpitemp
 ]]

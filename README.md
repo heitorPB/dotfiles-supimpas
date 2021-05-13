@@ -7,6 +7,7 @@ My supimpa dotfiles :)
 - `desktop` for my desktop
 - `headless` for my server
 - `master` for my laptop
+- `gersemi` for my new laptop
 - `raspberrypi` for my Raspberry Pi
 
 ## Installation
@@ -24,6 +25,9 @@ Some packages that my dotfiles need or create alias or configure:
 - [bash-completion](https://github.com/scop/bash-completion)
 - [conky](https://github.com/brndnmtthws/conky)
 - [dwm](https://dwm.suckless.org/) compiled in `~/projects/dwm/`
+    - [slstatus](https://tools.suckless.org/slstatus/) compiled in `~/projects/slstatus`
+    - slock
+    - dmenu
 - [feh](https://feh.finalrewind.org)
 - [fzf](https://github.com/junegunn/fzf/)
 - git
@@ -33,8 +37,6 @@ Some packages that my dotfiles need or create alias or configure:
 - OpenSSH's ssh-agent
 - [Redshift](http://jonls.dk/redshift/)
 - [Silver Surfer Searcher (ag)](https://github.com/ggreer/the_silver_searcher)
-- [slstatus](https://tools.suckless.org/slstatus/) compiled in
-  `~/projects/slstatus`
 - tmux
 - X11
 - [xsel](http://www.vergenet.net/~conrad/software/xsel/)
@@ -43,6 +45,7 @@ Some packages that my dotfiles need or create alias or configure:
 
 - mate-power-manager
 - network-manager-applet
+- nvidia-xrun >= 0.3.83
 
 
 ## Vim/nvim
@@ -65,5 +68,5 @@ Then restart neovim and run `:helptags ALL`.
 
 ## Themes/Fonts
 
-Use `adwaita-qt` (from AUR) theme and `noto-fonts`. Can be configured with
-`mate-appearance-settings` and/or `lxappearance`.
+Use `adapta-gtk-theme` theme and `noto-fonts`. Can be configured with
+`lxappearance`.

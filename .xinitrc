@@ -1,6 +1,6 @@
 #!/bin/bash
 
-setxkbmap fi,br &
+#setxkbmap us,fi,br &
 
 # to reduce mouse sensitivity
 #xset m 1/2 1 &

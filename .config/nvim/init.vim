@@ -59,6 +59,7 @@ let garden_wiki.path = '~/vimwiki'
 let garden_wiki.syntax = 'markdown'
 let garden_wiki.ext = 'md'
 let garden_wiki.auto_tags = 1
+let garden_wiki.links_space_char = '-'
 let g:vimwiki_list = [garden_wiki]
 " no temporary wikis
 let g:vimwiki_global_ext = 0

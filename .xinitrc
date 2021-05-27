@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#setxkbmap us,fi,br &
+# us unternational keyboard, to be able to add accents to letters
+setxkbmap us -variant alt-intl
 
 # to reduce mouse sensitivity
 #xset m 1/2 1 &

@@ -71,6 +71,6 @@ let front_matter.front_matter.keywords = []
 let front_matter.front_matter.draft = "false"
 let g:zettel_options = [front_matter]
 " change default new filename to date-title.md
-let g:zettel_format = "%Y-%m-%d-%title"
+let g:zettel_format = "%title"
 " use [[bla|title]] for internal links
 let g:zettel_link_format = "[[%link|%title]]"

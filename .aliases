@@ -47,6 +47,9 @@ alias grep='grep ${colorflag}'
 alias fgrep='fgrep ${colorflag}'
 alias egrep='egrep ${colorflag}'
 
+# add color support for ip
+alias ip='ip -color=auto'
+
 # Get week number
 alias week='date +%V'
 

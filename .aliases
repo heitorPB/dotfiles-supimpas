@@ -77,5 +77,6 @@ alias targzx='tar xfvz'
 # run chrome-stable in a sandbox
 alias kobe-chrome="firejail --private=~/.sandboxes/chrome-kobe/ /usr/bin/chromium"
 
-# watch juju
+# juju aliases
+alias jst="juju status --color"
 alias wjst="watch --color --interval 1 juju status --color"

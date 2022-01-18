@@ -18,6 +18,9 @@ nm-applet &
 # power management for laptop:
 mate-power-manager &
 
+# bluetooth applet
+blueman-applet &
+
 # to make dunst work
 systemctl --user import-environment DISPLAY
 

@@ -58,7 +58,7 @@ I'm experiencing with neovim. Vim might be removed in the future.
 ### Plugins
 
 Clone the following plugins in
-`~/.local/share/nvim/site/pack/PLUGGIN-NAME/start/`:
+`~/.local/share/nvim/site/pack/PLUGGIN-NAME/start/PLUGIN`:
 - [fzf](https://github.com/junegunn/fzf)
 - [fzf.vim](https://github.com/junegunn/fzf.vim)
 - [vim-zettel](https://github.com/michal-h21/vim-zettel/)

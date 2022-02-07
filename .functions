@@ -61,7 +61,7 @@ battery_status()
 {
 	# this file is in unix systems. You may need to change for your laptop
 	# check that dir for BAT0 also.
-	BATTERY=/sys/class/power_supply/BAT0
+	BATTERY=/sys/class/power_supply/BAT1
 
 	if [ -d "$BATTERY" ]
 	then

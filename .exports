@@ -24,11 +24,11 @@ export LC_ALL='en_US.UTF-8';
 export MANPAGER='less';
 
 # Ruby GEMS stuff
-PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
-export GEM_HOME=$HOME/.gem
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$PATH:$GEM_HOME/bin"
 
 # add pip ~/.local/bin to path
-PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # geolocation shit
 export CURRENT_CITY="São Carlos, Brazil"
@@ -38,3 +38,6 @@ export CURRENT_GEO="-22.0183737:-47.8911570"
 
 # Qt theme
 export QT_STYLE_OVERRIDE=adwaita-dark
+
+# podman-compose
+export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"

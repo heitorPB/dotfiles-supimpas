@@ -50,6 +50,9 @@ alias egrep='egrep ${colorflag}'
 # add color support for ip
 alias ip='ip -color=auto'
 
+# add colors to diff
+alias diff='diff --color=auto'
+
 # Get week number
 alias week='date +%V'
 

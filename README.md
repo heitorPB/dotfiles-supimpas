@@ -15,7 +15,7 @@ My supimpa dotfiles :)
 Checkout the branch you need and run the bootstrap script:
 
 ```bash
-sh bootstrap.sh
+$ sh bootstrap.sh
 ```
 
 ## Dependencies
@@ -25,15 +25,17 @@ Some packages that my dotfiles need or create alias or configure:
 - [bash-completion](https://github.com/scop/bash-completion)
 - [conky](https://github.com/brndnmtthws/conky)
 - [dwm](https://dwm.suckless.org/) compiled in `~/projects/dwm/`
-    - [slstatus](https://tools.suckless.org/slstatus/) compiled in `~/projects/slstatus`
-    - slock
-    - dmenu
+	- [slstatus](https://tools.suckless.org/slstatus/) compiled in `~/projects/slstatus`
+	- slock
+	- dmenu
 - [feh](https://feh.finalrewind.org)
 - [fzf](https://github.com/junegunn/fzf/)
 - git
 - gnupg and pinentry
 - [maim](https://github.com/naelstrof/maim)
 - nvim
+	- tree-sitter
+	- lsp
 - OpenSSH's ssh-agent
 - [Redshift](http://jonls.dk/redshift/)
 - [Silver Surfer Searcher (ag)](https://github.com/ggreer/the_silver_searcher)

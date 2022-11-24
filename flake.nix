@@ -22,13 +22,15 @@
         specialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           ./hosts/desk03/configuration.nix
-          ./hosts/nix.nix
           ./hosts/core.nix
+          ./hosts/nix.nix
 
           # home-manager stuff
           home-manager.nixosModules.home-manager
           {
-            home-manager.users.h = import ./home-manager/h.nix;
+            home-manager.users.h = import ./home-manager/h.nix {
+              #gitKey = "heitorpbittencourt@gmail.com";
+            };
           }
         ];
       };

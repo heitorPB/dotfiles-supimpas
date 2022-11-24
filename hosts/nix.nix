@@ -1,3 +1,4 @@
+# Global configuration for Nix itself.
 { config, pkgs, ... }:
 
 {

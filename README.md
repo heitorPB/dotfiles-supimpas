@@ -12,25 +12,32 @@ $ sudo nixos-rebuild switch --flake .
 
 - `hosts/`: configuration files for each machine and also shared configuration
   between them.
+- `home-manager/`: user configurations
 
 ## TODO
 
 Common:
-- ssh
+- [ ] aliases
+- [ ] bash thingies
+- [ ] exports and shell functions
+	- [X] colored man pages
+	- [ ] geolocation
+- [ ] git and config
+- [ ] readline/inputrc
+- [ ] tmux and config
+- [ ] ssh
 	- .ssh/config
-- nvim
-	- default editor
-	- vim aliases?
-	- plugins and config
-- git and config
-- tmux and config
-- aliases and shell functions
-- ps1/ps2
-- gnupg
-- sudo insults
-- colored man pages
+- [ ] nvim
+	- [x] default editor
+	- [x] vim aliases?
+	- [ ] plugins and config
+- [ ] ps1/ps2
+- [ ] gnupg
+- [ ] sudo insults
 
 Laptop:
 - everything
 - wm
-- dark theme
+- dark theme and fonts
+- alacritty
+- dunst

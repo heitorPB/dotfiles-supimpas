@@ -1,6 +1,8 @@
-# Configurations and options for all systems but Nix, see nix.nix for that.
+# Configurations and options for all hosts
+{ pkgs, ... }:
 {
-  # TODO import nix.nix here, to clean up flake.nix
+  # TODO: import nix.nix here to clean up flakes.nix
+  # nix = import ./nix.nix; # this does not work, why?
 
   # "enp3s0" instead of "eth0".
   networking.usePredictableInterfaceNames = true;
@@ -27,14 +29,39 @@
   # home-manager settings
   home-manager.useGlobalPkgs = true;
 
-  # Packages for all machines TODO
+  # Packages for all machines
+  environment.systemPackages = with pkgs; [
+    btop
+    file
+    rsync
+    wget
+    ripgrep
+    nixos-option
+
+    # development and workflow
+    git
+    tmux
+    neovim
+    fzf
+    silver-searcher
+  ];
 
   # Neovim everywhere
   programs.neovim = {
     enable = true;
     viAlias = true;
     vimAlias = true;
+    defaultEditor = true;
   };
   environment.variables.EDITOR = "nvim";
   environment.variables.SUDO_EDITOR = "nvim"; # Is this really needed?
+
+  # My user in all hosts
+  users.users.h = {
+    uid = 1001;
+    isNormalUser = true;
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJxMuFUrQujzveHDbM8etG1A2rQhA8i2KwM0j2BiFx0K h@alien" ];
+  };
+
 }

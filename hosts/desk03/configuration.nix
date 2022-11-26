@@ -21,34 +21,9 @@
     interfaces.enp3s0.wakeOnLan.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.h = {
-    uid = 1001;
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJxMuFUrQujzveHDbM8etG1A2rQhA8i2KwM0j2BiFx0K h@alien" ];
-    packages = with pkgs; [ ];
-  };
-
   # List packages installed in system profile. To search, run:
-  # $ nix search nixpkgs wget
   environment.systemPackages = with pkgs; [
-    btop
-    file
-    rsync
-    wget
-    ripgrep
-    nixos-option
-
-    # development and workflow
-    git
-    tmux
-    neovim
-    fzf
-    silver-searcher
   ];
-
-  programs.neovim.defaultEditor = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -57,8 +32,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh = {

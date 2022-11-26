@@ -38,7 +38,7 @@
     ripgrep
     nixos-option
 
-    # development and workflow
+    # Development and workflow
     git
     tmux
     neovim

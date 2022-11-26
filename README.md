@@ -38,7 +38,7 @@ Common:
 - [ ] nvim
 	- [x] default editor
 	- [x] vim aliases?
-	- [ ] config
+	- [x] config
 	- [ ] plugins
 		- [ ] vimwiki/vimzettel
 		- [ ] tree-sitter and grammars

@@ -5,20 +5,40 @@
     enable = true;
 
     plugins = with pkgs.vimPlugins; [
-      (nvim-treesitter.withPlugins (plugins: with plugins; [
-        bash
-        dockerfile
-        git_rebase
-        gitattributes
-        ledger
-        markdown
-        nix
-        python
-        rst
-        rust
-      ]))
+      # Tree-sitter, its grammars, and Lua configuration
+      {
+        plugin = (nvim-treesitter.withPlugins (plugins: with plugins; [
+          bash
+          dockerfile
+          git_rebase
+          gitattributes
+          ledger
+          markdown
+          nix
+          python
+          rst
+          rust
+        ]));
+        type = "lua";
+        config = ''
+          require('nvim-treesitter.configs').setup {
+            highlight = {
+              enable = true,
+            },
+            indent = {
+              enable = true,
+            },
+          }
+        '';
+      }
 
+      # LSP
+      nvim-lspconfig
+
+      # Color theme
       vim-colors-solarized
+
+      # Improve Nix'ing: syntax highlight, filetype detection, indentation
       vim-nix
 
       vimwiki

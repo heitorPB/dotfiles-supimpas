@@ -41,7 +41,7 @@ Common:
 	- [x] config
 	- [ ] plugins
 		- [ ] vimwiki/vimzettel
-		- [ ] tree-sitter and grammars
+		- [x] tree-sitter and grammars
 		- [ ] lsp and language servers
 - [ ] ps1/ps2
 - [ ] gnupg

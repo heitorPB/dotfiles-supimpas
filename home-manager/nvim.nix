@@ -3,15 +3,20 @@
 {
   programs.neovim = {
     enable = true;
-    extraPackages = with pkgs; [
-      tree-sitter
-      tree-sitter-grammars.tree-sitter-bash
-      tree-sitter-grammars.tree-sitter-markdown
-      tree-sitter-grammars.tree-sitter-nix
-      tree-sitter-grammars.tree-sitter-rst
-    ];
+
     plugins = with pkgs.vimPlugins; [
-      nvim-treesitter
+      (nvim-treesitter.withPlugins (plugins: with plugins; [
+        bash
+        dockerfile
+        git_rebase
+        gitattributes
+        ledger
+        markdown
+        nix
+        python
+        rst
+        rust
+      ]))
 
       vim-colors-solarized
       vim-nix
@@ -20,9 +25,9 @@
       fzf-vim # Does this one pull the fzf plugin?
       # vim-zettel
     ];
+
     # My forever configs for .config/nvim/init.vim
     extraConfig = ''
-      "colorscheme rebecca-dark
       colorscheme solarized
 
       let mapleader=","

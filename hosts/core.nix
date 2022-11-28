@@ -35,8 +35,9 @@
     file
     rsync
     wget
-    ripgrep
-    nixos-option
+    ripgrep # fancier grep(1)
+    lfs # fancier df(1)
+    nixos-option # query nixos configuration
 
     # Development and workflow
     git

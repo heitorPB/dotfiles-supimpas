@@ -1,8 +1,8 @@
 # Configurations and options for all hosts
 { pkgs, ... }:
 {
-  # TODO: import nix.nix here to clean up flakes.nix
-  # nix = import ./nix.nix; # this does not work, why?
+  # import nix.nix here to clean up flakes.nix
+  imports = [ ./nix.nix ];
 
   # "enp3s0" instead of "eth0".
   networking.usePredictableInterfaceNames = true;

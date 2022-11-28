@@ -23,7 +23,6 @@
         modules = [
           ./hosts/desk03/configuration.nix
           ./hosts/core.nix
-          ./hosts/nix.nix
 
           # home-manager stuff
           home-manager.nixosModules.home-manager

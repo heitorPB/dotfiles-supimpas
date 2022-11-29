@@ -34,6 +34,9 @@
       # Commit all changes
       ca = "commit --all --verbose";
 
+      # Show diff
+      d = "diff --no-pager --patch-with-stat";
+
       # Change date of last commit to now
       now = "commit --ammend --date=now";
 

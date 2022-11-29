@@ -25,12 +25,13 @@ The Nix bits from this repo were inspired on:
 ## TODO
 
 Common:
-- [ ] aliases
+- [x] aliases
 - [ ] bash thingies
 - [ ] exports and shell functions
 	- [X] colored man pages
 	- [ ] geolocation
 - [x] git and config
+	- [ ] g shell alias and completion
 - [ ] readline/inputrc
 - [ ] tmux and config
 - [ ] ssh
@@ -54,3 +55,6 @@ Laptop:
 - dark theme and fonts
 - alacritty
 - dunst
+- aliases
+	- feh and feh-exif
+	- screenshot

@@ -24,6 +24,25 @@
   # Colored man pages
   environment.variables.MANPAGER = "less -R --use-color -Dd+r -Du+b";
 
+  environment.shellAliases = {
+    # I am lazy
+    ".." = "cd ..";
+    "..." = "cd ../..";
+    "...." = "cd ../../..";
+    "....." = "cd ../../../..";
+    p = "cd ~/projects/";
+
+    # Colors everywhere
+    grep = "grep --color=auto";
+    ip = "ip -color=auto";
+    diff = "diff --color=auto";
+
+    # My own ls's
+    #ls = "ls --color=auto"; # this is not needed, --color=tty is the default
+    l = "ls -lahF";
+    ls1 = "ls -1";
+  };
+
   # home-manager settings
   home-manager.useGlobalPkgs = true;
 

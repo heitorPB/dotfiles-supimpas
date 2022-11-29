@@ -33,13 +33,72 @@
       }
 
       # LSP
-      nvim-lspconfig
+      {
+        plugin = nvim-lspconfig;
+        type = "lua";
+        config = ''
+          local lspconfig = require('lspconfig')
+
+          function add_lsp(binary, server, options)
+            if vim.fn.executable(binary) == 1 then server.setup(options) end
+          end
+
+          add_lsp("bash-language-server", lspconfig.bashls, {})
+          add_lsp("pylsp", lspconfig.pylsp, {})
+          add_lsp("rnix-lsp", lspconfig.rnix, {})
+
+          -- Mappings
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+          vim.keymap.set("n", "<space>f", vim.lsp.buf.format, { desc = "Format code" })
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
+
+          -- Diagnostic
+          vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Floating diagnostic" })
+          vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+          vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+          vim.keymap.set("n", "gl", vim.diagnostic.setloclist, { desc = "Diagnostics on loclist" })
+          -- vim.keymap.set("n", "gq", vim.diagnostic.setqflist, { desc = "Diagnostics on quickfix" })
+        '';
+      }
+
+      # Completion plugins for LSP
+      cmp-nvim-lsp
+      cmp-buffer
+      lspkind-nvim
+      {
+        plugin = nvim-cmp;
+        type = "lua";
+        config = /* lua */ ''
+          local cmp = require('cmp')
+
+          cmp.setup{
+            formatting = { format = require('lspkind').cmp_format() },
+            -- Same keybinds as vim's vanilla completion
+            mapping = {
+              ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+              ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+              ['<C-e>'] = cmp.mapping.close(),
+              ['<C-y>'] = cmp.mapping.confirm(),
+            },
+            sources = {
+              { name='buffer', option = { get_bufnrs = vim.api.nvim_list_bufs } },
+              { name='nvim_lsp' },
+              { name='orgmode' },
+            },
+          }
+        '';
+      }
 
       # Color theme
       vim-colors-solarized
 
       # Improve Nix'ing: syntax highlight, filetype detection, indentation
+      rust-vim
+      vim-markdown
       vim-nix
+      vim-toml
 
       vimwiki
       fzf-vim # Does this one pull the fzf plugin?
@@ -122,7 +181,7 @@
       let g:zettel_options = [front_matter]
       " change default new filename to date-title.md
       let g:zettel_format = "%title"
-      " use [[bla|title]] for internal links
+      " use [[file|title]] for internal links
       let g:zettel_link_format = "[[%link|%title]]"
     '';
   };

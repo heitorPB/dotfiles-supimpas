@@ -42,7 +42,7 @@ Common:
 	- [ ] plugins
 		- [ ] vimwiki/vimzettel
 		- [x] tree-sitter and grammars
-		- [ ] lsp and language servers
+		- [x] lsp and language servers
 - [ ] ps1/ps2
 - [ ] gnupg
 	- [ ] use it in git

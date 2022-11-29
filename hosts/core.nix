@@ -14,9 +14,7 @@
   i18n = {
     defaultLocale = "en_GB.UTF-8";
     supportedLocales = [ "en_GB.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" "pt_BR.UTF-8/UTF-8" ];
-    extraLocaleSettings = {
-      LC_TIME = "pt_BR.UTF-8";
-    };
+    extraLocaleSettings = { LC_TIME = "pt_BR.UTF-8"; };
   };
   console = {
     font = "Lat2-Terminus16";
@@ -45,6 +43,8 @@
     neovim
     fzf
     silver-searcher
+
+    rnix-lsp # Nix LSp
   ];
 
   # Neovim everywhere
@@ -64,5 +64,4 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJxMuFUrQujzveHDbM8etG1A2rQhA8i2KwM0j2BiFx0K h@alien" ];
   };
-
 }

@@ -24,6 +24,16 @@
     keyMap = "br-abnt2";
   };
 
+  # Override some packages' settings/sources
+  nixpkgs.overlays =
+    let
+      thisConfigsOverlay = final: prev: {
+        # Default sudo is too vanilla
+        sudo = prev.sudo.override { withInsults = true; };
+      };
+    in
+      [ thisConfigsOverlay ];
+
   security.sudo.extraConfig = ''
     # Fix wrong password messages
     Defaults insults

@@ -21,6 +21,11 @@
     keyMap = "br-abnt2";
   };
 
+  security.sudo.extraConfig = ''
+    # Fix wrong password messages
+    Defaults insults
+  '';
+
   # Colored man pages
   environment.variables.MANPAGER = "less -R --use-color -Dd+r -Du+b";
 
@@ -74,7 +79,7 @@
     defaultEditor = true;
   };
   environment.variables.EDITOR = "nvim";
-  environment.variables.SUDO_EDITOR = "nvim"; # Is this really needed?
+  environment.variables.SUDO_EDITOR = "nvim"; # For sudo -e
 
   # My user in all hosts
   users.users.h = {

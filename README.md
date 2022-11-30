@@ -48,6 +48,8 @@ Common:
 - [ ] gnupg
 	- [ ] use it in git
 - [ ] sudo insults
+	- [ ] missing something, maybe the package needs to be rebuilt
+- [ ] NTP
 
 Laptop:
 - everything

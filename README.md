@@ -33,7 +33,7 @@ Common:
 - [x] git and config
 	- [ ] g shell alias and completion
 - [ ] readline/inputrc
-- [ ] tmux and config
+- [x] tmux and config
 - [ ] ssh
 	- .ssh/config
 - [ ] nvim
@@ -49,7 +49,7 @@ Common:
 	- [ ] use it in git
 - [ ] sudo insults
 	- [ ] missing something, maybe the package needs to be rebuilt
-- [ ] NTP
+- [x] NTP
 
 Laptop:
 - everything

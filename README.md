@@ -27,12 +27,14 @@ The Nix bits from this repo were inspired on:
 Common:
 - [x] aliases
 - [ ] bash thingies
+- [ ] readline/inputrc
+- [ ] ps1/ps2
 - [ ] exports and shell functions
 	- [X] colored man pages
-	- [ ] geolocation
+	- [x] geolocation
+	- [ ] misc
 - [x] git and config
 	- [ ] g shell alias and completion
-- [ ] readline/inputrc
 - [x] tmux and config
 - [ ] ssh
 	- .ssh/config
@@ -44,7 +46,6 @@ Common:
 		- [ ] vimwiki/vimzettel
 		- [x] tree-sitter and grammars
 		- [x] lsp and language servers
-- [ ] ps1/ps2
 - [ ] gnupg
 	- [ ] use it in git
 	- [ ] forward key from laptop

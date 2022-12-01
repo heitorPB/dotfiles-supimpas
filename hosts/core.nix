@@ -1,5 +1,5 @@
 # Configurations and options for all hosts
-{ pkgs, ... }:
+{ pkgs, location, ... }:
 {
   # Import nix.nix here to clean up flakes.nix
   imports = [ ./nix.nix ];
@@ -10,8 +10,10 @@
   # Use Systemd timesyncd for NTP
   services.timesyncd.enable = true;
 
-  # Set time zone.
-  time.timeZone = "America/Sao_Paulo";
+  # Set time zone
+  time.timeZone = location.timezone;
+  environment.variables.CURRENT_CITY = location.city + ", " + location.country ;
+  environment.variables.CURRENT_GEO = location.latitude + ":" + location.longitude;
 
   # Internationalisation properties.
   i18n = {

@@ -12,28 +12,32 @@
     # TODO: do I need nixos-hardware?
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: {
-    # Defines a formatter for "nix fmt"
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+  outputs = { nixpkgs, home-manager, ... }@inputs:
+    let
+      geolocation = import ./hosts/geolocation.nix;
+    in
+    {
+      # Defines a formatter for "nix fmt"
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 
-    nixosConfigurations = {
-      desk03 = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-        modules = [
-          ./hosts/desk03/configuration.nix
-          ./hosts/core.nix
+      nixosConfigurations = {
+        desk03 = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; location = geolocation.saoCarlos; }; # Pass flake inputs to our config
+          modules = [
+            ./hosts/desk03/configuration.nix
+            ./hosts/core.nix
 
-          # home-manager stuff
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.users.h = import ./home-manager/h.nix {
-              #gitKey = "heitorpbittencourt@gmail.com";
-            };
-          }
-        ];
+            # home-manager stuff
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.users.h = import ./home-manager/h.nix {
+                #gitKey = "heitorpbittencourt@gmail.com";
+              };
+            }
+          ];
+        };
       };
-    };
 
-  };
+    };
 }

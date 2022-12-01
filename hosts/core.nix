@@ -25,19 +25,15 @@
   };
 
   # Override some packages' settings/sources
-  nixpkgs.overlays =
-    let
-      thisConfigsOverlay = final: prev: {
-        # Default sudo is too vanilla
-        sudo = prev.sudo.override { withInsults = true; };
-      };
-    in
-      [ thisConfigsOverlay ];
+  #nixpkgs.overlays = [ (final: prev: { sudo = prev.sudo.override { withInsults = true; }; }) ];
 
-  security.sudo.extraConfig = ''
-    # Fix wrong password messages
-    Defaults insults
-  '';
+  # Fix wrong sudo password messages
+  security.sudo = {
+    package = pkgs.sudo.override { withInsults = true; };
+    extraConfig = ''
+      Defaults insults
+    '';
+  };
 
   # Colored man pages
   environment.variables.MANPAGER = "less -R --use-color -Dd+r -Du+b";

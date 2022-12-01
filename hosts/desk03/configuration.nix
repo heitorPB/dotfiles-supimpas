@@ -28,15 +28,15 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
     passwordAuthentication = false;
+    extraConfig = ''
+      # Automatically remove stale sockets on connect
+      StreamLocalBindUnlink yes
+    '';
   };
 
   # This value determines the NixOS release from which the default

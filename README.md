@@ -47,6 +47,7 @@ Common:
 - [ ] ps1/ps2
 - [ ] gnupg
 	- [ ] use it in git
+	- [ ] forward key from laptop
 - [x] sudo insults
 	- [x] missing something, maybe the package needs to be rebuilt: an
 	  overlay fixed it

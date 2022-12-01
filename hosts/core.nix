@@ -92,9 +92,17 @@
 
   # My user in all hosts
   users.users.h = {
-    uid = 1001;
+    uid = 1000;
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJxMuFUrQujzveHDbM8etG1A2rQhA8i2KwM0j2BiFx0K h@alien" ];
+  };
+
+  # Configure GnuPG agent
+  programs.gnupg.agent = {
+    enable = true;
+    enableExtraSocket = true;
+    enableSSHSupport = true; # Make GPG through SSH work
+    #pinentryFlavor = "tty"; # Other options: "curses", "tty", "gtk2", "qt"
   };
 }

@@ -27,14 +27,14 @@ The Nix bits from this repo were inspired on:
 Common:
 - [x] aliases
 - [ ] bash thingies
-- [ ] readline/inputrc
-- [ ] ps1/ps2
+	- [ ] ps1/ps2
+- [x] readline/inputrc
 - [ ] exports and shell functions
 	- [X] colored man pages
 	- [x] geolocation
 	- [ ] misc
 - [x] git and config
-	- [ ] g shell alias and completion
+	- [x] g shell alias and completion
 - [x] tmux and config
 - [ ] ssh
 	- .ssh/config

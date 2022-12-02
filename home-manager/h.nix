@@ -66,14 +66,17 @@
   };
   # My git alias:
   programs.bash.shellAliases.g = "git";
-  programs.bash.profileExtra = ''
-    . "${pkgs.git}/share/bash-completion/completions/git" && __git_complete g __git_main
-  '';
 
   # Yeah, I use Bash
   programs.bash = {
     enable = true;
     shellOptions = [ "nocaseglob" ];
+    profileExtra = (builtins.readFile ./ps1.sh) + ''
+      # Autocomplete g alias
+      if [ -f "${pkgs.git}/share/bash-completion/completions/git" ]; then
+              . "${pkgs.git}/share/bash-completion/completions/git" && __git_complete g __git_main
+      fi
+    '';
   };
 
   # Some magical Readline configuration

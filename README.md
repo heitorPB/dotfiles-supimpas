@@ -27,7 +27,7 @@ The Nix bits from this repo were inspired on:
 Common:
 - [x] aliases
 - [ ] bash thingies
-	- [ ] ps1/ps2
+	- [x] ps1/ps2
 - [x] readline/inputrc
 - [ ] exports and shell functions
 	- [X] colored man pages
@@ -63,3 +63,8 @@ Laptop:
 - aliases
 	- feh and feh-exif
 	- screenshot
+
+
+Later:
+- [abstract away](https://nixos.org/manual/nixos/stable/index.html#sec-module-abstractions)
+  the geolocation attribute sets

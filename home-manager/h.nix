@@ -4,6 +4,13 @@
 
   # home.packages = with pkgs; [ steam ];
 
+  programs.gpg = {
+    enable = true;
+    publicKeys = [
+      {source = ./heitor.asc; trust = 5;}
+    ];
+  };
+
   # Configuration for git
   programs.git = {
     enable = true;

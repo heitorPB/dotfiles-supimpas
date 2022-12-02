@@ -65,6 +65,7 @@
   # Packages for all machines
   environment.systemPackages = with pkgs; [
     btop
+    kmon # kernel monitoring
     file
     rsync
     wget

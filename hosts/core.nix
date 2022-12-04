@@ -1,5 +1,5 @@
 # Configurations and options for all hosts
-{ pkgs, location, ... }:
+{ inputs, pkgs, location, ... }:
 {
   # Import nix.nix here to clean up flakes.nix
   imports = [ ./nix.nix ];
@@ -27,7 +27,8 @@
   };
 
   # Override some packages' settings/sources
-  #nixpkgs.overlays = [ (final: prev: { sudo = prev.sudo.override { withInsults = true; }; }) ];
+  # Downgrade gnupg to 2.2.27. TODO: remove later
+  nixpkgs.overlays = [ (final: prev: { gnupg = inputs.nixpkgs-gnupg.legacyPackages.${final.system}.gnupg; }) ];
 
   # Fix wrong sudo password messages
   security.sudo = {
@@ -104,8 +105,9 @@
   # Configure GnuPG agent
   programs.gnupg.agent = {
     enable = true;
+    #package = gnupg22;
     enableExtraSocket = true;
     enableSSHSupport = true; # Make GPG through SSH work
-    #pinentryFlavor = "tty"; # Other options: "curses", "tty", "gtk2", "qt"
+    pinentryFlavor = "curses"; # Options: "curses", "tty", "gtk2", "qt"
   };
 }

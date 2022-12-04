@@ -10,6 +10,9 @@
     };
 
     # TODO: do I need nixos-hardware?
+
+    # Downgrade gnupg to 2.2.27. TODO: remove later
+    nixpkgs-gnupg.url = "github:nixos/nixpkgs/d88ad75767c638c013f5db40739386b1a5e12029";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
@@ -17,7 +20,7 @@
       geolocation = import ./hosts/geolocation.nix;
     in
     {
-      # Defines a formatter for "nix fmt"
+      # Define a formatter for "nix fmt"
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 
       nixosConfigurations = {
@@ -32,7 +35,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager.users.h = import ./home-manager/h.nix {
-                #gitKey = "heitorpbittencourt@gmail.com";
+                gitKey = "heitorpbittencourt@gmail.com";
               };
             }
           ];

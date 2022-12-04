@@ -1,4 +1,4 @@
-{ gitKey ? null }:
+{ gitKey ? null /* GPG key to use */ }:
 { config, inputs, lib, pkgs, ... }: with lib; {
   imports = [ ./nvim.nix ];
 

@@ -106,7 +106,6 @@
   # Configure GnuPG agent
   programs.gnupg.agent = {
     enable = true;
-    #package = gnupg22;
     enableExtraSocket = true;
     enableSSHSupport = true; # Make GPG through SSH work
     pinentryFlavor = "curses"; # Options: "curses", "tty", "gtk2", "qt"

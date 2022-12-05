@@ -33,6 +33,7 @@ Common:
 	- [X] colored man pages
 	- [x] geolocation
 	- [ ] misc
+		- [ ] `mkd`
 - [x] git and config
 	- [x] g shell alias and completion
 - [x] tmux and config
@@ -46,9 +47,9 @@ Common:
 		- [ ] vimwiki/vimzettel
 		- [x] tree-sitter and grammars
 		- [x] lsp and language servers
-- [ ] gnupg
-	- [ ] use it in git
-	- [ ] forward key from laptop
+- [x] gnupg
+	- [x] use it in git
+	- [x] forward key from laptop
 - [x] sudo insults
 	- [x] missing something, maybe the package needs to be rebuilt: an
 	  overlay fixed it

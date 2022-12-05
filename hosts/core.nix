@@ -77,6 +77,7 @@
     # Development and workflow
     git
     tmux
+    glow # Render Markdown files with colors
     neovim
     fzf
     silver-searcher

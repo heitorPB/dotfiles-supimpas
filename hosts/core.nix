@@ -81,6 +81,7 @@
     neovim
     fzf
     silver-searcher
+    jq
 
     rnix-lsp # Nix LSp
   ];

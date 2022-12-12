@@ -100,9 +100,9 @@
       vim-nix
       vim-toml
 
-      vimwiki
-      fzf-vim # Does this one pull the fzf plugin?
-      # vim-zettel
+      # vimwiki with vim-zettel
+      # This plugin pulls vimwiki, fzf-vim, and fzf plugins
+      vim-zettel
     ];
 
     # My forever configs for .config/nvim/init.vim

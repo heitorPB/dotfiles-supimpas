@@ -65,7 +65,7 @@
 
   # Packages for all machines
   environment.systemPackages = with pkgs; [
-    btop
+    btop # Fancier top(1)
     kmon # kernel monitoring
     file
     rsync
@@ -76,12 +76,12 @@
 
     # Development and workflow
     git
+    jq
     tmux
-    glow # Render Markdown files with colors
+    # The editor and its plugins
     neovim
     fzf
     silver-searcher
-    jq
 
     rnix-lsp # Nix LSp
   ];

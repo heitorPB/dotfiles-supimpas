@@ -30,7 +30,7 @@ Common:
 	- [x] ps1/ps2
 - [x] readline/inputrc
 - [ ] exports and shell functions
-	- [X] colored man pages
+	- [x] colored man pages
 	- [x] geolocation
 	- [ ] misc
 		- [ ] `mkd`
@@ -39,12 +39,12 @@ Common:
 - [x] tmux and config
 - [ ] ssh
 	- .ssh/config
-- [ ] nvim
+- [x] nvim
 	- [x] default editor
 	- [x] vim aliases?
 	- [x] config
-	- [ ] plugins
-		- [ ] vimwiki/vimzettel
+	- [x] plugins
+		- [x] vimwiki/vimzettel
 		- [x] tree-sitter and grammars
 		- [x] lsp and language servers
 - [x] gnupg

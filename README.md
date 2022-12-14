@@ -26,7 +26,7 @@ The Nix bits from this repo were inspired on:
 
 Common:
 - [x] aliases
-- [ ] bash thingies
+- [x] bash thingies
 	- [x] ps1/ps2
 - [x] readline/inputrc
 - [ ] exports and shell functions
@@ -37,8 +37,6 @@ Common:
 - [x] git and config
 	- [x] g shell alias and completion
 - [x] tmux and config
-- [ ] ssh
-	- .ssh/config
 - [x] nvim
 	- [x] default editor
 	- [x] vim aliases?
@@ -57,11 +55,16 @@ Common:
 
 Laptop:
 - everything
-- wm
-- dark theme and fonts
-- alacritty
-- dunst
-- aliases
+- [ ] audio - pipewire, pavucontrol-qt
+- [ ] graphics
+	- [ ] wm - sway? Wayland?
+	- [ ] dunst?
+	- [ ] color temeprature controller - redshift on X
+	- [ ] dark theme and fonts
+- [ ] alacritty
+- [ ] ssh
+	- [ ] .ssh/config
+- [ ] aliases
 	- feh and feh-exif
 	- screenshot
 

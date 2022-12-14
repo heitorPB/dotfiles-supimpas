@@ -60,9 +60,6 @@
     ls1 = "ls -1";
   };
 
-  # home-manager settings
-  home-manager.useGlobalPkgs = true;
-
   # Packages for all machines
   environment.systemPackages = with pkgs; [
     btop # Fancier top(1)
@@ -103,6 +100,9 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJxMuFUrQujzveHDbM8etG1A2rQhA8i2KwM0j2BiFx0K h@alien" ];
   };
+
+  # home-manager settings
+  home-manager.useGlobalPkgs = true;
 
   # Configure GnuPG agent
   programs.gnupg.agent = {

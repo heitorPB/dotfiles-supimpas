@@ -55,7 +55,7 @@
     diff = "diff --color=auto";
 
     # My own ls's
-    #ls = "ls --color=auto"; # this is not needed, --color=tty is the default
+    #ls = "ls --color=auto"; # This is not needed, --color=tty is the default
     l = "ls -lahF";
     ls1 = "ls -1";
   };
@@ -66,24 +66,24 @@
   # Packages for all machines
   environment.systemPackages = with pkgs; [
     btop # Fancier top(1)
-    kmon # kernel monitoring
     file
+    kmon # Kernel monitoring
+    lfs # Fancier df(1)
+    nixos-option # Query nixos configuration
+    pciutils # For lspci(8)
+    ripgrep # Fancier grep(1)
     rsync
     wget
-    ripgrep # fancier grep(1)
-    lfs # fancier df(1)
-    nixos-option # query nixos configuration
 
     # Development and workflow
     git
     jq
     tmux
-    # The editor and its plugins
+    # THE editor and its plugins
     neovim
     fzf
     silver-searcher
-
-    rnix-lsp # Nix LSp
+    rnix-lsp # Nix LSP
   ];
 
   # Neovim everywhere

@@ -29,11 +29,11 @@ Common:
 - [x] bash thingies
 	- [x] ps1/ps2
 - [x] readline/inputrc
-- [ ] exports and shell functions
+- [x] exports and shell functions
 	- [x] colored man pages
 	- [x] geolocation
-	- [ ] misc
-		- [ ] `mkd`
+	- [x] misc
+		- [x] `mkd`
 - [x] git and config
 	- [x] g shell alias and completion
 - [x] tmux and config
@@ -67,6 +67,7 @@ Laptop:
 - [ ] aliases
 	- feh and feh-exif
 	- screenshot
+- [ ] etc
 
 
 Later:

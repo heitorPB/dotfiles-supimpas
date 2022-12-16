@@ -85,8 +85,14 @@
     profileExtra = (builtins.readFile ./ps1.sh) + ''
       # Autocomplete g alias
       if [ -f "${pkgs.git}/share/bash-completion/completions/git" ]; then
-              . "${pkgs.git}/share/bash-completion/completions/git" && __git_complete g __git_main
+      	. "${pkgs.git}/share/bash-completion/completions/git" && __git_complete g __git_main
       fi
+
+      # Create a new directory and enter it
+      function mkd()
+      {
+      	mkdir --parents "$@" && cd "$_";
+      }
     '';
   };
 

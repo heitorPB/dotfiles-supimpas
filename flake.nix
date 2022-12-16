@@ -28,8 +28,12 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; location = geolocation.saoCarlos; }; # Pass flake inputs to our config
           modules = [
+            # HW and base configuration
             ./hosts/desk03/configuration.nix
             ./hosts/core.nix
+
+            # Extra services for this host
+            ./hosts/podman.nix
 
             # home-manager stuff
             home-manager.nixosModules.home-manager

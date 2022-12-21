@@ -12,12 +12,18 @@
           dockerfile
           git_rebase
           gitattributes
+          hcl
+          json
           ledger
           markdown
           nix
           python
+          regex
           rst
           rust
+          toml
+          vim
+          yaml
         ]));
         type = "lua";
         config = ''

@@ -78,8 +78,4 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias targzx='tar xfvz'
 
 # run chrome-stable in a sandbox
-alias omni-chrome="firejail --private=~/.sandboxes/chrome-omni/ /usr/bin/chromium"
-
-# juju aliases
-alias jst="juju status --color"
-alias wjst="watch --color --interval 1 juju status --color"
+alias lava-chrome="firejail --private=~/.sandboxes/chrome-lava/ /usr/bin/chromium"

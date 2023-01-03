@@ -49,6 +49,7 @@
             if vim.fn.executable(binary) == 1 then server.setup(options) end
           end
 
+          -- Basic configuration for some LSP servers
           add_lsp("bash-language-server", lspconfig.bashls, {})
           add_lsp("pylsp", lspconfig.pylsp, {})
           add_lsp("rnix-lsp", lspconfig.rnix, {})

@@ -12,7 +12,7 @@
 
   # Set time zone
   time.timeZone = location.timezone;
-  environment.variables.CURRENT_CITY = location.city + ", " + location.country ;
+  environment.variables.CURRENT_CITY = location.city + ", " + location.country;
   environment.variables.CURRENT_GEO = location.latitude + ":" + location.longitude;
 
   # Internationalisation properties.
@@ -81,6 +81,13 @@
     fzf
     silver-searcher
     rnix-lsp # Nix LSP
+
+    # Python and its Development packages
+    poetry
+    (python3.withPackages (p: with p; [
+      ipython
+      #python-lsp-server #TODO this is broken
+    ]))
   ];
 
   # Neovim everywhere

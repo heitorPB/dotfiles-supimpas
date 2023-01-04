@@ -83,11 +83,11 @@
     rnix-lsp # Nix LSP
 
     # Python and its Development packages
-    poetry
     (python3.withPackages (p: with p; [
       ipython
       #python-lsp-server #TODO this is broken
     ]))
+    hatch # Project/package manager for Python
   ];
 
   # Neovim everywhere

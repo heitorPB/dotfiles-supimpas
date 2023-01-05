@@ -21,7 +21,10 @@
     compression = true;
     # Periodic ping to keep the connection alive
     serverAliveInterval = 240;
+    # Only use the keys informed for each host
     extraConfig = "IdentitiesOnly yes";
+    # Include all extra configuration in ~/.ssh/config.d/*
+    includes = ["config.d/*"];
   };
 
   # Configuration for git

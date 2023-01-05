@@ -154,9 +154,10 @@
       " define csv filetype
       autocmd BufNewFile,BufRead *csv set filetype=csv
 
-      autocmd FileType csv set textwidth=0       " disable line wdraps for csv
+      autocmd FileType csv set textwidth=0       " disable line wraps for csv
       autocmd FileType markdown set textwidth=79 " make text break lines at 79 chars
-      autocmd FileType yaml set ts=2 sts=2 sw=2 expandtab foldmethod=indent " magic
+      autocmd FileType rst set textwidth=79      " make text break lines at 79 chars
+      autocmd FileType yaml set ts=4 sts=4 sw=4 expandtab foldmethod=indent " use 4 spaces to indent yaml
 
       " Strip trailing whitespace (,ss)
       function! StripWhitespace()

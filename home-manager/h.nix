@@ -15,6 +15,15 @@
     no-autostart
   '';
 
+  # Configuration for SSH client
+  programs.ssh = {
+    enable = true;
+    compression = true;
+    # Periodic ping to keep the connection alive
+    serverAliveInterval = 240;
+    extraConfig = "IdentitiesOnly yes";
+  };
+
   # Configuration for git
   programs.git = {
     enable = true;

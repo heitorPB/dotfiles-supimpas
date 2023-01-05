@@ -7,6 +7,7 @@
       dockerCompat = true;
       dockerSocket.enable = true;
       extraPackages = [ pkgs.zfs ];
+      defaultNetwork.dnsname.enable = true;
     };
 
     # Rootless podman on ZFS

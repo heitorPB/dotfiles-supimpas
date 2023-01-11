@@ -25,33 +25,8 @@ The Nix bits from this repo were inspired on:
 ## TODO
 
 Common:
-- [x] aliases
-- [x] bash thingies
-	- [x] ps1/ps2
-- [x] readline/inputrc
-- [x] exports and shell functions
-	- [x] colored man pages
-	- [x] geolocation
-	- [x] misc
-		- [x] `mkd`
-- [x] git and config
-	- [x] g shell alias and completion
-- [x] tmux and config
-- [x] nvim
-	- [x] default editor
-	- [x] vim aliases?
-	- [x] config
-	- [x] plugins
-		- [x] vimwiki/vimzettel
-		- [x] tree-sitter and grammars
-		- [x] lsp and language servers
-- [x] gnupg
-	- [x] use it in git
-	- [x] forward key from laptop
-- [x] sudo insults
-	- [x] missing something, maybe the package needs to be rebuilt: an
-	  overlay fixed it
-- [x] NTP
+- [ ] cpufreq
+- [ ] thermal stuff (sensors/management)
 
 Laptop:
 - everything
@@ -73,3 +48,4 @@ Laptop:
 Later:
 - [abstract away](https://nixos.org/manual/nixos/stable/index.html#sec-module-abstractions)
   the geolocation attribute sets
+- [ ] impermanence

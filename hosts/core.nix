@@ -4,6 +4,10 @@
   # Import nix.nix here to clean up flakes.nix
   imports = [ ./nix.nix ];
 
+  # Use tmpfs for /tmp
+  boot.tmpOnTmpfs = true;
+  boot.tmpOnTmpfsSize = "25%";
+
   # "enp3s0" instead of "eth0".
   networking.usePredictableInterfaceNames = true;
 

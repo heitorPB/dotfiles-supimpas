@@ -96,6 +96,14 @@
     # Terraform and its language-server
     terraform
     terraform-ls
+
+    # Cloud stuff
+    awscli2
+    eksctl  # AWS EKS
+
+    # Kubernetes clients
+    #kubectl
+    #k9s # TUI for k8s
   ];
 
   # Neovim everywhere

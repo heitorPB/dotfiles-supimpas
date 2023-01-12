@@ -53,6 +53,7 @@
           add_lsp("bash-language-server", lspconfig.bashls, {})
           add_lsp("pylsp", lspconfig.pylsp, {})
           add_lsp("rnix-lsp", lspconfig.rnix, {})
+          add_lsp("terraform-ls", lspconfig.terraformls, {})
 
           -- Mappings
           vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })

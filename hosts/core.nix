@@ -92,6 +92,10 @@
       #python-lsp-server #TODO this is broken
     ]))
     hatch # Project/package manager for Python
+
+    # Terraform and its language-server
+    terraform
+    terraform-ls
   ];
 
   # Neovim everywhere

@@ -11,12 +11,17 @@
       defaultNetwork.dnsname.enable = true;
     };
 
-    # Rootless podman on ZFS
+    # Rootfull Podman on ZFS
+    # Rootless does not use ZFS :(
     containers.storage.settings = {
       storage = {
         driver = "zfs";
         graphroot = "/var/lib/containers/storage";
         runroot = "/run/containers/storage";
+      };
+      storage.options.zfs = {
+        fsname = "zroot/containerd";
+        mountopt = "nodev";
       };
     };
 

@@ -106,6 +106,7 @@
       rust-vim
       vim-markdown
       vim-nix
+      vim-terraform
       vim-toml
 
       # vimwiki with vim-zettel

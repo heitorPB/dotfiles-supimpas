@@ -25,17 +25,21 @@ The Nix bits from this repo were inspired on:
 ## TODO
 
 Common:
-- [ ] cpufreq
-- [ ] thermal stuff (sensors/management)
+- [ ] encrypt secrets
+	- [ ] .ssh/config.d/*
 
 Laptop:
 - everything
-- [ ] audio - pipewire, pavucontrol-qt
+- [ ] cpufreq
+    - [ ] downclock to max of 3GHz
+    - [ ] use TLP
+- [ ] thermal stuff (sensors/management)
 - [ ] graphics
-	- [ ] wm - sway? Wayland?
+	- [ ] wm - sway? Wayland? i3?
 	- [ ] dunst?
-	- [ ] color temeprature controller - redshift on X
+	- [ ] color temperature controller - redshift on X
 	- [ ] dark theme and fonts
+- [ ] audio - pipewire, pavucontrol-qt
 - [ ] alacritty
 - [ ] ssh
 	- [ ] .ssh/config

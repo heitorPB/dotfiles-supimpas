@@ -26,7 +26,7 @@
       nixosConfigurations = {
         desk03 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; location = geolocation.saoCarlos; }; # Pass flake inputs to our config
+          specialArgs = { inherit inputs; location = geolocation.piracicaba; }; # Pass flake inputs to our config
           modules = [
             # HW and base configuration
             ./hosts/desk03/configuration.nix

@@ -78,6 +78,7 @@
 
     # Development and workflow
     git
+    gnumake # for make
     jq
     tmux
     # THE editor and its plugins

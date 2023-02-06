@@ -15,6 +15,7 @@
           hcl
           json
           ledger
+          latex
           markdown
           nix
           python

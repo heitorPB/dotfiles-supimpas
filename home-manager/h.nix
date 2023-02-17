@@ -8,7 +8,7 @@
   programs.gpg = {
     enable = true;
     publicKeys = [
-      {source = ./heitor.asc; trust = 5;}
+      { source = ./heitor.asc; trust = 5; }
     ];
   };
   home.file.".gnupg/gpg-agent.conf".text = ''
@@ -24,7 +24,7 @@
     # Only use the keys informed for each host
     extraConfig = "IdentitiesOnly yes";
     # Include all extra configuration in ~/.ssh/config.d/*
-    includes = ["config.d/*"];
+    includes = [ "config.d/*" ];
   };
 
   # Configuration for git

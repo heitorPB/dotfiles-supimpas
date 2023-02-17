@@ -104,6 +104,7 @@
       vim-colors-solarized
 
       # Improve Nix'ing: syntax highlight, filetype detection, indentation
+      ansible-vim
       rust-vim
       vim-markdown
       vim-nix

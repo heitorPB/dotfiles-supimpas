@@ -96,10 +96,12 @@
     # Terraform and its language-server
     terraform
     terraform-ls
+    # Ansible
+    ansible
 
     # Cloud stuff
     awscli2
-    eksctl  # AWS EKS
+    eksctl # AWS EKS
 
     # Kubernetes clients
     #kubectl

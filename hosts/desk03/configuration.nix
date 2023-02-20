@@ -32,7 +32,7 @@
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
-    passwordAuthentication = false;
+    settings.PasswordAuthentication = false;
     extraConfig = ''
       # Automatically remove stale sockets on connect
       StreamLocalBindUnlink yes

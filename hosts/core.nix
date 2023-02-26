@@ -8,6 +8,12 @@
   boot.tmpOnTmpfs = true;
   boot.tmpOnTmpfsSize = "25%";
 
+  # Allow all firmwares to be there
+  hardware.enableAllFirmware = true;
+
+  # Daemon to keep firmware up to date # TODO: remove from headless?
+  services.fwupd.enable = true;
+
   # "enp3s0" instead of "eth0".
   networking.usePredictableInterfaceNames = true;
 

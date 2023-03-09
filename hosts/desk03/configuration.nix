@@ -36,6 +36,9 @@
     extraConfig = ''
       # Automatically remove stale sockets on connect
       StreamLocalBindUnlink yes
+
+      # Send timeout message every 60 s to request answer from clients
+      ClientAliveInterval 60
     '';
   };
 

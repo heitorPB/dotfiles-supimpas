@@ -100,14 +100,17 @@
     ]))
 
     # Terraform and its language-server
-    terraform
-    terraform-ls
+    #terraform
+    #terraform-ls
     # Ansible
-    ansible
+    #ansible
+
+    # Clouds should fly
+    #flyctl
 
     # Cloud stuff
-    awscli2
-    eksctl # AWS EKS
+    #awscli2
+    #eksctl # AWS EKS
 
     # Kubernetes clients
     #kubectl

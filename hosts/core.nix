@@ -81,6 +81,7 @@
     ripgrep # Fancier grep(1)
     rsync
     wget
+    wireguard-tools
 
     # Development and workflow
     git

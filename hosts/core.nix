@@ -76,7 +76,7 @@
     file
     kmon # Kernel monitoring
     lfs # Fancier df(1)
-    nixos-option # Query nixos configuration
+    man-pages # More manuals
     pciutils # For lspci(8)
     ripgrep # Fancier grep(1)
     rsync
@@ -97,7 +97,7 @@
     # Python and its Development packages
     (python3.withPackages (p: with p; [
       ipython
-      #python-lsp-server #TODO this is broken
+      #python-lsp-server #TODO this is broken?
     ]))
 
     # Terraform and its language-server
@@ -127,6 +127,9 @@
   };
   environment.variables.EDITOR = "nvim";
   environment.variables.SUDO_EDITOR = "nvim"; # For sudo -e
+
+  # Update man pages cache to make apropos work
+  documentation.man.generateCaches = true;
 
   # My user in all hosts
   users.users.h = {

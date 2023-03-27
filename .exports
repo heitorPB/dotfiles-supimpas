@@ -22,9 +22,9 @@ export LC_ALL='en_US.UTF-8';
 # Colored man pages!
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
-# Ruby GEMS stuff
-export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-export PATH="$PATH:$GEM_HOME/bin"
+## Ruby GEMS stuff
+#export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+#export PATH="$PATH:$GEM_HOME/bin"
 
 # add pip ~/.local/bin to path
 export PATH="$PATH:$HOME/.local/bin"
@@ -32,6 +32,8 @@ export PATH="$PATH:$HOME/.local/bin"
 # geolocation shit
 export CURRENT_CITY="São Carlos, Brazil"
 export CURRENT_GEO="-22.0183737:-47.8911570"
+export CURRENT_CITY="Piracicaba, Brazil"
+export CURRENT_GEO="-22.7:-47.6"
 #export CURRENT_CITY="Geneve, Switzerland"
 #export CURRENT_GEO="46.2339717:6.0557211"
 
@@ -40,3 +42,7 @@ export QT_STYLE_OVERRIDE=adwaita-dark
 
 # podman-compose
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+
+# Fix locale warnings on Nix commnads
+# https://wiki.archlinux.org/title/Nix#Locale_warnings
+export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive

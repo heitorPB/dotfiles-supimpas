@@ -27,6 +27,16 @@
     includes = [ "config.d/*" ];
   };
 
+  # Direnv
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = false;
+    enableNushellIntegration = false;
+    enableZshIntegration = false;
+    nix-direnv.enable = true;
+  };
+
   # Configuration for git
   programs.git = {
     enable = true;

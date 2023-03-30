@@ -85,9 +85,14 @@
 
     # Development and workflow
     git
-    gnumake # for make
-    jq
+    gnumake # For make
+    jq # JSON parser
     tmux
+
+    # Direnv and a handy extension
+    direnv
+    nix-direnv
+
     # THE editor and its plugins
     neovim
     fzf

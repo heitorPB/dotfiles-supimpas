@@ -46,6 +46,11 @@
       key = gitKey;
       signByDefault = true;
     };
+    ignores = [
+      # Direnv stuff
+      ".envrc"
+      ".direnv/"
+    ];
     aliases = {
       # List aliases
       alias = "! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | grep -v ^'alias '";

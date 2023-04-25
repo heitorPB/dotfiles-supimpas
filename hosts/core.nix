@@ -5,8 +5,8 @@
   imports = [ ./nix.nix ];
 
   # Use tmpfs for /tmp
-  boot.tmpOnTmpfs = true;
-  boot.tmpOnTmpfsSize = "25%";
+  boot.tmp.useTmpfs = true;
+  boot.tmp.tmpfsSize = "25%";
 
   # Allow all firmwares to be there
   hardware.enableAllFirmware = true;

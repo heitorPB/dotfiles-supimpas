@@ -12,10 +12,11 @@
           dockerfile
           git_rebase
           gitattributes
+          go
           hcl
           json
-          ledger
           latex
+          ledger
           markdown
           nix
           python
@@ -51,8 +52,9 @@
           end
 
           -- Basic configuration for some LSP servers
-          add_lsp("bash-language-server", lspconfig.bashls, {})
           add_lsp("ansible-language-server", lspconfig.ansiblels, {})
+          add_lsp("bash-language-server", lspconfig.bashls, {})
+          add_lsp("gopls", lspconfig.gopls, {})
           add_lsp("pylsp", lspconfig.pylsp, {})
           add_lsp("rnix-lsp", lspconfig.rnix, {})
           add_lsp("terraform-ls", lspconfig.terraformls, {})

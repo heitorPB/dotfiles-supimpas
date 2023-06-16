@@ -105,6 +105,10 @@
       #python-lsp-server #TODO this is broken?
     ]))
 
+    # Golang and its language-server
+    #go
+    #gopls
+
     # Terraform and its language-server
     #terraform
     #terraform-ls

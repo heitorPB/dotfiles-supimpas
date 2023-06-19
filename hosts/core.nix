@@ -74,6 +74,7 @@
   environment.systemPackages = with pkgs; [
     btop # Fancier top(1)
     file
+    killall
     kmon # Kernel monitoring
     lfs # Fancier df(1)
     man-pages # More manuals

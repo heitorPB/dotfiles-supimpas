@@ -74,6 +74,18 @@
           -- vim.keymap.set("n", "gq", vim.diagnostic.setqflist, { desc = "Diagnostics on quickfix" })
         '';
       }
+      {
+        # Use rust-analyzer as LSP via rust-tools
+        plugin = rust-tools-nvim;
+        type = "lua";
+        config = /* lua */ ''
+          local rust_tools = require('rust-tools')
+          if vim.fn.executable("rust-analyzer") == 1 then
+            rust_tools.setup{ tools = { autoSetHints = true } }
+          end
+          vim.api.nvim_set_hl(0, '@lsp.type.comment.rust', {})
+        '';
+      }
 
       # Completion plugins for LSP
       cmp-nvim-lsp
@@ -97,7 +109,6 @@
             sources = {
               { name='buffer', option = { get_bufnrs = vim.api.nvim_list_bufs } },
               { name='nvim_lsp' },
-              { name='orgmode' },
             },
           }
         '';

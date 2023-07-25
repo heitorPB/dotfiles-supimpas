@@ -76,7 +76,7 @@
     file
     killall
     kmon # Kernel monitoring
-    lfs # Fancier df(1)
+    dysk # Fancier df(1)
     man-pages # More manuals
     pciutils # For lspci(8)
     ripgrep # Fancier grep(1)

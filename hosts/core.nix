@@ -50,6 +50,7 @@
 
   # Colored man pages
   environment.variables.MANPAGER = "less -R --use-color -Dd+r -Du+b";
+  environment.variables.MANROFFOPT = "-P -c";
 
   environment.shellAliases = {
     # I am lazy

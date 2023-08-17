@@ -21,6 +21,8 @@ export LC_ALL='en_US.UTF-8';
 
 # Colored man pages!
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
+# See https://bbs.archlinux.org/viewtopic.php?id=287185 for this fix bellow
+export MANROFFOPT="-P -c"
 
 ## Ruby GEMS stuff
 #export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"

@@ -194,7 +194,7 @@
     set -g default-terminal "screen-256color"
 
     # Full color range
-    set-option -ga terminal-overrides ",*256col*:RGB,alacritty:RGB"
+    set-option -ga terminal-overrides ",*256col*:Tc,alacritty:Tc"
 
     # Rebind main key to C-a
     unbind C-b

@@ -48,7 +48,6 @@
     };
     ignores = [
       # Direnv stuff
-      ".envrc"
       ".direnv/"
     ];
     aliases = {

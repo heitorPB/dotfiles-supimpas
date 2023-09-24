@@ -6,7 +6,7 @@ git pull
 
 function doIt() {
 	rsync --exclude ".git/" --exclude "bootstrap.sh" \
-		--exclude "README.md" --exclude "LICENSE" -avhr --no-perms . ~
+	      --exclude "README.md" --exclude "LICENSE" -avhr --no-perms . ~
 	source ~/.bash_profile
 }
 

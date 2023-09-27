@@ -64,6 +64,7 @@
     grep = "grep --color=auto";
     ip = "ip -color=auto";
     diff = "diff --color=auto";
+    watch = "watch --color";
 
     # My own ls's
     #ls = "ls --color=auto"; # This is not needed, --color=tty is the default

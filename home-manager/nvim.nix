@@ -17,6 +17,7 @@
           json
           latex
           ledger
+          lua
           markdown
           nix
           python

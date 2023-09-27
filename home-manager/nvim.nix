@@ -56,7 +56,20 @@
           add_lsp("ansible-language-server", lspconfig.ansiblels, {})
           add_lsp("bash-language-server", lspconfig.bashls, {})
           add_lsp("gopls", lspconfig.gopls, {})
-          add_lsp("pylsp", lspconfig.pylsp, {})
+
+          local pylsp_config = {
+              settings = {
+                  pylsp = {
+                      plugins = {
+                          ruff = {
+                              enabled = true,
+                              extendSelect = { "I" },
+                          },
+                      }
+                  }
+              }
+          }
+          add_lsp("pylsp", lspconfig.pylsp, pylsp_config)
           add_lsp("rnix-lsp", lspconfig.rnix, {})
           add_lsp("terraform-ls", lspconfig.terraformls, {})
           add_lsp("vale-ls", lspconfig.vale_ls, {})

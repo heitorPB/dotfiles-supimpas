@@ -15,6 +15,9 @@ export LIBVA_DRIVER_NAME=vdpau
 # network manager systray thing
 nm-applet &
 
+# audio sys tray
+volumeicon &
+
 # power management for laptop:
 mate-power-manager &
 

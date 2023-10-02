@@ -122,7 +122,7 @@
     #flyctl
 
     # Cloud stuff
-    #awscli2
+    awscli2
     #eksctl # AWS EKS
 
     # Kubernetes clients

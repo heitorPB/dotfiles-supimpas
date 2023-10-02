@@ -5,7 +5,7 @@
   virtualisation = {
     podman = {
       enable = true;
-      dockerCompat = true;
+      dockerCompat = true; # For docker alias
       dockerSocket.enable = true;
       extraPackages = [ pkgs.zfs ];
       defaultNetwork.settings.dns_enabled = true;
@@ -20,7 +20,7 @@
         runroot = "/run/containers/storage";
       };
       storage.options.zfs = {
-        fsname = "zroot/containerd";
+        fsname = "zroot/containers";
         mountopt = "nodev";
       };
     };

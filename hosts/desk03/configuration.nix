@@ -19,6 +19,7 @@
     hostId = "fe1f23b8";
     hostName = "desk03";
     interfaces.enp3s0.wakeOnLan.enable = true;
+    nameservers = [ "192.168.1.1" "2804:431:cfcf:a985:3af7:cdff:fec1:c006" ];
   };
 
   # List packages installed in system profile. To search, run:

@@ -23,6 +23,19 @@
   # "enp3s0" instead of "eth0".
   networking.usePredictableInterfaceNames = true;
 
+  # Use Systemd for DNS resolution
+  services.resolved = {
+    enable = true;
+    fallbackDns = [
+      "1.1.1.1#cloudflare-dns.com"
+      "9.9.9.9#dns.quad9.net"
+      "8.8.8.8#dns.google"
+      "2606:4700:4700::1111#cloudflare-dns.com"
+      "2620:fe::9#dns.quad9.net"
+      "2001:4860:4860::8888#dns.google"
+    ];
+  };
+
   # Use Systemd timesyncd for NTP
   services.timesyncd.enable = true;
 

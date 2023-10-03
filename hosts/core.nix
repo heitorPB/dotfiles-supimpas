@@ -41,8 +41,10 @@
 
   # Set time zone
   time.timeZone = location.timezone;
-  environment.variables.CURRENT_CITY = location.city + ", " + location.country;
-  environment.variables.CURRENT_GEO = location.latitude + ":" + location.longitude;
+  environment.variables = {
+    CURRENT_CITY = location.city + ", " + location.country;
+    CURRENT_GEO = location.latitude + ":" + location.longitude;
+  };
 
   # Internationalisation properties.
   i18n = {
@@ -81,8 +83,10 @@
   };
 
   # Colored man pages
-  environment.variables.MANPAGER = "less -R --use-color -Dd+r -Du+b";
-  environment.variables.MANROFFOPT = "-P -c";
+  environment.variables = {
+    MANPAGER = "less -R --use-color -Dd+r -Du+b";
+    MANROFFOPT = "-P -c";
+  };
 
   environment.shellAliases = {
     # I am lazy
@@ -169,8 +173,10 @@
     vimAlias = true;
     defaultEditor = true;
   };
-  environment.variables.EDITOR = "nvim";
-  environment.variables.SUDO_EDITOR = "nvim"; # For sudo -e
+  environment.variables = {
+    EDITOR = "nvim";
+    SUDO_EDITOR = "nvim"; # For sudo -e
+  };
 
   # Update man pages cache to make apropos work
   documentation.man.generateCaches = true;

@@ -34,6 +34,8 @@
 
             # Extra services for this host
             ./hosts/podman.nix
+            ./hosts/nomad.nix
+            ./hosts/docker.nix
 
             # home-manager stuff
             home-manager.nixosModules.home-manager

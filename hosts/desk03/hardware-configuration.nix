@@ -32,6 +32,12 @@
       fsType = "zfs";
     };
 
+  fileSystems."/var/lib/nomad" =
+    {
+      device = "zroot/nomad";
+      fsType = "zfs";
+    };
+
   fileSystems."/boot" =
     {
       device = "/dev/disk/by-uuid/7742-3813";

@@ -23,6 +23,7 @@ zfs set mountpoint=none zroot
 zfs create -o mountpoint=legacy zroot/root
 zfs create -o mountpoint=legacy zroot/nix
 zfs create -o mountpoint=legacy zroot/home
+zfs create -o mountpoint=legacy zroot/nomad
 zfs create -o mountpoint=none -o canmount=on zroot/containers
 
 # Mount partitions

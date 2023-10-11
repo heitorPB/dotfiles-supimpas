@@ -160,6 +160,7 @@
     # Cloud stuff
     awscli2
     #eksctl # AWS EKS
+    azure-cli
 
     # Kubernetes clients
     #kubectl

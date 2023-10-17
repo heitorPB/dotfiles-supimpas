@@ -15,7 +15,7 @@ in
     # Add Docker driver
     enableDocker = dockerEnabled;
 
-    # Nomad as Root to access Docker socket. Not sure if this is really needed.
+    # Nomad as Root to access Docker/Podman sockets.
     dropPrivileges = false;
 
     # Nomad configuration, as Nix attribute set.
@@ -27,9 +27,7 @@ in
       };
       plugin = [{
         nomad-driver-podman = {
-          config = {
-            #gc = { container = false; };
-          };
+          config = { };
         };
       }];
     };

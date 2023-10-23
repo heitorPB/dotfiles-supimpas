@@ -10,7 +10,7 @@ in
     enable = true;
     package = pkgs.nomad_1_6;
 
-    # Add Podman driver
+    # Add extra plugins to Nomad's plugin directory.
     extraSettingsPlugins = [ pkgs.nomad-driver-podman ];
     # Add Docker driver
     enableDocker = dockerEnabled;

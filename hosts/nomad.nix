@@ -3,7 +3,7 @@
 let
   # This causes an infinite recursion :(
   #dockerEnabled = config.virtualisation.docker.enable;
-  dockerEnabled = true;
+  dockerEnabled = false;
 in
 {
   services.nomad = {

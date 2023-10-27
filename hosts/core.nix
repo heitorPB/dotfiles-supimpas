@@ -111,10 +111,11 @@
   # Packages for all machines
   environment.systemPackages = with pkgs; [
     btop # Fancier top(1)
+    dysk # Fancier df(1)
+    fd # Fancier find(1)
     file
     killall
     kmon # Kernel monitoring
-    dysk # Fancier df(1)
     man-pages # More manuals
     pciutils # For lspci(8)
     ripgrep # Fancier grep(1)

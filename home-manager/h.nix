@@ -104,6 +104,13 @@
   # My git alias:
   programs.bash.shellAliases.g = "git";
 
+  # Export podman socket for rootless mode
+  home.sessionVariables = {
+    # DOCKER_HOST is needed for docker-compose commands to use my user's socket
+    # TODO don't hardcode this
+    DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
+  };
+
   # Yeah, I use Bash
   programs.bash = {
     enable = true;

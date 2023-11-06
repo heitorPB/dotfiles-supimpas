@@ -9,21 +9,27 @@
       {
         plugin = (nvim-treesitter.withPlugins (plugins: with plugins; [
           bash
+          cmake
+          cpp
           dockerfile
           git_rebase
           gitattributes
+          gitignore
           go
           hcl
           json
           latex
           ledger
           lua
+          make
           markdown
           nix
           python
           regex
           rst
           rust
+          sql
+          ssh_config
           toml
           vim
           yaml

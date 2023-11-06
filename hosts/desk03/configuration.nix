@@ -24,6 +24,9 @@
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
+    openvpn
+    # Helper for OpenVpn <-> Systemd/Resolved
+    update-systemd-resolved
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

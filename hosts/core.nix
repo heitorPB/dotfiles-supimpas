@@ -2,7 +2,7 @@
 { inputs, pkgs, location, ... }:
 {
   # Import nix.nix here to clean up flakes.nix
-  imports = [ ./nix.nix ];
+  imports = [ ../shared/nix.nix ];
 
   # Use tmpfs for /tmp
   boot.tmp = {

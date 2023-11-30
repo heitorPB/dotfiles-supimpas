@@ -7,7 +7,7 @@
   # Use tmpfs for /tmp
   boot.tmp = {
     useTmpfs = true;
-    tmpfsSize = "25%";
+    tmpfsSize = "100%";
   };
 
   # Remove unused storage stuff

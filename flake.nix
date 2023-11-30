@@ -17,7 +17,7 @@
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
     let
-      geolocation = import ./hosts/geolocation.nix;
+      geolocation = import ./shared/geolocation.nix;
     in
     {
       # Define a formatter for "nix fmt"
@@ -33,9 +33,9 @@
             ./hosts/core.nix
 
             # Extra services for this host
-            ./hosts/podman.nix
-            ./hosts/nomad.nix
-            #./hosts/docker.nix
+            ./shared/podman.nix
+            ./shared/nomad.nix
+            #./shared/docker.nix
 
             # home-manager stuff
             home-manager.nixosModules.home-manager

@@ -1,5 +1,5 @@
 # Configurations and options for all hosts
-{ inputs, pkgs, location, ... }:
+{ inputs, pkgs, location, ssot, ... }:
 {
   # Import nix.nix here to clean up flakes.nix
   imports = [ ../shared/nix.nix ];

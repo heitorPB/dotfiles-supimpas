@@ -17,16 +17,21 @@
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
     let
-      geolocation = import ./shared/geolocation.nix;
+      ssot = import ./shared/ssot.nix inputs;
     in
     {
       # Define a formatter for "nix fmt"
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 
       nixosConfigurations = {
-        desk03 = nixpkgs.lib.nixosSystem {
+        "${ssot.desktop.hostname}" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; location = geolocation.piracicaba; }; # Pass flake inputs to our config
+          # Pass these stuff as inputs to the configuration files
+          specialArgs = {
+            inherit ssot;
+            inherit inputs;
+            location = ssot.desktop.location;
+          };
           modules = [
             # HW and base configuration
             ./hosts/desk03/configuration.nix

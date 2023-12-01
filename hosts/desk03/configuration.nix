@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, ssot, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -13,7 +13,7 @@
   networking = {
     # required for zfs. From head -c 8 /etc/machine-id
     hostId = "fe1f23b8";
-    hostName = "desk03";
+    hostName = ssot.desktop.hostname;
     interfaces.enp3s0.wakeOnLan.enable = true;
     nameservers = [ "192.168.1.1" "2804:431:cfcf:a985:3af7:cdff:fec1:c006" ];
   };

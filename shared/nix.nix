@@ -1,5 +1,5 @@
 # Global configuration for Nix itself.
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   nix = {
@@ -18,6 +18,11 @@
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
+    };
+
+    # Use systems's Flakes for everything instead of downloading/updating.
+    registry = {
+      nixpkgs.flake = inputs.nixpkgs;
     };
   };
 

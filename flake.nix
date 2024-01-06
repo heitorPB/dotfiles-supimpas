@@ -10,7 +10,8 @@
     };
 
     impermanence.url = "github:nix-community/impermanence";
-    # For ZFS impermanence:
+    # For ZFS impermanence.
+    # TODO: remove this and just do it manualy to clean up dependencies
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     # TODO: do I need nixos-hardware?
@@ -68,7 +69,7 @@
             # HW and base configuration
             ./hosts/thinkpadL14/configuration.nix
             ./hosts/core.nix
-            #./hosts/seat-configuration.nix
+            ./hosts/seat-configuration.nix
 
             # ZFS on impermanence from Chaotic
             chaotic.nixosModules.default

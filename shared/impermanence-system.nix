@@ -64,6 +64,6 @@
 
   # Shadow can't be added to persistent
   # Hashes generated with mkpasswd
-  users.users."root".hashedPassword = "$y$j9T$En/tncDLL/8mNvg4LTYB3.$NI9ucL2URMZxMIXK5IvQzBsvQVayjOmOUNCplOtxyT9";
+  users.users."root".hashedPassword = "$y$j9T$En/tncDLL/8mNvg4LTYB3.$NI9ucL2URMZxMIXK5IvQzBsvQVayjOmOUNCplOtxyT9"; # NixPass3wold!
   users.users."h".hashedPassword = "$y$j9T$x4IC.F3ZmiYzMDFfmxwYo0$NfThb527VpBcBylPEefO59NCoWlEkfwS1ga0FS5hITC";
 }

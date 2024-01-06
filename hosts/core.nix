@@ -4,10 +4,6 @@
   # Import nix.nix here to clean up flakes.nix
   imports = [ ../shared/nix.nix ];
 
-  # Microcode updates.
-  hardware.cpu.intel.updateMicrocode = true;
-  hardware.cpu.amd.updateMicrocode = true;
-
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
     systemd-boot.enable = true;

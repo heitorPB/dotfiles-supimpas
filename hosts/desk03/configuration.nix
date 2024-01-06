@@ -7,6 +7,9 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
+  # Microcode updates.
+  hardware.cpu.intel.updateMicrocode = true;
+
   networking = {
     # required for zfs. From head -c 8 /etc/machine-id
     hostId = "fe1f23b8";

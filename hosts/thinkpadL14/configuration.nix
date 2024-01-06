@@ -3,12 +3,12 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { config, lib, pkgs, ... }:
+# TODO: remove lib from above and add ssot
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ ./hardware-configuration.nix ];
+  # Microcode updates.
+  hardware.cpu.amd.updateMicrocode = true;
 
   networking.hostName = "L14"; # Define your hostname. # TODO use ssot # TODO: move to core.nix
   networking.hostId = "5a824f81";

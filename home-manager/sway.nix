@@ -1,9 +1,7 @@
-{ pkgs, lib, ... }:
-let
-  hasSeat = seat != null;
-in
-{
-  wayland.windowManager.sway = lib.mkIf (hasSeat) {
+lib: with lib;
+
+mkIf (seat != null) {
+  wayland.windowManager.sway = {
     enable = true;
     config = rec {
       modifier = "Mod4";

@@ -4,8 +4,6 @@
 { config, inputs, lib, pkgs, ssot, ... }: with lib; {
   imports = [
     ./nvim.nix
-    #(import ./sway.nix seat)
-    /sway.nix
   ];
 
   # home.packages = with pkgs; [ steam ];
@@ -196,6 +194,7 @@
     '';
   };
 
+  # TODO: move this to a tmux.nix
   # Write the Tmux configuration file directly. Not a big fan of having this global
   home.file.".tmux.conf".text = ''
     # Normalize TERM variable
@@ -251,6 +250,19 @@
     # Set focus-events for better nvim-tmux integration
     set-option -g focus-events on
   '';
+
+  wayland.windowManager.sway = mkIf (seat != null) {
+    enable = true;
+    config = rec {
+      modifier = "Mod4";
+      # Use kitty as default terminal
+      terminal = "kitty"; 
+      startup = [
+        # Launch Firefox on start
+        {command = "firefox";}
+      ];
+    };
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "22.05";

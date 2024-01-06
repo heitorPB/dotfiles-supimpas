@@ -10,6 +10,11 @@
     efi.canTouchEfiVariables = true;
   };
 
+  boot.kernel.sysctl = {
+    "kernel.sysrq" = 1; # Enable ALL SysRq shortcuts
+    #"vm.max_map_count" = 2147483642; # helps with Wine ESYNC/FSYNC
+  };
+
   # Use tmpfs for /tmp
   boot.tmp = {
     useTmpfs = true;

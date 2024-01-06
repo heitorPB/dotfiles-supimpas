@@ -8,50 +8,46 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    {
-      device = "zroot/root";
-      fsType = "zfs";
-    };
-
-  fileSystems."/nix" =
-    {
-      device = "zroot/nix";
-      fsType = "zfs";
-    };
-
-  fileSystems."/home" =
-    {
-      device = "zroot/home";
-      fsType = "zfs";
-    };
-
-  fileSystems."/var/lib/nomad" =
-    {
-      device = "zroot/nomad";
-      fsType = "zfs";
-    };
+# Using impermanence, no need to setup / here
+# fileSystems."/" =
+#   { device = "zroot/ROOT/empty";
+#     fsType = "zfs";
+#   };
 
   fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/7742-3813";
+    { device = "/dev/disk/by-uuid/AAEB-4702";
       fsType = "vfat";
     };
 
+  fileSystems."/nix" =
+    { device = "zroot/ROOT/nix";
+      fsType = "zfs";
+      neededForBoot = true;
+    };
+
+  fileSystems."/var/persistent" =
+    { device = "zroot/data/persistent";
+      fsType = "zfs";
+      neededForBoot = true;
+    };
+
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/ea2d41b5-3e71-462a-93ee-19e1902c877d"; }];
+    [ { device = "/dev/disk/by-uuid/efbe5145-2572-420b-bc24-745481ee8d04"; } ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
+  networking.useDHCP = lib.mkDefault true; # TODO
+  # networking.interfaces.enp3s0f0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp6s0.useDHCP = lib.mkDefault true;
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

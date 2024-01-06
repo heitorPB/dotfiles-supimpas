@@ -4,6 +4,10 @@
   # Import nix.nix here to clean up flakes.nix
   imports = [ ../shared/nix.nix ];
 
+  # Microcode updates.
+  hardware.cpu.intel.updateMicrocode = true;
+  hardware.cpu.amd.updateMicrocode = true;
+
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
     systemd-boot.enable = true;
@@ -108,6 +112,7 @@
       Defaults insults
     '';
   };
+  security.polkit.enable = true;
 
   # Colored man pages
   environment.variables = {
@@ -169,12 +174,15 @@
     # Python and its Development packages
     (python3.withPackages (p: with p; [
       ipython
-      #python-lsp-server #TODO this is broken?
+      #python-lsp-server # Use it in a per-project dev shell
     ]))
 
     # Golang and its language-server
     #go
     #gopls
+
+    # TODO: consider moving stuff bellow to a separate file and include only
+    #       on machines that need them
 
     # Terraform and its language-server
     #terraform

@@ -9,4 +9,9 @@ rec {
     hostname = "desk03";
     location = geolocation.piracicaba;
   };
+
+  thinkpadL14 = {
+    hostname = "L14";
+    location = geolocation.piracicaba;
+  };
 }

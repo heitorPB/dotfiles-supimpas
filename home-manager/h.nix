@@ -1,6 +1,12 @@
-{ gitKey ? null /* GPG key to use */ }:
-{ config, inputs, lib, pkgs, ... }: with lib; {
-  imports = [ ./nvim.nix ];
+{ gitKey ? null /* GPG key to use */
+, seat ? null /* Do we have wayland? */
+}:
+{ config, inputs, lib, pkgs, ssot, ... }: with lib; {
+  imports = [
+    ./nvim.nix
+    #(import ./sway.nix seat)
+    /sway.nix
+  ];
 
   # home.packages = with pkgs; [ steam ];
 

@@ -7,9 +7,6 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  # Microcode updates.
-  hardware.cpu.intel.updateMicrocode = true;
-
   networking = {
     # required for zfs. From head -c 8 /etc/machine-id
     hostId = "fe1f23b8";
@@ -18,16 +15,12 @@
     nameservers = [ "192.168.1.1" "2804:431:cfcf:a985:3af7:cdff:fec1:c006" ];
   };
 
-  # List packages installed in system profile. To search, run:
+  # Machine specific packages
   environment.systemPackages = with pkgs; [
     openvpn
     # Helper for OpenVpn <-> Systemd/Resolved
     update-systemd-resolved
   ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

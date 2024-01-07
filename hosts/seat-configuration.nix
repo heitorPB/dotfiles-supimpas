@@ -13,9 +13,4 @@
     # Disable non-NetworkManager.
     useDHCP = false;
   };
-
-  # XWayland keyboard layout.
-  services.xserver.layout = "br";
-  # Console keyboard layout.
-  console.keyMap = "br-abnt2";
 }

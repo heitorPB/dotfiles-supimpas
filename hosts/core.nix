@@ -75,11 +75,11 @@
 
   # Internationalisation properties.
   i18n = {
-    defaultLocale = "en_GB.UTF-8";
-    supportedLocales = [ "en_GB.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" "pt_BR.UTF-8/UTF-8" ];
+    defaultLocale = "en_DK.UTF-8";
+    supportedLocales = [ "en_DK.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" "pt_BR.UTF-8/UTF-8" ];
     extraLocaleSettings = {
-      LC_MESSAGES = "en_US.UTF-8";
-      LC_CTYPE = "en_US.UTF-8"; # "pt_BR.UTF8" borks xkbcommon
+      LC_MESSAGES = "en_DK.UTF-8";
+      LC_CTYPE = "en_DK.UTF-8"; # "pt_BR.UTF8" borks xkbcommon
       LC_NUMERIC = "pt_BR.UTF-8";
       LC_TIME = "pt_BR.UTF-8";
       LC_COLLATE = "pt_BR.UTF-8";
@@ -94,8 +94,13 @@
   };
   console = {
     font = "Lat2-Terminus16";
-    keyMap = "br-abnt2";
+    useXkbConfig = true;
   };
+  # Console/XWayland keyboard layout.
+  # TODO: move these to ssot
+  services.xserver.layout = "br";
+  services.xserver.xkbVariant = "abnt2";
+  services.xserver.xkbModel = "thinkpad";
 
   # Override some packages' settings/sources
   # Downgrade gnupg to 2.2.27. TODO: remove later

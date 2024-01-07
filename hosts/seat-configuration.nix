@@ -13,4 +13,14 @@
     # Disable non-NetworkManager.
     useDHCP = false;
   };
+
+  # XDG-Portal (for dialogs & screensharing).
+  xdg.portal = {
+    wlr.enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-kde
+    ];
+    config.common.default = "*";
+  };
 }

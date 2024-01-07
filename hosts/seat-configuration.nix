@@ -14,13 +14,13 @@
     useDHCP = false;
   };
 
-  # XDG-Portal (for dialogs & screensharing).
-  xdg.portal = {
-    wlr.enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-kde
-    ];
-    config.common.default = "*";
+  # GPU
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
   };
+
+  # XDG-Portal (for dialogs & screensharing).
+  xdg.portal.wlr.enable = true;
 }

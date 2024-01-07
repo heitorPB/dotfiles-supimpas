@@ -17,6 +17,14 @@
   environment.systemPackages = with pkgs; [
   ];
 
+  # AMD GPU
+  hardware.opengl.extraPackages = with pkgs; [
+    rocmPackages.clr.icd
+  ];
+  # TODO: add OpenCL support
+  # TODO: add Vulkan support
+
+
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #

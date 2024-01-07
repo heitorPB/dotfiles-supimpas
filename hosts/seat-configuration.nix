@@ -9,7 +9,6 @@
       wifi.backend = "iwd";
       dns = "systemd-resolved";
     };
-    wireless.iwd.enable = true;
 
     # Disable non-NetworkManager.
     useDHCP = false;

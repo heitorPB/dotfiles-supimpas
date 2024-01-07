@@ -35,7 +35,7 @@
           specialArgs = {
             inherit ssot;
             inherit inputs;
-            location = ssot.desktop.location;
+            machine = ssot.desktop;
           };
           modules = [
             # HW and base configuration
@@ -63,7 +63,7 @@
           specialArgs = {
             inherit ssot;
             inherit inputs;
-            location = ssot.thinkpadL14.location;
+            machine = ssot.thinkpadL14;
           };
           modules = [
             # HW and base configuration

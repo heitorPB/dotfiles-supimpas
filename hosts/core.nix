@@ -1,5 +1,5 @@
 # Configurations and options for all hosts
-{ inputs, pkgs, location, ssot, ... }:
+{ inputs, pkgs, machine, ... }:
 {
   # Import nix.nix here to clean up flakes.nix
   imports = [ ../shared/nix.nix ];
@@ -67,10 +67,10 @@
   services.timesyncd.enable = true;
 
   # Set time zone
-  time.timeZone = location.timezone;
+  time.timeZone = machine.location.timezone;
   environment.variables = {
-    CURRENT_CITY = location.city + ", " + location.country;
-    CURRENT_GEO = location.latitude + ":" + location.longitude;
+    CURRENT_CITY = machine.location.city + ", " + machine.location.country;
+    CURRENT_GEO = machine.location.latitude + ":" + machine.location.longitude;
   };
 
   # Internationalisation properties.

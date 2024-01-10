@@ -23,4 +23,11 @@
 
   # XDG-Portal (for dialogs & screensharing).
   xdg.portal.wlr.enable = true;
+
+  # Packages for machines with a seat
+  environment.systemPackages = with pkgs; [
+    alacritty # Terminal emulator
+
+    networkmanagerapplet # NetworkManager Systray
+  ];
 }

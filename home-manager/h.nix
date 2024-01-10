@@ -256,13 +256,15 @@
     config = rec {
       modifier = "Mod4";
       # Use kitty as default terminal
-      terminal = "kitty"; 
+      terminal = "alacritty";
       startup = [
         # Launch Firefox on start
         {command = "firefox";}
       ];
     };
   };
+
+  # TODO: add my btop config here, only if has seat
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "22.05";

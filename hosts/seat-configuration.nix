@@ -29,5 +29,7 @@
     alacritty # Terminal emulator
 
     networkmanagerapplet # NetworkManager Systray
+
+    firefox-bin # Could not get a cache miss :(
   ];
 }

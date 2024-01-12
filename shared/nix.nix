@@ -15,6 +15,7 @@
 
       # Add extra caches
       substituters = [
+        # https://cache.nixos.org is included by default
         # github:nix-community/*
         "https://nix-community.cachix.org/"
       ];

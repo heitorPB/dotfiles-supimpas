@@ -223,7 +223,8 @@
   users.users.h = {
     uid = 1000;
     isNormalUser = true;
-    extraGroups = [ "wheel" "podman" "systemd-journal" "networkmanager" ]; # systemd-journal is some kind of bug: i shouldn't need to be in it (see man journalctl)
+    # systemd-journal is some kind of bug: i shouldn't need to be in it (see man journalctl)
+    extraGroups = [ "wheel" "podman" "systemd-journal" "networkmanager" ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJxMuFUrQujzveHDbM8etG1A2rQhA8i2KwM0j2BiFx0K h@alien"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmUxVAr/I2+Fdw2oxpKhzlt+tSIojo+yAbzzmACbKRh h@L14"

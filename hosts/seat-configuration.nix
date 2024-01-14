@@ -33,11 +33,27 @@
     config.common.default = "*";
   };
 
-  # Packages for machines with a seat
+  # Audio
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+
+    # Allow only users in the audio group to have access
+    systemWide = false;
+  };
+  # Optional and recommended to get near realtime, e.g. for PulseAudio audio
+  security.rtkit.enable = true;
+
+  # Extra packages for machines with a seat
   environment.systemPackages = with pkgs; [
     alacritty # Terminal emulator
 
     networkmanagerapplet # NetworkManager Systray
+    lxqt.pavucontrol-qt # GUI for audio control
+    qpwgraph # Graph based GUI to connect Audio sinks and outputs
 
     firefox-bin # Could not get a cache hit :(
   ];

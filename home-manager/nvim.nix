@@ -61,7 +61,21 @@
           -- Basic configuration for some LSP servers
           add_lsp("ansible-language-server", lspconfig.ansiblels, {})
           add_lsp("bash-language-server", lspconfig.bashls, {})
-          add_lsp("gopls", lspconfig.gopls, {})
+
+          local gopls_config = {
+            settings = {
+              gopls = {
+                analyses = {
+                  unusedparams = true,
+                  -- fieldalignment = true, -- structs can use less memory if variables are aligned
+                  unusedvariable = true,
+                },
+                staticcheck = true,
+                gofumpt = true,
+              },
+            },
+          }
+          add_lsp("gopls", lspconfig.gopls, gopls_config)
 
           local pylsp_config = {
               settings = {

@@ -259,8 +259,13 @@
       terminal = "alacritty";
       startup = [
         # Launch Firefox on start
-        {command = "firefox";}
+        { command = "firefox"; }
       ];
+      input = {
+        # Keyboard settings. TODO: make it configurable
+        "*" = { xkb_layout = "br"; xkb_variant = "abnt2"; xkb_model = "thinkpad"; };
+        # TODO: add touchpad if it exists
+      };
     };
   };
 

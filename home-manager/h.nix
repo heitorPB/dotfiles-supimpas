@@ -254,13 +254,28 @@
   wayland.windowManager.sway = mkIf (seat != null) {
     enable = true;
     config = rec {
-      modifier = "Mod4";
-      # Use kitty as default terminal
+      modifier = "Mod4"; # A.K.A useless windows key.
       terminal = "alacritty";
       startup = [
         # Launch Firefox on start
         { command = "firefox"; }
       ];
+      bars = [{
+        fonts = {
+          names = [ "Font Awesome 5 Free" ];
+          size = 9.0;
+        };
+        statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-main.toml";
+        colors = {
+          separator = "#666666";
+          background = "#222222dd";
+          statusline = "#dddddd";
+          focusedWorkspace = { background = "#0088CC"; border = "#0088CC"; text = "#ffffff"; };
+          activeWorkspace = { background = "#333333"; border = "#333333"; text = "#ffffff"; };
+          inactiveWorkspace = { background = "#333333"; border = "#333333"; text = "#888888"; };
+          urgentWorkspace = { background = "#2f343a"; border = "#900000"; text = "#ffffff"; };
+        };
+      }];
       input = {
         # Keyboard settings. TODO: make it configurable
         "*" = { xkb_layout = "br"; xkb_variant = "abnt2"; xkb_model = "thinkpad"; };
@@ -268,6 +283,17 @@
       };
     };
   };
+
+  # TODO: move this to i3status.nix
+  programs.i3status-rust = mkIf (seat != null) {
+    enable = true;
+    bars = {
+      main = {
+        settings = { theme.theme = "solarized-dark"; icons.icons= "awesome5" };
+        blocks = [];
+      };
+    };
+   };
 
   # TODO: add my btop config here, only if has seat
 

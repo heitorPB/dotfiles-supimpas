@@ -289,11 +289,14 @@
     enable = true;
     bars = {
       main = {
-        settings = { theme.theme = "solarized-dark"; icons.icons= "awesome5" };
-        blocks = [];
+        settings = {
+          theme.theme = "solarized-dark";
+          icons.icons = "awesome5";
+          blocks = [ ];
+        };
       };
     };
-   };
+  };
 
   # TODO: add my btop config here, only if has seat
 

@@ -60,7 +60,7 @@
 
   # Fonts.
   fonts = {
-    #enableDefaultPackages = true; # Fonts you expect every distro to have. TODO: this is broken as of now :(
+    enableDefaultPackages = true; # Fonts you expect every distro to have.
     packages = with pkgs; [
       #borg-sans-mono
       cantarell-fonts

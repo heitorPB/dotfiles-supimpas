@@ -264,7 +264,7 @@
       bars = [{
         fonts = {
           names = [ "Font Awesome 5 Free" ];
-          size = 9.0;
+          size = 12.0;
         };
         #trayOutput = "*";
         statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-main.toml";
@@ -295,45 +295,45 @@
         settings = {
           theme.theme = "solarized-dark";
           icons.icons = "awesome5";
-          blocks = [
-            {
-              block = "cpu";
-              interval = 2;
-              format = " $icon $utilization ($frequency) ";
-              # TODO: add temperature
-            }
-            {
-              block = "memory";
-              interval = 2;
-              format = " $icon $mem_used/$mem_total ($mem_used_percents.eng(w:1)) "
-              format_alt = " $icon_swap $swap_used.eng(w:3,u:B,p:Mi)/$swap_total.eng(w:3,u:B,p:Mi)($swap_used_percents.eng(w:2)) "
-              warning_mem = 75;
-              critical_mem = 90;
-            }
-            {
-              block = "disk_space";
-              interval = 20;
-              format = "$icon $available";
-              path = "/";
-              warning = 20.0;
-              alert = 10.0;
-            }
-            { block = "sound"; }
-            {
-              block = "sound";
-              device_kind = "source"; # Microphone is a source
-            }
-            {
-              block = "battery";
-              interval = 5;
-            }
-            {
-              block = "custom";
-              interval = 1;
-              command = "date '+%a %b %d %k:%M:%S %:::z'";
-            }
-          ];
         };
+        blocks = [
+          {
+            block = "cpu";
+            interval = 2;
+            format = "$icon $utilization ($frequency.eng(w:1))";
+            # TODO: add temperature
+          }
+          {
+            block = "memory";
+            interval = 2;
+            format = "$icon $mem_used/$mem_total ($mem_used_percents.eng(w:1))";
+            format_alt = "$icon_swap $swap_used.eng(w:3,u:B,p:Mi)/$swap_total.eng(w:3,u:B,p:Mi) ($swap_used_percents.eng(w:1))";
+            warning_mem = 75;
+            critical_mem = 90;
+          }
+          {
+            block = "disk_space";
+            interval = 20;
+            format = "$icon $available";
+            path = "/";
+            warning = 20.0;
+            alert = 10.0;
+          }
+          { block = "sound"; }
+          {
+            block = "sound";
+            device_kind = "source"; # Microphone is a source
+          }
+          {
+            block = "battery";
+            interval = 5;
+          }
+          {
+            block = "time";
+            interval = 1;
+            format = "$icon $timestamp.datetime(f:'%a %b %d %H:%M:%S %:::z')";
+          }
+        ];
       };
     };
   };

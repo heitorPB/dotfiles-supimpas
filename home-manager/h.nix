@@ -295,7 +295,44 @@
         settings = {
           theme.theme = "solarized-dark";
           icons.icons = "awesome5";
-          blocks = [ ];
+          blocks = [
+            {
+              block = "cpu";
+              interval = 2;
+              format = " $icon $utilization ($frequency) ";
+              # TODO: add temperature
+            }
+            {
+              block = "memory";
+              interval = 2;
+              format = " $icon $mem_used/$mem_total ($mem_used_percents.eng(w:1)) "
+              format_alt = " $icon_swap $swap_used.eng(w:3,u:B,p:Mi)/$swap_total.eng(w:3,u:B,p:Mi)($swap_used_percents.eng(w:2)) "
+              warning_mem = 75;
+              critical_mem = 90;
+            }
+            {
+              block = "disk_space";
+              interval = 20;
+              format = "$icon $available";
+              path = "/";
+              warning = 20.0;
+              alert = 10.0;
+            }
+            { block = "sound"; }
+            {
+              block = "sound";
+              device_kind = "source"; # Microphone is a source
+            }
+            {
+              block = "battery";
+              interval = 5;
+            }
+            {
+              block = "custom";
+              interval = 1;
+              command = "date '+%a %b %d %k:%M:%S %:::z'";
+            }
+          ];
         };
       };
     };

@@ -257,14 +257,16 @@
       modifier = "Mod4"; # A.K.A useless windows key.
       terminal = "alacritty";
       startup = [
-        # Launch Firefox on start
-        { command = "firefox"; }
+        # NetWorkManager Applet on start: useless, does not work with swaybar :clown-face:
+        { command = "nm-applet --indicator"; always = true; }
       ];
+
       bars = [{
         fonts = {
           names = [ "Font Awesome 5 Free" ];
           size = 9.0;
         };
+        #trayOutput = "*";
         statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-main.toml";
         colors = {
           separator = "#666666";
@@ -276,6 +278,7 @@
           urgentWorkspace = { background = "#2f343a"; border = "#900000"; text = "#ffffff"; };
         };
       }];
+
       input = {
         # Keyboard settings. TODO: make it configurable
         "*" = { xkb_layout = "br"; xkb_variant = "abnt2"; xkb_model = "thinkpad"; };

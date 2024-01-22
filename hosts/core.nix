@@ -176,6 +176,7 @@
     (python3.withPackages (p: with p; [
       ipython
       #python-lsp-server # Use it in a per-project dev shell
+      #python-lsp-ruff
     ]))
 
     # Golang and its language-server

@@ -71,6 +71,9 @@
             ./hosts/core.nix
             ./hosts/seat-configuration.nix
 
+            # Use desktop as remove builder
+            ./shared/nix-buildMachines-desk03.nix
+
             # ZFS on impermanence from Chaotic
             chaotic.nixosModules.default
             impermanence.nixosModules.impermanence
@@ -80,7 +83,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager.users.h = import ./home-manager/h.nix {
-                # TODO: move these to a file in the laptop dir
+                # TODO: move these to a file in the laptop dir? Or to SSOT?
                 #battery = "BAT0";
                 seat = {
                   notificationX = "right";

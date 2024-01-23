@@ -74,6 +74,8 @@
             # Use desktop as remove builder
             ./shared/nix-buildMachines-desk03.nix
 
+            ./shared/power-saving-laptop.nix
+
             # ZFS on impermanence from Chaotic
             chaotic.nixosModules.default
             impermanence.nixosModules.impermanence

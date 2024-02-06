@@ -8,29 +8,51 @@
       # Tree-sitter, its grammars, and Lua configuration
       {
         plugin = (nvim-treesitter.withPlugins (plugins: with plugins; [
+          arduino
+          awk
           bash
+          beancount
           cmake
           cpp
+          css
+          csv
+          dhall
+          diff # For diff "patches"
           dockerfile
+          fish
+          git_config
           git_rebase
           gitattributes
+          gitcommit
           gitignore
           go
+          gomod
+          gosum
+          gowork
+          gpg # For gpg configuration files
           hcl
+          html
+          ini
+          jq
           json
+          julia
           latex
           ledger
           lua
           make
           markdown
+          mermaid
           nix
           python
           regex
+          requirements # For Python's requirements.txt
           rst
           rust
           sql
           ssh_config
+          terraform
           toml
+          udev # For udev rules
           vim
           yaml
         ]));

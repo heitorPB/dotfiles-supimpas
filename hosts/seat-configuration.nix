@@ -62,7 +62,7 @@
   fonts = {
     enableDefaultPackages = true; # Fonts you expect every distro to have.
     packages = with pkgs; [
-      #borg-sans-mono
+      borg-sans-mono
       cantarell-fonts
       droid-sans-mono-nerdfont
       fira

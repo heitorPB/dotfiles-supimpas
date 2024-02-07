@@ -194,6 +194,52 @@
     '';
   };
 
+  programs.alacritty = mkIf (seat != null) {
+    enable = true;
+    settings = mkOptionDefault {
+      font = {
+        normal = {
+          family = "Borg Sans Mono";
+        };
+        size = 11.0;
+      };
+
+      #window.opacity = 0.9;
+
+      #shell = {
+      #  program = "${fish}";
+      #  args = [ "--login" ];
+      #};
+
+      colors = {
+        primary = {
+          background = "#161821";
+          foreground = "#d2d4de";
+        };
+        normal = {
+          black = "#161821";
+          red = "#e27878";
+          green = "#b4be82";
+          yellow = "#e2a478";
+          blue = "#84a0c6";
+          magenta = "#a093c7";
+          cyan = "#89b8c2";
+          white = "#c6c8d1";
+        };
+        bright = {
+          black = "#6b7089";
+          red = "#e98989";
+          green = "#c0ca8e";
+          yellow = "#e9b189";
+          blue = "#91acd1";
+          magenta = "#ada0d3";
+          cyan = "#95c4ce";
+          white = "#d2d4de";
+        };
+      };
+    };
+  };
+
   # TODO: move this to a tmux.nix
   # Write the Tmux configuration file directly. Not a big fan of having this global
   home.file.".tmux.conf".text = ''

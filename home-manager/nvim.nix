@@ -124,7 +124,7 @@
       }
 
       # Color theme
-      vim-colors-solarized
+      catppuccin-nvim
 
       # Improve Nix'ing: syntax highlight, filetype detection, indentation
       ansible-vim
@@ -141,12 +141,12 @@
 
     # My forever configs for .config/nvim/init.vim
     extraConfig = ''
-      colorscheme solarized
+      colorscheme catppuccin "catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 
       let mapleader=","
 
       set number       " always shows line numbers
-      set colorcolumn=80
+      set colorcolumn=80,100
       set clipboard+=unnamedplus
       set ignorecase   " Ignore case of searches
       set smartcase    " no ignorecase if Uppercase char present

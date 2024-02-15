@@ -1,7 +1,7 @@
 { gitKey ? null /* GPG key to use */
 , seat ? null /* Do we have wayland? */
 }:
-{ config, inputs, lib, pkgs, ssot, ... }: with lib; {
+{ config, inputs, lib, pkgs, ssot, machine, ... }: with lib; {
   imports = [
     ./nvim.nix
   ];
@@ -297,6 +297,7 @@
     set-option -g focus-events on
   '';
 
+  # TODO: move this to a sway.nix
   wayland.windowManager.sway = mkIf (seat != null) {
     enable = true;
     config = rec {
@@ -374,6 +375,13 @@
             block = "battery";
             interval = 5;
           }
+          #{
+          #  # i3status-rs is buggy with gammastep :(
+          #  # https://github.com/greshake/i3status-rust/issues/1397
+          #  block = "hueshift"; # Screen temperature
+          #  step = 50;
+          #  click_temp = 4000;
+          #}
           {
             block = "time";
             interval = 1;
@@ -384,7 +392,25 @@
     };
   };
 
-  # TODO: add my btop config here, only if has seat
+  # Screen temperature
+  services.gammastep = mkIf (seat != null) {
+    enable = true;
+    provider = "manual";
+    temperature.day = 5500;
+    temperature.night = 4500;
+    latitude = machine.location.latitude;
+    longitude = machine.location.longitude;
+    settings = {
+      general = {
+        adjustment-method = "wayland";
+        brightness-night = 0.8;
+        gamma-night = 0.9;
+        location-provider = "manual";
+      };
+    };
+  };
+
+  # TODO: add my btop config here, only if has seat?
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "22.05";

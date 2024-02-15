@@ -84,6 +84,7 @@
             # home-manager stuff
             home-manager.nixosModules.home-manager
             {
+              home-manager.extraSpecialArgs = { machine = ssot.thinkpadL14; }; # TODO: how to inherit this?
               home-manager.users.h = import ./home-manager/h.nix {
                 # TODO: move these to a file in the laptop dir? Or to SSOT?
                 #battery = "BAT0";

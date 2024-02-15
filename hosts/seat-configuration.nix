@@ -14,6 +14,12 @@
     useDHCP = false;
   };
 
+  # Bluetooth.
+  hardware.bluetooth = {
+    enable = true;
+  };
+  services.blueman.enable = true;
+
   # GPU
   hardware.opengl = {
     enable = true;
@@ -44,6 +50,7 @@
     # Allow only users in the audio group to have access
     systemWide = false;
   };
+  hardware.pulseaudio.enable = false;
   # Optional and recommended to get near realtime, e.g. for PulseAudio audio
   security.rtkit.enable = true;
 
@@ -51,7 +58,9 @@
   environment.systemPackages = with pkgs; [
     alacritty # Terminal emulator
 
+    bluez-tools # Bluetooth tools
     networkmanagerapplet # NetworkManager Systray
+
     lxqt.pavucontrol-qt # GUI for audio control
     qpwgraph # Graph based GUI to connect Audio sinks and outputs
 

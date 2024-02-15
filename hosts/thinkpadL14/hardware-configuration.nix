@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "sd_mod" "sdhci_pci" ];
@@ -13,31 +14,34 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-# Using impermanence, no need to setup / here
-# fileSystems."/" =
-#   { device = "zroot/ROOT/empty";
-#     fsType = "zfs";
-#   };
+  # Using impermanence, no need to setup / here
+  # fileSystems."/" =
+  #   { device = "zroot/ROOT/empty";
+  #     fsType = "zfs";
+  #   };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/1D99-4F8C";
+    {
+      device = "/dev/disk/by-uuid/1D99-4F8C";
       fsType = "vfat";
     };
 
   fileSystems."/nix" =
-    { device = "zroot/ROOT/nix";
+    {
+      device = "zroot/ROOT/nix";
       fsType = "zfs";
       neededForBoot = true;
     };
 
   fileSystems."/var/persistent" =
-    { device = "zroot/data/persistent";
+    {
+      device = "zroot/data/persistent";
       fsType = "zfs";
       neededForBoot = true;
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/a838387a-82e7-4382-8d5d-6820986ac8d0"; } ];
+    [{ device = "/dev/disk/by-uuid/a838387a-82e7-4382-8d5d-6820986ac8d0"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

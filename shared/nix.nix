@@ -24,7 +24,7 @@
       ];
 
       # Allow my user to nix around
-      trusted-users = ["root" "h"];
+      trusted-users = [ "root" "h" ];
     };
 
     gc = {

@@ -4,6 +4,7 @@
 { config, inputs, lib, pkgs, ssot, machine, ... }: with lib; {
   imports = [
     ./nvim.nix
+    ./starship.nix
   ];
 
   # home.packages = with pkgs; [ steam ];

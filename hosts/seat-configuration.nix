@@ -74,13 +74,15 @@
       borg-sans-mono
       cantarell-fonts
       droid-sans-mono-nerdfont
-      fira
-      fira-code
-      fira-code-symbols
+      #fira
+      #fira-code
+      #fira-code-symbols
+      fira-code-nerdfont
       #font-awesome_4
       font-awesome_5
       noto-fonts
       noto-fonts-cjk
+      noto-fonts-color-emoji
       #open-fonts
       roboto
       #ubuntu_font_family

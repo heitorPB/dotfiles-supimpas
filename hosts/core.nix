@@ -153,6 +153,7 @@
     pciutils # For lspci(8)
     ripgrep # Fancier grep(1)
     rsync
+    tree # List directories in a nice looking tree structure
     wget
     wireguard-tools
 

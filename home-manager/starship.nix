@@ -11,8 +11,9 @@
 
     settings = {
       add_newline = true;
+
       format = ''
-        $battery$username$sudo at $hostname$directory$git_branch$git_status$direnv
+        $battery$username$sudo at $hostname$directory$git_branch$git_status$nix_shell$direnv
         $character
       '';
 
@@ -41,17 +42,27 @@
         disabled = false;
         symbol = "☢️";
         style = "bold bright-red";
-        format = "[ $symbol]($style)";
+        format = " [$symbol]($style)";
       };
 
       hostname = {
         ssh_only = false;
         disabled = false;
+        ssh_symbol = "🌐";
+        format = "[$hostname $ssh_symbol]($style) in ";
       };
 
       directory = {
         truncation_length = 0;
         truncate_to_repo = false;
+      };
+
+      nix_shell = {
+        disabled = false;
+        symbol = "❄️"; 
+        format = "[$symbol $state( \($name\))]($style) ";
+        impure_msg = "impure";
+        pure_msg = "";
       };
 
       # TODO: direnv is buggy with starsgip <1.18:

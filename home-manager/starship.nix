@@ -48,8 +48,8 @@
       hostname = {
         ssh_only = false;
         disabled = false;
-        ssh_symbol = "🌐";
-        format = "[$hostname $ssh_symbol]($style) in ";
+        ssh_symbol = " 🌐";
+        format = "[$hostname$ssh_symbol]($style) in ";
       };
 
       directory = {

@@ -112,7 +112,7 @@
   # Export podman socket for rootless mode
   home.sessionVariables = {
     # DOCKER_HOST is needed for docker-compose commands to use my user's socket
-    # TODO don't hardcode this
+    # TODO don't hardcode this, get user id from ssot?
     DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
   };
 
@@ -120,7 +120,7 @@
   programs.bash = {
     enable = true;
     shellOptions = [ "nocaseglob" ];
-    profileExtra = (builtins.readFile ./ps1.sh) + ''
+    profileExtra = ''
       # Create a new directory and enter it
       function mkd()
       {
@@ -166,9 +166,6 @@
       "\e[B": history-search-forward
       "\e[A": history-search-backward
 
-      # Do not autocomplete hidden files unless the pattern explicitly begins with a dot
-      set match-hidden-files off
-
       # Show all autocomplete results at once
       set page-completions off
 
@@ -189,9 +186,6 @@
       set input-meta on
       set output-meta on
       set convert-meta off
-
-      # Use Alt/Meta + Delete to delete the preceding word
-      "\e[3;3~": kill-word
     '';
   };
 
@@ -349,7 +343,7 @@
             block = "cpu";
             interval = 2;
             format = "$icon $utilization ($frequency.eng(w:1))";
-            # TODO: add temperature
+            # TODO: add CPU/GPU temperature
           }
           {
             block = "memory";

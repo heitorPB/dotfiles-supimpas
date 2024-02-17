@@ -1,4 +1,8 @@
-{ config, inputs, lib, pkgs, machine, ... }: with lib; {
+{ config, inputs, lib, pkgs, machine, ... }: with lib;
+let
+  hasSeat = machine.seat != null;
+in
+{
   imports = [
     ./nvim.nix
     ./starship.nix
@@ -187,7 +191,7 @@
     '';
   };
 
-  programs.alacritty = mkIf (machine.seat != null) {
+  programs.alacritty = mkIf (hasSeat) {
     enable = true;
     settings = mkOptionDefault {
       font = {
@@ -291,7 +295,7 @@
   '';
 
   # TODO: move this to a sway.nix
-  wayland.windowManager.sway = mkIf (machine.seat != null) {
+  wayland.windowManager.sway = mkIf (hasSeat) {
     enable = true;
     config = rec {
       modifier = "Mod4"; # A.K.A useless windows key.
@@ -328,7 +332,7 @@
   };
 
   # TODO: move this to i3status.nix
-  programs.i3status-rust = mkIf (machine.seat != null) {
+  programs.i3status-rust = mkIf (hasSeat) {
     enable = true;
     bars = {
       main = {
@@ -417,7 +421,7 @@
   };
 
   # Screen temperature
-  services.gammastep = mkIf (machine.seat != null) {
+  services.gammastep = mkIf (hasSeat) {
     enable = true;
     provider = "manual";
     temperature.day = 5500;

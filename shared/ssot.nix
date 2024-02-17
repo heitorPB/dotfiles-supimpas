@@ -9,6 +9,7 @@ rec {
     hostname = "desk03";
     location = geolocation.piracicaba;
     gitKey = "heitorpbittencourt@gmail.com";
+    seat = null;
   };
 
   thinkpadL14 = {

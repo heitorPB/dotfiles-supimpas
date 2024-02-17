@@ -349,13 +349,12 @@
             block = "cpu";
             interval = 2;
             format = "$icon $utilization ($frequency.eng(w:1))";
-            # TODO: add CPU/GPU temperature
           }
         ] ++ (lists.optional (cpuSensor != null)
           {
             block = "temperature";
-            format = "$icon $average";
-            good = 35;
+            format = "$icon $max";
+            good = 40; # Avove this temp, bg gets yellow
             idle = 50; # Above this temp, bg gets blue
             info = 65; # Above this temp, bg gets yellow
             warning = 80; # Above this temp, bg gets red
@@ -373,8 +372,8 @@
         ) ++ (lists.optional (gpuSensor != null)
           {
             block = "temperature";
-            format = "$icon $average";
-            good = 35;
+            format = "$icon $max";
+            good = 40; # Avove this temp, bg gets yellow
             idle = 50; # Above this temp, bg gets blue
             info = 65; # Above this temp, bg gets yellow
             warning = 80; # Above this temp, bg gets red

@@ -148,6 +148,7 @@
     fd # Fancier find(1)
     file
     killall
+    lm_sensors # Show my temperatures
     kmon # Kernel monitoring
     man-pages # More manuals
     pciutils # For lspci(8)

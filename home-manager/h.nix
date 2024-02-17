@@ -1,4 +1,10 @@
 { gitKey ? null /* GPG key to use */
+  /* Below are from specs.nix */
+, amdGpu ? null
+, battery ? null /* If we have battery, which one? */
+, cpuSensor ? null /* CPU sensor for lm_sensor based utilities */
+, gpuSensor ? null /* CPU sensor for lm_sensor based utilities */
+, mainNetworkInterface ? null /* Main net device, should never be empty but :shrug: */
 , seat ? null /* Do we have wayland? */
 }:
 { config, inputs, lib, pkgs, ssot, machine, ... }: with lib; {
@@ -345,11 +351,42 @@
             format = "$icon $utilization ($frequency.eng(w:1))";
             # TODO: add CPU/GPU temperature
           }
+        ] ++ (lists.optional (cpuSensor != null)
+          {
+            block = "temperature";
+            format = "$icon $average";
+            good = 35;
+            idle = 50; # Above this temp, bg gets blue
+            info = 65; # Above this temp, bg gets yellow
+            warning = 80; # Above this temp, bg gets red
+            chip = cpuSensor;
+            interval = 5;
+          }
+        ) ++ (lists.optional (amdGpu != null)
+          {
+            # GPU utilization
+            block = "amd_gpu";
+            device = amdGpu;
+            format_alt = "$icon $vram_used.eng(w:2,u:B,p:Mi)/$vram_total.eng(w:1,u:B,p:Gi)";
+            interval = 2;
+          }
+        ) ++ (lists.optional (gpuSensor != null)
+          {
+            block = "temperature";
+            format = "$icon $average";
+            good = 35;
+            idle = 50; # Above this temp, bg gets blue
+            info = 65; # Above this temp, bg gets yellow
+            warning = 80; # Above this temp, bg gets red
+            chip = gpuSensor;
+            interval = 5;
+          }
+        ) ++ [
           {
             block = "memory";
             interval = 2;
-            format = "$icon $mem_used/$mem_total ($mem_used_percents.eng(w:1))";
-            format_alt = "$icon_swap $swap_used.eng(w:3,u:B,p:Mi)/$swap_total.eng(w:3,u:B,p:Mi) ($swap_used_percents.eng(w:1))";
+            format = "$icon $mem_used.eng(w:2,u:B,p:Gi)/$mem_total.eng(w:2,u:B,p:Gi) ($mem_used_percents.eng(w:1))";
+            format_alt = "$icon_swap $swap_used.eng(w:2,u:B,p:Gi)/$swap_total.eng(w:2,u:B,p:Gi) ($swap_used_percents.eng(w:1))";
             warning_mem = 75;
             critical_mem = 90;
           }

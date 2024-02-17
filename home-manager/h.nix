@@ -1,13 +1,4 @@
-{ gitKey ? null /* GPG key to use */
-  /* Below are from specs.nix */
-, amdGpu ? null
-, battery ? null /* If we have battery, which one? */
-, cpuSensor ? null /* CPU sensor for lm_sensor based utilities */
-, gpuSensor ? null /* CPU sensor for lm_sensor based utilities */
-, mainNetworkInterface ? null /* Main net device, should never be empty but :shrug: */
-, seat ? null /* Do we have wayland? */
-}:
-{ config, inputs, lib, pkgs, ssot, machine, ... }: with lib; {
+{ config, inputs, lib, pkgs, machine, ... }: with lib; {
   imports = [
     ./nvim.nix
     ./starship.nix
@@ -53,9 +44,10 @@
     enable = true;
     userName = "Heitor Pascoal de Bittencourt";
     userEmail = "heitorpbittencourt@gmail.com";
-    signing = mkIf (gitKey != null) {
-      key = gitKey;
+    signing = mkIf (machine.gitKey != null) {
+      key = machine.gitKey;
       signByDefault = true;
+      # TODO usse ssh key?
     };
     ignores = [
       # Direnv stuff
@@ -100,7 +92,7 @@
       dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d";
     };
     extraConfig = {
-      commit = { gpgsign = gitKey != null; };
+      commit = { gpgsign = machine.gitKey != null; };
       core = { editor = "nvim"; };
       diff = { renames = "copies"; };
       fetch = { prune = true; };
@@ -109,7 +101,7 @@
       merge = { log = 20; tool = "nvimdiff"; conflictStyle = "diff3"; };
       pull = { ff = "only"; rebase = true; };
       rerere = { enabled = true; };
-      tag = { gpgsign = gitKey != null; };
+      tag = { gpgsign = machine.gitKey != null; };
     };
   };
   # My git alias:
@@ -195,7 +187,7 @@
     '';
   };
 
-  programs.alacritty = mkIf (seat != null) {
+  programs.alacritty = mkIf (machine.seat != null) {
     enable = true;
     settings = mkOptionDefault {
       font = {
@@ -299,7 +291,7 @@
   '';
 
   # TODO: move this to a sway.nix
-  wayland.windowManager.sway = mkIf (seat != null) {
+  wayland.windowManager.sway = mkIf (machine.seat != null) {
     enable = true;
     config = rec {
       modifier = "Mod4"; # A.K.A useless windows key.
@@ -336,7 +328,7 @@
   };
 
   # TODO: move this to i3status.nix
-  programs.i3status-rust = mkIf (seat != null) {
+  programs.i3status-rust = mkIf (machine.seat != null) {
     enable = true;
     bars = {
       main = {
@@ -350,34 +342,34 @@
             interval = 2;
             format = "$icon $utilization ($frequency.eng(w:1))";
           }
-        ] ++ (lists.optional (cpuSensor != null)
+        ] ++ (lists.optional (machine.cpuSensor != null)
           {
             block = "temperature";
             format = "$icon $max";
-            good = 40; # Avove this temp, bg gets yellow
+            good = 40;
             idle = 50; # Above this temp, bg gets blue
             info = 65; # Above this temp, bg gets yellow
             warning = 80; # Above this temp, bg gets red
-            chip = cpuSensor;
+            chip = machine.cpuSensor;
             interval = 5;
           }
-        ) ++ (lists.optional (amdGpu != null)
+        ) ++ (lists.optional (machine.amdGpu != null)
           {
             # GPU utilization
             block = "amd_gpu";
-            device = amdGpu;
+            device = machine.amdGpu;
             format_alt = "$icon $vram_used.eng(w:2,u:B,p:Mi)/$vram_total.eng(w:1,u:B,p:Gi)";
             interval = 2;
           }
-        ) ++ (lists.optional (gpuSensor != null)
+        ) ++ (lists.optional (machine.gpuSensor != null)
           {
             block = "temperature";
             format = "$icon $max";
-            good = 40; # Avove this temp, bg gets yellow
+            good = 40;
             idle = 50; # Above this temp, bg gets blue
             info = 65; # Above this temp, bg gets yellow
             warning = 80; # Above this temp, bg gets red
-            chip = gpuSensor;
+            chip = machine.gpuSensor;
             interval = 5;
           }
         ) ++ [
@@ -405,6 +397,7 @@
           {
             block = "battery";
             interval = 5;
+            device = machine.battery;
           }
           #{
           #  # i3status-rs is buggy with gammastep :(
@@ -424,7 +417,7 @@
   };
 
   # Screen temperature
-  services.gammastep = mkIf (seat != null) {
+  services.gammastep = mkIf (machine.seat != null) {
     enable = true;
     provider = "manual";
     temperature.day = 5500;

@@ -2,15 +2,13 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
-# TODO: remove lib from above and add ssot
-
+{ config, pkgs, ... }:
 {
   imports = [ ./hardware-configuration.nix ];
   # Microcode updates.
   hardware.cpu.amd.updateMicrocode = true;
 
-  networking.hostName = "L14"; # Define your hostname. # TODO use ssot # TODO: move to core.nix
+  # required for zfs. From head -c 8 /etc/machine-id
   networking.hostId = "5a824f81";
 
   # Machine specific packages

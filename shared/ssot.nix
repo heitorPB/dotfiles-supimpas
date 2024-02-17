@@ -2,17 +2,28 @@
 _:
 
 # TODO: turn this into a function for correctness
-# TODO: get rid of specs.nix ans just use this 
 rec {
   geolocation = import ./geolocation.nix;
 
   desktop = {
     hostname = "desk03";
     location = geolocation.piracicaba;
+    gitKey = "heitorpbittencourt@gmail.com";
   };
 
   thinkpadL14 = {
     hostname = "L14";
     location = geolocation.piracicaba;
+    gitKey = "heitorpbittencourt@gmail.com";
+
+    amdGpu = "card0";
+    battery = "BAT0";
+    cpuSensor = "k10temp-pci-00c3";
+    gpuSensor = "amdgpu-pci-0700";
+    mainNetworkInterface = "wlan0";
+    seat = {
+      notificationX = "right";
+      notificationY = "top";
+    };
   };
 }

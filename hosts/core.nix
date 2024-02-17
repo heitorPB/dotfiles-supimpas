@@ -15,6 +15,8 @@
     #"vm.max_map_count" = 2147483642; # helps with Wine ESYNC/FSYNC
   };
 
+  networking.hostName = machine.hostname;
+
   # Use tmpfs for /tmp
   boot.tmp = {
     useTmpfs = true;

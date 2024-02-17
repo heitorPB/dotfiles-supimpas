@@ -50,9 +50,8 @@
             # home-manager stuff
             home-manager.nixosModules.home-manager
             {
-              home-manager.users.h = import ./home-manager/h.nix {
-                gitKey = "heitorpbittencourt@gmail.com";
-              };
+              home-manager.extraSpecialArgs = { machine = ssot.desktop; };
+              home-manager.users.h = import ./home-manager/h.nix;
             }
           ];
         };
@@ -86,7 +85,7 @@
             {
               # TODO: how to inherit this?
               home-manager.extraSpecialArgs = { machine = ssot.thinkpadL14; };
-              home-manager.users.h = import ./home-manager/h.nix (import ./hosts/thinkpadL14/specs.nix);
+              home-manager.users.h = import ./home-manager/h.nix;
             }
           ];
         };

@@ -10,17 +10,15 @@ conky -c ~/.config/conky/conkyrc &
 
 eval $(ssh-agent)
 
-#export LIBVA_DRIVER_NAME=vdpau
 export LIBVA_DRIVER_NAME=nvidia
 export VDPAU_DRIVER=nvidia
 export __NV_PRIME_RENDER_OFFLOAD=1
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export VK_DRIVER_FILES /usr/share/vulkan/icd.d/nvidia_icd.json
+
 
 # network manager systray thing
 nm-applet &
-
-# audio sys tray
-volumeicon &
 
 # power management for laptop:
 mate-power-manager &
@@ -36,6 +34,9 @@ redshift-gtk -l $CURRENT_GEO &
 
 # slstatus
 ~/projects/slstatus/slstatus &
+
+# audio sys tray
+/usr/bin/volumeicon &
 
 while true; do
 	~/projects/dwm/dwm

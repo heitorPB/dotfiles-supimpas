@@ -150,13 +150,14 @@
     fd # Fancier find(1)
     file
     killall
-    lm_sensors # Show my temperatures
     kmon # Kernel monitoring
+    lm_sensors # Show my temperatures
     man-pages # More manuals
     pciutils # For lspci(8)
     ripgrep # Fancier grep(1)
     rsync
     tree # List directories in a nice looking tree structure
+    usbutils # For lsusb(8)
     wget
     wireguard-tools
 
@@ -187,21 +188,20 @@
     #go
     #gopls
 
-    # TODO: consider moving stuff bellow to a separate file and include only
-    #       on machines that need them
-
     # Terraform and its language-server
     #terraform
     #terraform-ls
     # Ansible
     #ansible
 
+    # AWS
+    awscli2
+    #eksctl # AWS EKS
+
     # Clouds should fly
     #flyctl
 
-    # Cloud stuff
-    awscli2
-    #eksctl # AWS EKS
+    # MS Azure
     azure-cli
 
     # Kubernetes clients

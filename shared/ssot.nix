@@ -24,6 +24,12 @@ rec {
     mainNetworkInterface = "wlan0";
     nvmeSensors = [ "nvme-pci-0100" ];
     seat = {
+      # Monitor
+      displayId = "LG Display 0x40A9 Unknown";
+      displayWidth = 1920;
+      displayHeight = 1080;
+      displayRefresh = 60; # In Hz
+
       notificationX = "right";
       notificationY = "top";
     };

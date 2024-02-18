@@ -307,6 +307,26 @@ in
         #{ command = "nm-applet --indicator"; always = true; }
       ];
 
+      # Setup monitors. Get their names with `swaymsg -t get_outputs`
+      output = {
+        "*" = {
+          # Generic output
+          max_render_time = "1";
+          # In 60Hz display, "adaptive_sync" makes electron apps laggy
+          adaptive_sync = "off";
+        };
+        "Samsung Electric Company LC49G95T H4ZRA00081" = {
+          # Samsung G9 ultra wide
+          adaptive_sync = "on";
+          mode = "5120x1440@119.999Hz";
+        };
+        "${machine.seat.displayId}" = with machine.seat; {
+          # Machine's monitor
+          position = "0,0";
+          mode = "${toString displayWidth}x${toString displayHeight}@${toString displayRefresh}Hz";
+        };
+      };
+
       bars = [{
         fonts = {
           names = [ "Font Awesome 5 Free" ];

@@ -301,8 +301,10 @@ in
       modifier = "Mod4"; # A.K.A useless windows key.
       terminal = "alacritty";
       startup = [
-        # NetWorkManager Applet on start: useless, does not work with swaybar :clown-face:
-        { command = "nm-applet --indicator"; always = true; }
+        # List of programs to start with Sway
+
+        ## NetWorkManager Applet: useless, does not work with swaybar :clown-face:
+        #{ command = "nm-applet --indicator"; always = true; }
       ];
 
       bars = [{
@@ -341,6 +343,33 @@ in
           icons.icons = "awesome5";
         };
         blocks = [
+          #{
+          #  block = "toggle";
+          #  format = " $icon";
+          #  command_state = "${nmcli} radio wifi | ${grep} '^d'";
+          #  command_on = "${nmcli} radio wifi off";
+          #  command_off = "${nmcli} radio wifi on";
+          #  interval = 5;
+          #}
+          {
+            # Hardcode wlan0 to show wireless network only if it exists.
+            # The `missing_format` below takes care of not showing anything if
+            # there's no wlan0 device.
+            block = "net";
+            device = "wlan0";
+            format = "$icon $ssid ($signal_strength)";
+            missing_format = "";
+            interval = 5;
+          }
+          {
+            # Net up/down speed
+            block = "net";
+            device = machine.mainNetworkInterface;
+            format = "^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K)";
+            format_alt = " $ip  $ipv6";
+            missing_format = "";
+            interval = 5;
+          }
           {
             block = "cpu";
             interval = 2;
@@ -393,12 +422,25 @@ in
             warning = 20.0;
             alert = 10.0;
           }
-          { block = "sound"; }
+        ] ++ (map
+          (sensor: {
+            block = "temperature";
+            format = "$icon $max";
+            chip = sensor;
+            interval = 3;
+            idle = 37;
+            info = 41;
+            warning = 44;
+          })
+          machine.nvmeSensors
+        ) ++ [
+          { block = "sound"; } # Output volume
           {
             block = "sound";
             device_kind = "source"; # Microphone is a source
           }
           {
+            # TODO make this block only if hasBattery
             block = "battery";
             interval = 5;
             device = machine.battery;

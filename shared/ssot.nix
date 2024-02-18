@@ -22,6 +22,7 @@ rec {
     cpuSensor = "k10temp-pci-00c3";
     gpuSensor = "amdgpu-pci-0700";
     mainNetworkInterface = "wlan0";
+    nvmeSensors = [ "nvme-pci-0100" ];
     seat = {
       notificationX = "right";
       notificationY = "top";

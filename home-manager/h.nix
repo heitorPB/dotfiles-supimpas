@@ -327,9 +327,16 @@ in
         };
       };
 
+      fonts = {
+        names = [ "Fira Sans Mono" "monospace" ];
+        size = 8.0;
+      };
+
       bars = [{
         fonts = {
           names = [ "Font Awesome 5 Free" ];
+          #names = [ "Borg Sans Mono" "Font Awesome 5 Free" ];
+          #names = [ "FiraCode Nerd Font Mono" "Font Awesome 5 Free" ];
           size = 12.0;
         };
         #trayOutput = "*";
@@ -349,6 +356,7 @@ in
         # Keyboard settings. TODO: make it configurable
         "*" = { xkb_layout = "br"; xkb_variant = "abnt2"; xkb_model = "thinkpad"; };
         # TODO: add touchpad if it exists
+        # TODO add Kinesis keyboard
       };
     };
   };
@@ -411,10 +419,27 @@ in
             # GPU utilization
             block = "amd_gpu";
             device = machine.amdGpu;
+            # TODO define format without trailing space
             format_alt = "$icon $vram_used.eng(w:2,u:B,p:Mi)/$vram_total.eng(w:1,u:B,p:Gi)";
             interval = 2;
           }
-        ) ++ (lists.optional (machine.gpuSensor != null)
+        ) ++ [
+          {
+            # Screen brightness
+            block = "backlight";
+            format = "$icon $brightness.eng(w:3)";
+            invert_icons = true; # Needed due to dark theme
+            minimum = 1;
+            cycle = [ 5 25 50 75 100 ];
+          }
+          #{
+          #  # i3status-rs is buggy with gammastep :(
+          #  # https://github.com/greshake/i3status-rust/issues/1397
+          #  block = "hueshift"; # Screen temperature
+          #  step = 50;
+          #  click_temp = 4000;
+          #}
+        ] ++ (lists.optional (machine.gpuSensor != null)
           {
             block = "temperature";
             format = "$icon $max";
@@ -454,9 +479,15 @@ in
           })
           machine.nvmeSensors
         ) ++ [
-          { block = "sound"; } # Output volume
           {
+            # Output volume
             block = "sound";
+            format = "$icon {$volume.eng(w:3) |}";
+          }
+          {
+            # Microphone
+            block = "sound";
+            format = "$icon {$volume.eng(w:3) |}";
             device_kind = "source"; # Microphone is a source
           }
           {
@@ -465,13 +496,15 @@ in
             interval = 5;
             device = machine.battery;
           }
-          #{
-          #  # i3status-rs is buggy with gammastep :(
-          #  # https://github.com/greshake/i3status-rust/issues/1397
-          #  block = "hueshift"; # Screen temperature
-          #  step = 50;
-          #  click_temp = 4000;
-          #}
+          {
+            block = "keyboard_layout";
+            driver = "sway";
+            format = "$layout";
+            mappings = {
+              "\"Portuguese\"" = "pt-br";
+              "\"English\"" = "en";
+            };
+          }
           {
             block = "time";
             interval = 1;
@@ -482,7 +515,7 @@ in
     };
   };
 
-  # Screen temperature
+  # Screen temperature 
   services.gammastep = mkIf (hasSeat) {
     enable = true;
     provider = "manual";

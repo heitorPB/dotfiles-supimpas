@@ -56,6 +56,9 @@
 
   # Extra packages for machines with a seat
   environment.systemPackages = with pkgs; [
+    # Generic HW related
+    glxinfo # Debug OpenGL
+
     alacritty # Terminal emulator
 
     bluez-tools # Bluetooth tools

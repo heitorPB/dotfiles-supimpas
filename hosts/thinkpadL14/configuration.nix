@@ -13,14 +13,46 @@
 
   # Machine specific packages
   environment.systemPackages = with pkgs; [
+    radeontop # Like htop, but for AMD GPUs
+  ];
+
+  boot.kernelParams = [
+    # Force use of the thinkpad_acpi driver for backlight control.
+    # This allows the backlight save/load systemd service to work.
+    "acpi_backlight=native"
+
+    # AMD CPU scaling
+    # https://www.kernel.org/doc/html/latest/admin-guide/pm/amd-pstate.html
+    # https://wiki.archlinux.org/title/CPU_frequency_scaling#amd_pstate
+    # On recent AMD CPUs this can be more energy efficient.
+    "amd_pstate=guided"
+
+    # Load amdgpu at stage 1
+    "amdgpu"
   ];
 
   # AMD GPU
   hardware.opengl.extraPackages = with pkgs; [
+    # VA-API and VDPAU
+    vaapiVdpau
+
+    # AMD ROCm OpenCL runtime
+    rocmPackages.clr
     rocmPackages.clr.icd
+
+    # AMD VLK instead of Mesa radv drivers
+    amdvlk
   ];
-  # TODO: add OpenCL support
-  # TODO: add Vulkan support
+  hardware.opengl.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
+  ];
+
+  environment.variables = {
+    # VAAPI and VDPAU config for accelerated video.
+    # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
+    "VDPAU_DRIVER" = "radeonsi";
+    "LIBVA_DRIVER_NAME" = "radeonsi";
+  };
 
   # USB4 / Thunderbolt
   services.hardware.bolt.enable = true;

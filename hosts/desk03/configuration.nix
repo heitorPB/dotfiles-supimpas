@@ -10,6 +10,9 @@
   # Microcode updates.
   hardware.cpu.intel.updateMicrocode = true;
 
+  # Auto trim SSD. This host does not run ZFS yet
+  services.fstrim.enable = true;
+
   networking = {
     # required for zfs. From head -c 8 /etc/machine-id
     hostId = "fe1f23b8";

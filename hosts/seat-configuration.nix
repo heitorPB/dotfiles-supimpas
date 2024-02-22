@@ -57,6 +57,7 @@
   # Extra packages for machines with a seat
   environment.systemPackages = with pkgs; [
     # Generic HW related
+    acpi
     glxinfo # Debug OpenGL
 
     alacritty # Terminal emulator

@@ -20,11 +20,13 @@
       "/etc/ssh"
       "/var/lib/bluetooth"
       "/var/lib/containers"
+      "/var/lib/cups"
       { directory = "/var/lib/iwd"; mode = "u=rwx,g=,o="; }
       "/var/lib/systemd"
       "/var/lib/upower"
 
       # Not that important but good to keep
+      # TODO: move this to another partition to simplify backup?
       "/var/cache"
       "/var/log"
       "/var/spool"
@@ -42,20 +44,34 @@
     users.h = {
       directories = [
         { directory = ".aws"; mode = "0700"; }
+        { directory = ".gnupg"; mode = "0700"; }
         ".config/asciinema"
         ".config/btop"
-        ".config/qBittorrent"
+        ".config/darktable"
+        ".config/keepassxc"
+        ".config/klavaro"
+        ".config/qBittorrendarktablet"
         ".config/spotify"
-        { directory = ".gnupg"; mode = "0700"; }
+        ".local/share/Anki2"
         ".local/share/containers"
+        ".local/share/klavaro"
         ".local/share/qBittorrent"
         ".local/share/Steam"
         ".local/share/TelegramDesktop"
+        ".mozilla"
         ".ssh"
         "cloud"
         "drive"
         "projects"
         "Downloads"
+
+        # Not that critical, but helpful to keep around.
+        ".cache/anki"
+        ".cache/darktable"
+        ".cache/keepassxc"
+        ".cache/mesa_shader_cache"
+        ".cache/mozilla"
+        ".cache/spotify"
       ];
       files = [
       ];

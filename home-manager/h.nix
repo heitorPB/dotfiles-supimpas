@@ -109,7 +109,12 @@ in
     };
   };
   # My git alias:
-  programs.bash.shellAliases.g = "git";
+  programs.bash.shellAliases = {
+    g = "git";
+    # Image viewer: displays filename, tinted to improve readability, verbose, full screen.
+    feh = "feh --auto-rotate --draw-filename --draw-tinted -V -F";
+    feh-exif = "feh --auto-rotate --draw-filename --draw-exif --draw-tinted -V -F";
+  };
 
   # Export podman socket for rootless mode
   home.sessionVariables = {
@@ -331,6 +336,21 @@ in
         names = [ "Fira Sans Mono" "monospace" ];
         size = 8.0;
       };
+      window = {
+        titlebar = false;
+        hideEdgeBorders = "both"; # Hide window borders adjacent to screen edges
+
+        commands = [
+          # Set some programs as floating
+          { criteria = { app_id = "anki"; }; command = "floating enable"; }
+          { criteria = { app_id = "firefox"; title = "Picture-in-Picture"; }; command = "floating enable; sticky enable"; }
+          { criteria = { app_id = "klavaro"; title = "Klavaro -.*"; }; command = "floating enable"; }
+          { criteria = { app_id = "org.keepassxc.KeePassXC"; }; command = "floating enable"; }
+
+          # Don't lock my screen if there is anything fullscreen, I may be gaiming
+          { criteria = { shell = ".*"; }; command = "inhibit_idle fullscreen"; }
+        ];
+      };
 
       bars = [{
         fonts = {
@@ -534,6 +554,37 @@ in
   };
 
   # TODO: add my btop config here, only if has seat?
+
+  programs.mpv = mkIf hasSeat {
+    enable = true;
+    # For watching animes in 60fps
+    config = {
+      # Temporary & lossless screenshots
+      screenshot-format = "png";
+      screenshot-directory = "/tmp";
+      # for Pipewire (Let's pray for MPV native solution)
+      #ao = "openal";
+      # I don't usually plug my PC in a home-theater
+      audio-channels = "stereo";
+
+      # GPU & Wayland
+      hwdec = "vaapi";
+      vo = "gpu";
+      gpu-context = "waylandvk";
+      gpu-api = "vulkan";
+
+    };
+    bindings = {
+      # Subtitle scalers
+      "P" = "add sub-scale +0.1";
+      "Ctrl+p" = "add sub-scale -0.1";
+
+      # Window helpers
+      "Alt+3" = "set window-scale 0.5";
+      "Alt+4" = "cycle border";
+    };
+  };
+
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "22.05";

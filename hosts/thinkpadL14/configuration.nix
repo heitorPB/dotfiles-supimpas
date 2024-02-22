@@ -40,7 +40,7 @@
     rocmPackages.clr
     rocmPackages.clr.icd
 
-    # AMD VLK instead of Mesa radv drivers
+    # AMDVLK drivers can be used in addition to the Mesa RADV drivers.
     amdvlk
   ];
   hardware.opengl.extraPackages32 = with pkgs; [
@@ -53,6 +53,11 @@
     "VDPAU_DRIVER" = "radeonsi";
     "LIBVA_DRIVER_NAME" = "radeonsi";
   };
+  # Most software has the HIP libraries hard-coded. Workaround:
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+  ];
+
 
   # USB4 / Thunderbolt
   services.hardware.bolt.enable = true;

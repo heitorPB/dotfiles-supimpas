@@ -62,13 +62,29 @@
     alacritty # Terminal emulator
 
     bluez-tools # Bluetooth tools
-    networkmanagerapplet # NetworkManager Systray
+    networkmanagerapplet # NetworkManager Systray - borked on Sway with Swaybar
 
     lxqt.pavucontrol-qt # GUI for audio control
+    lxqt.pcmanfm-qt # Filesystem browser
     qpwgraph # Graph based GUI to connect Audio sinks and outputs
 
     firefox-bin # Could not get a cache hit :(
+
+    # My favorites :)
+    anki # Flash cards!
+    darktable # RAW image post-processor
+    drive # Google drive CLI
+    keepassxc # Password manager
+    klavaro # Touch typing lessons
+    spotify # Sold my soul
+    mpv # Video/audio player. See my home config as well
+    feh # Image viewer
+    grim # Screenshot for wayland # TODO: configure screenshot in Sway
+    telegram-desktop # Old school communication system
   ];
+
+  # Port used by Spotify to connect to Chromecast
+  networking.firewall.allowedUDPPorts = [ 5353 ];
 
   # Fonts.
   fonts = {

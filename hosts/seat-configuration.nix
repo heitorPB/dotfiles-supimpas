@@ -65,6 +65,7 @@
     bluez-tools # Bluetooth tools
     networkmanagerapplet # NetworkManager Systray - borked on Sway with Swaybar
 
+    avizo # Neat pop-up notification for audio/brightness adjustments. See sway config
     lxqt.pavucontrol-qt # GUI for audio control
     lxqt.pcmanfm-qt # Filesystem browser
     qpwgraph # Graph based GUI to connect Audio sinks and outputs

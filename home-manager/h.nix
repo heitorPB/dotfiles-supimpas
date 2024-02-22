@@ -307,6 +307,8 @@ in
       terminal = "alacritty";
       startup = [
         # List of programs to start with Sway
+        # Volume and Display-brightness OSD
+        { command = "${pkgs.avizo}/bin/avizo-service"; }
 
         ## NetWorkManager Applet: useless, does not work with swaybar :clown-face:
         #{ command = "nm-applet --indicator"; always = true; }
@@ -336,6 +338,7 @@ in
         names = [ "Fira Sans Mono" "monospace" ];
         size = 8.0;
       };
+
       window = {
         titlebar = false;
         hideEdgeBorders = "both"; # Hide window borders adjacent to screen edges
@@ -351,6 +354,22 @@ in
           { criteria = { shell = ".*"; }; command = "inhibit_idle fullscreen"; }
         ];
       };
+      keybindings = mkOptionDefault ({
+        # The missing workspace
+        "${modifier}+0" = "workspace 0";
+        "${modifier}+Shift+0" = "move container to workspace 0";
+
+        # Audio controls
+        "XF86AudioRaiseVolume" = "exec ${pkgs.avizo}/bin/volumectl -d -u up";
+        "XF86AudioLowerVolume" = "exec ${pkgs.avizo}/bin/volumectl -d -u down";
+        "XF86AudioMute" = "exec ${pkgs.avizo}/bin/volumectl -d toggle-mute";
+        "XF86AudioMicMute" = "exec ${pkgs.avizo}/bin/volumectl -d -m toggle-mute";
+
+        # Display backlight controls
+        "XF86MonBrightnessUp" = "exec ${pkgs.avizo}/bin/lightctl -d up";
+        "XF86MonBrightnessDown" = "exec ${pkgs.avizo}/bin/lightctl -d down";
+      });
+
 
       bars = [{
         fonts = {
@@ -450,7 +469,7 @@ in
             format = "$icon $brightness.eng(w:3)";
             invert_icons = true; # Needed due to dark theme
             minimum = 1;
-            cycle = [ 5 25 50 75 100 ];
+            cycle = [ 25 50 75 100 ];
           }
           #{
           #  # i3status-rs is buggy with gammastep :(

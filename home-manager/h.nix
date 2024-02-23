@@ -314,6 +314,8 @@ in
         #{ command = "nm-applet --indicator"; always = true; }
       ];
 
+      defaultWorkspace = "workspace number 1";
+
       # Setup monitors. Get their names with `swaymsg -t get_outputs`
       output = {
         "*" = {

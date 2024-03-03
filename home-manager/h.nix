@@ -10,17 +10,6 @@ in
 
   # home.packages = with pkgs; [ steam ];
 
-  # Configuration for gpg and its agent
-  programs.gpg = {
-    enable = true;
-    publicKeys = [
-      { source = ./heitor.asc; trust = 5; }
-    ];
-  };
-  home.file.".gnupg/gpg-agent.conf".text = ''
-    no-autostart
-  '';
-
   # Configuration for SSH client
   programs.ssh = {
     enable = true;

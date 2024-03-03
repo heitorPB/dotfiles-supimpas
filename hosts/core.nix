@@ -145,6 +145,7 @@
     lm_sensors # Show my temperatures
     man-pages # More manuals
     pciutils # For lspci(8)
+    pinentry-curses # Pinentry for gnupg
     ripgrep # Fancier grep(1)
     rsync
     tree # List directories in a nice looking tree structure
@@ -235,6 +236,6 @@
     enable = true;
     enableExtraSocket = true;
     enableSSHSupport = true; # Make GPG through SSH work
-    pinentryFlavor = "curses"; # Options: "curses", "tty", "gtk2", "qt"
+    pinentryFlavor = machine.gpgPinentry; # Options: curses, gnome3, gtk2, qt
   };
 }

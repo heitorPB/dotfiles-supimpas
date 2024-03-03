@@ -9,6 +9,7 @@ rec {
     hostname = "desk03";
     location = geolocation.piracicaba;
     gitKey = "heitorpbittencourt@gmail.com";
+    gpgPinentry= "curses";
     seat = null;
   };
 
@@ -16,6 +17,7 @@ rec {
     hostname = "L14";
     location = geolocation.piracicaba;
     gitKey = "heitorpbittencourt@gmail.com";
+    gpgPinentry= "qt";
 
     amdGpu = "card0";
     battery = "BAT0";

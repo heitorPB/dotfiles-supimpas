@@ -68,6 +68,7 @@
     avizo # Neat pop-up notification for audio/brightness adjustments. See sway config
     lxqt.pavucontrol-qt # GUI for audio control
     lxqt.pcmanfm-qt # Filesystem browser
+    pinentry-qt # Pinentry for gnupg
     qpwgraph # Graph based GUI to connect Audio sinks and outputs
 
     firefox-bin # Could not get a cache hit :(

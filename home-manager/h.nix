@@ -108,13 +108,6 @@ in
       tag = { gpgsign = machine.gitKey != null; };
     };
   };
-  # My git alias:
-  programs.bash.shellAliases = {
-    g = "git";
-    # Image viewer: displays filename, tinted to improve readability, verbose, full screen.
-    feh = "feh --auto-rotate --draw-filename --draw-tinted -V -F";
-    feh-exif = "feh --auto-rotate --draw-filename --draw-exif --draw-tinted -V -F";
-  };
 
   # Export podman socket for rootless mode
   home.sessionVariables = {
@@ -126,7 +119,9 @@ in
   # Yeah, I use Bash
   programs.bash = {
     enable = true;
-    shellOptions = [ "nocaseglob" ];
+    bashrcExtra = ''
+      complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g
+    '';
     profileExtra = ''
       # Create a new directory and enter it
       function mkd()
@@ -134,6 +129,13 @@ in
       	mkdir --parents "$@" && cd "$_";
       }
     '';
+    shellAliases = {
+      g = "git";
+      # Image viewer: displays filename, tinted to improve readability, verbose, full screen.
+      feh = "feh --auto-rotate --draw-filename --draw-tinted -V -F";
+      feh-exif = "feh --auto-rotate --draw-filename --draw-exif --draw-tinted -V -F";
+    };
+    shellOptions = [ "nocaseglob" ]; # Case insensitive interactive ops
   };
 
   # Some magical Readline configuration

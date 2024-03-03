@@ -14,6 +14,9 @@
   # Machine specific packages
   environment.systemPackages = with pkgs; [
     radeontop # Like htop, but for AMD GPUs
+
+    # 3D printing
+    cura
   ];
 
   boot.kernelParams = [

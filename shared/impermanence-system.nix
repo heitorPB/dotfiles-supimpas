@@ -47,6 +47,7 @@
         { directory = ".gnupg"; mode = "0700"; }
         ".config/asciinema"
         ".config/btop"
+        ".config/cura"
         ".config/darktable"
         ".config/keepassxc"
         ".config/klavaro"
@@ -54,6 +55,7 @@
         ".config/spotify"
         ".local/share/Anki2"
         ".local/share/containers"
+        ".local/share/cura"
         ".local/share/klavaro"
         ".local/share/qBittorrent"
         ".local/share/Steam"

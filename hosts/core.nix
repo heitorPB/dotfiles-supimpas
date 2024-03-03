@@ -94,15 +94,6 @@
       LC_IDENTIFICATION = "pt_BR.UTF-8";
     };
   };
-  console = {
-    font = "Lat2-Terminus16";
-    useXkbConfig = true;
-  };
-  # Console/XWayland keyboard layout.
-  # TODO: move these to ssot
-  services.xserver.layout = "br";
-  services.xserver.xkbVariant = "abnt2";
-  services.xserver.xkbModel = "thinkpad";
 
   # Override some packages' settings/sources
   # Downgrade gnupg to 2.2.27. TODO: remove later

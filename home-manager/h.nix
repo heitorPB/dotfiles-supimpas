@@ -20,6 +20,37 @@ in
     extraConfig = "IdentitiesOnly yes";
     # Include all extra configuration in ~/.ssh/config.d/*
     includes = [ "config.d/*" ];
+    # TODO move ip addresses to SSOT
+    # TODO add addresses to resolv.conf
+    matchBlocks = {
+      "github.com gist.github.com" = {
+        hostname = "ssh.github.com";
+        user = "git";
+        identityFile = machine.identityFile;
+      };
+
+
+      "alien" = {
+        hostname = "192.168.1.12";
+        user = "h";
+        identityFile = machine.identityFile;
+      };
+      "desk03" = {
+        hostname = "192.168.1.70";
+        user = "h";
+        identityFile = machine.identityFile;
+      };
+      "gersemi" = {
+        hostname = "192.168.1.11";
+        user = "h";
+        identityFile = machine.identityFile;
+      };
+      "pfsense" = {
+        hostname = "192.168.1.1";
+        user = "admin";
+        identityFile = machine.identityFile;
+      };
+    };
   };
 
   # Direnv

@@ -8,16 +8,21 @@ rec {
   desktop = {
     hostname = "desk03";
     location = geolocation.piracicaba;
+
+    identityFile = "~/.ssh/id_ed25519.desk03";
     gitKey = "heitorpbittencourt@gmail.com";
-    gpgPinentry= "curses";
+    gpgPinentry = "curses";
+
     seat = null;
   };
 
   thinkpadL14 = {
     hostname = "L14";
     location = geolocation.piracicaba;
+
+    identityFile = "~/.ssh/id_ed25519.L14";
     gitKey = "heitorpbittencourt@gmail.com";
-    gpgPinentry= "qt";
+    gpgPinentry = "qt";
 
     amdGpu = "card0";
     battery = "BAT0";

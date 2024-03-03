@@ -59,7 +59,7 @@
 
       nix_shell = {
         disabled = false;
-        symbol = "❄️"; 
+        symbol = "❄️";
         format = "[$symbol $state( \($name\))]($style) ";
         impure_msg = "impure";
         pure_msg = "";

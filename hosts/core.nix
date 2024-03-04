@@ -152,6 +152,7 @@
     usbutils # For lsusb(8)
     wget
     wireguard-tools
+    wol # Wake On Lan client
 
     # Development and workflow
     git

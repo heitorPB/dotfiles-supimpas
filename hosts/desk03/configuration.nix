@@ -22,9 +22,6 @@
 
   # Machine specific packages
   environment.systemPackages = with pkgs; [
-    openvpn
-    # Helper for OpenVpn <-> Systemd/Resolved
-    update-systemd-resolved
   ];
 
   # This value determines the NixOS release from which the default

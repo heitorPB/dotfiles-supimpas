@@ -18,6 +18,11 @@
 
     # Downgrade gnupg to 2.2.27. TODO: remove later
     nixpkgs-gnupg.url = "github:nixos/nixpkgs/d88ad75767c638c013f5db40739386b1a5e12029";
+
+    update-systemd-resolved.url = "github:jonathanio/update-systemd-resolved";
+    update-systemd-resolved.inputs.nixpkgs.follows = "nixpkgs"; # optional
+    #awsvpnclient.url = "github:ymatsiuk/awsvpnclient";
+    #awsvpnclient.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { nixpkgs, home-manager, impermanence, chaotic, ... }@inputs:
@@ -43,6 +48,7 @@
             ./hosts/core.nix
 
             # Extra services for this host
+            ./shared/vpns.nix
             ./shared/podman.nix
             ./shared/nomad.nix
             #./shared/docker.nix
@@ -70,6 +76,8 @@
             ./hosts/core.nix
             ./hosts/seat-configuration.nix
 
+            ./shared/vpns.nix
+
             # Use desktop as remove builder
             ./shared/nix-buildMachines-desk03.nix
 
@@ -90,6 +98,5 @@
           ];
         };
       };
-
     };
 }

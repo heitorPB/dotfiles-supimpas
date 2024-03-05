@@ -151,7 +151,6 @@
     tree # List directories in a nice looking tree structure
     usbutils # For lsusb(8)
     wget
-    wireguard-tools
     wol # Wake On Lan client
 
     # Development and workflow

@@ -8,7 +8,7 @@ in
 {
   services.nomad = {
     enable = true;
-    package = pkgs.nomad_1_6;
+    package = pkgs.nomad_1_7;
 
     # Add extra plugins to Nomad's plugin directory.
     extraSettingsPlugins = [ pkgs.nomad-driver-podman ];

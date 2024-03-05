@@ -76,12 +76,15 @@
             ./hosts/core.nix
             ./hosts/seat-configuration.nix
 
+            ./shared/power-saving-laptop.nix
+
+            # Extra services for this host
             ./shared/vpns.nix
+            ./shared/podman.nix
+            ./shared/nomad.nix
 
             # Use desktop as remove builder
             ./shared/nix-buildMachines-desk03.nix
-
-            ./shared/power-saving-laptop.nix
 
             # ZFS on impermanence from Chaotic
             chaotic.nixosModules.default

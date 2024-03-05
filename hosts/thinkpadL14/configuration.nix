@@ -19,6 +19,8 @@
     cura
   ];
 
+  # Load amdgpu at stage 1
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [
     # Force use of the thinkpad_acpi driver for backlight control.
     # This allows the backlight save/load systemd service to work.
@@ -44,7 +46,7 @@
     rocmPackages.clr.icd
 
     # AMDVLK drivers can be used in addition to the Mesa RADV drivers.
-    amdvlk
+    #amdvlk
   ];
   hardware.opengl.extraPackages32 = with pkgs; [
     driversi686Linux.amdvlk

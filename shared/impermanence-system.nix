@@ -76,6 +76,7 @@
         ".cache/spotify"
       ];
       files = [
+        ".bash_history"
       ];
     };
   };

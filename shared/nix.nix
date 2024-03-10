@@ -12,6 +12,7 @@
 
       # use all CPUs for building
       max-jobs = "auto";
+      cores = 0; # 0 means all cores
 
       # Add extra caches
       substituters = [

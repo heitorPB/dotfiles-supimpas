@@ -21,8 +21,8 @@
 
     update-systemd-resolved.url = "github:jonathanio/update-systemd-resolved";
     update-systemd-resolved.inputs.nixpkgs.follows = "nixpkgs"; # optional
-    #awsvpnclient.url = "github:ymatsiuk/awsvpnclient";
-    #awsvpnclient.inputs.nixpkgs.follows = "nixpkgs";
+    awsvpnclient.url = "github:ymatsiuk/awsvpnclient";
+    awsvpnclient.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { nixpkgs, home-manager, impermanence, chaotic, ... }@inputs:

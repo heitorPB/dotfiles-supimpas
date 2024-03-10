@@ -1,11 +1,6 @@
 # Configure desk03 as a nix remote builder
 { config, pkgs, inputs, lib, machine, ... }:
 {
-  #overlays = [
-  #  (final: prev: {
-  #    awsvpnclient = awsvpnclient.packages.${system}.awsvpnclient;
-  #  })
-  #];
   nixpkgs.overlays = [
     (final: prev: {
       awsvpnclient = inputs.awsvpnclient.packages."x86_64-linux".awsvpnclient;
@@ -22,8 +17,8 @@
     # Nice plugin for NetworkManager, but only if not headless
     networkmanager-openvpn
   )
-  ++ (lib.lists.optional (machine.seat == 2 )
-    # AWS custom/proprietary vpn client
+  ++ (lib.lists.optional (machine.seat != null)
+    # AWS custom/proprietary vpn client based on OpenVPN
     awsvpnclient
   );
 

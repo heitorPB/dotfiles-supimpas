@@ -72,6 +72,8 @@
     qpwgraph # Graph based GUI to connect Audio sinks and outputs
 
     firefox-bin # Could not get a cache hit :(
+    #chromium # Could not get a cache hit :(
+    google-chrome
 
     # My favorites :)
     anki # Flash cards!
@@ -82,8 +84,11 @@
     spotify # Sold my soul
     mpv # Video/audio player. See my home config as well
     feh # Image viewer
-    grim # Screenshot for wayland # TODO: configure screenshot in Sway
     telegram-desktop # Old school communication system
+
+    # Wayland progrs
+    grim # Screenshot for wayland # TODO: configure screenshot in Sway
+    wdisplays # Equivalent to arandr
   ];
 
   # Port used by Spotify to connect to Chromecast

@@ -6,6 +6,7 @@ in
   imports = [
     ./nvim.nix
     ./starship.nix
+    ./xdg.nix
   ];
 
   # home.packages = with pkgs; [ steam ];

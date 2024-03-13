@@ -97,7 +97,7 @@
 
   # Override some packages' settings/sources
   # Downgrade gnupg to 2.2.27. TODO: remove later
-  nixpkgs.overlays = [ (final: prev: { gnupg = inputs.nixpkgs-gnupg.legacyPackages.${final.system}.gnupg; }) ];
+  #nixpkgs.overlays = [ (final: prev: { gnupg = inputs.nixpkgs-gnupg.legacyPackages.${final.system}.gnupg; }) ];
 
   # Fix wrong sudo password messages
   security.sudo = {

@@ -94,10 +94,9 @@
   # Port used by Spotify to connect to Chromecast
   networking.firewall.allowedUDPPorts = [ 5353 ];
 
-  # Console/XWayland keyboard layout.
+  # Console/XWayland default keyboard layout.
   # TODO: move these to ssot
   services.xserver.xkb.layout = "br";
-  services.xserver.xkb.variant = "abnt2";
   services.xserver.xkb.model = "thinkpad";
   console.keyMap = "br-abnt2";
 

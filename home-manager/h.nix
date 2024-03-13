@@ -417,9 +417,16 @@ in
 
       input = {
         # Keyboard settings. TODO: make it configurable
-        "*" = { xkb_layout = "br"; xkb_variant = "abnt2"; xkb_model = "thinkpad"; };
+        "*" = {
+          xkb_layout = "br";
+          #xkb_variant = "abnt2";
+          xkb_model = "thinkpad";
+        };
+        "10730:258:Kinesis_Advantage2_Keyboard" = {
+          xkb_layout = "us";
+          xkb_model = "kinesis";
+        };
         # TODO: add touchpad if it exists
-        # TODO add Kinesis keyboard
       };
     };
   };

@@ -58,7 +58,10 @@
   environment.systemPackages = with pkgs; [
     # Generic HW related
     acpi
-    glxinfo # Debug OpenGL
+    #glxinfo # Debug OpenGL
+    #libva-utils # For vainfo
+    #vdpauinfo # For vdpauinfo
+    #vulkan-tools # For vulkaninfo
 
     alacritty # Terminal emulator
 

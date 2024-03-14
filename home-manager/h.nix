@@ -155,6 +155,9 @@ in
       # Image viewer: displays filename, tinted to improve readability, verbose, full screen.
       feh = "feh --auto-rotate --draw-filename --draw-tinted -V -F";
       feh-exif = "feh --auto-rotate --draw-filename --draw-exif --draw-tinted -V -F";
+
+      # Separate browsers for work
+      pasteur-chrome = "google-chrome-stable --user-data-dir=$HOME/.config/pasteur-chrome/";
     };
     shellOptions = [ "nocaseglob" ]; # Case insensitive interactive ops
   };

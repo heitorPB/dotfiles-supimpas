@@ -51,6 +51,7 @@
         ".config/darktable"
         ".config/keepassxc"
         ".config/klavaro"
+        ".config/pasteur-chrome"
         ".config/qBittorrendarktablet"
         ".config/spotify"
         ".local/share/Anki2"

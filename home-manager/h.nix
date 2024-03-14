@@ -373,15 +373,20 @@ in
 
         commands = [
           # Set some programs as floating
-          { criteria = { app_id = "anki"; }; command = "floating enable"; }
           { criteria = { app_id = "firefox"; title = "Picture-in-Picture"; }; command = "floating enable; sticky enable"; }
-          { criteria = { app_id = "klavaro"; title = "Klavaro -.*"; }; command = "floating enable"; }
-          { criteria = { app_id = "org.keepassxc.KeePassXC"; }; command = "floating enable"; }
 
-          # Don't lock my screen if there is anything fullscreen, I may be gaiming
+          # Don't lock my screen if there is anything fullscreen, I may be gaiming/watching
           { criteria = { shell = ".*"; }; command = "inhibit_idle fullscreen"; }
         ];
       };
+
+      floating.criteria = [
+        { app_id = "anki"; }
+        { app_id = "klavaro"; }
+        { app_id = "org.keepassxc.KeePassXC"; }
+        { app_id = "pavucontrol-qt"; }
+      ];
+
       keybindings = mkOptionDefault ({
         # The missing workspace
         "${modifier}+0" = "workspace 0";

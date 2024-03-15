@@ -69,6 +69,8 @@
     networkmanagerapplet # NetworkManager Systray - borked on Sway with Swaybar
 
     avizo # Neat pop-up notification for audio/brightness adjustments. See sway config
+    brightnessctl # To change backligh (screen brightness), for avizo
+    pamixer # PulseAudio Mixer, for avizo
     lxqt.pavucontrol-qt # GUI for audio control
     lxqt.pcmanfm-qt # Filesystem browser
     pinentry-qt # Pinentry for gnupg

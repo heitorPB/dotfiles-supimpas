@@ -326,6 +326,9 @@ in
   '';
 
   # TODO: move this to a sway.nix
+  home.packages = with pkgs; lists.optionals hasSeat [
+    swaynotificationcenter # Won't work unless here
+  ];
   wayland.windowManager.sway = mkIf (hasSeat) {
     enable = true;
     config = rec {
@@ -333,6 +336,9 @@ in
       terminal = "alacritty";
       startup = [
         # List of programs to start with Sway
+        # Notification daemon
+        { command = "${pkgs.swaynotificationcenter}/bin/swaync"; }
+
         # Volume and Display-brightness OSD
         { command = "${pkgs.avizo}/bin/avizo-service"; }
 

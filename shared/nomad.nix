@@ -27,7 +27,14 @@ in
       };
       plugin = [{
         nomad-driver-podman = {
-          config = { };
+          config = {
+            socket_path =
+              # Rootfull Nomad on Rootfull containers
+              #if !dockerEnabled
+              #then "unix://run/user/1000/podman/podman.sock"
+              #else "unix://run/podman/podman.sock";
+              "unix://run/podman/podman.sock";
+          };
         };
       }];
     };

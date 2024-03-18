@@ -13,11 +13,9 @@
       add_newline = true;
 
       format = ''
-        $battery$username$sudo at $hostname$directory$git_branch$git_status$nix_shell$direnv
+        $battery$username$sudo(at) $hostname$directory$git_branch$git_status$python$nix_shell$direnv
         $character
       '';
-
-      # TODO: add nix shell block
 
       # Each block config below
       battery = {
@@ -57,10 +55,17 @@
         truncate_to_repo = false;
       };
 
+      # Python venv
+      python = {
+        disabled = false;
+        symbol = "🐍";
+        format = "[$symbol $pyenv_prefix($version )(\($virtualenv\) )]($style)";
+      };
+
       nix_shell = {
         disabled = false;
         symbol = "❄️";
-        format = "[$symbol $state( \($name\))]($style) ";
+        format = "[$symbol$state( \($name\))]($style)";
         impure_msg = "impure";
         pure_msg = "";
       };

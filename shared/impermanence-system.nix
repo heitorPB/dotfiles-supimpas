@@ -57,6 +57,7 @@
         ".local/share/Anki2"
         ".local/share/containers"
         ".local/share/cura"
+        ".local/share/direnv"
         ".local/share/klavaro"
         ".local/share/qBittorrent"
         ".local/share/Steam"

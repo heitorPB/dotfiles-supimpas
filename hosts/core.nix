@@ -237,6 +237,10 @@
     enableExtraSocket = true;
     enableSSHSupport = true; # Make GPG through SSH work
     pinentryFlavor = machine.gpgPinentry; # Options: curses, gnome3, gtk2, qt
+    settings = {
+      default-cache-ttl = 21600;
+      default-cache-ttl-ssh = 21600;
+    };
   };
   # Required to get pinentry working
   # https://discourse.nixos.org/t/cant-get-gnupg-to-work-no-pinentry/15373/10

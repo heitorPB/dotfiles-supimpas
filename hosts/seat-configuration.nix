@@ -51,8 +51,15 @@
     systemWide = false;
   };
   hardware.pulseaudio.enable = false;
-  # Optional and recommended to get near realtime, e.g. for PulseAudio audio
-  security.rtkit.enable = true;
+  security = {
+    # Optional and recommended to get near realtime, e.g. for PulseAudio audio
+    rtkit.enable = true;
+
+    # Allow any user from group "users" to request realtime
+    pam.loginLimits = [
+      { domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
+    ];
+  };
 
   # Extra packages for machines with a seat
   environment.systemPackages = with pkgs; [

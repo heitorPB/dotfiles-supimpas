@@ -34,6 +34,8 @@
     files = [
       "/etc/machine-id"
     ];
+
+    # Files and directories for root user
     users.root = {
       home = "/root";
       directories = [
@@ -41,6 +43,8 @@
         { directory = ".ssh"; mode = "0700"; }
       ];
     };
+
+    # Files and directories for my user
     users.h = {
       directories = [
         { directory = ".aws"; mode = "0700"; }

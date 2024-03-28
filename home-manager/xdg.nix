@@ -1,5 +1,5 @@
 # Default apps per file type
-{ machine, lib, ... }:
+{ machine, lib, pkgs, ... }:
 let
   hasSeat = machine.seat != null;
 in
@@ -45,6 +45,30 @@ in
       templates = "$HOME/Templates";
       videos = "$HOME/Videos";
       music = "$HOME/Music";
+    };
+
+    configFile.pcmanfm = lib.mkIf hasSeat {
+      target = "pcmanfm-qt/default/settings.conf";
+      text = lib.generators.toINI { } {
+        Behavior = {
+          NoUsbTrash = true;
+          SingleWindowMode = false;
+        };
+        System = {
+          Archiver = "xarchiver";
+          Terminal = "alacritty";
+          SuCommand = "${pkgs.lxqt.lxqt-sudo}/bin/lxqt-sudo %s";
+        };
+        Thumbnail = {
+          ShowThumbnails = true;
+        };
+        Volume = {
+          AutoRun = false;
+          CloseOnUnmount = true;
+          MountOnStartup = false;
+          MountRemovable = false;
+        };
+      };
     };
   };
 }

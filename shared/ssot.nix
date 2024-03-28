@@ -30,6 +30,8 @@ rec {
     gpuSensor = "amdgpu-pci-0700";
     mainNetworkInterface = "wlan0";
     nvmeSensors = [ "nvme-pci-0100" ];
+
+    # Graphical thingies
     seat = {
       # Monitor
       displayId = "LG Display 0x40A9 Unknown";
@@ -39,6 +41,9 @@ rec {
 
       notificationX = "right";
       notificationY = "top";
+
+      # Mouse pointer/cursor size
+      cursorSize = 16;
     };
   };
 }

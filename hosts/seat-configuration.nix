@@ -66,9 +66,9 @@
     # Generic HW related
     acpi
     #glxinfo # Debug OpenGL
-    #libva-utils # For vainfo
-    #vdpauinfo # For vdpauinfo
-    #vulkan-tools # For vulkaninfo
+    #libva-utils # Debug VAAPI, with `vainfo`
+    #vdpauinfo # Debug VDPAU with `vdpauinfo`
+    #vulkan-tools # Debug Vulkan, with `vulkaninfo`
 
     alacritty # Terminal emulator
 
@@ -79,7 +79,10 @@
     brightnessctl # To change backligh (screen brightness), for avizo
     pamixer # PulseAudio Mixer, for avizo
     lxqt.pavucontrol-qt # GUI for audio control
+    xarchiver # Archiver to use with pcmanfm-qt
+    lxmenu-data # For lxqt apps' "Open with" dialogs
     lxqt.pcmanfm-qt # Filesystem browser
+    lxqt.lxqt-sudo # GUI for sudo, for pcmanfm-qt
     pinentry-qt # Pinentry for gnupg
     qpwgraph # Graph based GUI to connect Audio sinks and outputs
 
@@ -101,7 +104,24 @@
     # Wayland progrs
     grim # Screenshot for wayland # TODO: configure screenshot in Sway
     wdisplays # Equivalent to arandr
+
+    libsForQt5.qt5ct # Magic for some Qt apps keep functionality. KeepassXC
+                     # needs it to be able to minimize to tray. See
+                     # https://wiki.archlinux.org/title/Wayland#Qt
   ];
+
+  # For USB automounting, on pcmanfm-qt
+  services.gvfs.enable = true;
+
+  # For dconf
+  programs.dconf.enable = true;
+
+  # Qt is cute
+  qt = {
+    enable = true;
+    platformTheme = "qt5ct";
+    style= "kvantum";
+  };
 
   # Port used by Spotify to connect to Chromecast
   networking.firewall.allowedUDPPorts = [ 5353 ];

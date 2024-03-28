@@ -7,6 +7,7 @@ in
     ./nvim.nix
     ./starship.nix
     ./xdg.nix
+    ./wm-theme.nix
   ];
 
   # home.packages = with pkgs; [ steam ];
@@ -438,7 +439,7 @@ in
           xkb_model = "thinkpad";
         };
         "10730:258:Kinesis_Advantage2_Keyboard" = {
-          xkb_layout = "us";
+          xkb_layout = "us(alt-intl)";
           xkb_model = "kinesis";
         };
         # TODO: add touchpad if it exists

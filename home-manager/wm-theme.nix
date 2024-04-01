@@ -1,17 +1,19 @@
 # Theme for graphical apps
 { machine, lib, pkgs, ... }:
+let
+  hasSeat = machine.seat != null;
+in
 {
-  home.packages = with pkgs; [
+  home.packages = with pkgs; lib.mkIf hasSeat [
     (catppuccin-kvantum.override {
       accent = "Blue";
       variant = "Mocha";
     })
-    libsForQt5.qtstyleplugin-kvantum
     papirus-folders
   ];
 
   # Cursor setup
-  home.pointerCursor = {
+  home.pointerCursor = lib.mkIf hasSeat {
     name = "Catppuccin-Mocha-Lavender-Cursors";
     package = pkgs.catppuccin-cursors.mochaLavender;
     gtk.enable = true;
@@ -19,7 +21,7 @@
   };
 
   # GTK Setup
-  gtk = {
+  gtk = lib.mkIf hasSeat {
     enable = true;
     theme = {
       name = "Catppuccin-Mocha-Standard-Blue-Dark";
@@ -49,7 +51,7 @@
       extraConfig.gtk-application-prefer-dark-theme = true;
     };
   };
-  dconf.settings = {
+  dconf.settings = lib.mkIf hasSeat {
     "org/gtk/settings/file-chooser" = {
       sort-directories-first = true;
     };
@@ -61,11 +63,42 @@
     };
   };
 
-  xdg.configFile."Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini { }).generate "kvantum.kvconfig" {
-    General.theme = "Catppuccin-Mocha-Blue";
+  xdg.configFile = lib.mkIf hasSeat {
+    kvantum = {
+      target = "Kvantum/kvantum.kvconfig";
+      text = lib.generators.toINI { } {
+        General.theme = "Catppuccin-Mocha-Blue";
+      };
+    };
+
+    qt5ct = {
+      target = "qt5ct/qt5ct.conf";
+      text = lib.generators.toINI { } {
+        Appearance = {
+          icon_theme = "Papirus-Dark";
+        };
+      };
+    };
+
+    qt6ct = {
+      target = "qt6ct/qt6ct.conf";
+      text = lib.generators.toINI { } {
+        Appearance = {
+          icon_theme = "Papirus-Dark";
+        };
+      };
+    };
   };
 
-  systemd.user.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt5ct";
+  qt = lib.mkIf hasSeat {
+    enable = true;
+    platformTheme = "qtct";
+    style = {
+      name = "kvantum";
+    };
+  };
+
+  systemd.user.sessionVariables = lib.mkIf hasSeat {
+    QT_STYLE_OVERRIDE = "kvantum";
   };
 }

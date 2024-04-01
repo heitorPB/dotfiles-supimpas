@@ -78,11 +78,12 @@
     avizo # Neat pop-up notification for audio/brightness adjustments. See sway config
     brightnessctl # To change backligh (screen brightness), for avizo
     pamixer # PulseAudio Mixer, for avizo
-    lxqt.pavucontrol-qt # GUI for audio control
     xarchiver # Archiver to use with pcmanfm-qt
     lxmenu-data # For lxqt apps' "Open with" dialogs
-    lxqt.pcmanfm-qt # Filesystem browser
+    lxqt.lxqt-menu-data # For pcmanfm-qt right click Application Menu
     lxqt.lxqt-sudo # GUI for sudo, for pcmanfm-qt
+    lxqt.pavucontrol-qt # GUI for audio control
+    lxqt.pcmanfm-qt # Filesystem browser
     pinentry-qt # Pinentry for gnupg
     qpwgraph # Graph based GUI to connect Audio sinks and outputs
 
@@ -94,17 +95,19 @@
     anki # Flash cards!
     darktable # RAW image post-processor
     drive # Google drive CLI
+    feh # Image viewer
+    hledger # Double entry accounting tool
     keepassxc # Password manager
     klavaro # Touch typing lessons
-    spotify # Sold my soul
     mpv # Video/audio player. See my home config as well
-    feh # Image viewer
+    spotify # Sold my soul
     telegram-desktop # Old school communication system
 
     # Wayland progrs
     grim # Screenshot for wayland # TODO: configure screenshot in Sway
     wdisplays # Equivalent to arandr
 
+    libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct # Magic for some Qt apps keep functionality. KeepassXC
                      # needs it to be able to minimize to tray. See
                      # https://wiki.archlinux.org/title/Wayland#Qt
@@ -119,8 +122,6 @@
   # Qt is cute
   qt = {
     enable = true;
-    platformTheme = "qt5ct";
-    style= "kvantum";
   };
 
   # Port used by Spotify to connect to Chromecast

@@ -54,6 +54,9 @@ in
           NoUsbTrash = true;
           SingleWindowMode = false;
         };
+        Places = {
+          HiddenPlaces = "@invalid, /home/h/Desktop, trash:///, zroot";
+        };
         System = {
           Archiver = "xarchiver";
           Terminal = "alacritty";

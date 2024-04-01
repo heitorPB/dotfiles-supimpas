@@ -1,5 +1,5 @@
 # Configurations and options for all hosts
-{ inputs, pkgs, machine, ... }:
+{ inputs, pkgs, machine, lib, ... }:
 {
   # Import nix.nix here to clean up flakes.nix
   imports = [ ../shared/nix.nix ];
@@ -167,7 +167,7 @@
     neovim
     fzf
     silver-searcher
-    rnix-lsp # Nix LSP
+    nil # Nix LSP; rnix-lsp has been archived
 
     # Python and its Development packages
     (python3.withPackages (p: with p; [
@@ -236,7 +236,10 @@
     enable = true;
     enableExtraSocket = true;
     enableSSHSupport = true; # Make GPG through SSH work
-    pinentryFlavor = machine.gpgPinentry; # Options: curses, gnome3, gtk2, qt
+    pinentryPackage = lib.mkIf (machine.gpgPinentryPackage == "qt") (
+      pkgs.pinentry-curses
+    );
+
     settings = {
       default-cache-ttl = 21600;
       default-cache-ttl-ssh = 21600;

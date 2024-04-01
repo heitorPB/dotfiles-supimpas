@@ -64,7 +64,8 @@
               }
           }
           add_lsp("pylsp", lspconfig.pylsp, pylsp_config)
-          add_lsp("rnix-lsp", lspconfig.rnix, {})
+
+          add_lsp("nil", lspconfig.nil_ls, {})
           add_lsp("terraform-ls", lspconfig.terraformls, {})
           add_lsp("vale-ls", lspconfig.vale_ls, {})
 

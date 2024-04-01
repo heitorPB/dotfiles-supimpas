@@ -109,15 +109,21 @@
 
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct # Magic for some Qt apps keep functionality. KeepassXC
-                     # needs it to be able to minimize to tray. See
-                     # https://wiki.archlinux.org/title/Wayland#Qt
+    # needs it to be able to minimize to tray. See
+    # https://wiki.archlinux.org/title/Wayland#Qt
   ];
 
   # For USB automounting, on pcmanfm-qt
   services.gvfs.enable = true;
 
   # For dconf
-  programs.dconf.enable = true;
+  programs = {
+    dconf.enable = true;
+
+    gnupg.agent.pinentryPackage = lib.mkIf (machine.gpgPinentryPackage == "curses") (
+      pkgs.pinentry-qt
+    );
+  };
 
   # Qt is cute
   qt = {

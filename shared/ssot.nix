@@ -11,7 +11,7 @@ rec {
 
     identityFile = "~/.ssh/id_ed25519.desk03";
     gitKey = "heitorpbittencourt@gmail.com";
-    gpgPinentry = "curses";
+    gpgPinentryPackage = "curses";
 
     seat = null;
   };
@@ -22,7 +22,7 @@ rec {
 
     identityFile = "~/.ssh/id_ed25519.L14";
     gitKey = "heitorpbittencourt@gmail.com";
-    gpgPinentry = "qt";
+    gpgPinentryPackage = "qt";
 
     amdGpu = "card0";
     battery = "BAT0";

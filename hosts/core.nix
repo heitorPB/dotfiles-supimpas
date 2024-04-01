@@ -236,7 +236,7 @@
     enable = true;
     enableExtraSocket = true;
     enableSSHSupport = true; # Make GPG through SSH work
-    pinentryPackage = lib.mkIf (machine.gpgPinentryPackage == "qt") (
+    pinentryPackage = lib.mkIf (machine.gpgPinentryPackage == "curses") (
       pkgs.pinentry-curses
     );
 

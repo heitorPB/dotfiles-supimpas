@@ -120,7 +120,7 @@
   programs = {
     dconf.enable = true;
 
-    gnupg.agent.pinentryPackage = lib.mkIf (machine.gpgPinentryPackage == "curses") (
+    gnupg.agent.pinentryPackage = lib.mkIf (machine.gpgPinentryPackage == "qt") (
       pkgs.pinentry-qt
     );
   };

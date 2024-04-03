@@ -1,5 +1,5 @@
 # General Configuration for GUI systems
-{ lib, pkgs, ssot, ... }: with ssot;
+{ lib, pkgs, machine, ... }:
 
 {
   # Network (NetworkManager).
@@ -105,6 +105,7 @@
 
     # Wayland progrs
     grim # Screenshot for wayland # TODO: configure screenshot in Sway
+    slurp # For selecting region of screen. Easier screenshotting: grim -s $(slurp)
     wdisplays # Equivalent to arandr
 
     libsForQt5.qtstyleplugin-kvantum

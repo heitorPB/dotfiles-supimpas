@@ -16,11 +16,10 @@
         devShell = pkgs.mkShell {
           shellHook = ''
             export PIP_NO_BINARY="ruff"
+            export PIP_NO_BINARY="uv"
           '';
 
           nativeBuildInputs = with pkgs; [
-            ruff
-
             (python311.withPackages (p: with p; [
               python-lsp-server
               python-lsp-ruff

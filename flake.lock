@@ -488,22 +488,6 @@
         "url": "https://flakehub.com/f/NixOS/nixpkgs/0.1.%2A.tar.gz"
       }
     },
-    "nixpkgs-gnupg": {
-      "locked": {
-        "lastModified": 1610436828,
-        "narHash": "sha256-l296ZbPESWBEdj4ch3qsMTDuBnbuZBFQ4rfUqBkiTJ4=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "d88ad75767c638c013f5db40739386b1a5e12029",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "d88ad75767c638c013f5db40739386b1a5e12029",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "dir": "lib",
@@ -561,7 +545,6 @@
         "home-manager": "home-manager_2",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-gnupg": "nixpkgs-gnupg",
         "update-systemd-resolved": "update-systemd-resolved"
       }
     },

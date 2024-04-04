@@ -271,6 +271,7 @@ in
 
   # TODO: move this to a tmux.nix
   # Write the Tmux configuration file directly. Not a big fan of having this global
+  # TODO: use https://github.com/catppuccin ?
   home.file.".tmux.conf".text = ''
     # Normalize TERM variable
     set -g default-terminal "screen-256color"
@@ -338,6 +339,7 @@ in
       startup = [
         # List of programs to start with Sway
         # Notification daemon
+        # https://github.com/catppuccin/swaync
         { command = "${pkgs.swaynotificationcenter}/bin/swaync"; }
 
         # Volume and Display-brightness OSD
@@ -413,21 +415,21 @@ in
 
       bars = [{
         fonts = {
-          names = [ "Font Awesome 5 Free" ];
-          #names = [ "Borg Sans Mono" "Font Awesome 5 Free" ];
-          #names = [ "FiraCode Nerd Font Mono" "Font Awesome 5 Free" ];
+          #names = [ "Font Awesome 5 Free" ];
+          names = [ "FiraCode Sans Mono"];
           size = 12.0;
         };
         #trayOutput = "*";
         statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-main.toml";
         colors = {
-          separator = "#666666";
-          background = "#222222dd";
-          statusline = "#dddddd";
-          focusedWorkspace = { background = "#0088CC"; border = "#0088CC"; text = "#ffffff"; };
-          activeWorkspace = { background = "#333333"; border = "#333333"; text = "#ffffff"; };
-          inactiveWorkspace = { background = "#333333"; border = "#333333"; text = "#888888"; };
-          urgentWorkspace = { background = "#2f343a"; border = "#900000"; text = "#ffffff"; };
+          # From https://github.com/catppuccin/i3
+          background = "#1e1e2e";
+          separator = "#89b4fa";
+          statusline = "#cdd6f4";
+          focusedWorkspace = { background = "#1e1e2e"; border = "#1e1e2e"; text = "#a6e3a1"; };
+          activeWorkspace = { background = "#1e1e2e"; border = "#1e1e2e"; text = "#89b4fa"; };
+          inactiveWorkspace = { background = "#1e1e2e"; border = "#1e1e2e"; text = "#45475a"; };
+          urgentWorkspace = { background = "#1e1e2e"; border = "#fab387"; text = "#a6e3a1"; }; # My only customization
         };
       }];
 
@@ -453,7 +455,7 @@ in
     bars = {
       main = {
         settings = {
-          theme.theme = "solarized-dark";
+          theme.theme = "ctp-mocha"; # Catppuccin FTW!
           icons.icons = "awesome5";
         };
         blocks = [
@@ -469,6 +471,7 @@ in
             # Hardcode wlan0 to show wireless network only if it exists.
             # The `missing_format` below takes care of not showing anything if
             # there's no wlan0 device.
+            # TODO: move this to ssot
             block = "net";
             device = "wlan0";
             format = "$icon $ssid ($signal_strength)";
@@ -479,7 +482,7 @@ in
             # Net up/down speed
             block = "net";
             device = machine.mainNetworkInterface;
-            format = "^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K)";
+            format = "^icon_net_down  $speed_down.eng(w:4,prefix:K) ^icon_net_up  $speed_up.eng(w:4,prefix:K)";
             format_alt = " $ip  $ipv6";
             missing_format = "";
             interval = 5;
@@ -487,7 +490,7 @@ in
           {
             block = "cpu";
             interval = 2;
-            format = "$icon $utilization ($frequency.eng(w:1))";
+            format = "$icon $utilization.eng(w:2) ($frequency.eng(w:2))";
           }
         ] ++ (lists.optional (machine.cpuSensor != null)
           {
@@ -503,10 +506,13 @@ in
         ) ++ (lists.optional (machine.amdGpu != null)
           {
             # GPU utilization
+            # NOTE: if this block crashes, check card number in /sys/class/drm/
+            #       and update ssot if needed
             block = "amd_gpu";
             device = machine.amdGpu;
             # TODO define format without trailing space
-            format_alt = "$icon $vram_used.eng(w:2,u:B,p:Mi)/$vram_total.eng(w:1,u:B,p:Gi)";
+            format = "$icon $utilization.eng(w:2)";
+            format_alt = "$icon $vram_used.eng(w:3,u:B,p:Mi)/$vram_total.eng(w:1,u:B,p:Gi)";
             interval = 2;
           }
         ) ++ [
@@ -579,17 +585,9 @@ in
           {
             # TODO make this block only if hasBattery
             block = "battery";
+            format = "$icon $percentage";
             interval = 5;
             device = machine.battery;
-          }
-          {
-            block = "keyboard_layout";
-            driver = "sway";
-            format = "$layout";
-            mappings = {
-              "\"Portuguese\"" = "pt-br";
-              "\"English\"" = "en";
-            };
           }
           {
             block = "time";
@@ -601,7 +599,7 @@ in
     };
   };
 
-  # Screen temperature 
+  # Screen temperature
   services.gammastep = mkIf (hasSeat) {
     enable = true;
     provider = "manual";

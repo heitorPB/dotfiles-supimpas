@@ -24,7 +24,7 @@ rec {
     gitKey = "heitorpbittencourt@gmail.com";
     gpgPinentryPackage = "qt";
 
-    amdGpu = "card0";
+    amdGpu = "card1";
     battery = "BAT0";
     cpuSensor = "k10temp-pci-00c3";
     gpuSensor = "amdgpu-pci-0700";

@@ -79,6 +79,7 @@
         ".cache/keepassxc"
         ".cache/mesa_shader_cache"
         ".cache/mozilla"
+        ".cache/pre-commit"
         ".cache/spotify"
       ];
       files = [

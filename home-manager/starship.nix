@@ -13,7 +13,7 @@
       add_newline = true;
 
       format = ''
-        $battery$username$sudo(at) $hostname$directory$git_branch$git_status$python$nix_shell$direnv
+        $battery$username$sudo(at) $hostname$directory$git_branch$git_status$python$nix_shell $direnv
         $character
       '';
 
@@ -70,9 +70,10 @@
         pure_msg = "";
       };
 
-      # TODO: direnv is buggy with starsgip <1.18:
-      # https://github.com/starship/starship/pull/5684
-      direnv.disabled = false;
+      direnv = {
+        disabled = false;
+        format = "[$symbol$loaded/$allowed]($style)";
+      };
 
       # TODO: disable all other blocks?
     };

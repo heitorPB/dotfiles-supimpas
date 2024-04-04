@@ -474,7 +474,7 @@ in
             # TODO: move this to ssot
             block = "net";
             device = "wlan0";
-            format = "$icon $ssid ($signal_strength)";
+            format = "$icon   $ssid ($signal_strength.eng(w:2))";
             missing_format = "";
             interval = 5;
           }
@@ -482,7 +482,7 @@ in
             # Net up/down speed
             block = "net";
             device = machine.mainNetworkInterface;
-            format = "^icon_net_down  $speed_down.eng(w:4,prefix:K) ^icon_net_up  $speed_up.eng(w:4,prefix:K)";
+            format = "^icon_net_down  $speed_down.eng(w:4,prefix:K)  ^icon_net_up  $speed_up.eng(w:4,prefix:K)";
             format_alt = " $ip  $ipv6";
             missing_format = "";
             interval = 5;
@@ -490,7 +490,7 @@ in
           {
             block = "cpu";
             interval = 2;
-            format = "$icon $utilization.eng(w:2) ($frequency.eng(w:2))";
+            format = "$icon  $utilization.eng(w:3) ($frequency.eng(w:3))";
           }
         ] ++ (lists.optional (machine.cpuSensor != null)
           {
@@ -511,7 +511,7 @@ in
             block = "amd_gpu";
             device = machine.amdGpu;
             # TODO define format without trailing space
-            format = "$icon $utilization.eng(w:2)";
+            format = "$icon  $utilization.eng(w:2)";
             format_alt = "$icon $vram_used.eng(w:3,u:B,p:Mi)/$vram_total.eng(w:1,u:B,p:Gi)";
             interval = 2;
           }
@@ -546,7 +546,7 @@ in
           {
             block = "memory";
             interval = 2;
-            format = "$icon $mem_used.eng(w:2,u:B,p:Gi)/$mem_total.eng(w:2,u:B,p:Gi) ($mem_used_percents.eng(w:1))";
+            format = "$icon  $mem_used.eng(w:3,u:B,p:Gi)/$mem_total.eng(w:2,u:B,p:Gi) ($mem_used_percents.eng(w:2))";
             format_alt = "$icon_swap $swap_used.eng(w:2,u:B,p:Gi)/$swap_total.eng(w:2,u:B,p:Gi) ($swap_used_percents.eng(w:1))";
             warning_mem = 75;
             critical_mem = 90;
@@ -574,16 +574,17 @@ in
           {
             # Output volume
             block = "sound";
-            format = "$icon {$volume.eng(w:3) |}";
+            format = "$icon {$volume.eng(w:3)|}";
+            headphones_indicator = true;
           }
           {
             # Microphone
             block = "sound";
-            format = "$icon {$volume.eng(w:3) |}";
+            format = "$icon {$volume.eng(w:3)|}";
             device_kind = "source"; # Microphone is a source
           }
           {
-            # TODO make this block only if hasBattery
+            # TODO make this block only if hasBattery, use ssot
             block = "battery";
             format = "$icon $percentage";
             interval = 5;

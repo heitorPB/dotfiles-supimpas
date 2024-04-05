@@ -416,7 +416,7 @@ in
       bars = [{
         fonts = {
           #names = [ "Font Awesome 5 Free" ];
-          names = [ "FiraCode Sans Mono"];
+          names = [ "FiraCode Sans Mono" ];
           size = 12.0;
         };
         #trayOutput = "*";

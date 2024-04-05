@@ -64,11 +64,12 @@
   # Extra packages for machines with a seat
   environment.systemPackages = with pkgs; [
     # Generic HW related
-    acpi
-    #glxinfo # Debug OpenGL
+    acpi # TODO should this be in core.nix instead?
+    #glxinfo # Debug OpenGL, with `glxgears` and `glxinfo`
     #libva-utils # Debug VAAPI, with `vainfo`
-    #vdpauinfo # Debug VDPAU with `vdpauinfo`
-    #vulkan-tools # Debug Vulkan, with `vulkaninfo`
+    #opencl-info # Debug OpenCL, with `opencl-info`
+    #vdpauinfo # Debug VDPAU, with `vdpauinfo`
+    #vulkan-tools # Debug Vulkan, with `vulkaninfo`, `vkcube`
 
     alacritty # Terminal emulator
 

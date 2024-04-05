@@ -474,7 +474,7 @@ in
             # TODO: move this to ssot
             block = "net";
             device = "wlan0";
-            format = "$icon   $ssid ($signal_strength.eng(w:2))";
+            format = "$icon   $ssid ($signal_strength.eng(w:4))";
             missing_format = "";
             interval = 5;
           }
@@ -490,7 +490,7 @@ in
           {
             block = "cpu";
             interval = 2;
-            format = "$icon  $utilization.eng(w:3) ($frequency.eng(w:3))";
+            format = "$icon  $utilization.eng(w:4) ($frequency.eng(w:3))";
           }
         ] ++ (lists.optional (machine.cpuSensor != null)
           {
@@ -511,7 +511,7 @@ in
             block = "amd_gpu";
             device = machine.amdGpu;
             # TODO define format without trailing space
-            format = "$icon  $utilization.eng(w:2)";
+            format = "$icon  $utilization.eng(w:4)";
             format_alt = "$icon $vram_used.eng(w:3,u:B,p:Mi)/$vram_total.eng(w:1,u:B,p:Gi)";
             interval = 2;
           }
@@ -519,7 +519,7 @@ in
           {
             # Screen brightness
             block = "backlight";
-            format = "$icon $brightness.eng(w:3)";
+            format = "$icon $brightness.eng(w:4)";
             invert_icons = true; # Needed due to dark theme
             minimum = 1;
             cycle = [ 25 50 75 100 ];
@@ -546,7 +546,7 @@ in
           {
             block = "memory";
             interval = 2;
-            format = "$icon  $mem_used.eng(w:3,u:B,p:Gi)/$mem_total.eng(w:2,u:B,p:Gi) ($mem_used_percents.eng(w:2))";
+            format = "$icon  $mem_used.eng(w:3,u:B,p:Gi)/$mem_total.eng(w:2,u:B,p:Gi) ($mem_used_percents.eng(w:4))";
             format_alt = "$icon_swap $swap_used.eng(w:2,u:B,p:Gi)/$swap_total.eng(w:2,u:B,p:Gi) ($swap_used_percents.eng(w:1))";
             warning_mem = 75;
             critical_mem = 90;
@@ -574,14 +574,23 @@ in
           {
             # Output volume
             block = "sound";
-            format = "$icon {$volume.eng(w:3)|}";
+            format = "$icon $output_name {$volume.eng(w:4)|}";
             headphones_indicator = true;
+            mappings = { # Turn weird output_names into human readable ones
+              "bluez_output.78_2B_64_14_F3_96.1" = ""; # Bose NC700, bluetooth out
+              "alsa_output.pci-0000_07_00.6.analog-stereo" = ""; # L14's analog stereo out
+            };
           }
           {
             # Microphone
             block = "sound";
-            format = "$icon {$volume.eng(w:3)|}";
+            format = "$icon $output_name {$volume.eng(w:4)|}";
             device_kind = "source"; # Microphone is a source
+            mappings = {
+              "bluez_input.78:2B:64:14:F3:96" = ""; # Bose NC700, bluetooth mic
+              "alsa_input.pci-0000_07_00.6.analog-stereo" = ""; # L14's analog stereo in
+              "alsa_input.usb-046d_Logitech_BRIO_C8F19D30-03.analog-stereo" = ""; # Webcam
+            };
           }
           {
             # TODO make this block only if hasBattery, use ssot

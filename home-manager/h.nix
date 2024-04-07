@@ -578,8 +578,9 @@ in
             format = "$icon $output_name {$volume.eng(w:4)|}";
             headphones_indicator = true;
             mappings = { # Turn weird output_names into human readable ones
-              "bluez_output.78_2B_64_14_F3_96.1" = ""; # Bose NC700, bluetooth out
               "alsa_output.pci-0000_07_00.6.analog-stereo" = ""; # L14's analog stereo out
+              "bluez_output.78_2B_64_14_F3_96.1" = ""; # Bose NC700, bluetooth out
+              "bluez_output.04_CB_88_6F_C2_70.1" = " speaker"; # JBL Go 2 speaker, bluetooth out
             };
           }
           {
@@ -588,9 +589,10 @@ in
             format = "$icon $output_name {$volume.eng(w:4)|}";
             device_kind = "source"; # Microphone is a source
             mappings = {
-              "bluez_input.78:2B:64:14:F3:96" = ""; # Bose NC700, bluetooth mic
               "alsa_input.pci-0000_07_00.6.analog-stereo" = ""; # L14's analog stereo in
-              "alsa_input.usb-046d_Logitech_BRIO_C8F19D30-03.analog-stereo" = ""; # Webcam
+              "alsa_input.usb-046d_Logitech_BRIO_C8F19D30-03.analog-stereo" = " Brio"; # Brio Webcam in
+              "bluez_input.78:2B:64:14:F3:96" = ""; # Bose NC700, bluetooth mic
+              "bluez_input.04:CB:88:6F:C2:70" = " JBL borked"; # JBL Go 2 speaker, bluetooth out
             };
           }
           {

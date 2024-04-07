@@ -394,6 +394,7 @@ in
         { app_id = "klavaro"; }
         { app_id = "org.keepassxc.KeePassXC"; }
         { app_id = "pavucontrol-qt"; }
+        { app_id = ".blueman-manager-wrapped"; }
       ];
 
       keybindings = mkOptionDefault ({

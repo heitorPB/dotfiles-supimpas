@@ -142,7 +142,9 @@ in
   programs.bash = {
     enable = true;
     bashrcExtra = ''
-      complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g
+      # Set up bash shell completion for my cool `g = git` alias
+      . ${pkgs.git}/share/git/contrib/completion/git-completion.bash
+      __git_complete g __git_main
     '';
     profileExtra = ''
       # Create a new directory and enter it
@@ -153,6 +155,7 @@ in
     '';
     shellAliases = {
       g = "git";
+
       # Image viewer: displays filename, tinted to improve readability, verbose, full screen.
       feh = "feh --auto-rotate --draw-filename --draw-tinted -V -F";
       feh-exif = "feh --auto-rotate --draw-filename --draw-exif --draw-tinted -V -F";

@@ -25,16 +25,28 @@
       {
         plugin = nvim-lspconfig;
         type = "lua";
-        config = ''
+        config = /* lua */ ''
           local lspconfig = require('lspconfig')
 
-          function add_lsp(binary, server, options)
-            if vim.fn.executable(binary) == 1 then server.setup(options) end
+          function add_lsp(server, options)
+            -- if vim.fn.executable(binary) == 1 then
+            --   server.setup(options)
+            -- end
+            if not options["cmd"] then
+              options["cmd"] = server["document_config"]["default_config"]["cmd"]
+            end
+            if not options["capabilities"] then
+              options["capabilities"] = require("cmp_nvim_lsp").default_capabilities()
+            end
+
+            if vim.fn.executable(options["cmd"][1]) == 1 then
+              server.setup(options)
+            end
           end
 
           -- Basic configuration for some LSP servers
-          add_lsp("ansible-language-server", lspconfig.ansiblels, {})
-          add_lsp("bash-language-server", lspconfig.bashls, {})
+          add_lsp(lspconfig.ansiblels, {})
+          add_lsp(lspconfig.bashls, {})
 
           local gopls_config = {
             settings = {
@@ -49,7 +61,7 @@
               },
             },
           }
-          add_lsp("gopls", lspconfig.gopls, gopls_config)
+          add_lsp(lspconfig.gopls, gopls_config)
 
           local pylsp_config = {
               settings = {
@@ -63,11 +75,25 @@
                   }
               }
           }
-          add_lsp("pylsp", lspconfig.pylsp, pylsp_config)
+          add_lsp(lspconfig.pylsp, pylsp_config)
 
-          add_lsp("nil", lspconfig.nil_ls, {})
-          add_lsp("terraform-ls", lspconfig.terraformls, {})
-          add_lsp("vale-ls", lspconfig.vale_ls, {})
+          -- Nix LSP
+          local nil_config = {
+              autostart = true,
+              capabilities = caps,
+              cmd = { "nil" },
+              settings = {
+                  ["nil"] = {
+                    formatting = { command = { "nix fmt" }, },
+                    nix = { flake = { autoArchive = true }, },
+                  },
+              },
+          }
+          add_lsp(lspconfig.nil_ls, {})
+
+          add_lsp(lspconfig.terraform_lsp, {})
+          add_lsp(lspconfig.nomad_lsp, {})
+          add_lsp(lspconfig.vale_ls, {})
 
           -- Mappings
           vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })

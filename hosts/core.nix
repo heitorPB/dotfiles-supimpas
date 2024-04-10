@@ -167,7 +167,6 @@
     neovim
     fzf
     silver-searcher
-    nil # Nix LSP; rnix-lsp has been archived
 
     # Python and its Development packages
     (python3.withPackages (p: with p; [
@@ -175,6 +174,9 @@
       #python-lsp-server # Use it in a per-project dev shell
       #python-lsp-ruff
     ]))
+
+    nil # Nix LSP; rnix-lsp has been archived
+    nixpkgs-fmt # Formatter for `nix fmt`
 
     # Golang and its language-server
     #go

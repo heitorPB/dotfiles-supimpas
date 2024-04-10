@@ -9,10 +9,11 @@ in
       enable = true;
       associations = {
         removed = {
-          "image/gif" = "google-chrome.desktop";
-          "image/jpeg" = "google-chrome.desktop";
-          "image/png" = "google-chrome.desktop";
-          "image/webp" = "google-chrome.desktop";
+          "image/bmp" = "google-chrome.desktop;com.ultimaker.cura.desktop";
+          "image/gif" = "google-chrome.desktop;com.ultimaker.cura.desktop";
+          "image/jpeg" = "google-chrome.desktop;com.ultimaker.cura.desktop";
+          "image/png" = "google-chrome.desktop;com.ultimaker.cura.desktop";
+          "image/webp" = "google-chrome.desktop;com.ultimaker.cura.desktop";
         };
       };
       defaultApplications = {
@@ -28,6 +29,12 @@ in
         "application/xhtml+xml" = "firefox.desktop";
         "application/x-extension-xhtml" = "firefox.desktop";
         "application/x-extension-xht" = "firefox.desktop";
+
+        "image/bmp" = "feh.desktop";
+        "image/gif" = "feh.desktop";
+        "image/jpeg" = "feh.desktop";
+        "image/png" = "feh.desktop";
+        "image/webp" = "feh.desktop";
       };
     };
 

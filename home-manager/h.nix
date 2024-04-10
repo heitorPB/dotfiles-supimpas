@@ -580,7 +580,8 @@ in
             block = "sound";
             format = "$icon $output_name {$volume.eng(w:4)|}";
             headphones_indicator = true;
-            mappings = { # Turn weird output_names into human readable ones
+            mappings = {
+              # Turn weird output_names into human readable ones
               "alsa_output.pci-0000_07_00.6.analog-stereo" = ""; # L14's analog stereo out
               "bluez_output.78_2B_64_14_F3_96.1" = ""; # Bose NC700, bluetooth out
               "bluez_output.04_CB_88_6F_C2_70.1" = " speaker"; # JBL Go 2 speaker, bluetooth out

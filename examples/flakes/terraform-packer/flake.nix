@@ -14,7 +14,7 @@
           config = { allowUnfree = true; };
         };
       in
-      rec {
+      {
         # For nix develop
         devShell = pkgs.mkShell {
           shellHook = ''

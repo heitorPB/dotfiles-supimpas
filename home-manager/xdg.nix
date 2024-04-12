@@ -9,6 +9,8 @@ in
       enable = true;
       associations = {
         removed = {
+          "application/pdf" = "google-chrome.desktop";
+
           "image/bmp" = "google-chrome.desktop;com.ultimaker.cura.desktop";
           "image/gif" = "google-chrome.desktop;com.ultimaker.cura.desktop";
           "image/jpeg" = "google-chrome.desktop;com.ultimaker.cura.desktop";

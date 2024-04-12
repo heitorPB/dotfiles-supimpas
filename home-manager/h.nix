@@ -472,6 +472,12 @@ in
           #  interval = 5;
           #}
           {
+            block = "docker";
+            interval = 5;
+            format = "$icon $running/$total";
+            socket_path = "/var/run/user/1000/podman/podman.sock";
+          }
+          {
             # Hardcode wlan0 to show wireless network only if it exists.
             # The `missing_format` below takes care of not showing anything if
             # there's no wlan0 device.

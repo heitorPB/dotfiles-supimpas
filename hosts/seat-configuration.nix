@@ -153,7 +153,8 @@
       #fira-code-symbols
       fira-code-nerdfont
       #font-awesome_4
-      font-awesome_5
+      #font-awesome_5
+      font-awesome_6
       noto-fonts
       noto-fonts-cjk
       noto-fonts-color-emoji

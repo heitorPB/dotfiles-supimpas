@@ -44,12 +44,12 @@ in
     };
     gtk3 = {
       bookmarks = [
+        "file:///"
+        "file:///tmp"
         "file:///home/h/Downloads"
         "file:///home/h/drive/Docs"
         "file:///home/h/drive/Fotos"
         "file:///home/h/projects"
-        "file:///"
-        "file:///tmp"
       ];
       extraConfig.gtk-application-prefer-dark-theme = true;
     };

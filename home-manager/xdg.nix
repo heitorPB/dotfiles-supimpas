@@ -61,6 +61,9 @@ in
           NoUsbTrash = true;
           SingleWindowMode = false;
         };
+        FolderView = {
+          Mode = "detailed";
+        };
         Places = {
           HiddenPlaces = "@invalid, /home/h/Desktop, trash:///, zroot";
         };

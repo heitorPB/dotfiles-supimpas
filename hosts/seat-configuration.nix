@@ -92,6 +92,13 @@
     #chromium # Could not get a cache hit :(
     google-chrome
 
+    # Office
+    libreoffice-qt
+    hunspell
+    hunspellDicts.pt_BR
+    hunspellDicts.en_US-large
+    gimp
+
     # My favorites :)
     anki # Flash cards!
     darktable # RAW image post-processor

@@ -56,7 +56,7 @@ rec {
     gpgPinentryPackage = "qt";
 
     amdGpu = "card1"; # TODO: check this
-    #nvidiaGpu = "card1";           # TODO: add this
+    nvidiaGpu = "card1";           # TODO: add this
     battery = "BAT0"; # TODO: check this
     cpuSensor = "k10temp-pci-00c3"; # TODO: check this
     gpuSensor = "amdgpu-pci-0700"; # TODO: check this
@@ -66,10 +66,10 @@ rec {
     # Graphical thingies
     seat = {
       # Monitor
-      displayId = "LG Display 0x40A9 Unknown"; # TODO: check this
+      displayId = "Najing CEC Panda FPD Technology CO. ltd 0x0054 Unknown";
       displayWidth = 1920;
       displayHeight = 1080;
-      displayRefresh = 60; # In Hz
+      displayRefresh = 120; # In Hz
 
       notificationX = "right";
       notificationY = "top";

@@ -366,14 +366,19 @@ in
           # In 60Hz display, "adaptive_sync" makes electron apps laggy
           adaptive_sync = "off";
         };
+
+        # External monitors need to be manually set up here
         "Samsung Electric Company LC49G95T H4ZRA00081" = {
           # Samsung G9 ultra wide
-          adaptive_sync = "on";
+          adaptive_sync = "on"; # TODO move this SSOT
           mode = "5120x1440@119.999Hz";
         };
+
+        # Machine specific monitor
         "${machine.seat.displayId}" = with machine.seat; {
           # Machine's monitor
           position = "0,0";
+          adaptive_sync = "on"; # TODO move this SSOT
           mode = "${toString displayWidth}x${toString displayHeight}@${toString displayRefresh}Hz";
         };
       };
@@ -451,6 +456,11 @@ in
         "10730:258:Kinesis_Advantage2_Keyboard" = {
           xkb_layout = "us(alt-intl)";
           xkb_model = "kinesis";
+        };
+
+        # G3 laptop
+        "1:1:AT_Translated_Set_2_keyboard" = {
+          xkb_layout = "us";
         };
         # TODO: add touchpad if it exists
       };

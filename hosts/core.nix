@@ -189,14 +189,14 @@
     #ansible
 
     # AWS
-    awscli2
+    awscli2 # TODO: move this only to machines that need
     #eksctl # AWS EKS
 
     # Clouds should fly
     #flyctl
 
     # MS Azure
-    azure-cli
+    azure-cli # TODO: move this only to machines that need
 
     # Kubernetes clients
     #kubectl
@@ -222,11 +222,12 @@
   users.users.h = {
     uid = 1000;
     isNormalUser = true;
-    # systemd-journal is some kind of bug: i shouldn't need to be in it (see man journalctl)
+    # TODO: systemd-journal is some kind of bug: I shouldn't need to be in it (see man journalctl)
     extraGroups = [ "wheel" "podman" "systemd-journal" "networkmanager" ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJxMuFUrQujzveHDbM8etG1A2rQhA8i2KwM0j2BiFx0K h@alien"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmUxVAr/I2+Fdw2oxpKhzlt+tSIojo+yAbzzmACbKRh h@L14"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHOFTWgQBX/7Sc9L5cKI6bW9nIjChqYayeINKVEn9+dU h@G3"
     ];
   };
 

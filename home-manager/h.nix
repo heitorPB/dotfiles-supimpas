@@ -42,7 +42,7 @@ in
         user = "h";
         identityFile = machine.identityFile;
       };
-      "gersemi" = {
+      "g3" = {
         hostname = "192.168.1.11";
         user = "h";
         identityFile = machine.identityFile;

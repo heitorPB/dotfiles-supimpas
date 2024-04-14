@@ -31,7 +31,6 @@ in
         identityFile = machine.identityFile;
       };
 
-
       "alien" = {
         hostname = "192.168.1.12";
         user = "h";
@@ -44,6 +43,11 @@ in
       };
       "g3" = {
         hostname = "192.168.1.11";
+        user = "h";
+        identityFile = machine.identityFile;
+      };
+      "l14" = {
+        hostname = "192.168.1.69";
         user = "h";
         identityFile = machine.identityFile;
       };

@@ -9,7 +9,7 @@
   hardware.cpu.intel.updateMicrocode = true;
 
   # required for zfs. From head -c 8 /etc/machine-d
-  networking.hostId = "3883d04a";
+  networking.hostId = "c026a34e";
 
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.

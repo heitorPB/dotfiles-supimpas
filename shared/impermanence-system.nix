@@ -54,6 +54,7 @@
         ".config/cura"
         ".config/darktable"
         ".config/keepassxc"
+        ".config/nvim"
         ".config/klavaro"
         ".config/pasteur-chrome"
         ".config/qBittorrendarktablet"

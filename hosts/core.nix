@@ -150,6 +150,7 @@
     rsync
     tree # List directories in a nice looking tree structure
     usbutils # For lsusb(8)
+    unzip # To revert zip operations
     wget
     wol # Wake On Lan client
 

@@ -237,7 +237,7 @@ in
         normal = {
           family = "Borg Sans Mono";
         };
-        size = 11.0;
+        size = 12.0;
       };
 
       #window.opacity = 0.9;
@@ -385,7 +385,7 @@ in
 
       fonts = {
         names = [ "Fira Sans Mono" "monospace" ];
-        size = 8.0;
+        size = 10.0;
       };
 
       window = {

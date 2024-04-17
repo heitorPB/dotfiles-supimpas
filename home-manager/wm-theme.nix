@@ -41,6 +41,7 @@ in
     cursorTheme = {
       name = "Catppuccin-Mocha-Lavender-Cursors";
       package = pkgs.catppuccin-cursors.mochaLavender;
+      size = machine.seat.cursorSize;
     };
     gtk3 = {
       bookmarks = [

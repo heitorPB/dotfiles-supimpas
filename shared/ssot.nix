@@ -43,7 +43,7 @@ rec {
       notificationY = "top";
 
       # Mouse pointer/cursor size
-      cursorSize = 16;
+      cursorSize = 32;
     };
   };
 
@@ -75,7 +75,7 @@ rec {
       notificationY = "top";
 
       # Mouse pointer/cursor size
-      cursorSize = 16;
+      cursorSize = 32;
     };
   };
 }

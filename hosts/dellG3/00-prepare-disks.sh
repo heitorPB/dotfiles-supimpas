@@ -24,10 +24,12 @@ echo -e "zroot zpool created\n"
 
 # Create datasets
 zfs create -o mountpoint=none   zroot/data
+zfs create -o mountpoint=none   zroot/data/homes
 zfs create -o mountpoint=none   zroot/ROOT
 zfs create -o mountpoint=legacy zroot/ROOT/empty
 zfs create -o mountpoint=legacy zroot/ROOT/nix
 zfs create -o mountpoint=legacy zroot/data/persistent
+zfs create -o mountpoint=legacy zroot/data/homes/j
 
 # Snaptshot the root partitoin
 zfs snapshot zroot/ROOT/empty@start

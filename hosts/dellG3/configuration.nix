@@ -14,6 +14,10 @@
   # Machine specific packages
   environment.systemPackages = with pkgs; [
     nvtopPackages.nvidia
+
+    # Some rice
+    catppuccin-papirus-folders
+    #papirus-icon-theme
   ];
 
   #boot.initrd.kernelModules = [ "amdgpu" ];
@@ -22,10 +26,10 @@
   ];
 
   # Nvidia drivers for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
+  # TODO: this is still not working. I think.
   hardware.nvidia = {
-
     # Modesetting is required.
     modesetting.enable = true;
 
@@ -71,6 +75,42 @@
   };
 
   hardware.opengl.extraPackages = with pkgs; [ vaapiVdpau ];
+
+
+  # Her user settings
+  users.users.j = {
+    uid = 1001;
+    isNormalUser = true;
+    # TODO: systemd-journal is some kind of bug: I shouldn't need to be in it (see man journalctl)
+    extraGroups = [ "wheel" "systemd-journal" "networkmanager" ];
+    hashedPassword = "$y$j9T$IGcSlNtiBJX07jKBjOXDn0$sTswUMqAzJOZiqWJxsfpPbo9rcz/vaoQkJ1yLMoGzI9";
+  };
+
+  # Let's keep all her data
+  fileSystems."/home/j" =
+    {
+      device = "zroot/data/homes/j";
+      fsType = "zfs";
+    };
+
+
+  services.xserver.enable = true;
+  services.xserver.displayManager = {
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
+    defaultSession = "plasma";
+  };
+
+  services.desktopManager.plasma6.enable = true;
+  #environment.plasma6.excludePackages = with pkgs.kdePackages; [
+  #  plasma-browser-integration
+  #  konsole
+  #  oxygen
+  #];
+
+
 
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.

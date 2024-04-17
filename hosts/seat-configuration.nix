@@ -88,9 +88,10 @@
     pinentry-qt # Pinentry for gnupg
     qpwgraph # Graph based GUI to connect Audio sinks and outputs
 
-    firefox-bin # Could not get a cache hit :(
-    #chromium # Could not get a cache hit :(
+    firefox
+    #firefox-bin # Could not get a cache hit :(
     google-chrome
+    #chromium # Could not get a cache hit :(
 
     # Office
     libreoffice-qt

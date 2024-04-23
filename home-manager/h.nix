@@ -30,6 +30,9 @@ in
         user = "git";
         identityFile = machine.identityFile;
       };
+      "gitlab.com" = {
+        identityFile = machine.identityFile;
+      };
 
       "alien" = {
         hostname = "192.168.1.12";
@@ -447,22 +450,23 @@ in
       }];
 
       input = {
-        # Keyboard settings. TODO: make it configurable
+        # Keyboard settings. Check xkeyboard-config(7) for layouts, models and
+        # variants
         "*" = {
           xkb_layout = "br";
           #xkb_variant = "abnt2";
           xkb_model = "thinkpad";
         };
+
         "10730:258:Kinesis_Advantage2_Keyboard" = {
           xkb_layout = "us(alt-intl)";
           xkb_model = "kinesis";
         };
 
-        # G3 laptop
+        # G3 laptop Keyboard
         "1:1:AT_Translated_Set_2_keyboard" = {
-          xkb_layout = "us";
+          xkb_layout = "br(thinkpad)";
         };
-        # TODO: add touchpad if it exists
       };
     };
   };
@@ -534,9 +538,8 @@ in
             #       and update ssot if needed
             block = "amd_gpu";
             device = machine.amdGpu;
-            # TODO define format without trailing space
-            format = "$icon  $utilization.eng(w:4)";
-            format_alt = "$icon $vram_used.eng(w:3,u:B,p:Mi)/$vram_total.eng(w:1,u:B,p:Gi)";
+            format = "$icon   $utilization.eng(w:4)";
+            format_alt = "$icon   $vram_used.eng(w:3,u:B,p:Mi)/$vram_total.eng(w:1,u:B,p:Gi)";
             interval = 2;
           }
         ) ++ [
@@ -599,6 +602,7 @@ in
             # Output volume
             block = "sound";
             format = "$icon $output_name {$volume.eng(w:4)|}";
+            # TODO: format_alt: https://github.com/greshake/i3status-rust/pull/2041
             headphones_indicator = true;
             mappings = {
               # Turn weird output_names into human readable ones

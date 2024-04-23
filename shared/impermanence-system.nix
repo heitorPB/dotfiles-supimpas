@@ -57,7 +57,7 @@
         ".config/nvim"
         ".config/klavaro"
         ".config/pasteur-chrome"
-        ".config/qBittorrendarktablet"
+        ".config/qBittorrent"
         ".config/spotify"
         ".local/share/Anki2"
         ".local/share/containers"

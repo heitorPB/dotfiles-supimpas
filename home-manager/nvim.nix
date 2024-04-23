@@ -226,7 +226,7 @@
 
       " vimwiki magic
       let garden_wiki = {}
-      let garden_wiki.path = '~/vimwiki'
+      let garden_wiki.path = '~/projects/vimwiki'
       let garden_wiki.name = 'garden'
       let garden_wiki.syntax = 'markdown'
       let garden_wiki.ext = 'md'

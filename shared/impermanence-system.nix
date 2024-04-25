@@ -50,18 +50,20 @@
         { directory = ".aws"; mode = "0700"; }
         { directory = ".gnupg"; mode = "0700"; }
         ".config/asciinema"
+        ".config/OrcaSlicer"
         ".config/btop"
         ".config/cura"
         ".config/darktable"
         ".config/keepassxc"
-        ".config/nvim"
         ".config/klavaro"
+        ".config/nvim"
         ".config/pasteur-chrome"
         ".config/qBittorrent"
         ".config/spotify"
         ".local/share/Anki2"
         ".local/share/containers"
         ".local/share/cura"
+        ".local/share/orca-slicer"
         ".local/share/direnv"
         ".local/share/klavaro"
         ".local/share/qBittorrent"
@@ -82,6 +84,7 @@
         ".cache/mozilla"
         ".cache/pre-commit"
         ".cache/spotify"
+        ".cache/orca-slicer"
       ];
       files = [
         ".bash_history"

@@ -17,6 +17,7 @@
 
     # 3D printing
     cura
+    orca-slicer
   ];
 
   # Load amdgpu at stage 1

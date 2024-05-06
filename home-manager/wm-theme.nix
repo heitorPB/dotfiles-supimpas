@@ -96,7 +96,7 @@ in
 
   qt = lib.mkIf hasSeat {
     enable = true;
-    platformTheme = "qtct";
+    platformTheme.name = "qtct";
     style = {
       name = "kvantum";
     };

@@ -405,11 +405,12 @@ in
       };
 
       floating.criteria = [
+        { app_id = ".blueman-manager-wrapped"; }
         { app_id = "anki"; }
         { app_id = "klavaro"; }
         { app_id = "org.keepassxc.KeePassXC"; }
         { app_id = "pavucontrol-qt"; }
-        { app_id = ".blueman-manager-wrapped"; }
+        { title = "Volume Control"; } # For some reason, pavucontrol-qt lost its app_id
       ];
 
       keybindings = mkOptionDefault ({

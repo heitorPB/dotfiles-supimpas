@@ -91,7 +91,7 @@
           }
           add_lsp(lspconfig.nil_ls, {})
 
-          add_lsp(lspconfig.terraform_lsp, {})
+          add_lsp(lspconfig.terraformls, {}) -- official from HashiCorp
           add_lsp(lspconfig.nomad_lsp, {})
           add_lsp(lspconfig.vale_ls, {})
 

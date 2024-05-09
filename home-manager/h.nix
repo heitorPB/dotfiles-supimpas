@@ -497,6 +497,16 @@ in
             socket_path = "/var/run/user/1000/podman/podman.sock";
           }
           {
+            # Hardcode tun0 to show vpn network only if it exists.
+            # The `missing_format` below takes care of not showing anything if
+            # there's no tun0 device.
+            block = "net";
+            device = "tun";
+            format = "$icon  $device  $ip  $ipv6 ";
+            missing_format = "";
+            interval = 30;
+          }
+          {
             # Hardcode wlan0 to show wireless network only if it exists.
             # The `missing_format` below takes care of not showing anything if
             # there's no wlan0 device.

@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   imports = [ ./hardware-configuration.nix ];
   # Microcode updates.
@@ -14,6 +14,7 @@
   # Machine specific packages
   environment.systemPackages = with pkgs; [
     radeontop # Like htop, but for AMD GPUs
+    nvtopPackages.amd # nvtop for AMD GPUs
 
     # 3D printing
     cura
@@ -35,6 +36,18 @@
 
     # Load amdgpu at stage 1
     "amdgpu"
+
+    # With BIOS version 1.12 and the IOMMU enabled, the amdgpu driver
+    # either crashes or is not able to attach to the GPU depending on
+    # the kernel version. I've seen no issues with the IOMMU disabled.
+    #
+    # BIOS version 1.13 fixes the IOMMU issues, but we leave the IOMMU
+    # in software mode to avoid a sad experience for those people that drew
+    # the short straw when they bought their laptop.
+    #
+    # Do not set iommu=off, because this will cause the SD-Card reader
+    # driver to kernel panic.
+    "iommu=soft"
   ];
 
   # AMD GPU
@@ -47,7 +60,7 @@
     rocmPackages.clr.icd
 
     # AMDVLK drivers can be used in addition to the Mesa RADV drivers.
-    #amdvlk
+    amdvlk
   ];
   hardware.opengl.extraPackages32 = with pkgs; [
     driversi686Linux.amdvlk
@@ -64,6 +77,7 @@
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
   ];
 
+  services.xserver.videoDrivers = lib.mkDefault [ "modesetting" ];
 
   # USB4 / Thunderbolt
   services.hardware.bolt.enable = true;

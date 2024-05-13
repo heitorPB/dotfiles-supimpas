@@ -86,6 +86,7 @@
     lxqt.pavucontrol-qt # GUI for audio control
     lxqt.pcmanfm-qt # Filesystem browser
     pinentry-qt # Pinentry for gnupg
+    qbittorrent
     qpwgraph # Graph based GUI to connect Audio sinks and outputs
 
     firefox
@@ -94,11 +95,11 @@
     #chromium # Could not get a cache hit :(
 
     # Office
-    libreoffice-qt
-    hunspell
-    hunspellDicts.pt_BR
-    hunspellDicts.en_US-large
     gimp
+    hunspell
+    hunspellDicts.en_US-large
+    hunspellDicts.pt_BR
+    libreoffice-qt
 
     # My favorites :)
     anki # Flash cards!

@@ -247,6 +247,8 @@
     settings = {
       default-cache-ttl = 21600;
       default-cache-ttl-ssh = 21600;
+      max-cache-ttl = 21600;
+      max-cache-ttl-ssh = 21600;
     };
   };
   # Required to get pinentry working

@@ -78,16 +78,17 @@
 
     avizo # Neat pop-up notification for audio/brightness adjustments. See sway config
     brightnessctl # To change backligh (screen brightness), for avizo
-    pamixer # PulseAudio Mixer, for avizo
-    xarchiver # Archiver to use with pcmanfm-qt
+    calibre # E-book reader/manager
     lxmenu-data # For lxqt apps' "Open with" dialogs
     lxqt.lxqt-menu-data # For pcmanfm-qt right click Application Menu
     lxqt.lxqt-sudo # GUI for sudo, for pcmanfm-qt
     lxqt.pavucontrol-qt # GUI for audio control
     lxqt.pcmanfm-qt # Filesystem browser
+    pamixer # PulseAudio Mixer, for avizo
     pinentry-qt # Pinentry for gnupg
     qbittorrent
     qpwgraph # Graph based GUI to connect Audio sinks and outputs
+    xarchiver # Archiver to use with pcmanfm-qt
 
     firefox
     #firefox-bin # Could not get a cache hit :(

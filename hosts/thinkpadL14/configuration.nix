@@ -51,20 +51,22 @@
   ];
 
   # AMD GPU
-  hardware.opengl.extraPackages = with pkgs; [
-    # VA-API and VDPAU
-    vaapiVdpau
+  hardware.opengl = {
+    # See also seat-configuration.nix for other OpenGL settings
 
-    # AMD ROCm OpenCL runtime
-    rocmPackages.clr
-    rocmPackages.clr.icd
+    extraPackages = with pkgs; [
+      # VA-API and VDPAU
+      vaapiVdpau
 
-    # AMDVLK drivers can be used in addition to the Mesa RADV drivers.
-    amdvlk
-  ];
-  hardware.opengl.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
-  ];
+      # AMD ROCm OpenCL runtime
+      rocmPackages.clr
+      rocmPackages.clr.icd
+
+      # AMDVLK drivers can be used in addition to the Mesa RADV drivers.
+      amdvlk
+    ];
+    extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
+  };
 
   environment.variables = {
     # VAAPI and VDPAU config for accelerated video.

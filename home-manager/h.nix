@@ -286,6 +286,9 @@ in
     # Normalize TERM variable
     set -g default-terminal "screen-256color"
 
+    # Increase history
+    set-option -g history-limit 10000
+
     # Full color range
     set-option -ga terminal-overrides ",*256col*:Tc,alacritty:Tc"
 

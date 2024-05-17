@@ -496,7 +496,7 @@ in
           {
             block = "docker";
             interval = 5;
-            format = "$icon $running/$total";
+            format = "$icon  $running.eng(w:2)/$total.eng(w:2)";
             socket_path = "/var/run/user/1000/podman/podman.sock";
           }
           {

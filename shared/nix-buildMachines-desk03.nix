@@ -1,5 +1,5 @@
 # Configure desk03 as a nix remote builder
-{ config, pkgs, inputs, ssot, machine, ... }:
+{ machine, ... }:
 
 {
   nix.distributedBuilds = true; # Required to use the builders

@@ -11,16 +11,16 @@
       let
         pkgs = import nixpkgs { inherit system; };
       in
-      rec {
+      {
         # For nix develop
         devShell = pkgs.mkShell {
           shellHook = ''
             export PIP_NO_BINARY="ruff"
-            export PIP_NO_BINARY="uv"
           '';
 
-          nativeBuildInputs = with pkgs; [
+          packages = with pkgs; [
             (python311.withPackages (p: with p; [
+              pip
               python-lsp-server
               python-lsp-ruff
             ]))

@@ -17,8 +17,10 @@
     nvtopPackages.amd # nvtop for AMD GPUs
 
     # 3D printing
-    cura
+    #cura
     orca-slicer
+
+    exercism
   ];
 
   # Load amdgpu at stage 1

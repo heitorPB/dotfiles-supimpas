@@ -1,14 +1,25 @@
 { pkgs, ... }:
 {
-  # Write the Tmux configuration file directly. Not a big fan of having this global
-  # TODO: use https://github.com/catppuccin ?
-
   programs.tmux = {
     enable = true;
     plugins = with pkgs; [
       {
         plugin = tmuxPlugins.catppuccin;
-        extraConfig = "set -g @catppuccin_flavour 'macchiato' # latte,frappe, macchiato or mocha";
+        extraConfig = ''
+          set -g @catppuccin_flavour 'macchiato' # latte, frappe, macchiato or mocha
+
+          # configure sequence of status line blocks
+          set -g @catppuccin_status_modules_left  "session"
+          set -g @catppuccin_status_modules_right "directory date_time"
+
+          # overwrite window name to be the window name if set
+          set -g @catppuccin_window_current_text "#{window_name}"
+          set -g @catppuccin_window_default_text "#{window_name}"
+
+          # overwrite directory text to be full path of current directory
+          set -g @catppuccin_directory_text "#{pane_current_path}"
+
+        '';
       }
     ];
     extraConfig = ''
@@ -17,6 +28,9 @@
 
       # Increase history
       set-option -g history-limit 10000
+
+      # Reduce interval that Tmux updates status line
+      set -g status-interval 1
 
       # Full color range
       set-option -ga terminal-overrides ",*256col*:Tc,alacritty:Tc"

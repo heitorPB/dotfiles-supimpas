@@ -82,6 +82,7 @@
             # Extra services for this host
             ./shared/vpns.nix
             ./shared/podman.nix
+            ./shared/docker.nix
             ./shared/nomad.nix
 
             # Use desktop as remove builder

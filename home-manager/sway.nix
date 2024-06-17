@@ -1,4 +1,4 @@
-{ pkgs, lib, machine, ...}: with lib;
+{ pkgs, lib, machine, ... }: with lib;
 let
   hasSeat = machine.seat != null;
 in

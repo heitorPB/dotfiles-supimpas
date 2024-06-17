@@ -2,6 +2,7 @@
 {
   programs.tmux = {
     enable = true;
+    keyMode = "vi";
     plugins = with pkgs; [
       {
         plugin = tmuxPlugins.catppuccin;

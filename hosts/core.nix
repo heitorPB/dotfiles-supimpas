@@ -149,10 +149,11 @@
     ripgrep # Fancier grep(1)
     rsync
     tree # List directories in a nice looking tree structure
-    usbutils # For lsusb(8)
     unzip # To revert zip operations
+    usbutils # For lsusb(8)
     wget
     wol # Wake On Lan client
+    zip # To zip or not to zip
 
     # Development and workflow
     git

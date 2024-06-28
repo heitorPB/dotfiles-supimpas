@@ -53,7 +53,7 @@
   ];
 
   # AMD GPU
-  hardware.opengl = {
+  hardware.graphics = {
     # See also seat-configuration.nix for other OpenGL settings
 
     extraPackages = with pkgs; [

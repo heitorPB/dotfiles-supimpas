@@ -20,11 +20,10 @@
   };
   services.blueman.enable = true;
 
-  # GPU
-  hardware.opengl = {
+  # Former hardware.opengl
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   # XDG-Portal (for dialogs & screensharing).

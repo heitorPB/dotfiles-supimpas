@@ -168,7 +168,7 @@
 
     # My forever configs for .config/nvim/init.vim
     extraConfig = ''
-      colorscheme catppuccin "catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+      colorscheme catppuccin-macchiato "catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 
       let mapleader=","
 

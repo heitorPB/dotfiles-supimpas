@@ -225,7 +225,7 @@
     uid = 1000;
     isNormalUser = true;
     # TODO: systemd-journal is some kind of bug: I shouldn't need to be in it (see man journalctl)
-    extraGroups = [ "wheel" "podman" "systemd-journal" "networkmanager" ];
+    extraGroups = [ "wheel" "podman" "systemd-journal" "networkmanager" "docker" ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJxMuFUrQujzveHDbM8etG1A2rQhA8i2KwM0j2BiFx0K h@alien"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmUxVAr/I2+Fdw2oxpKhzlt+tSIojo+yAbzzmACbKRh h@L14"

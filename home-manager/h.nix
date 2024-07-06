@@ -383,7 +383,8 @@ in
           {
             # TODO make this block only if hasBattery, use ssot
             block = "battery";
-            format = "$icon  $percentage";
+            format = "$icon   $percentage";
+            not_charging_format = "$icon   $percentage";
             interval = 5;
             device = machine.battery;
           }

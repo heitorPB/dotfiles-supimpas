@@ -14,12 +14,26 @@
       {
         # For nix develop
         devShell = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            stdenv.cc.cc
+            zlib # For NumPy
+          ];
+
           shellHook = ''
             export PIP_NO_BINARY="ruff"
+
+            # for PyTorch
+            export LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib
+
+            # for Numpy
+            export LD_LIBRARY_PATH=${pkgs.zlib}/lib:$LD_LIBRARY_PATH
+
+            # Use Docker instead of Podman
+            export DOCKER_HOST=unix:///run/docker.sock
           '';
 
-          packages = with pkgs; [
-            (python311.withPackages (p: with p; [
+          nativeBuildInputs = with pkgs; [
+            (python312.withPackages (p: with p; [
               pip
               python-lsp-server
               python-lsp-ruff

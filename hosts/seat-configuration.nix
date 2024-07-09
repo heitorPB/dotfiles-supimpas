@@ -108,7 +108,6 @@
     feh # Image viewer
     hledger # Double entry accounting tool
     keepassxc # Password manager
-    klavaro # Touch typing lessons
     mpv # Video/audio player. See my home config as well
     spotify # Sold my soul
     telegram-desktop # Old school communication system

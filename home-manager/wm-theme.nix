@@ -67,6 +67,7 @@ in
     };
   };
 
+  # Qt Setup is broken
   xdg.configFile = lib.mkIf hasSeat {
     kvantum = {
       target = "Kvantum/kvantum.kvconfig";
@@ -97,9 +98,7 @@ in
   qt = lib.mkIf hasSeat {
     enable = true;
     platformTheme.name = "qtct";
-    style = {
-      name = "kvantum";
-    };
+    style.name = "kvantum";
   };
 
   systemd.user.sessionVariables = lib.mkIf hasSeat {

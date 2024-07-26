@@ -74,7 +74,7 @@
     nvidiaBusId = "PCI:1:0:0";
   };
 
-  hardware.opengl.extraPackages = with pkgs; [ vaapiVdpau ];
+  hardware.graphics.extraPackages = with pkgs; [ vaapiVdpau ];
 
 
   # Her user settings

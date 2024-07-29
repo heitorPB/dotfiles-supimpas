@@ -9,7 +9,7 @@ in
     ./starship.nix
     ./sway.nix
     ./tmux.nix
-    ./wm-theme.nix
+    ./gtk-qt.nix
     ./xdg.nix
   ];
 
@@ -416,7 +416,7 @@ in
     };
   };
 
-  # TODO: add my btop config here, only if has seat?
+  # TODO: add my btop config here; and add catppuccinNix to it
 
   programs.mpv = mkIf hasSeat {
     enable = true;

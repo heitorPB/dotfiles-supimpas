@@ -116,11 +116,6 @@
     grim # Screenshot for wayland # TODO: configure screenshot in Sway
     slurp # For selecting region of screen. Easier screenshotting: grim -s $(slurp)
     wdisplays # Equivalent to arandr
-
-    libsForQt5.qtstyleplugin-kvantum
-    libsForQt5.qt5ct # Magic for some Qt apps keep functionality. KeepassXC
-    # needs it to be able to minimize to tray. See
-    # https://wiki.archlinux.org/title/Wayland#Qt
   ];
 
   # For USB automounting, on pcmanfm-qt

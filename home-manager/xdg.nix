@@ -73,6 +73,7 @@ in
           Archiver = "xarchiver";
           Terminal = "alacritty";
           SuCommand = "${pkgs.lxqt.lxqt-sudo}/bin/lxqt-sudo %s";
+          FallbackIconThemeName = "Papirus-Dark";
         };
         Thumbnail = {
           ShowThumbnails = true;

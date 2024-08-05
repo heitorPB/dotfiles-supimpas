@@ -6,7 +6,7 @@ let
   catppuccinAccent = "Blue";
   catppuccinFlavor = "Macchiato";
 
-  catppuccinKvantum =  pkgs.catppuccin-kvantum.override {
+  catppuccinKvantum = pkgs.catppuccin-kvantum.override {
     accent = catppuccinAccent;
     variant = catppuccinFlavor;
   };

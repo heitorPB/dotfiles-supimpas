@@ -23,7 +23,7 @@
 
           nativeBuildInputs = with pkgs; [
             terraform
-            terraform-lsp
+            terraform-ls # Official from HashiCorp
             packer
           ];
         };

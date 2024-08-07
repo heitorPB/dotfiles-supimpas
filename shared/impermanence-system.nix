@@ -54,6 +54,7 @@
         ".config/calibre"
         ".config/cura"
         ".config/darktable"
+        ".config/exercism"
         ".config/keepassxc"
         ".config/nvim"
         ".config/OrcaSlicer"

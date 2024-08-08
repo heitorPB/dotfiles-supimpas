@@ -36,7 +36,6 @@
             (python312.withPackages (p: with p; [
               pip
               python-lsp-server
-              python-lsp-ruff
             ]))
 
             rustc

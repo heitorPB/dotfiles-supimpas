@@ -63,19 +63,8 @@
           }
           add_lsp(lspconfig.gopls, gopls_config)
 
-          local pylsp_config = {
-              settings = {
-                  pylsp = {
-                      plugins = {
-                          ruff = {
-                              enabled = true,
-                              extendSelect = { "I" },
-                          },
-                      }
-                  }
-              }
-          }
-          add_lsp(lspconfig.pylsp, pylsp_config)
+          add_lsp(lspconfig.pylsp, {})
+          add_lsp(lspconfig.ruff, {})
 
           -- Nix LSP
           local nil_config = {

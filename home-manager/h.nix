@@ -218,8 +218,6 @@ in
     };
   };
 
-
-
   # Screen temperature
   services.gammastep = mkIf (hasSeat) {
     enable = true;

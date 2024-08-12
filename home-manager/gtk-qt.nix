@@ -10,15 +10,6 @@ let
     accent = catppuccinAccent;
     variant = catppuccinFlavor;
   };
-
-  qtctConf = {
-    Appearance = {
-      custom_palette = false;
-      icon_theme = "Papirus-Dark";
-      standard_dialogs = "default";
-      style = "kvantum";
-    };
-  };
 in
 {
   home.packages = with pkgs; lib.mkIf hasSeat [
@@ -36,7 +27,7 @@ in
   # Mouse cursor
   catppuccin.pointerCursor = {
     enable = true;
-    accent = lib.toLower "Lavender";
+    accent = lib.toLower "Lavender"; # Only non-blue Catppuccin
     flavor = lib.toLower catppuccinFlavor;
   };
   home.pointerCursor.size = machine.seat.cursorSize;
@@ -46,7 +37,6 @@ in
     enable = true;
 
     catppuccin = {
-      #enable = true; # No need to set this anymore
       accent = lib.toLower catppuccinAccent;
       flavor = lib.toLower catppuccinFlavor;
 
@@ -80,18 +70,16 @@ in
   qt = lib.mkIf hasSeat {
     enable = true;
 
-    platformTheme.name = "qt5ct";
-    #platformTheme.name = "kvantum";
-    style.name = "kvantum";
-  };
-  #xdg.configFile."qt5ct/qt5ct.conf".text = lib.generators.toINI { } qtctConf;
-  #xdg.configFile."qt6ct/qt6ct.conf".text = lib.generators.toINI { } qtctConf;
-  xdg.configFile = {
-    "Kvantum/kvantum.kvconfig".text = ''
-      [General]
-      theme=Catppuccin-${catppuccinFlavor}-${catppuccinAccent}
-    '';
+    platformTheme.name = "kvantum";
+    style = {
+      name = "kvantum";
 
-    "Kvantum/Catppuccin-${catppuccinFlavor}-${catppuccinAccent}".source = "${catppuccinKvantum}/share/Kvantum/Catppuccin-${catppuccinFlavor}-${catppuccinAccent}";
+      catppuccin = {
+        enable = true;
+        apply = true;
+        accent =lib.toLower catppuccinAccent;
+        flavor =lib.toLower catppuccinFlavor;
+      };
+    };
   };
 }

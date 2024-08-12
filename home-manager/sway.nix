@@ -74,8 +74,7 @@ in
         { app_id = ".blueman-manager-wrapped"; }
         { app_id = "anki"; }
         { app_id = "org.keepassxc.KeePassXC"; }
-        { app_id = "pavucontrol-qt"; }
-        { title = "Volume Control"; } # For some reason, pavucontrol-qt lost its app_id
+        { title = "Volume Control"; } # For pavucontrol
       ];
 
       keybindings = mkOptionDefault ({

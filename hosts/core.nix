@@ -192,13 +192,14 @@
 
     # AWS
     awscli2 # TODO: move this only to machines that need
+    ssm-session-manager-plugin # Amazon SSM manager plugin
     #eksctl # AWS EKS
-
-    # Clouds should fly
-    #flyctl
 
     # MS Azure
     azure-cli # TODO: move this only to machines that need
+
+    # Clouds should fly
+    #flyctl
 
     # Kubernetes clients
     #kubectl

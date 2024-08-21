@@ -22,6 +22,7 @@
       "/var/lib/containers"
       "/var/lib/cups"
       { directory = "/var/lib/iwd"; mode = "u=rwx,g=,o="; }
+      "/var/lib/nixos"
       "/var/lib/systemd"
       "/var/lib/upower"
 

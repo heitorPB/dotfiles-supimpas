@@ -16,12 +16,8 @@ in
     papirus-folders # Icons
     #catppuccin-papirus-folders # Conflicts with above
 
-    # Theme for Qt apps
+    # Theme for Qt apps - do I need this?
     catppuccinKvantum
-
-    # I don't know If I need these
-    libsForQt5.qt5ct
-    #kdePackages.qt6ct
   ];
 
   # Mouse cursor

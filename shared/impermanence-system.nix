@@ -21,6 +21,7 @@
       "/var/lib/bluetooth"
       "/var/lib/containers"
       "/var/lib/cups"
+      "/var/lib/docker"
       { directory = "/var/lib/iwd"; mode = "u=rwx,g=,o="; }
       "/var/lib/nixos"
       "/var/lib/systemd"

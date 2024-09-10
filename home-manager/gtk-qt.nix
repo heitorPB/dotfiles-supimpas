@@ -20,13 +20,13 @@ in
     catppuccinKvantum
   ];
 
-  # Mouse cursor
-  catppuccin.pointerCursor = {
-    enable = true;
-    accent = lib.toLower "Lavender"; # Only non-blue Catppuccin
-    flavor = lib.toLower catppuccinFlavor;
+  # Mouse cursor - Only non-blue Catppuccin
+  home.pointerCursor = lib.mkIf hasSeat {
+    name = "catppuccin-${lib.toLower catppuccinFlavor}-lavender-cursors";
+    package = pkgs.catppuccin-cursors.${lib.toLower catppuccinFlavor + "Lavender"};
+    gtk.enable = true;
+    size = machine.seat.cursorSize;
   };
-  home.pointerCursor.size = machine.seat.cursorSize;
 
   # GTK Setup
   gtk = lib.mkIf hasSeat {

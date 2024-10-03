@@ -129,7 +129,7 @@ in
 
         # G3 laptop Keyboard
         "1:1:AT_Translated_Set_2_keyboard" = {
-          xkb_layout = "br(thinkpad)";
+          xkb_layout = "us(alt-intl)";
         };
       };
     };

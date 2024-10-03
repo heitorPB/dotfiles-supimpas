@@ -25,9 +25,10 @@ rec {
     gpgPinentryPackage = "qt";
 
     amdGpu = "card1";
+    amdGpuSensor = "amdgpu-pci-0700";
+    nvidiaGpu = null;
     battery = "BAT0";
     cpuSensor = "k10temp-pci-00c3";
-    gpuSensor = "amdgpu-pci-0700";
     mainNetworkInterface = "wlan0";
     nvmeSensors = [ "nvme-pci-0100" ];
 
@@ -55,13 +56,13 @@ rec {
     gitKey = "heitorpbittencourt@gmail.com";
     gpgPinentryPackage = "qt";
 
-    amdGpu = "card1"; # TODO: check this
-    nvidiaGpu = "card1"; # TODO: add this
-    battery = "BAT0"; # TODO: check this
-    cpuSensor = "k10temp-pci-00c3"; # TODO: check this
-    gpuSensor = "amdgpu-pci-0700"; # TODO: check this
+    amdGpu = null;
+    amdGpuSensor = null;
+    nvidiaGpu = 0;
+    battery = "BAT0";
+    cpuSensor = "coretemp-isa-0000";
     mainNetworkInterface = "wlan0";
-    nvmeSensors = [ "nvme-pci-0100" ]; # TODO: check this
+    nvmeSensors = [ "nvme-pci-3a00" ];
 
     # Graphical thingies
     seat = {

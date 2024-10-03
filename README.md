@@ -1,4 +1,4 @@
-# dotfiles-supimpas
+# Dotfiles Supimpas
 
 My Nix configuration files.
 

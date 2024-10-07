@@ -91,7 +91,7 @@ in
             idle = 50; # Above this temp, bg gets blue
             info = 65; # Above this temp, bg gets yellow
             warning = 80; # Above this temp, bg gets red
-            chip = machine.gpuSensor;
+            chip = machine.amdGpuSensor;
             interval = 5;
           }
         ) ++ (lib.lists.optional (machine.nvidiaGpu != null)

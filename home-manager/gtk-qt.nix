@@ -32,14 +32,20 @@ in
   gtk = lib.mkIf hasSeat {
     enable = true;
 
-    catppuccin = {
-      accent = lib.toLower catppuccinAccent;
-      flavor = lib.toLower catppuccinFlavor;
-
-      icon = {
-        enable = true;
-        accent = lib.toLower catppuccinAccent;
-        flavor = lib.toLower catppuccinFlavor;
+    theme = {
+      name = "catppuccin-${lib.toLower catppuccinFlavor}-${lib.toLower catppuccinAccent}-standard";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "${lib.toLower catppuccinAccent}" ];
+        size = "standard";
+        variant = "${lib.toLower catppuccinFlavor}";
+      };
+    };
+    iconTheme = {
+      name = "Papirus"; # WTF?
+      #name = "cat-${lib.toLower catppuccinFlavor}-${lib.toLower catppuccinAccent}";
+      package = pkgs.catppuccin-papirus-folders.override {
+        flavor = "${lib.toLower catppuccinFlavor}";
+        accent = "${lib.toLower catppuccinAccent}";
       };
     };
 

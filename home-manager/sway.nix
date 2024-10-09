@@ -127,9 +127,10 @@ in
           xkb_model = "kinesis";
         };
 
-        # G3 laptop Keyboard
+        # G3 and L14 laptop Keyboard have the same identifier :(
         "1:1:AT_Translated_Set_2_keyboard" = {
-          xkb_layout = "us(alt-intl)";
+          #xkb_layout = "us(alt-intl)";
+          xkb_layout = "br(thinkpad)";
         };
       };
     };

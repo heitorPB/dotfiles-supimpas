@@ -173,8 +173,6 @@
     # Python and its Development packages
     (python3.withPackages (p: with p; [
       ipython
-      #python-lsp-server # Use it in a per-project dev shell
-      #python-lsp-ruff
     ]))
 
     nil # Nix LSP; rnix-lsp has been archived

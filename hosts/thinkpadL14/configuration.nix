@@ -15,12 +15,6 @@
   environment.systemPackages = with pkgs; [
     radeontop # Like htop, but for AMD GPUs
     nvtopPackages.amd # nvtop for AMD GPUs
-
-    # 3D printing
-    #cura
-    orca-slicer
-
-    exercism
   ];
 
   # Load amdgpu at stage 1

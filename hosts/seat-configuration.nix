@@ -113,6 +113,8 @@
     spotify # Sold my soul
     telegram-desktop # Old school communication system
 
+    orca-slicer # 3D printing slicer
+
     # Wayland progrs
     grim # Screenshot for wayland # TODO: configure screenshot in Sway
     slurp # For selecting region of screen. Easier screenshotting: grim -s $(slurp)

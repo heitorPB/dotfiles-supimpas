@@ -159,7 +159,10 @@
     git
     gnumake # For make
     jq # JSON parser
-    tmux
+    tmux # Moar terminals
+
+    # Learning
+    exercism
 
     # Direnv and a handy extension
     direnv

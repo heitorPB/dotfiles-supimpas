@@ -133,6 +133,12 @@
             # Use desktop as remove builder
             ./shared/nix-buildMachines-desk03.nix
 
+            # Extra services for this host
+            ./shared/vpns.nix
+            ./shared/podman.nix
+            ./shared/docker.nix
+            ./shared/nomad.nix
+
             # ZFS on impermanence from Chaotic
             chaotic.nixosModules.default
             impermanence.nixosModules.impermanence

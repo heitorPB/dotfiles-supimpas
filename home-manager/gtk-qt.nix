@@ -10,13 +10,12 @@ let
     accent = catppuccinAccent;
     variant = catppuccinFlavor;
   };
+
+  qtThemeName = "Catppuccin-${catppuccinFlavor}-${catppuccinAccent}";
 in
 {
   home.packages = with pkgs; lib.mkIf hasSeat [
     papirus-folders # Icons
-    #catppuccin-papirus-folders # Conflicts with above
-
-    # Theme for Qt apps - do I need this?
     catppuccinKvantum
   ];
 
@@ -42,7 +41,6 @@ in
     };
     iconTheme = {
       name = "Papirus"; # WTF?
-      #name = "cat-${lib.toLower catppuccinFlavor}-${lib.toLower catppuccinAccent}";
       package = pkgs.catppuccin-papirus-folders.override {
         flavor = "${lib.toLower catppuccinFlavor}";
         accent = "${lib.toLower catppuccinAccent}";
@@ -71,17 +69,14 @@ in
   # Qt setup
   qt = lib.mkIf hasSeat {
     enable = true;
-
     platformTheme.name = "kvantum";
-    style = {
-      name = "kvantum";
+    style.name = "kvantum";
+  };
 
-      catppuccin = {
-        enable = true;
-        apply = true;
-        accent =lib.toLower catppuccinAccent;
-        flavor =lib.toLower catppuccinFlavor;
-      };
+  xdg.configFile = {
+    "Kvantum/${qtThemeName}".source = "${catppuccinKvantum}/share/Kvantum/${qtThemeName}";
+    "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini { }).generate "kvantum.kvconfig" {
+      General.theme = qtThemeName;
     };
   };
 }

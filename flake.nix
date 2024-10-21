@@ -19,15 +19,13 @@
     # Downgrade gnupg to 2.2.27. TODO: remove later
     #nixpkgs-gnupg.url = "github:nixos/nixpkgs/d88ad75767c638c013f5db40739386b1a5e12029";
 
-    catppuccin.url = "github:catppuccin/nix";
-
     update-systemd-resolved.url = "github:jonathanio/update-systemd-resolved";
     update-systemd-resolved.inputs.nixpkgs.follows = "nixpkgs"; # optional
     awsvpnclient.url = "github:ymatsiuk/awsvpnclient";
     awsvpnclient.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, impermanence, chaotic, catppuccin, ... }@inputs:
+  outputs = { nixpkgs, home-manager, impermanence, chaotic, ... }@inputs:
     let
       ssot = import ./shared/ssot.nix inputs;
     in
@@ -95,9 +93,6 @@
             impermanence.nixosModules.impermanence
             ./shared/impermanence-system.nix
 
-            # Catppuccin everywhere
-            catppuccin.nixosModules.catppuccin
-
             # home-manager stuff
             home-manager.nixosModules.home-manager
             {
@@ -106,7 +101,6 @@
               home-manager.users.h = {
                 imports = [
                   ./home-manager/h.nix
-                  catppuccin.homeManagerModules.catppuccin
                 ];
               };
             }
@@ -144,9 +138,6 @@
             impermanence.nixosModules.impermanence
             ./shared/impermanence-system.nix
 
-            # Catppuccin everywhere
-            catppuccin.nixosModules.catppuccin
-
             # home-manager stuff
             home-manager.nixosModules.home-manager
             {
@@ -155,7 +146,6 @@
               home-manager.users.h = {
                 imports = [
                   ./home-manager/h.nix
-                  catppuccin.homeManagerModules.catppuccin
                 ];
               };
             }

@@ -65,6 +65,10 @@ in
         };
         FolderView = {
           Mode = "detailed";
+          BigIconSize = 64;
+          SidePaneIconSize = 32;
+          SmallIconSize = 32;
+          ThumbnailIconSize = 128;
         };
         Places = {
           HiddenPlaces = "@invalid, /home/h/Desktop, trash:///, zroot";
@@ -80,7 +84,7 @@ in
         };
         Volume = {
           AutoRun = false;
-          CloseOnUnmount = true;
+          CloseOnUnmount = false; # Go to home folder instead of closing tab
           MountOnStartup = false;
           MountRemovable = false;
         };

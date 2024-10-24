@@ -8,6 +8,8 @@ in
     mimeApps = lib.mkIf hasSeat {
       enable = true;
       associations = {
+        # Find the default apps with `xdg-mime query default MIME_TYPE`
+        # And/or look into /run/current-system/sw/share/applications/
         removed = {
           "application/pdf" = "google-chrome.desktop";
 
@@ -16,6 +18,9 @@ in
           "image/jpeg" = "google-chrome.desktop;com.ultimaker.cura.desktop";
           "image/png" = "google-chrome.desktop;com.ultimaker.cura.desktop";
           "image/webp" = "google-chrome.desktop;com.ultimaker.cura.desktop";
+
+          # .docx
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "calibre-ebook-edit.desktop;calibre-ebook-viewer.desktop;calibre-gui.desktop";
         };
       };
       defaultApplications = {
@@ -37,6 +42,9 @@ in
         "image/jpeg" = "feh.desktop";
         "image/png" = "feh.desktop";
         "image/webp" = "feh.desktop";
+
+        # .docx
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "writer.desktop";
       };
     };
 

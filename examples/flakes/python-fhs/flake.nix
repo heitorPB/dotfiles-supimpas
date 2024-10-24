@@ -14,18 +14,18 @@
       {
         # For nix develop
         devShell = (pkgs.buildFHSUserEnv {
-         name = "poetry-env";
-         targetPkgs = pkgs:
-           [
-             (pkgs.python312.withPackages (p: with p; [
-               uv
-               python-lsp-server
-             ]))
+          name = "poetry-env";
+          targetPkgs = pkgs:
+            [
+              (pkgs.python312.withPackages (p: with p; [
+                uv
+                python-lsp-server
+              ]))
 
-             pkgs.zlib # for NumPy
-           ];
-         runScript = "bash";
-       }).env;
+              pkgs.zlib # for NumPy
+            ];
+          runScript = "bash";
+        }).env;
 
       });
 }

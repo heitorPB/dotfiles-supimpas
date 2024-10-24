@@ -166,7 +166,7 @@ in
             device_kind = "source"; # Microphone is a source
             mappings = {
               "alsa_input.pci-0000_07_00.6.analog-stereo" = " "; # L14's analog stereo in
-              "alsa_input.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__Mic1__source" =" "; # G3's analog stereo in
+              "alsa_input.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__Mic1__source" = " "; # G3's analog stereo in
               "alsa_input.usb-046d_Logitech_BRIO_C8F19D30-03.analog-stereo" = "  Brio"; # Brio Webcam in
               "bluez_input.78:2B:64:14:F3:96" = ""; # Bose NC700, bluetooth mic
               "bluez_input.04:CB:88:6F:C2:70" = " JBL borked"; # JBL Go 2 speaker provides a broken source

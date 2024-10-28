@@ -87,6 +87,7 @@
         ".cache/mesa_shader_cache"
         ".cache/mozilla"
         ".cache/orca-slicer"
+        ".cache/pip"
         ".cache/pre-commit"
         ".cache/spotify"
       ];

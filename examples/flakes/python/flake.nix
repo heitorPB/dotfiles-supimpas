@@ -1,3 +1,4 @@
+# It is helpfull as fuck to use nix-ld as well.
 {
   description = "A very basic flake";
 
@@ -14,14 +15,7 @@
       {
         # For nix develop
         devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            stdenv.cc.cc
-            zlib # For NumPy
-          ];
-
           shellHook = ''
-            export PIP_NO_BINARY="ruff"
-
             # for PyTorch
             export LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib
 
@@ -37,9 +31,6 @@
               pip
               python-lsp-server
             ]))
-
-            rustc
-            cargo
           ];
         };
       });

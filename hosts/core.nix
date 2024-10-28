@@ -219,6 +219,12 @@
     SUDO_EDITOR = "nvim"; # For sudo -e
   };
 
+  # Fake /lib64/ld-linux-x868-64.so.x so we can run pre-compiled binaries, e.g.
+  # dowloaded via `pip install bla`, numpy, etc. Not all problems are solved by
+  # it, but helpful. Also useful to `export LD_LIBRARY_PATH=${NIX-LD_LIBRARY_PATH}`
+  # for cases where some lib failed to load.
+  programs.nix-ld.enable = true;
+
   # Update man pages cache to make apropos work
   documentation.man.generateCaches = true;
 

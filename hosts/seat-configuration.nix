@@ -162,7 +162,6 @@
       #font-awesome_5
       font-awesome_6
       noto-fonts
-      noto-fonts-cjk
       noto-fonts-color-emoji
       #open-fonts
       roboto

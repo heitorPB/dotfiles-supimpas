@@ -7,8 +7,8 @@ let
   catppuccinFlavor = "Macchiato";
 
   catppuccinKvantum = pkgs.catppuccin-kvantum.override {
-    accent = catppuccinAccent;
-    variant = catppuccinFlavor;
+    accent = "${lib.toLower catppuccinAccent}";
+    variant = "${lib.toLower catppuccinFlavor}";
   };
 
   qtThemeName = "Catppuccin-${catppuccinFlavor}-${catppuccinAccent}";

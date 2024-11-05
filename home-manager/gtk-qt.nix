@@ -11,7 +11,7 @@ let
     variant = "${lib.toLower catppuccinFlavor}";
   };
 
-  qtThemeName = "Catppuccin-${catppuccinFlavor}-${catppuccinAccent}";
+  qtThemeName = "catppuccin-${lib.toLower catppuccinFlavor}-${lib.toLower catppuccinAccent}";
 in
 {
   home.packages = with pkgs; lib.mkIf hasSeat [

@@ -90,6 +90,7 @@
         ".cache/pip"
         ".cache/pre-commit"
         ".cache/spotify"
+        "go"
       ];
       files = [
         ".bash_history"

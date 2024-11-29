@@ -63,6 +63,7 @@
         ".config/pasteur-chrome"
         ".config/qBittorrent"
         ".config/spotify"
+        ".config/uv"
         ".local/share/Anki2"
         ".local/share/containers"
         #".local/share/cura"

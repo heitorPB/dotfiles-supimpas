@@ -121,6 +121,11 @@
     wdisplays # Equivalent to arandr
   ];
 
+  # Fix swaylock (nixpkgs issue 158025)
+  # https://nixos.wiki/wiki/Sway#Swaylock_cannot_be_unlocked_with_the_correct_password
+  security.pam.services.swaylock = { };
+  security.pam.services.swaylock-plugin = { };
+
   # For USB automounting, on pcmanfm-qt
   services.gvfs.enable = true;
 

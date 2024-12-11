@@ -32,7 +32,8 @@ in
             # there's no tun0 device.
             block = "net";
             device = "tun";
-            format = "$icon  $device  $ip  $ipv6 ";
+            format = "$icon  $device  $ip ";
+            format_alt = "$icon  $device  $ipv6 ";
             missing_format = "";
             interval = 30;
           }

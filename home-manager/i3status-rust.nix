@@ -182,6 +182,16 @@ in
             device = machine.battery;
           }
           {
+              block = "keyboard_layout";
+              driver = "sway";
+              format = "$layout";
+              sway_kb_identifier = "1:1:AT_Translated_Set_2_keyboard";
+              mappings = {
+                "Portuguese (Brazil, IBM/Lenovo ThinkPad)" = "PT";
+                "English (US, alt. intl.)" = "EN";
+              };
+          }
+          {
             block = "time";
             interval = 1;
             format = "$icon $timestamp.datetime(f:'%a %b %d %H:%M:%S %:::z')";

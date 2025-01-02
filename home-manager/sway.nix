@@ -127,6 +127,9 @@ in
         # Display backlight controls
         "XF86MonBrightnessUp" = "exec ${pkgs.avizo}/bin/lightctl -d up";
         "XF86MonBrightnessDown" = "exec ${pkgs.avizo}/bin/lightctl -d down";
+
+        # Cycle laptop's keyboard layout
+        "${modifier}+t" = "input \"1:1:AT_Translated_Set_2_keyboard\" xkb_switch_layout next";
       });
 
       bars = [{
@@ -165,8 +168,7 @@ in
 
         # G3 and L14 laptop Keyboard have the same identifier :(
         "1:1:AT_Translated_Set_2_keyboard" = {
-          #xkb_layout = "us(alt-intl)";
-          xkb_layout = "br(thinkpad)";
+          xkb_layout = "br(thinkpad),us(alt-intl)";
         };
       };
     };

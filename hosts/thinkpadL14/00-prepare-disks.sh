@@ -22,9 +22,10 @@ zpool create -O encryption=on -O keyformat=passphrase -O keylocation=prompt \
              -O xattr=sa -O acltype=posixacl -O atime=off \
              zroot /dev/nvme0n1p3
 zpool set autotrim=on zroot
-zfs create -refreservation=10G -o mountpoint=none zroot/reserved
-
 echo -e "zroot zpool created\n"
+
+zfs create -o refreservation=10G -o mountpoint=none zroot/reserved
+echo -e "Reservation created\n"
 
 # Create datasets
 zfs create -o mountpoint=none   zroot/data

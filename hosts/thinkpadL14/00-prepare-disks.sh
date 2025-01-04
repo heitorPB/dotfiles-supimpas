@@ -16,10 +16,14 @@ swapon /dev/nvme0n1p2
 echo -e "Swap created and activated\n"
 
 # Create zpool
-zpool create -f zroot /dev/nvme0n1p3
+zpool create -O encryption=on -O keyformat=passphrase -O keylocation=prompt \
+             -O compression=on \
+             -O mountpoint=none \
+             -O xattr=sa -O acltype=posixacl -O atime=off \
+             zroot /dev/nvme0n1p3
 zpool set autotrim=on zroot
-zfs set compression=on zroot
-zfs set mountpoint=none zroot
+zfs create -refreservation=10G -o mountpoint=none zroot/reserved
+
 echo -e "zroot zpool created\n"
 
 # Create datasets
@@ -30,7 +34,7 @@ zfs create -o mountpoint=legacy zroot/ROOT/nix
 zfs create -o mountpoint=legacy zroot/data/persistent
 zfs create -o mountpoint=none -o canmount=on zroot/containers
 
-# Snaptshot the root partitoin
+# Snapshot the root partitoin
 zfs snapshot zroot/ROOT/empty@start
 echo -e "Datasets and snapshot created\n"
 

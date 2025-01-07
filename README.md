@@ -15,6 +15,7 @@ $ sudo nixos-rebuild switch --flake .
 - `hosts/`: configuration files for each machine and also shared configuration
   between them.
 - `home-manager/`: user configurations
+- `shared/`: shared modules between all hosts
 
 ## Thanks
 

@@ -130,6 +130,9 @@ in
 
         # Cycle laptop's keyboard layout
         "${modifier}+t" = "input \"1:1:AT_Translated_Set_2_keyboard\" xkb_switch_layout next";
+
+        # Lock screen
+        "${modifier}+Print" = "exec ${pkgs.swaylock}/bin/swaylock";
       });
 
       bars = [{

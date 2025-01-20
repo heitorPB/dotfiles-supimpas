@@ -56,7 +56,7 @@
       core = { editor = "nvim"; };
       diff = { renames = "copies"; };
       fetch = { prune = true; };
-      help = { autocorrect = 1; };
+      help = { autocorrect = "prompt"; };
       init = { defaultBranch = "main"; };
       merge = { log = 20; tool = "nvimdiff"; conflictStyle = "diff3"; };
       pull = { ff = "only"; rebase = true; };

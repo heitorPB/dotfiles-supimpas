@@ -13,7 +13,7 @@
       battery = {
         governor = "powersave";
         # Minimum CPU frequency when using battery, in kHz
-        scaling_min_freq = 800000;
+        scaling_min_freq = 1000000;
 
         # Experimental battery charging levels
         # NOTE: not all laptops are supported, currently only Lenovo. See

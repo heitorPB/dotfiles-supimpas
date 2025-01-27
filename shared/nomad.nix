@@ -1,5 +1,5 @@
 # Configuration for Nomad
-{ lib, config, pkgs, ... }:
+{ lib, pkgs, ... }:
 let
   # This causes an infinite recursion :(
   #dockerEnabled = config.virtualisation.docker.enable;
@@ -8,7 +8,7 @@ in
 {
   services.nomad = {
     enable = true;
-    package = pkgs.nomad_1_7;
+    package = pkgs.nomad;
 
     # Add extra plugins to Nomad's plugin directory.
     extraSettingsPlugins = [ pkgs.nomad-driver-podman ];

@@ -158,19 +158,12 @@
     packages = with pkgs; [
       borg-sans-mono
       cantarell-fonts
-      droid-sans-mono-nerdfont
-      #fira
-      #fira-code
-      #fira-code-symbols
+      nerd-fonts.droid-sans-mono
       fira-code-nerdfont
-      #font-awesome_4
-      #font-awesome_5
       font-awesome_6
       noto-fonts
       noto-fonts-color-emoji
-      #open-fonts
       roboto
-      #ubuntu_font_family
     ];
     fontconfig = {
       cache32Bit = true;

@@ -49,7 +49,7 @@
     # Allow only users in the audio group to have access
     systemWide = false;
   };
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security = {
     # Optional and recommended to get near realtime, e.g. for PulseAudio audio
     rtkit.enable = true;
@@ -159,7 +159,7 @@
       borg-sans-mono
       cantarell-fonts
       nerd-fonts.droid-sans-mono
-      fira-code-nerdfont
+      nerd-fonts.fira-code
       font-awesome_6
       noto-fonts
       noto-fonts-color-emoji

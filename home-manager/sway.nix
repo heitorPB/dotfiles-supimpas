@@ -107,9 +107,11 @@ in
       };
 
       floating.criteria = [
+        # Get with `swaymsg -t get_tree`
         { app_id = ".blueman-manager-wrapped"; }
         { app_id = "anki"; }
         { app_id = "org.keepassxc.KeePassXC"; }
+        { class = "Spotify"; }
         { title = "Volume Control"; } # For pavucontrol
       ];
 

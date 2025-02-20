@@ -107,7 +107,9 @@ in
       feh-exif = "feh --auto-rotate --draw-filename --draw-exif --draw-tinted -V -F";
 
       # Separate browsers for work
-      pasteur-chrome = "google-chrome-stable --user-data-dir=$HOME/.config/pasteur-chrome/";
+      # Enabled features as suggested in
+      # https://nixos.wiki/wiki/Chromium#Enable_GPU_accelerated_video_decoding_.28VA-API.29
+      pasteur-chrome = "google-chrome-stable --user-data-dir=$HOME/.config/pasteur-chrome/ --enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport,UseMultiPlaneFormatForHardwareVideo";
     };
     shellOptions = [ "nocaseglob" ]; # Case insensitive interactive ops
   };

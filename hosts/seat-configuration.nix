@@ -121,6 +121,12 @@
     wdisplays # Equivalent to arandr
   ];
 
+  # Env
+  environment.variables = {
+    # Enable native Wayland support for Chromium and Electron based apps
+    NIXOS_OZONE_WL = "1";
+  };
+
   # Fix swaylock (nixpkgs issue 158025)
   # https://nixos.wiki/wiki/Sway#Swaylock_cannot_be_unlocked_with_the_correct_password
   security.pam.services.swaylock = { };

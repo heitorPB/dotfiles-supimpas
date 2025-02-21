@@ -112,6 +112,7 @@ in
         { app_id = "anki"; }
         { app_id = "org.keepassxc.KeePassXC"; }
         { app_id = "spotify"; }
+        { class = "steam"; }
         { title = "Volume Control"; } # For pavucontrol
       ];
 

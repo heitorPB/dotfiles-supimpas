@@ -101,6 +101,7 @@
     hunspellDicts.en_US-large
     hunspellDicts.pt_BR
     libreoffice-qt
+    obsidian # Count as office suite?
 
     # My favorites :)
     anki # Flash cards!

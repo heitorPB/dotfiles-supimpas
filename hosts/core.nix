@@ -196,8 +196,10 @@
     ssm-session-manager-plugin # Amazon SSM manager plugin
     #eksctl # AWS EKS
 
-    # MS Azure
-    azure-cli # TODO: move this only to machines that need
+    # MS Azure TODO: move this only to machines that need
+    (azure-cli.withExtensions [
+      azure-cli-extensions.ssh
+    ])
 
     # Clouds should fly
     #flyctl

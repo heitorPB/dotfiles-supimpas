@@ -1,3 +1,6 @@
+# My glorious Git configuration
+# Some options taken from https://news.ycombinator.com/item?id=43138368
+# Some aliases copied from multiple sources that I did not take notes.
 { machine, lib, ... }:
 {
   programs.git = {
@@ -52,16 +55,19 @@
       dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d";
     };
     extraConfig = {
-      commit = { gpgsign = machine.gitKey != null; };
+      branch = { sort = "-committerdate"; };
+      column = { ui = "auto"; };
+      commit = { gpgsign = machine.gitKey != null; verbose = true; };
       core = { editor = "nvim"; };
-      diff = { renames = "copies"; };
-      fetch = { prune = true; };
+      diff = { algorithm = "histogram"; colorMoved = "plain"; mnemonicPrefix = true; renames = "copies"; };
+      fetch = { prune = true; pruneTags = true; all = true; };
+      grep = { patternType = "perl"; };
       help = { autocorrect = "prompt"; };
       init = { defaultBranch = "main"; };
-      merge = { log = 20; tool = "nvimdiff"; conflictStyle = "diff3"; };
-      pull = { ff = "only"; rebase = true; };
-      rerere = { enabled = true; };
-      tag = { gpgsign = machine.gitKey != null; };
+      merge = { conflictStyle = "diff3"; log = 20; tool = "nvimdiff"; };
+      pull = { ff = "only"; };
+      rerere = { autoupdate = true; enabled = true; };
+      tag = { gpgsign = machine.gitKey != null; sort = "version:refname"; };
     };
   };
 }

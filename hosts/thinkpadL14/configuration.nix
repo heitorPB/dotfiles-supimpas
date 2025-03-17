@@ -1,10 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ pkgs, lib, ... }:
 {
-  imports = [ ./hardware-configuration.nix ];
+  pkgs,
+  lib,
+  ...
+}: {
+  imports = [./hardware-configuration.nix];
   # Microcode updates.
   hardware.cpu.amd.updateMicrocode = true;
 
@@ -18,7 +20,7 @@
   ];
 
   # Load amdgpu at stage 1
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = ["amdgpu"];
   boot.kernelParams = [
     # Force use of the thinkpad_acpi driver for backlight control.
     # This allows the backlight save/load systemd service to work.
@@ -61,7 +63,7 @@
       # AMDVLK drivers can be used in addition to the Mesa RADV drivers.
       amdvlk
     ];
-    extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
+    extraPackages32 = with pkgs; [driversi686Linux.amdvlk];
   };
 
   environment.variables = {
@@ -75,13 +77,12 @@
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
   ];
 
-  services.xserver.videoDrivers = lib.mkDefault [ "modesetting" ];
+  services.xserver.videoDrivers = lib.mkDefault ["modesetting"];
 
   # USB4 / Thunderbolt
   services.hardware.bolt.enable = true;
 
   programs.steam.enable = true;
-
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
@@ -101,4 +102,3 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "23.11"; # Did you read the comment?
 }
-

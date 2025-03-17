@@ -1,7 +1,5 @@
 # Configure desk03 as a nix remote builder
-{ machine, ... }:
-
-{
+{machine, ...}: {
   nix.distributedBuilds = true; # Required to use the builders
 
   nix.buildMachines = [
@@ -11,10 +9,10 @@
       sshUser = "h";
       protocol = "ssh"; # TODO: evaluate ssh-ng instead
       sshKey = "/home/h/.ssh/id_ed25519.${machine.hostname}";
-      systems = [ "x86_64-linux" ];
+      systems = ["x86_64-linux"];
       maxJobs = 16;
       speedFactor = 4;
-      supportedFeatures = [ "big-parallel" ];
+      supportedFeatures = ["big-parallel"];
     }
   ];
 }

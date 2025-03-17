@@ -1,17 +1,19 @@
 # Configuration for Nomad
-{ lib, pkgs, ... }:
-let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   # This causes an infinite recursion :(
   #dockerEnabled = config.virtualisation.docker.enable;
   dockerEnabled = false;
-in
-{
+in {
   services.nomad = {
     enable = true;
     package = pkgs.nomad;
 
     # Add extra plugins to Nomad's plugin directory.
-    extraSettingsPlugins = [ pkgs.nomad-driver-podman ];
+    extraSettingsPlugins = [pkgs.nomad-driver-podman];
     # Add Docker driver
     enableDocker = dockerEnabled;
 
@@ -25,23 +27,25 @@ in
         enabled = true;
         bootstrap_expect = 1;
       };
-      plugin = [{
-        nomad-driver-podman = {
-          config = {
-            socket_path =
-              # Rootfull Nomad on Rootfull containers
-              #if !dockerEnabled
-              #then "unix://run/user/1000/podman/podman.sock"
-              #else "unix://run/podman/podman.sock";
-              "unix://run/podman/podman.sock";
+      plugin = [
+        {
+          nomad-driver-podman = {
+            config = {
+              socket_path =
+                # Rootfull Nomad on Rootfull containers
+                #if !dockerEnabled
+                #then "unix://run/user/1000/podman/podman.sock"
+                #else "unix://run/podman/podman.sock";
+                "unix://run/podman/podman.sock";
+            };
           };
-        };
-      }];
+        }
+      ];
     };
   };
 
   # I Don't want Nomad starting when the system boots
-  systemd.services.nomad.wantedBy = lib.mkForce [ ];
+  systemd.services.nomad.wantedBy = lib.mkForce [];
 
   # Handy packages
   environment.systemPackages = with pkgs; [

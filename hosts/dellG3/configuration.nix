@@ -1,11 +1,13 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
-
 {
-  imports = [ ./hardware-configuration.nix ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [./hardware-configuration.nix];
   hardware.cpu.intel.updateMicrocode = true;
 
   # required for zfs. From head -c 8 /etc/machine-d
@@ -26,7 +28,7 @@
   ];
 
   # Nvidia drivers for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   # TODO: this is still not working. I think.
   hardware.nvidia = {
@@ -74,25 +76,22 @@
     nvidiaBusId = "PCI:1:0:0";
   };
 
-  hardware.graphics.extraPackages = with pkgs; [ vaapiVdpau ];
-
+  hardware.graphics.extraPackages = with pkgs; [vaapiVdpau];
 
   # Her user settings
   users.users.j = {
     uid = 1001;
     isNormalUser = true;
     # TODO: systemd-journal is some kind of bug: I shouldn't need to be in it (see man journalctl)
-    extraGroups = [ "wheel" "systemd-journal" "networkmanager" ];
+    extraGroups = ["wheel" "systemd-journal" "networkmanager"];
     hashedPassword = "$y$j9T$IGcSlNtiBJX07jKBjOXDn0$sTswUMqAzJOZiqWJxsfpPbo9rcz/vaoQkJ1yLMoGzI9";
   };
 
   # Let's keep all her data
-  fileSystems."/home/j" =
-    {
-      device = "zroot/data/homes/j";
-      fsType = "zfs";
-    };
-
+  fileSystems."/home/j" = {
+    device = "zroot/data/homes/j";
+    fsType = "zfs";
+  };
 
   services.xserver.enable = true;
   services.displayManager = {
@@ -113,7 +112,6 @@
 
   # USB4 / Thunderbolt
   services.hardware.bolt.enable = true;
-
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

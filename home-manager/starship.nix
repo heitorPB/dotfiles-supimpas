@@ -1,6 +1,5 @@
 # Starship configuration for PS1/PS2
-{ ... }:
-{
+{...}: {
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
@@ -24,10 +23,22 @@
         charging_symbol = "+";
         discharging_symbol = "-";
         display = [
-          { threshold = 15; style = "bold red"; }
-          { threshold = 30; style = "bold yellow"; }
-          { threshold = 80; style = "bold green"; }
-          { threshold = 100; style = "bold green"; }
+          {
+            threshold = 15;
+            style = "bold red";
+          }
+          {
+            threshold = 30;
+            style = "bold yellow";
+          }
+          {
+            threshold = 80;
+            style = "bold green";
+          }
+          {
+            threshold = 100;
+            style = "bold green";
+          }
         ];
       };
 

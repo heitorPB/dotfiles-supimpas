@@ -25,132 +25,134 @@
     awsvpnclient.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, impermanence, chaotic, ... }@inputs:
-    let
-      ssot = import ./shared/ssot.nix inputs;
-    in
-    {
-      # Define a formatter for "nix fmt"
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+  outputs = {
+    nixpkgs,
+    home-manager,
+    impermanence,
+    chaotic,
+    ...
+  } @ inputs: let
+    ssot = import ./shared/ssot.nix inputs;
+  in {
+    # Define a formatter for "nix fmt"
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
-      nixosConfigurations = {
-        "${ssot.desktop.hostname}" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          # Pass these stuff as inputs to the configuration files
-          specialArgs = {
-            inherit ssot;
-            inherit inputs;
-            machine = ssot.desktop;
-          };
-          modules = [
-            # HW and base configuration
-            ./hosts/desk03/configuration.nix
-            ./hosts/core.nix
-
-            # Extra services for this host
-            ./shared/vpns.nix
-            ./shared/podman.nix
-            ./shared/nomad.nix
-            #./shared/docker.nix
-
-            # home-manager stuff
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = { machine = ssot.desktop; };
-              home-manager.users.h = import ./home-manager/h.nix;
-            }
-          ];
+    nixosConfigurations = {
+      "${ssot.desktop.hostname}" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        # Pass these stuff as inputs to the configuration files
+        specialArgs = {
+          inherit ssot;
+          inherit inputs;
+          machine = ssot.desktop;
         };
+        modules = [
+          # HW and base configuration
+          ./hosts/desk03/configuration.nix
+          ./hosts/core.nix
 
+          # Extra services for this host
+          ./shared/vpns.nix
+          ./shared/podman.nix
+          ./shared/nomad.nix
+          #./shared/docker.nix
 
-        "${ssot.thinkpadL14.hostname}" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          # Pass these stuff as inputs to the configuration files
-          specialArgs = {
-            inherit ssot;
-            inherit inputs;
-            machine = ssot.thinkpadL14;
-          };
-          modules = [
-            # HW and base configuration
-            ./hosts/thinkpadL14/configuration.nix
-            ./hosts/core.nix
-            ./hosts/seat-configuration.nix
+          # home-manager stuff
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.extraSpecialArgs = {machine = ssot.desktop;};
+            home-manager.users.h = import ./home-manager/h.nix;
+          }
+        ];
+      };
 
-            ./shared/power-saving-laptop.nix
-
-            # Extra services for this host
-            ./shared/vpns.nix
-            ./shared/podman.nix
-            ./shared/docker.nix
-            ./shared/nomad.nix
-
-            # Use desktop as remove builder
-            ./shared/nix-buildMachines-desk03.nix
-
-            # ZFS on impermanence from Chaotic
-            chaotic.nixosModules.default
-            impermanence.nixosModules.impermanence
-            ./shared/impermanence-system.nix
-
-            # home-manager stuff
-            home-manager.nixosModules.home-manager
-            {
-              # TODO: how to inherit this?
-              home-manager.extraSpecialArgs = { machine = ssot.thinkpadL14; };
-              home-manager.users.h = {
-                imports = [
-                  ./home-manager/h.nix
-                ];
-              };
-            }
-          ];
+      "${ssot.thinkpadL14.hostname}" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        # Pass these stuff as inputs to the configuration files
+        specialArgs = {
+          inherit ssot;
+          inherit inputs;
+          machine = ssot.thinkpadL14;
         };
+        modules = [
+          # HW and base configuration
+          ./hosts/thinkpadL14/configuration.nix
+          ./hosts/core.nix
+          ./hosts/seat-configuration.nix
 
+          ./shared/power-saving-laptop.nix
 
-        "${ssot.dellG3.hostname}" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          # Pass these stuff as inputs to the configuration files
-          specialArgs = {
-            inherit ssot;
-            inherit inputs;
-            machine = ssot.dellG3; # TODO: use something like let machineName = dellG3; ?
-          };
-          modules = [
-            # HW and base configuration
-            ./hosts/dellG3/configuration.nix
-            ./hosts/core.nix
-            ./hosts/seat-configuration.nix
+          # Extra services for this host
+          ./shared/vpns.nix
+          ./shared/podman.nix
+          ./shared/docker.nix
+          ./shared/nomad.nix
 
-            ./shared/power-saving-laptop.nix
+          # Use desktop as remove builder
+          ./shared/nix-buildMachines-desk03.nix
 
-            # Use desktop as remove builder
-            ./shared/nix-buildMachines-desk03.nix
+          # ZFS on impermanence from Chaotic
+          chaotic.nixosModules.default
+          impermanence.nixosModules.impermanence
+          ./shared/impermanence-system.nix
 
-            # Extra services for this host
-            ./shared/vpns.nix
-            ./shared/podman.nix
-            ./shared/docker.nix
-            ./shared/nomad.nix
+          # home-manager stuff
+          home-manager.nixosModules.home-manager
+          {
+            # TODO: how to inherit this?
+            home-manager.extraSpecialArgs = {machine = ssot.thinkpadL14;};
+            home-manager.users.h = {
+              imports = [
+                ./home-manager/h.nix
+              ];
+            };
+          }
+        ];
+      };
 
-            # ZFS on impermanence from Chaotic
-            chaotic.nixosModules.default
-            impermanence.nixosModules.impermanence
-            ./shared/impermanence-system.nix
-
-            # home-manager stuff
-            home-manager.nixosModules.home-manager
-            {
-              # TODO: how to inherit this?
-              home-manager.extraSpecialArgs = { machine = ssot.dellG3; };
-              home-manager.users.h = {
-                imports = [
-                  ./home-manager/h.nix
-                ];
-              };
-            }
-          ];
+      "${ssot.dellG3.hostname}" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        # Pass these stuff as inputs to the configuration files
+        specialArgs = {
+          inherit ssot;
+          inherit inputs;
+          machine = ssot.dellG3; # TODO: use something like let machineName = dellG3; ?
         };
+        modules = [
+          # HW and base configuration
+          ./hosts/dellG3/configuration.nix
+          ./hosts/core.nix
+          ./hosts/seat-configuration.nix
+
+          ./shared/power-saving-laptop.nix
+
+          # Use desktop as remove builder
+          ./shared/nix-buildMachines-desk03.nix
+
+          # Extra services for this host
+          ./shared/vpns.nix
+          ./shared/podman.nix
+          ./shared/docker.nix
+          ./shared/nomad.nix
+
+          # ZFS on impermanence from Chaotic
+          chaotic.nixosModules.default
+          impermanence.nixosModules.impermanence
+          ./shared/impermanence-system.nix
+
+          # home-manager stuff
+          home-manager.nixosModules.home-manager
+          {
+            # TODO: how to inherit this?
+            home-manager.extraSpecialArgs = {machine = ssot.dellG3;};
+            home-manager.users.h = {
+              imports = [
+                ./home-manager/h.nix
+              ];
+            };
+          }
+        ];
       };
     };
+  };
 }

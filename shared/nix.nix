@@ -1,11 +1,9 @@
 # Global configuration for Nix itself.
-{ config, pkgs, inputs, ... }:
-
-{
+{inputs, ...}: {
   nix = {
     settings = {
       # enable newer commands and flakes
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
 
       # automatically removes older builds
       auto-optimise-store = true;
@@ -25,7 +23,7 @@
       ];
 
       # Allow my user to nix around
-      trusted-users = [ "root" "h" ];
+      trusted-users = ["root" "h"];
     };
 
     gc = {

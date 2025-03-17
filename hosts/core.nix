@@ -1,8 +1,12 @@
 # Configurations and options for all hosts
-{ pkgs, machine, lib, ... }:
 {
+  pkgs,
+  machine,
+  lib,
+  ...
+}: {
   # Import nix.nix here to clean up flakes.nix
-  imports = [ ../shared/nix.nix ];
+  imports = [../shared/nix.nix];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
@@ -78,7 +82,7 @@
   # Internationalisation properties.
   i18n = {
     defaultLocale = "en_DK.UTF-8";
-    supportedLocales = [ "en_DK.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" "pt_BR.UTF-8/UTF-8" ];
+    supportedLocales = ["en_DK.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" "pt_BR.UTF-8/UTF-8"];
     extraLocaleSettings = {
       LC_MESSAGES = "en_DK.UTF-8";
       LC_CTYPE = "en_DK.UTF-8"; # "pt_BR.UTF8" borks xkbcommon
@@ -101,7 +105,7 @@
 
   # Fix wrong sudo password messages
   security.sudo = {
-    package = pkgs.sudo.override { withInsults = true; };
+    package = pkgs.sudo.override {withInsults = true;};
     extraConfig = ''
       Defaults insults
     '';
@@ -174,13 +178,13 @@
     silver-searcher
 
     # Python and its Development packages
-    (python3.withPackages (p: with p; [
-      ipython
-    ]))
+    (python3.withPackages (p:
+      with p; [
+        ipython
+      ]))
 
     alejandra # Nix formatter
     nil # Nix LSP
-    nixpkgs-fmt # Formatter for `nix fmt`
 
     # Golang and its language-server
     #go
@@ -239,7 +243,7 @@
     uid = 1000;
     isNormalUser = true;
     # TODO: systemd-journal is some kind of bug: I shouldn't need to be in it (see man journalctl)
-    extraGroups = [ "wheel" "podman" "systemd-journal" "networkmanager" "docker" ];
+    extraGroups = ["wheel" "podman" "systemd-journal" "networkmanager" "docker"];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJxMuFUrQujzveHDbM8etG1A2rQhA8i2KwM0j2BiFx0K h@alien"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmUxVAr/I2+Fdw2oxpKhzlt+tSIojo+yAbzzmACbKRh h@L14"

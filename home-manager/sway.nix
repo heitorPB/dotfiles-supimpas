@@ -1,13 +1,18 @@
-{ pkgs, lib, machine, ... }: with lib;
-let
-  hasSeat = machine.seat != null;
-in
 {
-  home.packages = with pkgs; lists.optionals hasSeat [
-    swaynotificationcenter # Won't work unless here
-  ];
+  pkgs,
+  lib,
+  machine,
+  ...
+}:
+with lib; let
+  hasSeat = machine.seat != null;
+in {
+  home.packages = with pkgs;
+    lists.optionals hasSeat [
+      swaynotificationcenter # Won't work unless here
+    ];
 
-  programs.swaylock = mkIf (hasSeat) {
+  programs.swaylock = mkIf hasSeat {
     enable = true;
     settings = {
       # Catppuccin Macchiato colors :)
@@ -43,7 +48,7 @@ in
     };
   };
 
-  wayland.windowManager.sway = mkIf (hasSeat) {
+  wayland.windowManager.sway = mkIf hasSeat {
     enable = true;
     config = rec {
       modifier = "Mod4"; # A.K.A useless windows key.
@@ -52,10 +57,10 @@ in
         # List of programs to start with Sway
         # Notification daemon
         # https://github.com/catppuccin/swaync
-        { command = "${pkgs.swaynotificationcenter}/bin/swaync"; }
+        {command = "${pkgs.swaynotificationcenter}/bin/swaync";}
 
         # Volume and Display-brightness OSD
-        { command = "${pkgs.avizo}/bin/avizo-service"; }
+        {command = "${pkgs.avizo}/bin/avizo-service";}
 
         ## NetWorkManager Applet: useless, does not work with swaybar :clown-face:
         #{ command = "nm-applet --indicator"; always = true; }
@@ -89,7 +94,7 @@ in
       };
 
       fonts = {
-        names = [ "Fira Sans Mono" "monospace" ];
+        names = ["Fira Sans Mono" "monospace"];
         size = 10.0;
       };
 
@@ -99,24 +104,33 @@ in
 
         commands = [
           # Set some programs as floating
-          { criteria = { app_id = "firefox"; title = "Picture-in-Picture"; }; command = "floating enable; sticky enable"; }
+          {
+            criteria = {
+              app_id = "firefox";
+              title = "Picture-in-Picture";
+            };
+            command = "floating enable; sticky enable";
+          }
 
           # Don't lock my screen if there is anything fullscreen, I may be gaiming/watching
-          { criteria = { shell = ".*"; }; command = "inhibit_idle fullscreen"; }
+          {
+            criteria = {shell = ".*";};
+            command = "inhibit_idle fullscreen";
+          }
         ];
       };
 
       floating.criteria = [
         # Get with `swaymsg -t get_tree`
-        { app_id = ".blueman-manager-wrapped"; }
-        { app_id = "anki"; }
-        { app_id = "org.keepassxc.KeePassXC"; }
-        { app_id = "spotify"; }
-        { class = "steam"; }
-        { title = "Volume Control"; } # For pavucontrol
+        {app_id = ".blueman-manager-wrapped";}
+        {app_id = "anki";}
+        {app_id = "org.keepassxc.KeePassXC";}
+        {app_id = "spotify";}
+        {class = "steam";}
+        {title = "Volume Control";} # For pavucontrol
       ];
 
-      keybindings = mkOptionDefault ({
+      keybindings = mkOptionDefault {
         # The missing workspace
         "${modifier}+0" = "workspace 0";
         "${modifier}+Shift+0" = "move container to workspace 0";
@@ -136,27 +150,45 @@ in
 
         # Lock screen
         "${modifier}+Print" = "exec ${pkgs.swaylock}/bin/swaylock";
-      });
+      };
 
-      bars = [{
-        fonts = {
-          #names = [ "Font Awesome 5 Free" ];
-          names = [ "FiraCode Sans Mono" ];
-          size = 12.0;
-        };
-        #trayOutput = "*";
-        statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-main.toml";
-        colors = {
-          # From https://github.com/catppuccin/i3
-          background = "#1e1e2e";
-          separator = "#89b4fa";
-          statusline = "#cdd6f4";
-          focusedWorkspace = { background = "#1e1e2e"; border = "#1e1e2e"; text = "#a6e3a1"; };
-          activeWorkspace = { background = "#1e1e2e"; border = "#1e1e2e"; text = "#89b4fa"; };
-          inactiveWorkspace = { background = "#1e1e2e"; border = "#1e1e2e"; text = "#45475a"; };
-          urgentWorkspace = { background = "#1e1e2e"; border = "#fab387"; text = "#a6e3a1"; }; # My only customization
-        };
-      }];
+      bars = [
+        {
+          fonts = {
+            #names = [ "Font Awesome 5 Free" ];
+            names = ["FiraCode Sans Mono"];
+            size = 12.0;
+          };
+          #trayOutput = "*";
+          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-main.toml";
+          colors = {
+            # From https://github.com/catppuccin/i3
+            background = "#1e1e2e";
+            separator = "#89b4fa";
+            statusline = "#cdd6f4";
+            focusedWorkspace = {
+              background = "#1e1e2e";
+              border = "#1e1e2e";
+              text = "#a6e3a1";
+            };
+            activeWorkspace = {
+              background = "#1e1e2e";
+              border = "#1e1e2e";
+              text = "#89b4fa";
+            };
+            inactiveWorkspace = {
+              background = "#1e1e2e";
+              border = "#1e1e2e";
+              text = "#45475a";
+            };
+            urgentWorkspace = {
+              background = "#1e1e2e";
+              border = "#fab387";
+              text = "#a6e3a1";
+            }; # My only customization
+          };
+        }
+      ];
 
       input = {
         # Keyboard settings. Check xkeyboard-config(7) for layouts, models and

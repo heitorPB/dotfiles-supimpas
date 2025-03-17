@@ -1,11 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports = [ ./hardware-configuration.nix ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [./hardware-configuration.nix];
 
   # Microcode updates.
   hardware.cpu.intel.updateMicrocode = true;
@@ -17,7 +18,7 @@
     # required for zfs. From head -c 8 /etc/machine-id
     hostId = "fe1f23b8";
     interfaces.enp3s0.wakeOnLan.enable = true;
-    nameservers = [ "192.168.1.1" "2804:431:cfcf:a985:3af7:cdff:fec1:c006" ];
+    nameservers = ["192.168.1.1" "2804:431:cfcf:a985:3af7:cdff:fec1:c006"];
   };
 
   # Machine specific packages

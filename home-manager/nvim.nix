@@ -1,6 +1,5 @@
 # My neovim settings
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.neovim = {
     enable = true;
 
@@ -9,109 +8,121 @@
       {
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
-        config = /* lua */ ''
-          require('nvim-treesitter.configs').setup {
-            highlight = {
-              enable = true,
-            },
-            indent = {
-              enable = true,
-            },
-          }
-        '';
+        config =
+          /*
+          lua
+          */
+          ''
+            require('nvim-treesitter.configs').setup {
+              highlight = {
+                enable = true,
+              },
+              indent = {
+                enable = true,
+              },
+            }
+          '';
       }
 
       # LSP
       {
         plugin = nvim-lspconfig;
         type = "lua";
-        config = /* lua */ ''
-          local lspconfig = require('lspconfig')
+        config =
+          /*
+          lua
+          */
+          ''
+            local lspconfig = require('lspconfig')
 
-          function add_lsp(server, options)
-            -- if vim.fn.executable(binary) == 1 then
-            --   server.setup(options)
-            -- end
-            if not options["cmd"] then
-              options["cmd"] = server["document_config"]["default_config"]["cmd"]
+            function add_lsp(server, options)
+              -- if vim.fn.executable(binary) == 1 then
+              --   server.setup(options)
+              -- end
+              if not options["cmd"] then
+                options["cmd"] = server["document_config"]["default_config"]["cmd"]
+              end
+              if not options["capabilities"] then
+                options["capabilities"] = require("cmp_nvim_lsp").default_capabilities()
+              end
+
+              if vim.fn.executable(options["cmd"][1]) == 1 then
+                server.setup(options)
+              end
             end
-            if not options["capabilities"] then
-              options["capabilities"] = require("cmp_nvim_lsp").default_capabilities()
-            end
 
-            if vim.fn.executable(options["cmd"][1]) == 1 then
-              server.setup(options)
-            end
-          end
+            -- Basic configuration for some LSP servers
+            add_lsp(lspconfig.ansiblels, {})
+            add_lsp(lspconfig.bashls, {})
 
-          -- Basic configuration for some LSP servers
-          add_lsp(lspconfig.ansiblels, {})
-          add_lsp(lspconfig.bashls, {})
-
-          local gopls_config = {
-            settings = {
-              gopls = {
-                analyses = {
-                  unusedparams = true,
-                  -- fieldalignment = true, -- structs can use less memory if variables are aligned
-                  unusedvariable = true,
-                },
-                staticcheck = true,
-                gofumpt = true,
-              },
-            },
-          }
-          add_lsp(lspconfig.gopls, gopls_config)
-
-          add_lsp(lspconfig.pylsp, {})
-          add_lsp(lspconfig.ruff, {})
-
-          -- Nix LSP
-          local nil_config = {
-              autostart = true,
-              capabilities = caps,
-              cmd = { "nil" },
+            local gopls_config = {
               settings = {
-                  ["nil"] = {
-                    formatting = { command = { "alejandra" }, },
-                    nix = { flake = { autoArchive = true }, },
+                gopls = {
+                  analyses = {
+                    unusedparams = true,
+                    -- fieldalignment = true, -- structs can use less memory if variables are aligned
+                    unusedvariable = true,
                   },
+                  staticcheck = true,
+                  gofumpt = true,
+                },
               },
-          }
-          add_lsp(lspconfig.nil_ls, nil_config)
+            }
+            add_lsp(lspconfig.gopls, gopls_config)
 
-          add_lsp(lspconfig.terraformls, {}) -- official from HashiCorp
-          add_lsp(lspconfig.tflint, {}) -- TFLint, a Terraform linter and LSP
-          add_lsp(lspconfig.nomad_lsp, {})
+            add_lsp(lspconfig.pylsp, {})
+            add_lsp(lspconfig.ruff, {})
 
-          add_lsp(lspconfig.vale_ls, {})
+            -- Nix LSP
+            local nil_config = {
+                autostart = true,
+                capabilities = caps,
+                cmd = { "nil" },
+                settings = {
+                    ["nil"] = {
+                      formatting = { command = { "alejandra" }, },
+                      nix = { flake = { autoArchive = true }, },
+                    },
+                },
+            }
+            add_lsp(lspconfig.nil_ls, nil_config)
 
-          -- Mappings
-          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
-          vim.keymap.set("n", "<space>f", vim.lsp.buf.format, { desc = "Format code" })
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
+            add_lsp(lspconfig.terraformls, {}) -- official from HashiCorp
+            add_lsp(lspconfig.tflint, {}) -- TFLint, a Terraform linter and LSP
+            add_lsp(lspconfig.nomad_lsp, {})
 
-          -- Diagnostic
-          vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Floating diagnostic" })
-          vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
-          vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
-          vim.keymap.set("n", "gl", vim.diagnostic.setloclist, { desc = "Diagnostics on loclist" })
-          -- vim.keymap.set("n", "gq", vim.diagnostic.setqflist, { desc = "Diagnostics on quickfix" })
-        '';
+            add_lsp(lspconfig.vale_ls, {})
+
+            -- Mappings
+            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+            vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+            vim.keymap.set("n", "<space>f", vim.lsp.buf.format, { desc = "Format code" })
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
+
+            -- Diagnostic
+            vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Floating diagnostic" })
+            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+            vim.keymap.set("n", "gl", vim.diagnostic.setloclist, { desc = "Diagnostics on loclist" })
+            -- vim.keymap.set("n", "gq", vim.diagnostic.setqflist, { desc = "Diagnostics on quickfix" })
+          '';
       }
       {
         # Use rust-analyzer as LSP via rust-tools
         plugin = rust-tools-nvim;
         type = "lua";
-        config = /* lua */ ''
-          local rust_tools = require('rust-tools')
-          if vim.fn.executable("rust-analyzer") == 1 then
-            rust_tools.setup{ tools = { autoSetHints = true } }
-          end
-          vim.api.nvim_set_hl(0, '@lsp.type.comment.rust', {})
-        '';
+        config =
+          /*
+          lua
+          */
+          ''
+            local rust_tools = require('rust-tools')
+            if vim.fn.executable("rust-analyzer") == 1 then
+              rust_tools.setup{ tools = { autoSetHints = true } }
+            end
+            vim.api.nvim_set_hl(0, '@lsp.type.comment.rust', {})
+          '';
       }
 
       # Completion plugins for LSP
@@ -121,24 +132,28 @@
       {
         plugin = nvim-cmp;
         type = "lua";
-        config = /* lua */ ''
-          local cmp = require('cmp')
+        config =
+          /*
+          lua
+          */
+          ''
+            local cmp = require('cmp')
 
-          cmp.setup{
-            formatting = { format = require('lspkind').cmp_format() },
-            -- Same keybinds as vim's vanilla completion
-            mapping = {
-              ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-              ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-              ['<C-e>'] = cmp.mapping.close(),
-              ['<C-y>'] = cmp.mapping.confirm(),
-            },
-            sources = {
-              { name='buffer', option = { get_bufnrs = vim.api.nvim_list_bufs } },
-              { name='nvim_lsp' },
-            },
-          }
-        '';
+            cmp.setup{
+              formatting = { format = require('lspkind').cmp_format() },
+              -- Same keybinds as vim's vanilla completion
+              mapping = {
+                ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+                ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+                ['<C-e>'] = cmp.mapping.close(),
+                ['<C-y>'] = cmp.mapping.confirm(),
+              },
+              sources = {
+                { name='buffer', option = { get_bufnrs = vim.api.nvim_list_bufs } },
+                { name='nvim_lsp' },
+              },
+            }
+          '';
       }
 
       # Color theme

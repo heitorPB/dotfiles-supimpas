@@ -1,7 +1,10 @@
 # General Configuration for GUI systems
-{ lib, pkgs, machine, ... }:
-
 {
+  lib,
+  pkgs,
+  machine,
+  ...
+}: {
   # Network (NetworkManager).
   networking = {
     networkmanager = {
@@ -56,7 +59,12 @@
 
     # Allow any user from group "users" to request realtime
     pam.loginLimits = [
-      { domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
+      {
+        domain = "@users";
+        item = "rtprio";
+        type = "-";
+        value = 1;
+      }
     ];
   };
 
@@ -130,8 +138,8 @@
 
   # Fix swaylock (nixpkgs issue 158025)
   # https://nixos.wiki/wiki/Sway#Swaylock_cannot_be_unlocked_with_the_correct_password
-  security.pam.services.swaylock = { };
-  security.pam.services.swaylock-plugin = { };
+  security.pam.services.swaylock = {};
+  security.pam.services.swaylock-plugin = {};
 
   # For USB automounting, on pcmanfm-qt
   services.gvfs.enable = true;
@@ -151,7 +159,7 @@
   };
 
   # Port used by Spotify to connect to Chromecast
-  networking.firewall.allowedUDPPorts = [ 5353 ];
+  networking.firewall.allowedUDPPorts = [5353];
 
   # Console/XWayland default keyboard layout.
   # TODO: move these to ssot
@@ -175,9 +183,9 @@
     fontconfig = {
       cache32Bit = true;
       defaultFonts = {
-        serif = [ "Noto Serif" ];
-        sansSerif = [ "Roboto" ];
-        monospace = [ "Fira Code" ];
+        serif = ["Noto Serif"];
+        sansSerif = ["Roboto"];
+        monospace = ["Fira Code"];
       };
     };
   };

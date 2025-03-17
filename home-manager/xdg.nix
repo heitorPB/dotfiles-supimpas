@@ -1,9 +1,12 @@
 # Default apps per file type
-{ machine, lib, pkgs, ... }:
-let
-  hasSeat = machine.seat != null;
-in
 {
+  machine,
+  lib,
+  pkgs,
+  ...
+}: let
+  hasSeat = machine.seat != null;
+in {
   xdg = {
     mimeApps = lib.mkIf hasSeat {
       enable = true;
@@ -66,7 +69,7 @@ in
 
     configFile.pcmanfm = lib.mkIf hasSeat {
       target = "pcmanfm-qt/default/settings.conf";
-      text = lib.generators.toINI { } {
+      text = lib.generators.toINI {} {
         Behavior = {
           NoUsbTrash = true;
           SingleWindowMode = false;

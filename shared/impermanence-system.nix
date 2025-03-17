@@ -1,8 +1,6 @@
 # System wide Impermanence configuration
 # NOTE: not in hosts/core.nix because I don't have impermanence on desk03 yet
-{ chaotic, ... }:
-
-{
+{chaotic, ...}: {
   # ZFS-based impermanence
   chaotic.zfs-impermanence-on-shutdown = {
     enable = true;
@@ -22,7 +20,10 @@
       "/var/lib/containers"
       "/var/lib/cups"
       "/var/lib/docker"
-      { directory = "/var/lib/iwd"; mode = "u=rwx,g=,o="; }
+      {
+        directory = "/var/lib/iwd";
+        mode = "u=rwx,g=,o=";
+      }
       "/var/lib/nixos"
       "/var/lib/systemd"
       "/var/lib/upower"
@@ -41,17 +42,32 @@
     users.root = {
       home = "/root";
       directories = [
-        { directory = ".gnupg"; mode = "0700"; }
-        { directory = ".ssh"; mode = "0700"; }
+        {
+          directory = ".gnupg";
+          mode = "0700";
+        }
+        {
+          directory = ".ssh";
+          mode = "0700";
+        }
       ];
     };
 
     # Files and directories for my user
     users.h = {
       directories = [
-        { directory = ".aws"; mode = "0700"; }
-        { directory = ".oci"; mode = "0700"; }
-        { directory = ".gnupg"; mode = "0700"; }
+        {
+          directory = ".aws";
+          mode = "0700";
+        }
+        {
+          directory = ".gnupg";
+          mode = "0700";
+        }
+        {
+          directory = ".oci";
+          mode = "0700";
+        }
         ".config/asciinema"
         ".config/btop"
         ".config/calibre"

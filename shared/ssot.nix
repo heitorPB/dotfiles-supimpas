@@ -1,6 +1,5 @@
 # Single source of thruth.
 _:
-
 # TODO: turn this into a function for correctness
 rec {
   geolocation = import ./geolocation.nix;
@@ -30,7 +29,7 @@ rec {
     battery = "BAT0";
     cpuSensor = "k10temp-pci-00c3";
     mainNetworkInterface = "wlan0";
-    nvmeSensors = [ "nvme-pci-0100" ];
+    nvmeSensors = ["nvme-pci-0100"];
 
     # Graphical thingies
     seat = {
@@ -62,7 +61,7 @@ rec {
     battery = "BAT0";
     cpuSensor = "coretemp-isa-0000";
     mainNetworkInterface = "wlan0";
-    nvmeSensors = [ "nvme-pci-3a00" ];
+    nvmeSensors = ["nvme-pci-3a00"];
 
     # Graphical thingies
     seat = {

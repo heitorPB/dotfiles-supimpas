@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   programs.tmux = {
     enable = true;
 
@@ -62,6 +61,5 @@
       unbind \"
       bind \" split-window -v -c "#{pane_current_path}"
     '';
-
   };
 }

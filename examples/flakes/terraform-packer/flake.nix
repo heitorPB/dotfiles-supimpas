@@ -6,26 +6,28 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          config = { allowUnfree = true; };
-        };
-      in
-      {
-        # For nix develop
-        devShell = pkgs.mkShell {
-          shellHook = ''
-            export AWS_PROFILE="foo"
-          '';
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+  }:
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {allowUnfree = true;};
+      };
+    in {
+      # For nix develop
+      devShell = pkgs.mkShell {
+        shellHook = ''
+          export AWS_PROFILE="foo"
+        '';
 
-          nativeBuildInputs = with pkgs; [
-            terraform
-            terraform-ls # Official from HashiCorp
-            packer
-          ];
-        };
-      });
+        nativeBuildInputs = with pkgs; [
+          terraform
+          terraform-ls # Official from HashiCorp
+          packer
+        ];
+      };
+    });
 }

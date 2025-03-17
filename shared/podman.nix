@@ -1,16 +1,18 @@
 # Configuration for podman, using crun as OCI runtime (default)
 # TODO: Update mywiki if this file is changed.
-{ config, pkgs, ... }:
-let
-  dockerEnabled = config.virtualisation.docker.enable;
-in
 {
+  config,
+  pkgs,
+  ...
+}: let
+  dockerEnabled = config.virtualisation.docker.enable;
+in {
   virtualisation = {
     podman = {
       enable = true;
       dockerCompat = !dockerEnabled; # For docker aliases
       dockerSocket.enable = !dockerEnabled;
-      extraPackages = [ pkgs.zfs ];
+      extraPackages = [pkgs.zfs];
       defaultNetwork.settings.dns_enabled = true;
     };
 

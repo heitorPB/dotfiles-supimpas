@@ -1,7 +1,5 @@
 # Power saving services for my laptop
-{ ... }:
-
-{
+{...}: {
   services.power-profiles-daemon.enable = false; # Replaced by tlp
   services.upower.enable = true;
 

@@ -1,8 +1,14 @@
-{ config, inputs, lib, pkgs, machine, ... }: with lib;
-let
-  hasSeat = machine.seat != null;
-in
 {
+  config,
+  inputs,
+  lib,
+  pkgs,
+  machine,
+  ...
+}:
+with lib; let
+  hasSeat = machine.seat != null;
+in {
   imports = [
     ./git.nix
     ./gtk-qt.nix
@@ -25,7 +31,7 @@ in
     # Only use the keys informed for each host
     extraConfig = "IdentitiesOnly yes";
     # Include all extra configuration in ~/.ssh/config.d/*
-    includes = [ "config.d/*" ];
+    includes = ["config.d/*"];
     # TODO move ip addresses to SSOT
     # TODO add addresses to resolv.conf
     matchBlocks = {
@@ -111,7 +117,7 @@ in
       # https://nixos.wiki/wiki/Chromium#Enable_GPU_accelerated_video_decoding_.28VA-API.29
       pasteur-chrome = "google-chrome-stable --user-data-dir=$HOME/.config/pasteur-chrome/ --enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport,UseMultiPlaneFormatForHardwareVideo";
     };
-    shellOptions = [ "nocaseglob" ]; # Case insensitive interactive ops
+    shellOptions = ["nocaseglob"]; # Case insensitive interactive ops
   };
 
   # Some magical Readline configuration
@@ -174,7 +180,7 @@ in
     '';
   };
 
-  programs.alacritty = mkIf (hasSeat) {
+  programs.alacritty = mkIf hasSeat {
     enable = true;
     settings = mkOptionDefault {
       font = {
@@ -221,7 +227,7 @@ in
   };
 
   # Screen temperature
-  services.gammastep = mkIf (hasSeat) {
+  services.gammastep = mkIf hasSeat {
     enable = true;
     provider = "manual";
     temperature.day = 5500;
@@ -257,7 +263,6 @@ in
       vo = "gpu";
       gpu-context = "waylandvk";
       gpu-api = "vulkan";
-
     };
     bindings = {
       # Subtitle scalers
@@ -269,7 +274,6 @@ in
       "Alt+4" = "cycle border";
     };
   };
-
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "22.05";

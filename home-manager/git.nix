@@ -1,8 +1,11 @@
 # My glorious Git configuration
 # Some options taken from https://news.ycombinator.com/item?id=43138368
 # Some aliases copied from multiple sources that I did not take notes.
-{ machine, lib, ... }:
 {
+  machine,
+  lib,
+  ...
+}: {
   programs.git = {
     enable = true;
     userName = "Heitor Pascoal de Bittencourt";
@@ -55,19 +58,41 @@
       dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d";
     };
     extraConfig = {
-      branch = { sort = "-committerdate"; };
-      column = { ui = "auto"; };
-      commit = { gpgsign = machine.gitKey != null; verbose = true; };
-      core = { editor = "nvim"; };
-      diff = { algorithm = "histogram"; colorMoved = "plain"; mnemonicPrefix = true; renames = "copies"; };
-      fetch = { prune = true; pruneTags = true; all = true; };
-      grep = { patternType = "perl"; };
-      help = { autocorrect = "prompt"; };
-      init = { defaultBranch = "main"; };
-      merge = { conflictStyle = "diff3"; log = 20; tool = "nvimdiff"; };
-      pull = { ff = "only"; };
-      rerere = { autoupdate = true; enabled = true; };
-      tag = { gpgsign = machine.gitKey != null; sort = "version:refname"; };
+      branch = {sort = "-committerdate";};
+      column = {ui = "auto";};
+      commit = {
+        gpgsign = machine.gitKey != null;
+        verbose = true;
+      };
+      core = {editor = "nvim";};
+      diff = {
+        algorithm = "histogram";
+        colorMoved = "plain";
+        mnemonicPrefix = true;
+        renames = "copies";
+      };
+      fetch = {
+        prune = true;
+        pruneTags = true;
+        all = true;
+      };
+      grep = {patternType = "perl";};
+      help = {autocorrect = "prompt";};
+      init = {defaultBranch = "main";};
+      merge = {
+        conflictStyle = "diff3";
+        log = 20;
+        tool = "nvimdiff";
+      };
+      pull = {ff = "only";};
+      rerere = {
+        autoupdate = true;
+        enabled = true;
+      };
+      tag = {
+        gpgsign = machine.gitKey != null;
+        sort = "version:refname";
+      };
     };
   };
 }

@@ -201,6 +201,9 @@
       azure-cli-extensions.ssh
     ])
 
+    # Oracle cloud
+    oci-cli
+
     # Clouds should fly
     #flyctl
 

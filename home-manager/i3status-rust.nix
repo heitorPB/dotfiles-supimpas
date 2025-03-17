@@ -182,14 +182,14 @@ in
             device = machine.battery;
           }
           {
-              block = "keyboard_layout";
-              driver = "sway";
-              format = "$layout";
-              sway_kb_identifier = "1:1:AT_Translated_Set_2_keyboard";
-              mappings = {
-                "Portuguese (Brazil, IBM/Lenovo ThinkPad)" = "PT";
-                "English (US, alt. intl.)" = "EN";
-              };
+            block = "keyboard_layout";
+            driver = "sway";
+            format = "$layout";
+            sway_kb_identifier = "1:1:AT_Translated_Set_2_keyboard";
+            mappings = {
+              "Portuguese (Brazil, IBM/Lenovo ThinkPad)" = "PT";
+              "English (US, alt. intl.)" = "EN";
+            };
           }
           {
             block = "time";

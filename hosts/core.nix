@@ -178,7 +178,8 @@
       ipython
     ]))
 
-    nil # Nix LSP; rnix-lsp has been archived
+    alejandra # Nix formatter
+    nil # Nix LSP
     nixpkgs-fmt # Formatter for `nix fmt`
 
     # Golang and its language-server

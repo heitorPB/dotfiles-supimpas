@@ -73,12 +73,12 @@
               cmd = { "nil" },
               settings = {
                   ["nil"] = {
-                    formatting = { command = { "nix fmt" }, },
+                    formatting = { command = { "alejandra" }, },
                     nix = { flake = { autoArchive = true }, },
                   },
               },
           }
-          add_lsp(lspconfig.nil_ls, {})
+          add_lsp(lspconfig.nil_ls, nil_config)
 
           add_lsp(lspconfig.terraformls, {}) -- official from HashiCorp
           add_lsp(lspconfig.tflint, {}) -- TFLint, a Terraform linter and LSP

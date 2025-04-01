@@ -107,6 +107,7 @@
         ".cache/pip"
         ".cache/pre-commit"
         ".cache/spotify"
+        ".cache/uv"
         "go"
       ];
       files = [

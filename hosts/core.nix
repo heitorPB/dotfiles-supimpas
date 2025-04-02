@@ -182,6 +182,8 @@
       with p; [
         ipython
       ]))
+    ruff # Python Linter / LSP
+    uv # Python package manager
 
     alejandra # Nix formatter
     nil # Nix LSP

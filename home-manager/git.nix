@@ -20,6 +20,8 @@
       ".direnv/"
     ];
     aliases = {
+      # Update my blog post when this changes
+
       # List aliases
       alias = "! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | grep -v ^'alias '";
 

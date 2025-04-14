@@ -88,6 +88,7 @@
         ".local/share/qBittorrent"
         ".local/share/Steam"
         ".local/share/TelegramDesktop"
+        ".local/share/uv"
         ".mozilla"
         ".ssh"
         "Calibre Library"

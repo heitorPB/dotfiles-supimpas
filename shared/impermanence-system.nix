@@ -109,7 +109,7 @@
         ".cache/pre-commit"
         ".cache/spotify"
         ".cache/uv"
-        "go"
+        "go" # WHY NOT IN .cache/go ???????
       ];
       files = [
         ".bash_history"

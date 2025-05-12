@@ -161,6 +161,14 @@
   # Port used by Spotify to connect to Chromecast
   networking.firewall.allowedUDPPorts = [5353];
 
+  # Printing
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   # Console/XWayland default keyboard layout.
   # TODO: move these to ssot
   services.xserver.xkb.layout = "br";

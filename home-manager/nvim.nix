@@ -217,8 +217,8 @@
       autocmd FileType csv set textwidth=0       " disable line wraps for csv
       autocmd FileType markdown set textwidth=79 " make text break lines at 79 chars
       autocmd FileType rst set textwidth=79      " make text break lines at 79 chars
-      autocmd FileType terraform set sw=2 expandtab " use 2 spaces :( as indentation
-      autocmd FileType yaml set ts=4 sts=4 sw=4 expandtab foldmethod=indent " use 4 spaces to indent yaml
+      autocmd FileType terraform set sw=2 expandtab " use 2 spaces as indentation
+      autocmd FileType yaml set ts=2 sts=2 sw=2 expandtab foldmethod=indent " use 2 spaces to indent yaml
       autocmd FileType ledger setlocal ts=4 sts=4 sw=4 expandtab " use 4 spaces to indent ledger
 
       " Strip trailing whitespace (,ss)

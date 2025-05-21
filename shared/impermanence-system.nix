@@ -109,6 +109,7 @@
         ".cache/pre-commit"
         ".cache/spotify"
         ".cache/uv"
+        ".config/packer"
         "go" # WHY NOT IN .cache/go ???????
       ];
       files = [

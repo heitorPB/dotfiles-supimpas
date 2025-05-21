@@ -165,6 +165,10 @@
     jq # JSON parser
     tmux # Moar terminals
 
+    # Bash Development
+    shellcheck
+    bash-language-server
+
     # Learning
     exercism
 

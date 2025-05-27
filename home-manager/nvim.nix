@@ -70,6 +70,17 @@
             }
             add_lsp(lspconfig.gopls, gopls_config)
 
+            local rust_analyzer_config = {
+              settings = {
+                ['rust-analyzer'] = {
+                  diagnostics = {
+                    enable = true;
+                  }
+                }
+              }
+            }
+            add_lsp(lspconfig.rust_analyzer, rust_analyzer_config)
+
             add_lsp(lspconfig.pylsp, {})
             add_lsp(lspconfig.ruff, {})
 
@@ -106,22 +117,6 @@
             vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
             vim.keymap.set("n", "gl", vim.diagnostic.setloclist, { desc = "Diagnostics on loclist" })
             -- vim.keymap.set("n", "gq", vim.diagnostic.setqflist, { desc = "Diagnostics on quickfix" })
-          '';
-      }
-      {
-        # Use rust-analyzer as LSP via rust-tools
-        plugin = rust-tools-nvim;
-        type = "lua";
-        config =
-          /*
-          lua
-          */
-          ''
-            local rust_tools = require('rust-tools')
-            if vim.fn.executable("rust-analyzer") == 1 then
-              rust_tools.setup{ tools = { autoSetHints = true } }
-            end
-            vim.api.nvim_set_hl(0, '@lsp.type.comment.rust', {})
           '';
       }
 

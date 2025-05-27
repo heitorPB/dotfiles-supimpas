@@ -189,6 +189,14 @@
     ruff # Python Linter / LSP
     uv # Python package manager
 
+    # Rust Development
+    cargo
+    rustc
+    rustfmt
+    rust-analyzer # LSP
+    clippy # Ultimate linter?
+    gcc # Needed to get a linker for rustc. Could be clang instead
+
     alejandra # Nix formatter
     nil # Nix LSP
 

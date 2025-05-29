@@ -17,8 +17,6 @@
   environment.systemPackages = with pkgs; [
     radeontop # Like htop, but for AMD GPUs
     nvtopPackages.amd # nvtop for AMD GPUs
-
-    backblaze-b2
   ];
 
   # Load amdgpu at stage 1

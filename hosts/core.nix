@@ -152,6 +152,7 @@
     pinentry-curses # Pinentry for gnupg
     ripgrep # Fancier grep(1)
     rsync
+    rclone
     tree # List directories in a nice looking tree structure
     unzip # To revert zip operations
     usbutils # For lsusb(8)

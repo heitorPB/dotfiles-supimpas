@@ -81,7 +81,8 @@
             }
             add_lsp(lspconfig.rust_analyzer, rust_analyzer_config)
 
-            add_lsp(lspconfig.pylsp, {})
+            -- add_lsp(lspconfig.pylsp, {})
+            add_lsp(lspconfig.pyright, {})
             add_lsp(lspconfig.ruff, {})
 
             -- Nix LSP

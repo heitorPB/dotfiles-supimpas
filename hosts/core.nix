@@ -187,6 +187,7 @@
       with p; [
         ipython
       ]))
+    pyright # Python LSP
     ruff # Python Linter / LSP
     uv # Python package manager
 

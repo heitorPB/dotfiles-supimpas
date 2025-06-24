@@ -221,6 +221,9 @@
     (azure-cli.withExtensions [
       azure-cli-extensions.ssh
     ])
+
+    # Google Cloud Platform - GCP
+    google-cloud-sdk # `gcloud` CLI
   ];
 
   # Neovim everywhere

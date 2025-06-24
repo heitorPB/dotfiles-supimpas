@@ -221,16 +221,6 @@
     (azure-cli.withExtensions [
       azure-cli-extensions.ssh
     ])
-
-    # Oracle cloud
-    oci-cli
-
-    # Clouds should fly
-    #flyctl
-
-    # Kubernetes clients
-    #kubectl
-    #k9s # TUI for k8s
   ];
 
   # Neovim everywhere

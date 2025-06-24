@@ -64,10 +64,6 @@
           directory = ".gnupg";
           mode = "0700";
         }
-        {
-          directory = ".oci";
-          mode = "0700";
-        }
         ".config/asciinema"
         ".config/btop"
         ".config/calibre"

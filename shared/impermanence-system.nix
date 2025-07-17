@@ -69,6 +69,7 @@
         ".config/calibre"
         ".config/darktable"
         ".config/exercism"
+        ".config/gcloud"
         ".config/keepassxc"
         ".config/nvim"
         ".config/obsidian"

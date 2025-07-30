@@ -3,7 +3,7 @@
     enable = true;
     enableOnBoot = false;
     #storageDriver = "zfs";
-    autoPrune.enable = true;
+    autoPrune.enable = false;
 
     daemon.settings = {
       # Adjust network size
@@ -23,6 +23,6 @@
 
   environment.systemPackages = with pkgs; [
     docker-compose
-    lazydocker # TUI for docker
+    docker-buildx
   ];
 }

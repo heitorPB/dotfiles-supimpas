@@ -135,7 +135,7 @@
     # My own ls's
     #ls = "ls --color=auto"; # This is not needed, --color=tty is the default
     l = "ls -lahF";
-    ls1 = "ls -1";
+    ls1 = "ls -1F";
   };
 
   # Packages for all machines

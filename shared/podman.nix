@@ -37,6 +37,8 @@ in {
     #    events_logger = "file";
     #  };
     #};
+
+    containers.registries.insecure = ["localhost" "localhost:5000"];
   };
 
   # Disable NixOs Containers (conflicts with virtualisation.containers)

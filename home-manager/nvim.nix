@@ -217,6 +217,7 @@
       autocmd FileType sh setlocal ts=4 sts=4 sw=4 expandtab " use 4 spaces to indent shell scripts
       autocmd FileType terraform setlocal sw=2 expandtab " use 2 spaces as indentation
       autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab foldmethod=indent " use 2 spaces to indent yaml
+      autocmd FileType make setlocal noexpandtab
 
       " Strip trailing whitespace (,ss)
       function! StripWhitespace()

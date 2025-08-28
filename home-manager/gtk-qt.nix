@@ -55,6 +55,7 @@ in {
       bookmarks = [
         "file:///"
         "file:///tmp"
+        "file:///var/tmp"
         "file:///home/h/Downloads"
         "file:///home/h/drive/Docs"
         "file:///home/h/drive/Fotos"

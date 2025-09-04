@@ -168,32 +168,56 @@
       vim-zettel
     ];
 
-    # My forever configs for .config/nvim/init.vim
+    extraLuaConfig =  /* lua */ ''
+      -- TODO: move mapleader here
+      -- TODO: move colorscheme here
+
+      vim.g.have_nerd_font = true
+
+      vim.o.number = true -- always shows line numbers
+      vim.o.relativenumber = false -- I don't like relative line numbering
+      vim.o.mouse = 'a' -- Enable mouse in all modes
+
+      -- Sync clipboard between OS and Neovim.
+      --  Schedule the setting after `UiEnter` because it can increase startup-time.
+      --  Remove this option if you want your OS clipboard to remain independent.
+      --  See `:help 'clipboard'`
+      vim.schedule(function()
+        vim.o.clipboard = 'unnamedplus'
+      end)
+
+      vim.o.ignorecase = true -- Ignore case of searches
+      vim.o.smartcase = true -- Don't ignorecase if Uppercase char present
+
+      -- Open new slit panes to right and bottom
+      vim.o.splitright = true
+      vim.o.splitbelow = true
+
+      -- Show invisible characters
+      vim.o.list = true
+      vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+      vim.o.inccommand = 'split' -- Show pane with substitutions
+
+      vim.o.cursorline = true -- Highligh current line
+      vim.o.scrolloff = 3 -- Start scrolling 3 lines before the horizontal window border
+
+      vim.o.confirm = true -- Ask to save a file if there are changes
+    '';
+
+    # My configs for .config/nvim/init.vim. Takes precedence over the Lua config
     extraConfig = ''
       colorscheme catppuccin-macchiato "catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 
       let mapleader=","
 
-      set number       " always shows line numbers
       set colorcolumn=80,100
-      set clipboard+=unnamedplus
-      set ignorecase   " Ignore case of searches
-      set smartcase    " no ignorecase if Uppercase char present
-      set mouse=a      " enable mouse in all modes
       set title        " Show the filename in the window titlebar
-      set scrolloff=3  " Start scrolling 3 lines before the horizontal window border
       set nofoldenable " disable auto folding
       set autoindent   " Automatic indentation
       set smartindent  " Make it smart
       set autochdir    " Change current working dir to the file's dir
 
-      " show trailing spaces and tabs
-      set listchars=tab:▸\ ,trail:·,nbsp:_
-      set list
-
-      " Open new split panes to right and bottom, which feels more natural
-      set splitbelow
-      set splitright
 
       " text formatting
       set formatoptions+=t " Auto-wrap text using textwidth

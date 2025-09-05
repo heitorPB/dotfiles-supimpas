@@ -171,7 +171,7 @@
     bash-language-server
 
     # Learning
-    exercism
+    exercism # ~/.config/exercism/ added to impermanence
 
     # Direnv and a handy extension
     direnv

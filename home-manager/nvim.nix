@@ -59,12 +59,14 @@
               settings = {
                 gopls = {
                   analyses = {
-                    unusedparams = true,
                     -- fieldalignment = true, -- structs can use less memory if variables are aligned
+                    unusedparams = true,
                     unusedvariable = true,
                   },
-                  staticcheck = true,
+                  completeUnimported = true,
                   gofumpt = true,
+                  staticcheck = true,
+                  usePlaceholders = true,
                 },
               },
             }

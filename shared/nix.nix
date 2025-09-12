@@ -22,6 +22,10 @@
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
 
+      # Timeout (in seconds) for establishing connections in the binary cache
+      # substituter.
+      connect-timeout = 5;
+
       # Allow my user to nix around
       trusted-users = ["root" "h"];
     };

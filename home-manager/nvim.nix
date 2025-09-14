@@ -66,9 +66,9 @@
       " add keywords to default zettel YAML tags
       let front_matter = {}
       let front_matter.front_matter = {}
-      let front_matter.front_matter.keywords = []
+      let front_matter.front_matter.tags = []
       let g:zettel_options = [front_matter]
-      " change default new filename to date-title.md
+      " change default new filename to title.md
       let g:zettel_format = "%title"
       " use [[file|title]] for internal links
       let g:zettel_link_format = "[[%link|%title]]"

@@ -203,8 +203,10 @@
     nil # Nix LSP
 
     # Golang and its language-server
+    # Note: added ~/go to impermanence
     #go
-    #gopls
+    #gopls # LSP
+    #delve # debugger
 
     # Terraform and its language-server
     #terraform

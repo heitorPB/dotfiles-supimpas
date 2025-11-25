@@ -25,16 +25,27 @@ in {
   # Configuration for SSH client
   programs.ssh = {
     enable = true;
-    compression = true;
-    # Periodic ping to keep the connection alive
-    serverAliveInterval = 240;
-    # Only use the keys informed for each host
-    extraConfig = "IdentitiesOnly yes";
+    # Default config will be deprecated, setting manually in matchBlocks."*"
+    enableDefaultConfig = false;
     # Include all extra configuration in ~/.ssh/config.d/*
     includes = ["config.d/*"];
     # TODO move ip addresses to SSOT
     # TODO add addresses to resolv.conf
     matchBlocks = {
+      "*" = {
+        forwardAgent = false;
+        addKeysToAgent = "no";
+        compression = true;
+        serverAliveInterval = 240;
+        serverAliveCountMax = 3;
+        hashKnownHosts = false;
+        userKnownHostsFile = "~/.ssh/known_hosts";
+        controlMaster = "no";
+        controlPath = "~/.ssh/master-%r@%n:%p";
+        controlPersist = "no";
+        # Only use the keys informed for each host
+        identitiesOnly = true;
+      };
       "github.com gist.github.com" = {
         hostname = "ssh.github.com";
         user = "git";
@@ -43,7 +54,6 @@ in {
       "gitlab.com" = {
         identityFile = machine.identityFile;
       };
-
       "alien" = {
         hostname = "192.168.1.12";
         user = "h";
@@ -82,7 +92,6 @@ in {
     nix-direnv.enable = true;
   };
 
-  # Configuration for git
   # Export podman socket for rootless mode
   home.sessionVariables = {
     # DOCKER_HOST is needed for docker-compose commands to use my user's socket

@@ -8,8 +8,6 @@
 }: {
   programs.git = {
     enable = true;
-    userName = "Heitor Pascoal de Bittencourt";
-    userEmail = "heitorpbittencourt@gmail.com";
     signing = lib.mkIf (machine.gitKey != null) {
       key = machine.gitKey;
       signByDefault = true;
@@ -19,47 +17,51 @@
       # Direnv stuff
       ".direnv/"
     ];
-    aliases = {
-      # Update my blog post when this changes
+    settings = {
+      user = {
+        name = "Heitor Pascoal de Bittencourt";
+        email = "heitorpbittencourt@gmail.com";
+      };
+      alias = {
+        # Update my blog post when this changes
 
-      # List aliases
-      alias = "! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | grep -v ^'alias '";
+        # List aliases
+        alias = "! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | grep -v ^'alias '";
 
-      # Nice looking git log --graph
-      l = "log --graph --decorate --pretty=format:'%C(blue)%d%Creset %C(yellow)%h%Creset %s, %C(bold green)%an%Creset, %C(green)%cd%Creset' --date=relative -n 20";
-      graph = "log --graph --decorate --pretty=format:'%C(blue)%d%Creset %C(yellow)%h%Creset %s, %C(bold green)%an%Creset, %C(green)%cd%Creset' --date=relative --all";
+        # Nice looking git log --graph
+        l = "log --graph --decorate --pretty=format:'%C(blue)%d%Creset %C(yellow)%h%Creset %s, %C(bold green)%an%Creset, %C(green)%cd%Creset' --date=relative -n 20";
+        graph = "log --graph --decorate --pretty=format:'%C(blue)%d%Creset %C(yellow)%h%Creset %s, %C(bold green)%an%Creset, %C(green)%cd%Creset' --date=relative --all";
 
-      # Find commits by commit message ('log --grep') in "short mode"
-      lg = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f";
-      # Find commits by source code a.k.a 'find code'
-      fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f";
+        # Find commits by commit message ('log --grep') in "short mode"
+        lg = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f";
+        # Find commits by source code a.k.a 'find code'
+        fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f";
 
-      # View the current working tree status using the short format
-      s = "status -s";
+        # View the current working tree status using the short format
+        s = "status -s";
 
-      # Commit staged changes
-      c = "commit --verbose";
-      # Commit all changes
-      ca = "commit --all --verbose";
+        # Commit staged changes
+        c = "commit --verbose";
+        # Commit all changes
+        ca = "commit --all --verbose";
 
-      # Show diff
-      d = "!git --no-pager diff --patch-with-stat";
+        # Show diff
+        d = "!git --no-pager diff --patch-with-stat";
 
-      # Change date of last commit to now
-      now = "commit --amend --date=now";
+        # Change date of last commit to now
+        now = "commit --amend --date=now";
 
-      # Show verbose output about tags, branches or remotes
-      tags = "tag -l";
-      branches = "branch -a";
-      remotes = "remote -v";
+        # Show verbose output about tags, branches or remotes
+        tags = "tag -l";
+        branches = "branch -a";
+        remotes = "remote -v";
 
-      # List contributors with number of commits
-      contributors = "shortlog --summary --numbered";
+        # List contributors with number of commits
+        contributors = "shortlog --summary --numbered";
 
-      # Remove branches that have already been merged with master a.k.a. ‘delete merged’
-      dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d";
-    };
-    extraConfig = {
+        # Remove branches that have already been merged with master a.k.a. ‘delete merged’
+        dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d";
+      };
       branch = {sort = "-committerdate";};
       column = {ui = "auto";};
       commit = {

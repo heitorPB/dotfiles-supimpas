@@ -59,11 +59,7 @@
       # AMD ROCm OpenCL runtime
       rocmPackages.clr
       rocmPackages.clr.icd
-
-      # AMDVLK drivers can be used in addition to the Mesa RADV drivers.
-      amdvlk
     ];
-    extraPackages32 = with pkgs; [driversi686Linux.amdvlk];
   };
 
   environment.variables = {
@@ -77,7 +73,8 @@
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
   ];
 
-  services.xserver.videoDrivers = lib.mkDefault ["modesetting"];
+  #services.xserver.videoDrivers = lib.mkDefault ["modesetting"];
+  services.xserver.videoDrivers = ["amdgpu"];
 
   # USB4 / Thunderbolt
   services.hardware.bolt.enable = true;

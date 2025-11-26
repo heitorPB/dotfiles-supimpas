@@ -242,8 +242,11 @@
 
   # Fake /lib64/ld-linux-x868-64.so.x so we can run pre-compiled binaries, e.g.
   # dowloaded via `pip install bla`, numpy, etc. Not all problems are solved by
-  # it, but helpful. Also useful to `export LD_LIBRARY_PATH=${NIX-LD_LIBRARY_PATH}`
-  # for cases where some lib failed to load.
+  # it, but helpful. Also useful to `export LD_LIBRARY_PATH=${NIX_LD_LIBRARY_PATH}`
+  # for cases where some lib failed to load. Note: use with care this `export`,
+  # setting it globally unleashes havoc: LD_LIBRARY_PATH affects all programs,
+  # overwriting it can inject wrong libraries in correctly built Nix
+  # applications.
   programs.nix-ld.enable = true;
 
   # Update man pages cache to make apropos work

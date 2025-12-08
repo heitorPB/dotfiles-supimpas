@@ -145,29 +145,11 @@
           lua
           */
           ''
-            local lspconfig = require('lspconfig')
+            -- Bash LSP
+            vim.lsp.enable('bashls')
 
-            function add_lsp(server, options)
-              -- if vim.fn.executable(binary) == 1 then
-              --   server.setup(options)
-              -- end
-              if not options["cmd"] then
-                options["cmd"] = server["document_config"]["default_config"]["cmd"]
-              end
-              if not options["capabilities"] then
-                options["capabilities"] = require("cmp_nvim_lsp").default_capabilities()
-              end
-
-              if vim.fn.executable(options["cmd"][1]) == 1 then
-                server.setup(options)
-              end
-            end
-
-            -- Basic configuration for some LSP servers
-            add_lsp(lspconfig.ansiblels, {})
-            add_lsp(lspconfig.bashls, {})
-
-            local gopls_config = {
+            -- Golang LSP
+            vim.lsp.config('gopls', {
               settings = {
                 gopls = {
                   analyses = {
@@ -181,26 +163,22 @@
                   usePlaceholders = true,
                 },
               },
-            }
-            add_lsp(lspconfig.gopls, gopls_config)
+            })
+            vim.lsp.enable('gopls')
 
-            local rust_analyzer_config = {
-              settings = {
-                ['rust-analyzer'] = {
-                  diagnostics = {
-                    enable = true;
-                  }
+            -- Python LSP
+            vim.lsp.enable('pyright')
+            vim.lsp.config('ruff', {
+              init_options = {
+                settings = {
+                  logLevel = 'debug'
                 }
               }
-            }
-            add_lsp(lspconfig.rust_analyzer, rust_analyzer_config)
-
-            -- add_lsp(lspconfig.pylsp, {})
-            add_lsp(lspconfig.pyright, {})
-            add_lsp(lspconfig.ruff, {})
+            })
+            vim.lsp.enable('ruff')
 
             -- Nix LSP
-            local nil_config = {
+            vim.lsp.config('nil_ls', {
                 autostart = true,
                 capabilities = caps,
                 cmd = { "nil" },
@@ -210,14 +188,11 @@
                       nix = { flake = { autoArchive = true }, },
                     },
                 },
-            }
-            add_lsp(lspconfig.nil_ls, nil_config)
+            })
+            vim.lsp.enable('nil_ls')
 
-            add_lsp(lspconfig.terraformls, {}) -- official from HashiCorp
-            add_lsp(lspconfig.tflint, {}) -- TFLint, a Terraform linter and LSP
-            add_lsp(lspconfig.nomad_lsp, {})
-
-            add_lsp(lspconfig.vale_ls, {})
+            vim.lsp.enable('terraformls') -- Official from HashiCorp
+            vim.lsp.enable('tflint') -- TFLint, a Terraform linter and LSP
 
             -- Mappings
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })

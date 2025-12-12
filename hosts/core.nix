@@ -140,6 +140,7 @@
 
   # Packages for all machines
   environment.systemPackages = with pkgs; [
+    bat # Fancier cat(1)
     btop # Fancier top(1)
     dysk # Fancier df(1)
     fd # Fancier find(1)
@@ -150,9 +151,9 @@
     man-pages # More manuals
     pciutils # For lspci(8)
     pinentry-curses # Pinentry for gnupg
+    rclone
     ripgrep # Fancier grep(1)
     rsync
-    rclone
     tree # List directories in a nice looking tree structure
     unzip # To revert zip operations
     usbutils # For lsusb(8)

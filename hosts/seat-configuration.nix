@@ -31,6 +31,7 @@
 
   # XDG-Portal (for dialogs & screensharing).
   xdg.portal = {
+    enable = true;
     wlr.enable = true;
 
     extraPortals = with pkgs; [

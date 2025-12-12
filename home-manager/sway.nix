@@ -81,7 +81,8 @@ in {
         "Samsung Electric Company LC49G95T H4ZRA00081" = {
           # Samsung G9 ultra wide
           adaptive_sync = "on"; # TODO move this SSOT
-          mode = "5120x1440@119.999Hz";
+          #mode = "5120x1440@119.999Hz";
+          mode = "5120x1440@59.997Hz";
         };
 
         # Machine specific monitor

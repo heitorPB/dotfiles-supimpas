@@ -99,7 +99,7 @@
         vim.o.ignorecase = true -- Ignore case of searches
         vim.o.smartcase = true -- Don't ignorecase if Uppercase char present
 
-        -- Open new slit panes to right and bottom
+        -- Open new split panes to right and bottom
         vim.o.splitright = true
         vim.o.splitbelow = true
 
@@ -109,30 +109,62 @@
 
         vim.o.inccommand = 'split' -- Show pane with substitutions
 
-        vim.o.cursorline = true -- Highligh current line
+        vim.o.cursorline = true -- Highlight current line
         vim.o.scrolloff = 3 -- Start scrolling 3 lines before the horizontal window border
 
         vim.o.confirm = true -- Ask to save a file if there are changes
+
+        -- File type detection extras. Usefull for syntax highlighting via e.g. tree-sitter
+        vim.filetype.add({
+          pattern = {
+            [".*/charts?/.*/templates/.*%.ya?ml"] = "helm",
+            [".*/charts?/.*/values.ya?ml"] = "helm",
+            [".*helmfile.*%.ya?ml"] = "helm",
+            [".*%.sh"] = "bash",
+            [".*%.service"] = "systemd"
+          }
+        })
       '';
 
     plugins = with pkgs.vimPlugins; [
-      # Tree-sitter, all grammars, and Lua configuration
+      # Tree-sitter now compiles the parsers and stores in
+      # `~/.local/share/nvim/site/`, added to impermanence
       {
-        plugin = nvim-treesitter.withAllGrammars;
+        plugin = nvim-treesitter;
         type = "lua";
         config =
           /*
           lua
           */
           ''
-            require('nvim-treesitter.configs').setup {
-              highlight = {
-                enable = true,
-              },
-              indent = {
-                enable = true,
-              },
-            }
+          -- The new nvim-treesitter (`main` branch) does not start
+          -- automatically. This autocmd starts it and auto-installs the
+          -- language parser based on the `filetype`.
+          vim.api.nvim_create_autocmd({ 'Filetype' }, {
+            callback = function(event)
+              -- Make sure nvim-treesitter is available
+              local ok, nvim_treesitter = pcall(require, 'nvim-treesitter')
+              if not ok then return end
+
+              local parsers = require('nvim-treesitter.parsers')
+
+              if not parsers[event.match] or not nvim_treesitter.install then return end
+
+              local ft = vim.bo[event.buf].ft
+              local lang = vim.treesitter.language.get_lang(ft)
+              nvim_treesitter.install({ lang }):await(function(err)
+                if err then
+                  vim.notify('Treesitter install error for ft: ' .. ft .. ' err: ' .. err)
+                  return
+                end
+
+                pcall(vim.treesitter.start, event.buf)
+                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                -- vim.wo.foldmethod = 'expr'
+                vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+              end)
+            end,
+          })
           '';
       }
 

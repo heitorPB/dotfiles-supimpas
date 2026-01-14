@@ -179,7 +179,8 @@
     nix-direnv
 
     # THE editor and its plugins
-    neovim
+    neovim # Also added .config/nvim and .local/share/nvim to impermanence
+    tree-sitter
     fzf
     silver-searcher
 

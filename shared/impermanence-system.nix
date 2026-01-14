@@ -25,6 +25,7 @@
         mode = "u=rwx,g=,o=";
       }
       "/var/lib/nixos"
+      "/var/lib/rancher" # For K3s
       "/var/lib/systemd"
       "/var/lib/upower"
 
@@ -70,7 +71,9 @@
         ".config/darktable"
         ".config/exercism"
         ".config/gcloud"
+        ".config/helm"
         ".config/keepassxc"
+        ".config/k9s"
         ".config/nvim"
         ".config/obsidian"
         ".config/OrcaSlicer"
@@ -78,9 +81,11 @@
         ".config/qBittorrent"
         ".config/spotify"
         ".config/uv"
+        ".kube"
         ".local/share/Anki2"
         ".local/share/containers"
         ".local/share/direnv"
+        ".local/share/nvim" # Mainly for tree-sitter parsers/queries
         ".local/share/orca-slicer"
         ".local/share/qBittorrent"
         ".local/share/Steam"
@@ -98,6 +103,7 @@
         ".cache/anki"
         ".cache/calibre"
         ".cache/darktable"
+        ".cache/helm"
         ".cache/keepassxc"
         ".cache/mesa_shader_cache"
         ".cache/mozilla"

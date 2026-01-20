@@ -124,9 +124,6 @@
 
           ./shared/power-saving-laptop.nix
 
-          # Use desktop as remove builder
-          ./shared/nix-buildMachines-desk03.nix
-
           # Extra services for this host
           ./shared/vpns.nix
           ./shared/podman.nix

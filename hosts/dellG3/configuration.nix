@@ -76,7 +76,7 @@
     nvidiaBusId = "PCI:1:0:0";
   };
 
-  hardware.graphics.extraPackages = with pkgs; [vaapiVdpau];
+  hardware.graphics.extraPackages = with pkgs; [libva-vdpau-driver];
 
   # Her user settings
   users.users.j = {

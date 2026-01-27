@@ -110,7 +110,7 @@
     hunspellDicts.en_US-large
     hunspellDicts.pt_BR
     libreoffice-qt
-    obsidian # Count as office suite?
+    obsidian # Count as office suite? Added ~/.config/obsidian/ to impermanence
     zed-editor-fhs # Added ~/.config/zed and ~/.local/share/zed to impermanence
 
     # My favorites :)

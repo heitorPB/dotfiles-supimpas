@@ -111,6 +111,7 @@
     hunspellDicts.pt_BR
     libreoffice-qt
     obsidian # Count as office suite?
+    zed-editor-fhs # Added ~/.config/zed and ~/.local/share/zed to impermanence
 
     # My favorites :)
     anki # Flash cards!

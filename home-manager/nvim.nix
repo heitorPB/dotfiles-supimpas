@@ -137,34 +137,34 @@
           lua
           */
           ''
-          -- The new nvim-treesitter (`main` branch) does not start
-          -- automatically. This autocmd starts it and auto-installs the
-          -- language parser based on the `filetype`.
-          vim.api.nvim_create_autocmd({ 'Filetype' }, {
-            callback = function(event)
-              -- Make sure nvim-treesitter is available
-              local ok, nvim_treesitter = pcall(require, 'nvim-treesitter')
-              if not ok then return end
+            -- The new nvim-treesitter (`main` branch) does not start
+            -- automatically. This autocmd starts it and auto-installs the
+            -- language parser based on the `filetype`.
+            vim.api.nvim_create_autocmd({ 'Filetype' }, {
+              callback = function(event)
+                -- Make sure nvim-treesitter is available
+                local ok, nvim_treesitter = pcall(require, 'nvim-treesitter')
+                if not ok then return end
 
-              local parsers = require('nvim-treesitter.parsers')
+                local parsers = require('nvim-treesitter.parsers')
 
-              if not parsers[event.match] or not nvim_treesitter.install then return end
+                if not parsers[event.match] or not nvim_treesitter.install then return end
 
-              local ft = vim.bo[event.buf].ft
-              local lang = vim.treesitter.language.get_lang(ft)
-              nvim_treesitter.install({ lang }):await(function(err)
-                if err then
-                  vim.notify('Treesitter install error for ft: ' .. ft .. ' err: ' .. err)
-                  return
-                end
+                local ft = vim.bo[event.buf].ft
+                local lang = vim.treesitter.language.get_lang(ft)
+                nvim_treesitter.install({ lang }):await(function(err)
+                  if err then
+                    vim.notify('Treesitter install error for ft: ' .. ft .. ' err: ' .. err)
+                    return
+                  end
 
-                pcall(vim.treesitter.start, event.buf)
-                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-                -- vim.wo.foldmethod = 'expr'
-                vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-              end)
-            end,
-          })
+                  pcall(vim.treesitter.start, event.buf)
+                  vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                  -- vim.wo.foldmethod = 'expr'
+                  vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+                end)
+              end,
+            })
           '';
       }
 
@@ -272,6 +272,120 @@
                 { name='nvim_lsp' },
               },
             }
+          '';
+      }
+
+      # Debugging
+      {
+        # Main plugin
+        plugin = nvim-dap;
+        type = "lua";
+        config =
+          /*
+          lua
+          */
+          ''
+            require('dap.ext.vscode').load_launchjs()
+          '';
+      }
+      nvim-nio # Async IO, required for nvim-dap-ui
+      {
+        plugin = nvim-dap-ui;
+        type = "lua";
+        config =
+          /*
+          lua
+          */
+          ''
+            local dap = require("dap")
+            local dapui = require("dapui")
+
+            vim.keymap.set('n', '<Leader>dc', function() dap.continue() end)
+            vim.keymap.set('n', '<Leader>dn', function() dap.step_over() end) -- next
+            vim.keymap.set('n', '<Leader>dsi', function() dap.step_into() end)
+            vim.keymap.set('n', '<Leader>dso', function() dap.step_out() end)
+            vim.keymap.set('n', '<Leader>db', function() dap.toggle_breakpoint() end)
+            -- vim.keymap.set('n', '<Leader>B', function() dap.set_breakpoint() end)
+            -- vim.keymap.set('n', '<Leader>lp', function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+            vim.keymap.set('n', '<Leader>dr', function() dap.repl.open() end)
+            vim.keymap.set('n', '<Leader>dl', function() dap.run_last() end)
+            vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
+              require('dap.ui.widgets').hover()
+            end)
+            vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
+              require('dap.ui.widgets').preview()
+            end)
+            vim.keymap.set('n', '<Leader>df', function()
+              local widgets = require('dap.ui.widgets')
+              widgets.centered_float(widgets.frames)
+            end)
+            vim.keymap.set('n', '<Leader>ds', function()
+              local widgets = require('dap.ui.widgets')
+              widgets.centered_float(widgets.scopes)
+            end)
+
+            -- DAP UI setup
+            -- ------------
+
+            dapui.setup()
+
+            dap.listeners.before.attach.dapui_config = function()
+              dapui.open()
+            end
+            dap.listeners.before.launch.dapui_config = function()
+              dapui.open()
+            end
+            dap.listeners.before.event_terminated.dapui_config = function()
+              dapui.close()
+            end
+            dap.listeners.before.event_exited.dapui_config = function()
+              dapui.close()
+            end
+
+            vim.keymap.set('n', '<Leader>dt', function() dapui.toggle() end)
+          '';
+      }
+      {
+        plugin = nvim-dap-go;
+        type = "lua";
+        config =
+          /*
+          lua
+          */
+          ''
+            require("dap-go").setup()
+
+            --[[
+            -- Override the Go adapter so that "remote attach" configs connect to Docker/Delve
+            dap.adapters.go = function(callback, config)
+              -- If this is one of your Docker remote configs, act as a client
+              if config.request == 'attach' and config.mode == 'remote' then
+                callback({
+                  type = 'server',
+                  host = config.host or 'localhost',
+                  port = config.port or 2345,
+                })
+              else
+                -- Fallback: for other configs (e.g. local debugging), behave like a normal dlv adapter
+                callback({
+                  type = 'executable',
+                  command = 'dlv',
+                  args = { 'dap' },
+                })
+              end
+            end
+            --]]
+          '';
+      }
+      {
+        plugin = nvim-dap-python;
+        type = "lua";
+        config =
+          /*
+          lua
+          */
+          ''
+            require('dap-python').setup('python3')
           '';
       }
 

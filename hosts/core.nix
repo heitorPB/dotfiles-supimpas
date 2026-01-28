@@ -188,6 +188,7 @@
     # Python and its Development packages
     (python3.withPackages (p:
       with p; [
+        debugpy
         ipython
       ]))
     pyright # Python LSP
@@ -207,9 +208,10 @@
 
     # Golang and its language-server
     # Note: added ~/go to impermanence
-    #go
-    #gopls # LSP
-    #delve # debugger
+    go
+    gopls # LSP
+    delve # Debugger
+    golangci-lint
 
     # Terraform and its language-server
     #terraform
@@ -241,6 +243,13 @@
   environment.variables = {
     EDITOR = "nvim";
     SUDO_EDITOR = "nvim"; # For sudo -e
+  };
+
+  # Enable nh as an ultimate Nix CLI
+  programs.nh = {
+    enable = true;
+    clean.enable = false; # conflicts with nix.gc.automatic
+    clean.extraArgs = "--keep 5 --keep-since 4d";
   };
 
   # Fake /lib64/ld-linux-x868-64.so.x so we can run pre-compiled binaries, e.g.

@@ -41,7 +41,7 @@
 
     # Files and directories for root user
     users.root = {
-      home = "/root";
+      # home = "/root";
       directories = [
         {
           directory = ".gnupg";

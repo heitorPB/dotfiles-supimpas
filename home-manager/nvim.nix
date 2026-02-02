@@ -74,7 +74,7 @@
       let g:zettel_link_format = "[[%link|%title]]"
     '';
 
-    extraLuaConfig =
+    initLua =
       /*
       lua
       */

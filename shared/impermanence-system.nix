@@ -65,6 +65,7 @@
           directory = ".gnupg";
           mode = "0700";
         }
+        ".claude/"
         ".config/asciinema"
         ".config/btop"
         ".config/calibre"
@@ -119,6 +120,8 @@
       ];
       files = [
         ".bash_history"
+        ".claude.json"
+        ".claude.json.backup"
       ];
     };
   };

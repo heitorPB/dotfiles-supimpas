@@ -162,7 +162,7 @@
     zip # To zip or not to zip
 
     # Development and workflow
-    claude-code # TODO ~/.claude{,.json,.json.backup} in impermanence
+    claude-code # Added ~/.claude{,.json,.json.backup} to impermanence
     git
     gnumake # For make
     jq # JSON parser

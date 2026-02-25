@@ -276,18 +276,7 @@
       }
 
       # Debugging
-      {
-        # Main plugin
-        plugin = nvim-dap;
-        type = "lua";
-        config =
-          /*
-          lua
-          */
-          ''
-            require('dap.ext.vscode').load_launchjs()
-          '';
-      }
+      nvim-dap # Main plugin
       nvim-nio # Async IO, required for nvim-dap-ui
       {
         plugin = nvim-dap-ui;

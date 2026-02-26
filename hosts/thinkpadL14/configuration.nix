@@ -3,7 +3,7 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
   pkgs,
-  lib,
+  config,
   ...
 }: {
   imports = [./hardware-configuration.nix];
@@ -19,8 +19,12 @@
     nvtopPackages.amd # nvtop for AMD GPUs
   ];
 
-  # Load amdgpu at stage 1
-  boot.initrd.kernelModules = ["amdgpu"];
+  boot.blacklistedKernelModules = ["k10temp"]; # Use zenpower instead
+  boot.extraModulePackages = [ config.boot.kernelPackages.zenpower ];
+  boot.initrd.kernelModules = [
+    "amdgpu" # Load amdgpu at stage 1
+    "zenpower" # Better then k10temp
+  ];
   boot.kernelParams = [
     # Force use of the thinkpad_acpi driver for backlight control.
     # This allows the backlight save/load systemd service to work.
@@ -29,8 +33,7 @@
     # AMD CPU scaling
     # https://www.kernel.org/doc/html/latest/admin-guide/pm/amd-pstate.html
     # https://wiki.archlinux.org/title/CPU_frequency_scaling#amd_pstate
-    # On recent AMD CPUs this can be more energy efficient.
-    "amd_pstate=guided"
+    "amd_pstate=active"
 
     # Load amdgpu at stage 1
     "amdgpu"

@@ -27,7 +27,7 @@ rec {
     amdGpuSensor = "amdgpu-pci-0700";
     nvidiaGpu = null;
     battery = "BAT0";
-    cpuSensor = "k10temp-pci-00c3";
+    cpuSensor = "zenpower-pci-00c3";
     mainNetworkInterface = "wlan0";
     nvmeSensors = ["nvme-pci-0100"];
 

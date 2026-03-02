@@ -169,8 +169,9 @@
     tmux # Moar terminals
 
     # Bash Development
-    shellcheck
     bash-language-server
+    shellcheck
+    shfmt
 
     # Learning
     exercism # ~/.config/exercism/ added to impermanence

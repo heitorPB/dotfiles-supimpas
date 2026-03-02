@@ -1,3 +1,6 @@
+# Also added my user to the `docker` group hosts/core.nix
+# Entries added to impermanence-system.nix:
+#   - /var/lib/docker
 {pkgs, ...}: {
   virtualisation.docker = {
     enable = true;

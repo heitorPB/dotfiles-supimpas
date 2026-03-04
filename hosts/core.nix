@@ -34,7 +34,7 @@
   # Allow all firmwares to be there
   hardware.enableAllFirmware = true;
 
-  # Daemon to keep firmware up to date # TODO: remove from headless?
+  # Daemon to keep firmware up to date
   services.fwupd.enable = true;
 
   # "enp3s0" instead of "eth0".

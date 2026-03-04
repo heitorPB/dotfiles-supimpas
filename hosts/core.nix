@@ -142,7 +142,6 @@
   environment.systemPackages = with pkgs; [
     bat # Fancier cat(1)
     btop # Fancier top(1)
-    dysk # Fancier df(1)
     fd # Fancier find(1)
     file
     killall

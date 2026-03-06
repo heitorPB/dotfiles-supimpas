@@ -1,4 +1,4 @@
-# Setup all VPN packages
+# Setup OpenVPN
 {
   pkgs,
   lib,
@@ -10,8 +10,6 @@
       openvpn
       # Helper for OpenVpn <-> Systemd/Resolved
       update-systemd-resolved
-
-      wireguard-tools # TODO make this conditional
     ]
     ++ (
       lib.lists.optional (machine.seat != null)

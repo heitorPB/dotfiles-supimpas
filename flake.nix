@@ -51,7 +51,7 @@
           ./hosts/core.nix
 
           # Extra services for this host
-          ./shared/vpns.nix
+          ./shared/openvpn.nix
           ./shared/podman.nix
           ./shared/nomad.nix
           #./shared/docker.nix
@@ -82,7 +82,7 @@
           ./shared/power-saving-laptop.nix
 
           # Extra services for this host
-          ./shared/vpns.nix
+          ./shared/openvpn.nix
           ./shared/podman.nix
           ./shared/docker.nix
           ./shared/nomad.nix
@@ -126,7 +126,6 @@
           ./shared/power-saving-laptop.nix
 
           # Extra services for this host
-          ./shared/vpns.nix
           ./shared/podman.nix
           ./shared/docker.nix
           ./shared/nomad.nix

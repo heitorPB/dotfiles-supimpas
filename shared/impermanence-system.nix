@@ -113,6 +113,7 @@
         ".cache/orca-slicer"
         ".cache/pip"
         ".cache/pre-commit"
+        ".cache/prek"
         ".cache/spotify"
         ".cache/uv"
         ".config/packer"

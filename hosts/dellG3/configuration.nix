@@ -13,13 +13,15 @@
   # required for zfs. From head -c 8 /etc/machine-d
   networking.hostId = "c026a34e";
 
+  # Cooling management
+  services.thermald.enable = lib.mkDefault true;
+
   # Machine specific packages
   environment.systemPackages = with pkgs; [
     nvtopPackages.nvidia
 
     # Some rice
     catppuccin-papirus-folders
-    #papirus-icon-theme
   ];
 
   #boot.initrd.kernelModules = [ "amdgpu" ];

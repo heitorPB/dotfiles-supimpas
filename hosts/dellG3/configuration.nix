@@ -24,10 +24,17 @@
     catppuccin-papirus-folders
   ];
 
-  #boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelParams = [
-    "acpi_osi=Linux-Dell-Video"
-  ];
+  boot = {
+    # Use same ACPI identifier as Dell Ubuntu
+    kernelParams = ["acpi_osi=Linux-Dell-Video"];
+
+    # Enable fan sensors.
+    kernelModules = ["dell-smm-hwmon"];
+
+    # Forces the driver to load on unknown hardware
+    extraModprobeConfig = "options dell-smm-hwmon	ignore_dmi=1";
+    # NOTE: PWM fan control compatibility needs explicit whitelisting in the kernel driver's code.
+  };
 
   # Nvidia drivers for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];

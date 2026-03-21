@@ -15,6 +15,17 @@ rec {
     seat = null;
   };
 
+  nas = {
+    hostname = "nas";
+    location = geolocation.piracicaba;
+
+    identityFile = "~/.ssh/id_ed25519.nas";
+    gitKey = "heitorpbittencourt@gmail.com";
+    gpgPinentryPackage = "curses";
+
+    seat = null;
+  };
+
   thinkpadL14 = {
     hostname = "L14";
     location = geolocation.piracicaba;

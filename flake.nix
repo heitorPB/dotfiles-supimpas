@@ -65,6 +65,33 @@
         ];
       };
 
+      "${ssot.nas.hostname}" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        # Pass these stuff as inputs to the configuration files
+        specialArgs = {
+          inherit ssot;
+          inherit inputs;
+          machine = ssot.desktop;
+        };
+        modules = [
+          # HW and base configuration
+          ./hosts/nas/configuration.nix
+          ./hosts/core.nix
+
+          # ZFS on impermanence from Chaotic
+          chaotic.nixosModules.default
+          impermanence.nixosModules.impermanence
+          ./shared/impermanence-system.nix
+
+          # home-manager stuff
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.extraSpecialArgs = {machine = ssot.nas;};
+            home-manager.users.h = import ./home-manager/h.nix;
+          }
+        ];
+      };
+
       "${ssot.thinkpadL14.hostname}" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         # Pass these stuff as inputs to the configuration files

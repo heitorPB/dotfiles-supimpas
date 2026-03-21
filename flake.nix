@@ -71,7 +71,7 @@
         specialArgs = {
           inherit ssot;
           inherit inputs;
-          machine = ssot.desktop;
+          machine = ssot.nas;
         };
         modules = [
           # HW and base configuration

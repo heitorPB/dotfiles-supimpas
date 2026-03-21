@@ -158,6 +158,7 @@
     usbutils # For lsusb(8)
     wget
     wol # Wake On Lan client
+    yazi # File browser TODO config
     zip # To zip or not to zip
 
     # Development and workflow

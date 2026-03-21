@@ -86,9 +86,7 @@
           ./shared/podman.nix
           ./shared/docker.nix
           ./shared/nomad.nix
-
-          # Use desktop as remove builder
-          ./shared/nix-buildMachines-desk03.nix
+          ./shared/k3s.nix
 
           # ZFS on impermanence from Chaotic
           chaotic.nixosModules.default

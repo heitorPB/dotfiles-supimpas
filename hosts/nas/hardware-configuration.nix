@@ -19,10 +19,6 @@
   #     fsType = "zfs";
   #   };
 
-  swapDevices = [
-    {device = "/dev/disk/by-label/swap";}
-  ];
-
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/BOOT";
     fsType = "vfat";
@@ -33,6 +29,14 @@
     fsType = "zfs";
     neededForBoot = true;
   };
+
+  fileSystems."/var/persistent" = {
+    device = "zroot/data/persistent";
+    fsType = "zfs";
+    neededForBoot = true;
+  };
+
+  swapDevices = [{device = "/dev/disk/by-label/swap";}];
 
   hardware.cpu.intel.updateMicrocode = true;
 

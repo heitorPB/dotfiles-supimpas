@@ -11,6 +11,7 @@
     signing = lib.mkIf (machine.gitKey != null) {
       key = machine.gitKey;
       signByDefault = true;
+      format = "openpgp";
       # TODO usse ssh key?
     };
     ignores = [

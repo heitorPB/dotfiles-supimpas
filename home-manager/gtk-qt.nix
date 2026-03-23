@@ -3,6 +3,7 @@
   machine,
   lib,
   pkgs,
+  config,
   ...
 }: let
   hasSeat = machine.seat != null;
@@ -63,6 +64,8 @@ in {
       ];
       extraConfig.gtk-application-prefer-dark-theme = true;
     };
+
+    gtk4.theme = config.gtk.theme;
   };
 
   dconf.settings = lib.mkIf hasSeat {

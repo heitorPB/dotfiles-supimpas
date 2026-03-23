@@ -263,7 +263,7 @@
   programs.nix-ld.enable = true;
 
   # Update man pages cache to make apropos work
-  documentation.man.generateCaches = true;
+  documentation.man.cache.enable = true;
 
   # My user in all hosts
   users.users.h = {

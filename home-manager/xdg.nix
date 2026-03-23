@@ -54,6 +54,7 @@ in {
     # Default directories. Most I don't use. LOL
     userDirs = {
       enable = true;
+      setSessionVariables = true; # Although the recommendation is for apps to parse `xdg-user-dir` outputs
       # createDirectories = true; # conflicts with impermanence
 
       # Make sure we're using the english ones.

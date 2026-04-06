@@ -5,6 +5,7 @@ set -o errexit
 # /dev/nvme0n1/nvme0n1p1: 1G             -> /boot
 # /dev/nvme0n1/nvme0n1p2: 16G            -> swap
 # /dev/nvme0n1/nvme0n1p3: all space left -> zpool for /, /nix, /home, etc
+# NOTE: /boot MUST have the EFI System type!
 
 # Create EFI
 mkfs.vfat -F32 -n BOOT /dev/nvme0n1p1

@@ -153,6 +153,7 @@
     rclone
     ripgrep # Fancier grep(1)
     rsync
+    smartmontools # For S.M.A.R.T. tooling
     tree # List directories in a nice looking tree structure
     unzip # To revert zip operations
     usbutils # For lsusb(8)

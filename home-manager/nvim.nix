@@ -3,6 +3,9 @@
   programs.neovim = {
     enable = true;
 
+    withPython3 = true; # I don't know if I need this, but it was the default
+    withRuby = true; # I don't know if I need this, but it was the default
+
     # My configs for .config/nvim/init.vim. Takes precedence over the Lua config
     extraConfig = ''
       colorscheme catppuccin-macchiato "catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha

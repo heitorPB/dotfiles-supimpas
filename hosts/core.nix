@@ -214,6 +214,7 @@
     gopls # LSP
     delve # Debugger
     golangci-lint
+    govulncheck # Vulnerability scanner
 
     # Terraform and its language-server
     #terraform

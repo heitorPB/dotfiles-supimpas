@@ -97,7 +97,6 @@
         ".mozilla"
         ".ssh"
         "Calibre Library"
-        "cloud"
         "Downloads"
         "drive"
         "projects"

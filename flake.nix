@@ -51,10 +51,7 @@
           ./hosts/core.nix
 
           # Extra services for this host
-          ./shared/openvpn.nix
           ./shared/podman.nix
-          ./shared/nomad.nix
-          #./shared/docker.nix
 
           # home-manager stuff
           home-manager.nixosModules.home-manager
@@ -157,7 +154,6 @@
           # Extra services for this host
           ./shared/podman.nix
           ./shared/docker.nix
-          ./shared/nomad.nix
           ./shared/tailscale.nix
 
           # ZFS on impermanence from Chaotic

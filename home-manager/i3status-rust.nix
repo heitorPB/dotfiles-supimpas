@@ -30,6 +30,12 @@ in {
             #  socket_path = "/var/run/user/1000/podman/podman.sock";
             #}
             {
+              block = "vpn";
+              driver = "tailscale";
+              format_connected = "Tailnet: $icon ";
+              format_disconnected = "Tailnet: $icon ";
+            }
+            {
               # Hardcode tun0 to show vpn network only if it exists.
               # The `missing_format` below takes care of not showing anything if
               # there's no tun0 device.
@@ -44,7 +50,6 @@ in {
               # Hardcode wlan0 to show wireless network only if it exists.
               # The `missing_format` below takes care of not showing anything if
               # there's no wlan0 device.
-              # TODO: move this to ssot
               block = "net";
               device = "wlan0";
               format = "$icon   $ssid ($signal_strength.eng(w:4))";

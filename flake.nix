@@ -78,6 +78,9 @@
           ./hosts/nas/configuration.nix
           ./hosts/core.nix
 
+          # Extra services for this host
+          ./shared/tailscale.nix
+
           # ZFS on impermanence from Chaotic
           chaotic.nixosModules.default
           impermanence.nixosModules.impermanence
@@ -114,6 +117,7 @@
           ./shared/docker.nix
           ./shared/nomad.nix
           ./shared/k3s.nix
+          ./shared/tailscale.nix
 
           # ZFS on impermanence from Chaotic
           chaotic.nixosModules.default
@@ -154,6 +158,7 @@
           ./shared/podman.nix
           ./shared/docker.nix
           ./shared/nomad.nix
+          ./shared/tailscale.nix
 
           # ZFS on impermanence from Chaotic
           chaotic.nixosModules.default

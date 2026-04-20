@@ -65,7 +65,7 @@ in {
         identityFile = machine.identityFile;
       };
       "nas" = {
-        hostname = "192.168.1.90";
+        hostname = "192.168.1.58";
         user = "h";
         identityFile = machine.identityFile;
       };

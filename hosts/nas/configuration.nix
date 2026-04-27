@@ -10,7 +10,7 @@
   networking.interfaces.enp2s0.wakeOnLan.enable = true;
 
   environment.systemPackages = with pkgs; [
-    nvtopPackages.itel # nvtop for Intel GPU
+    nvtopPackages.intel # nvtop for Intel GPU
   ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,

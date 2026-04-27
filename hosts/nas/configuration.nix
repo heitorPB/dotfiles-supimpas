@@ -9,6 +9,10 @@
   networking.hostId = "0e7db539";
   networking.interfaces.enp2s0.wakeOnLan.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    nvtopPackages.itel # nvtop for Intel GPU
+  ];
+
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #

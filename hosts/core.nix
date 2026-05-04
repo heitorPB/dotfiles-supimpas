@@ -19,6 +19,8 @@
     #"vm.max_map_count" = 2147483642; # helps with Wine ESYNC/FSYNC
   };
 
+  boot.zfs.forceImportRoot = false;
+
   networking.hostName = machine.hostname;
 
   # Use tmpfs for /tmp

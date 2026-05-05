@@ -13,7 +13,7 @@
 
       format = ''
         $battery$username$sudo(at) $hostname$directory$git_branch$git_status$python$nix_shell $direnv
-        $character
+        $status$character
       '';
 
       # Each block config below
@@ -84,6 +84,12 @@
       direnv = {
         disabled = false;
         format = "[$symbol$loaded/$allowed]($style)";
+      };
+
+      # Exit status of previous command
+      status = {
+        disabled = false;
+        symbol = ""; # Symbol used when there's an error in previous command
       };
 
       # TODO: disable all other blocks?

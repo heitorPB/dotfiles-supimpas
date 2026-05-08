@@ -217,6 +217,7 @@
     delve # Debugger
     golangci-lint
     govulncheck # Vulnerability scanner
+    gcc # Needed for C/Go ?
 
     # Terraform and its language-server
     #terraform

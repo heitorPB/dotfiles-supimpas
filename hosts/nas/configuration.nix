@@ -3,7 +3,11 @@
   config,
   ...
 }: {
-  imports = [./hardware-configuration.nix];
+  imports = [
+    ./hardware-configuration.nix
+    ./prometheus.nix
+    ./prometheus-exporters.nix
+  ];
 
   # Required for zfs. From head -c 8 /etc/machine-id
   networking.hostId = "0e7db539";

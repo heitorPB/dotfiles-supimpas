@@ -31,7 +31,7 @@ in {
     includes = ["config.d/*"];
     # TODO move ip addresses to SSOT
     # TODO add addresses to resolv.conf
-    matchBlocks = {
+    settings = {
       "*" = {
         forwardAgent = false;
         addKeysToAgent = "no";
@@ -65,7 +65,7 @@ in {
         identityFile = machine.identityFile;
       };
       "nas" = {
-        hostname = "192.168.1.58";
+        hostname = "192.168.1.18";
         user = "h";
         identityFile = machine.identityFile;
       };

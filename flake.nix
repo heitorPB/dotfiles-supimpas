@@ -112,7 +112,6 @@
           ./shared/openvpn.nix
           ./shared/podman.nix
           ./shared/docker.nix
-          ./shared/nomad.nix
           ./shared/k3s.nix
           ./shared/tailscale.nix
 

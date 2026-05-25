@@ -17,7 +17,7 @@
   ];
 
   boot.blacklistedKernelModules = ["k10temp"]; # Use zenpower instead
-  boot.extraModulePackages = [ config.boot.kernelPackages.zenpower ];
+  boot.extraModulePackages = [config.boot.kernelPackages.zenpower];
   boot.initrd.kernelModules = [
     "amdgpu" # Load amdgpu at stage 1
     "zenpower" # Better then k10temp

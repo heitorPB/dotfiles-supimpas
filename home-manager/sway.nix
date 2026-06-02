@@ -153,8 +153,8 @@ in {
         "${modifier}+Print" = "exec ${pkgs.swaylock}/bin/swaylock";
 
         # Screenshot to clipboard and file
-        "Print" = "exec ${pkgs.grim}/bin/grim -t png - | tee /tmp/screenshot.png | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
-        "Shift+Print" = "exec ${pkgs.grim}/bin/grim -t png -g \"$(${pkgs.slurp}/bin/slurp)\" - | tee /tmp/screenshot.png | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
+        "Print" = "exec ${pkgs.grim}/bin/grim -t png - | tee /tmp/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
+        "Shift+Print" = "exec ${pkgs.grim}/bin/grim -t png -g \"$(${pkgs.slurp}/bin/slurp)\" - | tee /tmp/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
       };
 
       bars = [

@@ -187,7 +187,6 @@
     neovim # Also added .config/nvim and .local/share/nvim to impermanence
     tree-sitter
     fzf
-    silver-searcher
 
     # Python and its Development packages
     (python3.withPackages (p:

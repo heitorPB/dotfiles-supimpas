@@ -75,6 +75,8 @@
       let g:zettel_format = "%title"
       " use [[file|title]] for internal links
       let g:zettel_link_format = "[[%link|%title]]"
+      " Use ripgrep instead of silver-searcher
+      let g:zettel_fzf_command = "rg --column"
     '';
 
     initLua =

@@ -10,10 +10,7 @@
     };
 
     impermanence.url = "github:nix-community/impermanence";
-    # For ZFS impermanence.
-    # TODO: remove this and just do it manualy to clean up dependencies?
-    #chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # Original, killed on 2025/12/08
-    chaotic.url = "github:lonerOrz/nyx-loner/main";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # Basically only for ZFS impermanence
 
     # TODO: do I need nixos-hardware?
 

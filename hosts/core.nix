@@ -76,10 +76,6 @@
 
   # Set time zone
   time.timeZone = machine.location.timezone;
-  environment.variables = {
-    CURRENT_CITY = machine.location.city + ", " + machine.location.country;
-    CURRENT_GEO = machine.location.latitude + ":" + machine.location.longitude;
-  };
 
   # Internationalisation properties.
   i18n = {

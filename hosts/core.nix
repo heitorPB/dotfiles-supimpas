@@ -3,6 +3,7 @@
   pkgs,
   machine,
   lib,
+  inputs,
   ...
 }: {
   # Import nix.nix here to clean up flakes.nix
@@ -98,8 +99,14 @@
   };
 
   # Override some packages' settings/sources
-  # Downgrade gnupg to 2.2.27. TODO: remove later
-  #nixpkgs.overlays = [ (final: prev: { gnupg = inputs.nixpkgs-gnupg.legacyPackages.${final.system}.gnupg; }) ];
+  nixpkgs.overlays = [
+    (final: prev: {
+      orca-slicer =
+        (import inputs.nixpkgs-orca {
+          inherit (prev) system;
+        }).orca-slicer;
+    })
+  ];
 
   # Fix wrong sudo password messages
   security.sudo = {

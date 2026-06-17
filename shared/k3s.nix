@@ -5,6 +5,9 @@
 # - .config/k9s
 # - .kube
 # - .cache/helm
+#
+# See https://discourse.nixos.org/t/how-to-set-permissions-for-k3s-to-not-require-sudo/67588/2
+# for some neat config for rootless access
 {
   lib,
   pkgs,

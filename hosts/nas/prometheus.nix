@@ -22,7 +22,7 @@
     ];
   };
 
-  # Persist Prometheus data in nvme
+  # Persist Prometheus data in NVMe
   environment.persistence = {
     "/var/persistent".directories = [
       {

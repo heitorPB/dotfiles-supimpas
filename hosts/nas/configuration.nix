@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ./prometheus.nix
     ./prometheus-exporters.nix
+    ./grafana.nix
   ];
 
   # Required for zfs. From head -c 8 /etc/machine-id

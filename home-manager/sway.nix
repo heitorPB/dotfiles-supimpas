@@ -126,7 +126,7 @@ in {
         {app_id = ".blueman-manager-wrapped";}
         {app_id = "anki";}
         {app_id = "org.keepassxc.KeePassXC";}
-        {class = "Spotify";}
+        {app_id = "spotify";}
         {class = "steam";}
         {title = "Volume Control";} # For pavucontrol
       ];

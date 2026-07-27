@@ -38,7 +38,28 @@ in {
     #  };
     #};
 
-    containers.registries.insecure = ["localhost" "localhost:5000"];
+    containers.registries.settings = {
+      registry = [
+        {
+          location = "docker.io";
+        }
+        {
+          location = "quay.io";
+        }
+        {
+          location = "localhost";
+          insecure = true;
+        }
+        {
+          location = "localhost:5000";
+          insecure = true;
+        }
+        {
+          location = "10.4.22.36";
+          insecure = true;
+        }
+      ];
+    };
   };
 
   # Disable NixOs Containers (conflicts with virtualisation.containers)

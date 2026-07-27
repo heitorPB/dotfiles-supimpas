@@ -26,6 +26,7 @@ in {
 
   # Mouse cursor - Only non-blue Catppuccin
   home.pointerCursor = lib.mkIf hasSeat {
+    enable = true;
     name = "catppuccin-${lib.toLower catppuccinFlavor}-lavender-cursors";
     package = pkgs.catppuccin-cursors.${lib.toLower catppuccinFlavor + "Lavender"};
     gtk.enable = true;

@@ -21,6 +21,8 @@
           size = 24;
         }
       ];
+
+      insecure-registries = ["10.4.22.36"];
     };
   };
 

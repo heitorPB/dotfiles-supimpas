@@ -39,6 +39,7 @@ in {
     #};
 
     containers.registries.settings = {
+      unqualified-search-registries = ["docker.io" "quay.io"];
       registry = [
         {
           location = "docker.io";

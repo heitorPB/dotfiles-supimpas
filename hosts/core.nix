@@ -155,7 +155,7 @@
     man-pages # More manuals
     pciutils # For lspci(8)
     pinentry-curses # Pinentry for gnupg
-    rclone
+    rclone # Added ~/.config/rclone to impermanence
     ripgrep # Fancier grep(1)
     rsync
     smartmontools # For S.M.A.R.T. tooling

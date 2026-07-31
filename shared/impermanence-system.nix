@@ -80,6 +80,7 @@
         ".config/OrcaSlicer"
         ".config/pasteur-chrome"
         ".config/qBittorrent"
+        ".config/rclone"
         ".config/spotify"
         ".config/uv"
         ".config/zed"
@@ -99,6 +100,7 @@
         "Calibre Library"
         "Downloads"
         "drive"
+        "gdrive"
         "projects"
 
         # Not that critical, but helpful to keep around.

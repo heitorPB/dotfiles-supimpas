@@ -173,6 +173,7 @@
     gnumake # For make
     jq # JSON parser
     tmux # Moar terminals
+    yq # Like jq, but for YAML
 
     # Bash Development
     bash-language-server

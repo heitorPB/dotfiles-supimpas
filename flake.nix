@@ -152,6 +152,7 @@
           ./shared/podman.nix
           ./shared/docker.nix
           ./shared/tailscale.nix
+          ./shared/openvpn.nix
 
           # ZFS on impermanence from Chaotic
           chaotic.nixosModules.default

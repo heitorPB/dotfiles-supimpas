@@ -220,7 +220,7 @@
     delve # Debugger
     golangci-lint
     govulncheck # Vulnerability scanner
-    gcc # Needed for C/Go ? Also needed for tree-sitter
+    gcc # Needed for C/Go. Also needed for tree-sitter and rustc (as linker)
 
     # Terraform and its language-server
     #terraform

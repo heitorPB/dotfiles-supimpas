@@ -40,4 +40,12 @@
     latitude = "-22.01";
     longitude = "-47.89";
   };
+
+  saoPaulo = {
+    city = "São Paulo";
+    country = "Brazil";
+    timezone = "America/Sao_Paulo";
+    latitude = "-23.56";
+    longitude = "-46.63";
+  };
 }

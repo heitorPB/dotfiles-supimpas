@@ -123,7 +123,7 @@ in {
 
       floating.criteria = [
         # Get with `swaymsg -t get_tree`
-        {app_id = ".blueman-manager-wrapped";}
+        {app_id = "blueman-manager";}
         {app_id = "anki";}
         {app_id = "org.keepassxc.KeePassXC";}
         {app_id = "spotify";}

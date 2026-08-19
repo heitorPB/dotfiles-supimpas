@@ -17,6 +17,11 @@
     in {
       # For nix develop
       devShell = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          stdenv.cc.cc
+          zlib # For NumPy
+        ];
+
         shellHook = ''
           # for PyTorch
           export LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib
@@ -34,6 +39,7 @@
               pip
               python-lsp-server
             ]))
+          prek
         ];
       };
     });

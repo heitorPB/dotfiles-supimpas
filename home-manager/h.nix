@@ -129,7 +129,7 @@ in {
       # Separate browsers for work
       # Enabled features as suggested in
       # https://nixos.wiki/wiki/Chromium#Enable_GPU_accelerated_video_decoding_.28VA-API.29
-      pasteur-chrome = "google-chrome-stable --user-data-dir=$HOME/.config/pasteur-chrome/ --enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport,UseMultiPlaneFormatForHardwareVideo";
+      pasteur-chrome = "google-chrome-stable --user-data-dir=$HOME/.config/pasteur-chrome/";
     };
     shellOptions = ["nocaseglob"]; # Case insensitive interactive ops
   };

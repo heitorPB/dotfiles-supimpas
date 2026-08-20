@@ -172,6 +172,7 @@
     git
     gnumake # For make
     jq # JSON parser
+    prek # Better pre-commit
     tmux # Moar terminals
     yq # Like jq, but for YAML
 

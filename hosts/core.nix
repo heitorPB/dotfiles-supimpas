@@ -98,16 +98,6 @@
     };
   };
 
-  # Override some packages' settings/sources
-  nixpkgs.overlays = [
-    (final: prev: {
-      orca-slicer =
-        (import inputs.nixpkgs-orca {
-          inherit (prev) system;
-        }).orca-slicer;
-    })
-  ];
-
   # Fix wrong sudo password messages
   security.sudo = {
     package = pkgs.sudo.override {withInsults = true;};

@@ -14,9 +14,6 @@
 
     # TODO: do I need nixos-hardware?
 
-    # Downgrade orca-slicer to 2.3.1 - https://github.com/OrcaSlicer/OrcaSlicer/issues/13137
-    nixpkgs-orca.url = "github:nixos/nixpkgs/62efab0dada7d38f14f7147bdd6c350780e9af10";
-
     update-systemd-resolved.url = "github:jonathanio/update-systemd-resolved";
     update-systemd-resolved.inputs.nixpkgs.follows = "nixpkgs"; # optional
   };
@@ -26,7 +23,6 @@
     home-manager,
     impermanence,
     chaotic,
-    nixpkgs-orca,
     ...
   } @ inputs: let
     ssot = import ./shared/ssot.nix inputs;

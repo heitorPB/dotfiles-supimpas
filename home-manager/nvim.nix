@@ -35,6 +35,7 @@
       " define csv filetype
       autocmd BufNewFile,BufRead *csv set filetype=csv
 
+      autocmd FileType bash setlocal ts=4 sts=4 sw=4 expandtab " use 4 spaces to indent Bash scripts
       autocmd FileType csv setlocal textwidth=0       " disable line wraps for csv
       autocmd FileType ledger setlocal ts=4 sts=4 sw=4 expandtab " use 4 spaces to indent ledger
       autocmd FileType markdown setlocal textwidth=79 " make text break lines at 79 chars

@@ -233,11 +233,12 @@
             vim.lsp.enable('tflint') -- TFLint, a Terraform linter and LSP
 
             -- Mappings
-            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" }) -- ctrl+t to go back
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
             vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
             vim.keymap.set("n", "<space>f", vim.lsp.buf.format, { desc = "Format code" })
             vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
+            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "Rename symbol" })
 
             -- Diagnostic
             vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Floating diagnostic" })

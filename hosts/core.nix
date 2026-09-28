@@ -206,7 +206,7 @@
 
     # Golang and its language-server
     # Note: added ~/go to impermanence
-    go
+    go_latest
     gopls # LSP
     delve # Debugger
     golangci-lint

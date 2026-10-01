@@ -50,7 +50,7 @@
         d = "!git --no-pager diff --patch-with-stat";
 
         # Change date of last commit to now
-        now = "commit --amend --date=now";
+        now = "commit --amend --date=now --no-edit";
 
         # Show verbose output about tags, branches or remotes
         tags = "tag -l";

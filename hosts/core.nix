@@ -160,6 +160,7 @@
     # Development and workflow
     claude-code # Added ~/.claude{,.json,.json.backup} to impermanence
     git
+    github-cli # Provides `gh`
     gnumake # For make
     jq # JSON parser
     prek # Better pre-commit

@@ -116,7 +116,6 @@
     # My favorites :)
     anki # Flash cards!
     darktable # RAW image post-processor
-    drive # Google drive CLI
     feh # Image viewer
     hledger # Double entry accounting tool
     keepassxc # Password manager

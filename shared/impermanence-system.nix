@@ -99,7 +99,7 @@
         ".ssh"
         "Calibre Library"
         "Downloads"
-        "drive"
+        "drive" # TODO: remove when NAS gets ready
         "gdrive"
         "projects"
 

@@ -1,5 +1,8 @@
 # Configuration for podman, using crun as OCI runtime (default)
 # TODO: Update mywiki if this file is changed.
+# Entries in impermanence:
+#   - /var/lib/containers
+#   - ~/.local/share/containers
 {
   config,
   pkgs,
@@ -12,31 +15,8 @@ in {
       enable = true;
       dockerCompat = !dockerEnabled; # For docker aliases
       dockerSocket.enable = !dockerEnabled;
-      extraPackages = [pkgs.zfs];
       defaultNetwork.settings.dns_enabled = true;
     };
-
-    # Rootfull Podman on ZFS
-    # Rootless does not use ZFS :(
-    containers.storage.settings = {
-      storage = {
-        driver = "zfs";
-        graphroot = "/var/lib/containers/storage";
-        runroot = "/run/containers/storage";
-      };
-      storage.options.zfs = {
-        fsname = "zroot/containers";
-        mountopt = "nodev";
-      };
-    };
-
-    # Change log-driver from journald to k8s-file (alias for json)
-    #containers.containersConf.settings = {
-    #  containers = {
-    #    log_driver = "k8s-file";
-    #    events_logger = "file";
-    #  };
-    #};
 
     containers.registries.settings = {
       unqualified-search-registries = ["docker.io" "quay.io"];

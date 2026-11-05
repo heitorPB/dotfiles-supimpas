@@ -25,14 +25,19 @@
   ];
 
   boot = {
-    # Use same ACPI identifier as Dell Ubuntu
-    kernelParams = ["acpi_osi=Linux-Dell-Video"];
+    kernelParams = [
+      # Use same ACPI identifier as Dell Ubuntu
+      "acpi_osi=Linux-Dell-Video"
+
+      # For Intel GPU
+      "i915.enable_guc=2"
+    ];
 
     # Enable fan sensors.
     kernelModules = ["dell-smm-hwmon"];
 
     # Forces the driver to load on unknown hardware
-    extraModprobeConfig = "options dell-smm-hwmon	ignore_dmi=1";
+    extraModprobeConfig = "options dell-smm-hwmon ignore_dmi=1";
     # NOTE: PWM fan control compatibility needs explicit whitelisting in the kernel driver's code.
   };
 

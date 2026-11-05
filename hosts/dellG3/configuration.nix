@@ -37,7 +37,7 @@
   };
 
   # Nvidia drivers for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["nvidia" "modesetting"];
 
   # TODO: this is still not working. I think.
   hardware.nvidia = {
@@ -66,9 +66,8 @@
     # Enable the Nvidia settings menu, accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
-    # Optionally, you may need to select the appropriate driver version for
-    # your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # See https://www.nvidia.com/en-us/drivers/unix/
+    branch = "production";
   };
 
   hardware.nvidia.prime = {
@@ -81,8 +80,8 @@
     #sync.enable = lib.mkForce false;
     # Make sure to use the correct Bus ID values for your system!
     # Get from sudo lshw -c display
-    intelBusId = "PCI:0:1:0";
-    nvidiaBusId = "PCI:1:0:0";
+    intelBusId = "PCI:0@0:2:0";
+    nvidiaBusId = "PCI:1@0:0:0";
   };
 
   hardware.graphics.extraPackages = with pkgs; [libva-vdpau-driver];

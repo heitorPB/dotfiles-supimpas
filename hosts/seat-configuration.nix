@@ -87,6 +87,7 @@
     avizo # Neat pop-up notification for audio/brightness adjustments. See sway config
     brightnessctl # To change backligh (screen brightness), for avizo
     calibre # E-book reader/manager
+    libnotify # Provides notify-send for desktop notifications
     lxmenu-data # For lxqt apps' "Open with" dialogs
     lxqt.lxqt-menu-data # For pcmanfm-qt right click Application Menu
     lxqt.lxqt-sudo # GUI for sudo, for pcmanfm-qt

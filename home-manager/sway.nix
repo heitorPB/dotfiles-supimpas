@@ -1,3 +1,7 @@
+# Sway config.
+# On L14:
+# - added WLR_RENDERER env var, required for HDR (G9 monitor supports it)
+
 {
   pkgs,
   lib,
@@ -69,6 +73,7 @@ in {
       defaultWorkspace = "workspace number 1";
 
       # Setup monitors. Get their names with `swaymsg -t get_outputs`
+      # Added WLR_RENDERER env var to Thinkpad L14 as G9 monitor supports HDR
       output = {
         "*" = {
           # Generic output
@@ -83,6 +88,9 @@ in {
           adaptive_sync = "on"; # TODO move this SSOT
           #mode = "5120x1440@119.999Hz";
           mode = "5120x1440@59.997Hz";
+
+          render_bit_depth = "10";
+          hdr = "off"; # Toggle it with `swaymsg output DP-2 hdr toggle`
         };
 
         # Machine specific monitor

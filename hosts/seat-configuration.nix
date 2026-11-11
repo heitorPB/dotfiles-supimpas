@@ -127,7 +127,7 @@
     orca-slicer # 3D printing slicer
 
     # Wayland progrs
-    grim # Screenshot for wayland # TODO: configure screenshot in Sway
+    grim # Screenshot for wayland
     slurp # For selecting region of screen. Easier screenshotting: grim -s $(slurp)
     wdisplays # Equivalent to arandr
     wl-clipboard-rs

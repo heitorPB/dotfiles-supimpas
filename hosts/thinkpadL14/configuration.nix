@@ -67,6 +67,9 @@
     # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
     "VDPAU_DRIVER" = "radeonsi";
     "LIBVA_DRIVER_NAME" = "radeonsi";
+
+    # Necessary for HDR in Sway
+    "WLR_RENDERER" = "vulkan";
   };
   # Most software has the HIP libraries hard-coded. Workaround:
   systemd.tmpfiles.rules = [
